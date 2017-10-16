@@ -52,6 +52,74 @@ float_u inline Dot(FVector<float_u> const& u, SVector<float_v> const& v) {
   return p;
 }
 
+//template <typename float_u, typename float_v>
+float inline Dot(FVector<float> const &uVector, FVector<unsigned char> const &vVector) {
+{
+
+            const uint64_t n0 = uVector.size;
+            const uint64_t n1 = n0 & 0xFFFFFFFFFFFFFFE0UL;
+            const float * u            = uVector.values;
+            const unsigned short * v   = vVector.values;
+
+            __m256 acc1 = _mm256_setzero_ps(); 
+            __m256 acc2 = _mm256_setzero_ps();
+            __m256 acc3 = _mm256_setzero_ps();
+            __m256 acc4 = _mm256_setzero_ps();
+			
+			const __m256i and_const  = _mm256_set1_epi32(0xffff);
+
+            for (uint64_t i = 0; i < n1; i += 32)
+            {// 
+				   //__m128i v1_128 = _mm_loadu_si128(v + i + 0);
+				  // __m128i v2_128 = _mm_loadu_si128(v + i + 8);
+				  // __m128i v3_128 = _mm_loadu_si128(v + i + 16);
+				   //__m128i v4_128 = _mm_loadu_si128(v + i + 24);
+				   //__m256i v1_abs = _mm256_cvtepu16_epi32(v1_128);
+				   //__m256i v2_abs = _mm256_cvtepu16_epi32(v2_128);
+				   //__m256i v3_abs = _mm256_cvtepu16_epi32(v3_128);
+				   //__m256i v4_abs = _mm256_cvtepu16_epi32(v4_128);
+				   
+				   __m128i v1_128 = _mm_loadu_si128((__m128i const* )(v + i + 0));
+				   __m128i v3_128 = _mm_loadu_si128((__m128i const* )(v + i + 16));
+				   __m256i v1_abs = _mm256_cvtepu8_epi32(v1_128); //lower part
+				   __m256i v2_abs = _mm256_cvtepu8_epi32(_mm_bsrli_si128(v1_128,8));//upper part
+				   __m256i v3_abs = _mm256_cvtepu8_epi32(v3_128); //lower part
+				   __m256i v4_abs = _mm256_cvtepu8_epi32(_mm_bsrli_si128(v3_128,8));//upper part
+
+                        __m256 v1 = _mm256_cvtepi32_ps(v1_abs);
+                        __m256 v2 = _mm256_cvtepi32_ps(v2_abs);
+                        __m256 v3 = _mm256_cvtepi32_ps(v3_abs);
+                        __m256 v4 = _mm256_cvtepi32_ps(v4_abs);
+
+                const __m256 u1 = _mm256_loadu_ps(u + i + 0);
+                const __m256 u2 = _mm256_loadu_ps(u + i + 8);
+                const __m256 u3 = _mm256_loadu_ps(u + i + 16);
+                const __m256 u4 = _mm256_loadu_ps(u + i + 24);
+
+                acc1 = _mm256_fmadd_ps(v1, u1, acc1);
+                acc2 = _mm256_fmadd_ps(v2, u2, acc2);
+                acc3 = _mm256_fmadd_ps(v3, u3, acc3);
+                acc4 = _mm256_fmadd_ps(v4, u4, acc4);
+            }
+
+            // add the accumulators
+            const __m256 tmp1 = _mm256_add_ps(acc1, acc2);
+            const __m256 tmp2 = _mm256_add_ps(acc3, acc4);
+            const __m256 tmp3 = _mm256_add_ps(tmp1, tmp2);
+
+            // perform reduction
+            const __m128 left  = _mm256_extractf128_ps(tmp3, 1);
+            const __m128 right = _mm256_castps256_ps128(tmp3);
+            const __m128 x128  = _mm_add_ps(left, right);
+            const __m128 x64   = _mm_add_ps(x128, _mm_movehl_ps(x128, x128));
+            const __m128 x32   = _mm_add_ss(x64, _mm_shuffle_ps(x64, x64, 0x55));
+            float result       = _mm_cvtss_f32(x32);
+
+            for (uint64_t i = n1; i < n0; i += 1) {
+                result += u[i] * (float) v[i];
+            }
+            return result;
+}
 
 #if 0
 template <typename float_u, typename float_v>
@@ -95,15 +163,18 @@ float inline Dot(FVector<float> const &uVector, FVector<unsigned short> const &v
 				   __m128i v2_128 = _mm_loadu_si128(v + i + 8);
 				   __m128i v3_128 = _mm_loadu_si128(v + i + 16);
 				   __m128i v4_128 = _mm_loadu_si128(v + i + 24);
-				   __m256i v1_256 = _mm256_cvtepi16_epi32(v1_128);
-				   __m256i v2_256 = _mm256_cvtepi16_epi32(v2_128);
-				   __m256i v3_256 = _mm256_cvtepi16_epi32(v3_128);
-				   __m256i v4_256 = _mm256_cvtepi16_epi32(v4_128);
-				   
-				   __m256i v1_abs = _mm256_and_si256(v1_256, and_const);
-				   __m256i v2_abs = _mm256_and_si256(v2_256, and_const);
-				   __m256i v3_abs = _mm256_and_si256(v3_256, and_const);
-				   __m256i v4_abs = _mm256_and_si256(v4_256, and_const);
+				   //__m256i v1_256 = _mm256_cvtepi16_epi32(v1_128);
+				   //__m256i v2_256 = _mm256_cvtepi16_epi32(v2_128);
+				   //__m256i v3_256 = _mm256_cvtepi16_epi32(v3_128);
+				   //__m256i v4_256 = _mm256_cvtepi16_epi32(v4_128);
+				   //__m256i v1_abs = _mm256_and_si256(v1_256, and_const);
+				   //__m256i v2_abs = _mm256_and_si256(v2_256, and_const);
+				   //__m256i v3_abs = _mm256_and_si256(v3_256, and_const);
+				   //__m256i v4_abs = _mm256_and_si256(v4_256, and_const);
+				   __m256i v1_abs = _mm256_cvtepu16_epi32(v1_128);
+				   __m256i v2_abs = _mm256_cvtepu16_epi32(v2_128);
+				   __m256i v3_abs = _mm256_cvtepu16_epi32(v3_128);
+				   __m256i v4_abs = _mm256_cvtepu16_epi32(v4_128);
 				   
                         __m256 v1 = _mm256_cvtepi32_ps(v1_abs);
                         __m256 v2 = _mm256_cvtepi32_ps(v2_abs);

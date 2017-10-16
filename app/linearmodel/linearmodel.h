@@ -148,6 +148,7 @@ struct LinearModelSample_char
 
   float b_binary_to_value()
   {
+    //printf("In char binary to value\n");
   	return 256.0;
   }
   void exchange_sample(LinearModelSample_char &exchange)

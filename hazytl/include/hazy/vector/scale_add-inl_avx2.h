@@ -117,10 +117,48 @@ void inline ScaleAndAdd(FVector<float> &uVector, FVector<unsigned short> const &
                 //const __m256 v2 = _mm256_loadu_ps(v + i + 8);
 				__m128i v1_128 = _mm_loadu_si128((__m128i const* )(v + i + 0));
 				__m128i v2_128 = _mm_loadu_si128((__m128i const* )(v + i + 8));
-				__m256i v1_256 = _mm256_cvtepi16_epi32(v1_128);
-				__m256i v2_256 = _mm256_cvtepi16_epi32(v2_128);
-				__m256i v1_abs = _mm256_and_si256(v1_256, and_const);
-				__m256i v2_abs = _mm256_and_si256(v2_256, and_const);
+				//__m256i v1_256 = _mm256_cvtepi16_epi32(v1_128);
+				//__m256i v2_256 = _mm256_cvtepi16_epi32(v2_128);
+				//__m256i v1_abs = _mm256_and_si256(v1_256, and_const);
+				//__m256i v2_abs = _mm256_and_si256(v2_256, and_const);
+				__m256i v1_abs = _mm256_cvtepu16_epi32(v1_128);
+				__m256i v2_abs = _mm256_cvtepu16_epi32(v2_128);
+				
+					 __m256 v1 = _mm256_cvtepi32_ps(v1_abs);
+					 __m256 v2 = _mm256_cvtepi32_ps(v2_abs);
+
+                const __m256 sa_u1 = _mm256_fmadd_ps(v1, scale, u1);
+                const __m256 sa_u2 = _mm256_fmadd_ps(v2, scale, u2);
+
+                _mm256_storeu_ps(u + (i + 0), sa_u1);
+                _mm256_storeu_ps(u + (i + 8), sa_u2);
+
+            }
+
+            for (size_t i = n1; i < n0; i += 1) {
+                u[i] = u[i] + (v[i] * s);
+            } 
+}
+
+
+void inline ScaleAndAdd(FVector<float> &uVector, FVector<unsigned char> const &vVector,
+                                             float const& s) {
+               float  * u  = uVector.values;
+  const unsigned short * v  = vVector.values;
+  const uint64_t n0         = uVector.size;
+  const uint64_t n1         = (n0 >> 4) << 4;
+  const __m256 scale       = _mm256_set1_ps(s);
+  const __m256i and_const  = _mm256_set1_epi32(0xffff);
+  	
+            for (size_t i = 0; i < n1; i += 16)
+            {
+                const __m256 u1 = _mm256_loadu_ps(u + i + 0);
+                const __m256 u2 = _mm256_loadu_ps(u + i + 8);
+                //const __m256 v1 = _mm256_loadu_ps(v + i + 0);
+                //const __m256 v2 = _mm256_loadu_ps(v + i + 8);
+				__m128i v1_128 = _mm_loadu_si128((__m128i const* )(v + i + 0));
+				__m256i v1_abs = _mm256_cvtepu8_epi32(v1_128); //lower part
+				__m256i v2_abs = _mm256_cvtepu8_epi32(_mm_bsrli_si128(v1_128,8));//upper part
 				
 					 __m256 v1 = _mm256_cvtepi32_ps(v1_abs);
 					 __m256 v2 = _mm256_cvtepi32_ps(v2_abs);
