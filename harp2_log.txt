@@ -1,0 +1,190 @@
+zeke@sgs-harp-02:~/ml_cpu/zeke-sgd$ ./bin/LINREG_HOGWILD_NON_DENSE_AVX_FP --beta=0.001 --epochs=20 --stepinitial=0.00085 --step_decay=0.98 --class_model=1 --target_label=1 --batch_size=1 --splits=10  --dimension=47236 --quantization=0 --matlab-tsv=1 data/rcv1_train.tsv data/rcv1_train.tsv
+Use floating point.......
+0 - Loading training samples from 'data/rcv1_train.tsv'
+0 - Loading test samples from 'data/rcv1_train.tsv'
+0 - Loaded 20241 training samples
+0 - Loaded 20241 test samples
+0 - Run threadpool with 10 threads
+this->params_->step_size = 0.000850000
+epoch: 00   train_time (total, each): with_thread_sync(0.0000000, 0.0000000), without_thread_sync(0.0000000, 0.0000000)  train_loss: 0.2591275 test_loss: 0.2591275
+epoch: 01   train_time (total, each): with_thread_sync(0.2695524, 0.2695523), without_thread_sync(0.2272762, 0.2272762)  train_loss: 0.1835055 test_loss: 0.1835056
+epoch: 02   train_time (total, each): with_thread_sync(0.5395397, 0.2699871), without_thread_sync(0.4523149, 0.2250387)  train_loss: 0.1428690 test_loss: 0.1428690
+epoch: 03   train_time (total, each): with_thread_sync(0.7971060, 0.2575662), without_thread_sync(0.6677038, 0.2153889)  train_loss: 0.1194718 test_loss: 0.1194718
+epoch: 04   train_time (total, each): with_thread_sync(1.0664760, 0.2693697), without_thread_sync(0.8926397, 0.2249359)  train_loss: 0.1047941 test_loss: 0.1047941
+epoch: 05   train_time (total, each): with_thread_sync(1.3380180, 0.2715419), without_thread_sync(1.1100958, 0.2174561)  train_loss: 0.0947959 test_loss: 0.0947960
+epoch: 06   train_time (total, each): with_thread_sync(1.6048114, 0.2667933), without_thread_sync(1.3278006, 0.2177048)  train_loss: 0.0874416 test_loss: 0.0874416
+epoch: 07   train_time (total, each): with_thread_sync(1.8737763, 0.2689647), without_thread_sync(1.5493945, 0.2215939)  train_loss: 0.0817087 test_loss: 0.0817087
+epoch: 08   train_time (total, each): with_thread_sync(2.1418226, 0.2680460), without_thread_sync(1.7728109, 0.2234164)  train_loss: 0.0770389 test_loss: 0.0770389
+epoch: 09   train_time (total, each): with_thread_sync(2.3994166, 0.2575937), without_thread_sync(1.9893572, 0.2165463)  train_loss: 0.0731232 test_loss: 0.0731233
+epoch: 10   train_time (total, each): with_thread_sync(2.6564631, 0.2570462), without_thread_sync(2.2007879, 0.2114307)  train_loss: 0.0697728 test_loss: 0.0697728
+epoch: 11   train_time (total, each): with_thread_sync(2.9172183, 0.2607549), without_thread_sync(2.4181676, 0.2173797)  train_loss: 0.0668688 test_loss: 0.0668688
+epoch: 12   train_time (total, each): with_thread_sync(3.1875997, 0.2703811), without_thread_sync(2.6439977, 0.2258302)  train_loss: 0.0643189 test_loss: 0.0643189
+epoch: 13   train_time (total, each): with_thread_sync(3.4292630, 0.2416631), without_thread_sync(2.8468967, 0.2028990)  train_loss: 0.0620646 test_loss: 0.0620647
+epoch: 14   train_time (total, each): with_thread_sync(3.7508650, 0.3216017), without_thread_sync(3.0853480, 0.2384512)  train_loss: 0.0600621 test_loss: 0.0600621
+epoch: 15   train_time (total, each): with_thread_sync(4.0078836, 0.2570183), without_thread_sync(3.3011606, 0.2158126)  train_loss: 0.0582719 test_loss: 0.0582719
+epoch: 16   train_time (total, each): with_thread_sync(4.2835398, 0.2756560), without_thread_sync(3.5215123, 0.2203517)  train_loss: 0.0566570 test_loss: 0.0566569
+epoch: 17   train_time (total, each): with_thread_sync(4.5283870, 0.2448468), without_thread_sync(3.7282797, 0.2067674)  train_loss: 0.0551961 test_loss: 0.0551960
+epoch: 18   train_time (total, each): with_thread_sync(4.7875603, 0.2591731), without_thread_sync(3.9466827, 0.2184029)  train_loss: 0.0538723 test_loss: 0.0538723
+epoch: 19   train_time (total, each): with_thread_sync(5.0422674, 0.2547068), without_thread_sync(4.1582399, 0.2115573)  train_loss: 0.0526647 test_loss: 0.0526647
+epoch: 20   train_time (total, each): with_thread_sync(5.3011363, 0.2588686), without_thread_sync(4.3740300, 0.2157901)  train_loss: 0.0515602 test_loss: 0.0515602
+0.265057
+Finished!
+zeke@sgs-harp-02:~/ml_cpu/zeke-sgd$ ./bin/LINREG_HOGWILD_NON_DENSE_AVX_SHORT --beta=0.001 --epochs=20 --stepinitial=0.00085 --step_decay=0.98 --class_model=1 --target_label=1 --batch_size=1 --splits=10  --dimension=47236 --quantization=0 --matlab-tsv=1 data/rcv1_train.tsv data/rcv1_train.tsv
+Use short.......
+0 - Loading training samples from 'data/rcv1_train.tsv'
+0 - Loading test samples from 'data/rcv1_train.tsv'
+0 - Loaded 20241 training samples
+0 - Loaded 20241 test samples
+0 - Run threadpool with 10 threads
+this->params_->step_size = 0.000850000
+epoch: 00   train_time (total, each): with_thread_sync(0.0000000, 0.0000000), without_thread_sync(0.0000000, 0.0000000)  train_loss: 0.2591275 test_loss: 0.2591275
+epoch: 01   train_time (total, each): with_thread_sync(0.2474239, 0.2474089), without_thread_sync(0.2094747, 0.2094747)  train_loss: 0.1834854 test_loss: 0.1834854
+epoch: 02   train_time (total, each): with_thread_sync(0.4923515, 0.2449272), without_thread_sync(0.4186163, 0.2091416)  train_loss: 0.1428491 test_loss: 0.1428491
+epoch: 03   train_time (total, each): with_thread_sync(0.7208905, 0.2285386), without_thread_sync(0.6147784, 0.1961621)  train_loss: 0.1194400 test_loss: 0.1194400
+epoch: 04   train_time (total, each): with_thread_sync(0.9602209, 0.2393301), without_thread_sync(0.8069746, 0.1921962)  train_loss: 0.1048071 test_loss: 0.1048071
+epoch: 05   train_time (total, each): with_thread_sync(1.1879186, 0.2276974), without_thread_sync(1.0009721, 0.1939976)  train_loss: 0.0948066 test_loss: 0.0948066
+epoch: 06   train_time (total, each): with_thread_sync(1.4243053, 0.2363864), without_thread_sync(1.2033524, 0.2023803)  train_loss: 0.0874542 test_loss: 0.0874542
+epoch: 07   train_time (total, each): with_thread_sync(1.6423247, 0.2180191), without_thread_sync(1.3856624, 0.1823100)  train_loss: 0.0817189 test_loss: 0.0817189
+epoch: 08   train_time (total, each): with_thread_sync(1.8698338, 0.2275088), without_thread_sync(1.5792424, 0.1935800)  train_loss: 0.0770518 test_loss: 0.0770518
+epoch: 09   train_time (total, each): with_thread_sync(2.1066198, 0.2367856), without_thread_sync(1.7661793, 0.1869369)  train_loss: 0.0731399 test_loss: 0.0731399
+epoch: 10   train_time (total, each): with_thread_sync(2.3208829, 0.2142629), without_thread_sync(1.9429437, 0.1767644)  train_loss: 0.0697913 test_loss: 0.0697913
+epoch: 11   train_time (total, each): with_thread_sync(2.5370848, 0.2162015), without_thread_sync(2.1273790, 0.1844353)  train_loss: 0.0668854 test_loss: 0.0668854
+epoch: 12   train_time (total, each): with_thread_sync(2.7558189, 0.2187337), without_thread_sync(2.3107530, 0.1833740)  train_loss: 0.0643356 test_loss: 0.0643356
+epoch: 13   train_time (total, each): with_thread_sync(2.9920094, 0.2361902), without_thread_sync(2.5109397, 0.2001867)  train_loss: 0.0620821 test_loss: 0.0620821
+epoch: 14   train_time (total, each): with_thread_sync(3.2170365, 0.2250268), without_thread_sync(2.7017505, 0.1908108)  train_loss: 0.0600831 test_loss: 0.0600831
+epoch: 15   train_time (total, each): with_thread_sync(3.4380989, 0.2210621), without_thread_sync(2.8884483, 0.1866978)  train_loss: 0.0582895 test_loss: 0.0582895
+epoch: 16   train_time (total, each): with_thread_sync(3.6555327, 0.2174335), without_thread_sync(3.0732602, 0.1848119)  train_loss: 0.0566746 test_loss: 0.0566746
+epoch: 17   train_time (total, each): with_thread_sync(3.8809261, 0.2253931), without_thread_sync(3.2643172, 0.1910570)  train_loss: 0.0552125 test_loss: 0.0552125
+epoch: 18   train_time (total, each): with_thread_sync(4.1407863, 0.2598598), without_thread_sync(3.4736031, 0.2092860)  train_loss: 0.0538874 test_loss: 0.0538874
+epoch: 19   train_time (total, each): with_thread_sync(4.3743881, 0.2336015), without_thread_sync(3.6652111, 0.1916080)  train_loss: 0.0526786 test_loss: 0.0526786
+epoch: 20   train_time (total, each): with_thread_sync(4.6156829, 0.2412945), without_thread_sync(3.8588729, 0.1936618)  train_loss: 0.0515718 test_loss: 0.0515718
+0.230783
+Finished!
+zeke@sgs-harp-02:~/ml_cpu/zeke-sgd$ ./bin/LINREG_HOGWILD_NON_DENSE_AVX_CHAR --beta=0.001 --epochs=20 --stepinitial=0.00085 --step_decay=0.98 --class_model=1 --target_label=1 --batch_size=1 --splits=10  --dimension=47236 --quantization=0 --matlab-tsv=1 data/rcv1_train.tsv data/rcv1_train.tsv
+Use char.......
+0 - Loading training samples from 'data/rcv1_train.tsv'
+0 - Loading test samples from 'data/rcv1_train.tsv'
+0 - Loaded 20241 training samples
+0 - Loaded 20241 test samples
+0 - Run threadpool with 10 threads
+this->params_->step_size = 0.000850000
+epoch: 00   train_time (total, each): with_thread_sync(0.0000000, 0.0000000), without_thread_sync(0.0000000, 0.0000000)  train_loss: 0.2591275 test_loss: 0.2591275
+epoch: 01   train_time (total, each): with_thread_sync(0.2413165, 0.2413016), without_thread_sync(0.2023576, 0.2023576)  train_loss: 0.1868829 test_loss: 0.1868829
+epoch: 02   train_time (total, each): with_thread_sync(0.5318851, 0.2905682), without_thread_sync(0.4276078, 0.2252501)  train_loss: 0.1463662 test_loss: 0.1463662
+epoch: 03   train_time (total, each): with_thread_sync(0.7791860, 0.2473006), without_thread_sync(0.6377587, 0.2101510)  train_loss: 0.1224523 test_loss: 0.1224523
+epoch: 04   train_time (total, each): with_thread_sync(1.0437966, 0.2646102), without_thread_sync(0.8402433, 0.2024846)  train_loss: 0.1072808 test_loss: 0.1072808
+epoch: 05   train_time (total, each): with_thread_sync(1.2752408, 0.2314439), without_thread_sync(1.0344814, 0.1942381)  train_loss: 0.0969035 test_loss: 0.0969035
+epoch: 06   train_time (total, each): with_thread_sync(1.5238658, 0.2486247), without_thread_sync(1.2444784, 0.2099970)  train_loss: 0.0893047 test_loss: 0.0893047
+epoch: 07   train_time (total, each): with_thread_sync(1.7761387, 0.2522726), without_thread_sync(1.4618694, 0.2173910)  train_loss: 0.0834058 test_loss: 0.0834058
+epoch: 08   train_time (total, each): with_thread_sync(2.0250639, 0.2489248), without_thread_sync(1.6727048, 0.2108354)  train_loss: 0.0786214 test_loss: 0.0786214
+epoch: 09   train_time (total, each): with_thread_sync(2.2576027, 0.2325385), without_thread_sync(1.8758229, 0.2031181)  train_loss: 0.0746267 test_loss: 0.0746267
+epoch: 10   train_time (total, each): with_thread_sync(2.5370422, 0.2794392), without_thread_sync(2.0933382, 0.2175153)  train_loss: 0.0712080 test_loss: 0.0712080
+epoch: 11   train_time (total, each): with_thread_sync(2.7817005, 0.2446580), without_thread_sync(2.3009664, 0.2076282)  train_loss: 0.0682360 test_loss: 0.0682360
+epoch: 12   train_time (total, each): with_thread_sync(3.0232580, 0.2415571), without_thread_sync(2.5040930, 0.2031266)  train_loss: 0.0656382 test_loss: 0.0656382
+epoch: 13   train_time (total, each): with_thread_sync(3.2778769, 0.2546186), without_thread_sync(2.7198964, 0.2158034)  train_loss: 0.0633274 test_loss: 0.0633274
+epoch: 14   train_time (total, each): with_thread_sync(3.5236953, 0.2458181), without_thread_sync(2.9261890, 0.2062926)  train_loss: 0.0612671 test_loss: 0.0612671
+epoch: 15   train_time (total, each): with_thread_sync(3.7520741, 0.2283785), without_thread_sync(3.1179054, 0.1917164)  train_loss: 0.0594128 test_loss: 0.0594128
+epoch: 16   train_time (total, each): with_thread_sync(3.9895522, 0.2374777), without_thread_sync(3.3148539, 0.1969485)  train_loss: 0.0577438 test_loss: 0.0577438
+epoch: 17   train_time (total, each): with_thread_sync(4.2185589, 0.2290064), without_thread_sync(3.5103924, 0.1955385)  train_loss: 0.0562318 test_loss: 0.0562318
+epoch: 18   train_time (total, each): with_thread_sync(4.4563640, 0.2378048), without_thread_sync(3.7094753, 0.1990829)  train_loss: 0.0548536 test_loss: 0.0548536
+epoch: 19   train_time (total, each): with_thread_sync(4.6859141, 0.2295497), without_thread_sync(3.9014967, 0.1920214)  train_loss: 0.0535952 test_loss: 0.0535952
+epoch: 20   train_time (total, each): with_thread_sync(4.9594664, 0.2735520), without_thread_sync(4.1124691, 0.2109723)  train_loss: 0.0524435 test_loss: 0.0524435
+0.247972
+Finished!
+
+
+zeke@sgs-harp-02:~/ml_cpu/zeke-sgd$ ./bin/LINREG_HOGWILD_NON_DENSE_AVX_CHAR --beta=0.001 --epochs=20 --stepinitial=0.00085 --step_decay=0.98 --class_model=1 --target_label=1 --batch_size=1 --splits=14  --dimension=47236 --quantization=0 --matlab-tsv=1 data/rcv1_train.tsv data/rcv1_train.tsv
+Use char.......
+0 - Loading training samples from 'data/rcv1_train.tsv'
+0 - Loading test samples from 'data/rcv1_train.tsv'
+0 - Loaded 20241 training samples
+0 - Loaded 20241 test samples
+0 - Run threadpool with 14 threads
+this->params_->step_size = 0.000850000
+epoch: 00   train_time (total, each): with_thread_sync(0.0000000, 0.0000000), without_thread_sync(0.0000000, 0.0000000)  train_loss: 0.2591275 test_loss: 0.2591275
+epoch: 01   train_time (total, each): with_thread_sync(0.2015762, 0.2015759), without_thread_sync(0.1538909, 0.1538909)  train_loss: 0.1867306 test_loss: 0.1867306
+epoch: 02   train_time (total, each): with_thread_sync(0.3946134, 0.1930371), without_thread_sync(0.3092051, 0.1553142)  train_loss: 0.1464941 test_loss: 0.1464941
+epoch: 03   train_time (total, each): with_thread_sync(0.5841504, 0.1895369), without_thread_sync(0.4634644, 0.1542593)  train_loss: 0.1226327 test_loss: 0.1226327
+epoch: 04   train_time (total, each): with_thread_sync(0.7680549, 0.1839043), without_thread_sync(0.6090442, 0.1455798)  train_loss: 0.1074658 test_loss: 0.1074658
+epoch: 05   train_time (total, each): with_thread_sync(0.9533902, 0.1853350), without_thread_sync(0.7536016, 0.1445574)  train_loss: 0.0971352 test_loss: 0.0971352
+epoch: 06   train_time (total, each): with_thread_sync(1.1549555, 0.2015651), without_thread_sync(0.9082686, 0.1546670)  train_loss: 0.0895114 test_loss: 0.0895114
+epoch: 07   train_time (total, each): with_thread_sync(1.3396003, 0.1846445), without_thread_sync(1.0578657, 0.1495971)  train_loss: 0.0836109 test_loss: 0.0836109
+epoch: 08   train_time (total, each): with_thread_sync(1.5115639, 0.1719633), without_thread_sync(1.1975475, 0.1396818)  train_loss: 0.0788268 test_loss: 0.0788268
+epoch: 09   train_time (total, each): with_thread_sync(1.7001351, 0.1885709), without_thread_sync(1.3505871, 0.1530395)  train_loss: 0.0748287 test_loss: 0.0748287
+epoch: 10   train_time (total, each): with_thread_sync(1.8750179, 0.1748825), without_thread_sync(1.4938584, 0.1432714)  train_loss: 0.0714009 test_loss: 0.0714009
+epoch: 11   train_time (total, each): with_thread_sync(2.0478326, 0.1728144), without_thread_sync(1.6345159, 0.1406574)  train_loss: 0.0684247 test_loss: 0.0684247
+epoch: 12   train_time (total, each): with_thread_sync(2.2209692, 0.1731363), without_thread_sync(1.7735249, 0.1390090)  train_loss: 0.0658043 test_loss: 0.0658043
+epoch: 13   train_time (total, each): with_thread_sync(2.4041084, 0.1831388), without_thread_sync(1.9232542, 0.1497293)  train_loss: 0.0634834 test_loss: 0.0634834
+epoch: 14   train_time (total, each): with_thread_sync(2.5814780, 0.1773693), without_thread_sync(2.0676346, 0.1443805)  train_loss: 0.0614088 test_loss: 0.0614088
+epoch: 15   train_time (total, each): with_thread_sync(2.7568824, 0.1754042), without_thread_sync(2.2064916, 0.1388569)  train_loss: 0.0595505 test_loss: 0.0595505
+epoch: 16   train_time (total, each): with_thread_sync(2.9298592, 0.1729765), without_thread_sync(2.3461272, 0.1396357)  train_loss: 0.0578764 test_loss: 0.0578764
+epoch: 17   train_time (total, each): with_thread_sync(3.1048853, 0.1750258), without_thread_sync(2.4913502, 0.1452229)  train_loss: 0.0563574 test_loss: 0.0563574
+epoch: 18   train_time (total, each): with_thread_sync(3.2826886, 0.1778029), without_thread_sync(2.6287843, 0.1374342)  train_loss: 0.0549798 test_loss: 0.0549798
+epoch: 19   train_time (total, each): with_thread_sync(3.4522565, 0.1695676), without_thread_sync(2.7651551, 0.1363707)  train_loss: 0.0537189 test_loss: 0.0537189
+epoch: 20   train_time (total, each): with_thread_sync(3.6812670, 0.2290101), without_thread_sync(2.9362547, 0.1710996)  train_loss: 0.0525655 test_loss: 0.0525655
+0.184063
+Finished!
+zeke@sgs-harp-02:~/ml_cpu/zeke-sgd$ ./bin/LINREG_HOGWILD_NON_DENSE_AVX_SHORT --beta=0.001 --epochs=20 --stepinitial=0.00085 --step_decay=0.98 --class_model=1 --target_label=1 --batch_size=1 --splits=14  --dimension=47236 --quantization=0 --matlab-tsv=1 data/rcv1_train.tsv data/rcv1_train.tsv
+Use short.......
+0 - Loading training samples from 'data/rcv1_train.tsv'
+0 - Loading test samples from 'data/rcv1_train.tsv'
+0 - Loaded 20241 training samples
+0 - Loaded 20241 test samples
+0 - Run threadpool with 14 threads
+this->params_->step_size = 0.000850000
+epoch: 00   train_time (total, each): with_thread_sync(0.0000000, 0.0000000), without_thread_sync(0.0000000, 0.0000000)  train_loss: 0.2591275 test_loss: 0.2591275
+epoch: 01   train_time (total, each): with_thread_sync(0.2762688, 0.2762686), without_thread_sync(0.1661690, 0.1661690)  train_loss: 0.1837368 test_loss: 0.1837368
+epoch: 02   train_time (total, each): with_thread_sync(0.4551955, 0.1789265), without_thread_sync(0.3068366, 0.1406676)  train_loss: 0.1430692 test_loss: 0.1430692
+epoch: 03   train_time (total, each): with_thread_sync(0.6638665, 0.2086708), without_thread_sync(0.4525540, 0.1457174)  train_loss: 0.1196083 test_loss: 0.1196083
+epoch: 04   train_time (total, each): with_thread_sync(0.8659453, 0.2020784), without_thread_sync(0.5968250, 0.1442710)  train_loss: 0.1049165 test_loss: 0.1049165
+epoch: 05   train_time (total, each): with_thread_sync(1.0935018, 0.2275561), without_thread_sync(0.7605952, 0.1637702)  train_loss: 0.0948951 test_loss: 0.0948951
+epoch: 06   train_time (total, each): with_thread_sync(1.3169978, 0.2234958), without_thread_sync(0.9313173, 0.1707221)  train_loss: 0.0875307 test_loss: 0.0875307
+epoch: 07   train_time (total, each): with_thread_sync(1.5264921, 0.2094940), without_thread_sync(1.0796027, 0.1482855)  train_loss: 0.0817931 test_loss: 0.0817931
+epoch: 08   train_time (total, each): with_thread_sync(1.7519733, 0.2254810), without_thread_sync(1.2423915, 0.1627888)  train_loss: 0.0771208 test_loss: 0.0771208
+epoch: 09   train_time (total, each): with_thread_sync(1.9781268, 0.2261531), without_thread_sync(1.4110429, 0.1686514)  train_loss: 0.0732034 test_loss: 0.0732034
+epoch: 10   train_time (total, each): with_thread_sync(2.2013885, 0.2232614), without_thread_sync(1.5811592, 0.1701163)  train_loss: 0.0698502 test_loss: 0.0698502
+epoch: 11   train_time (total, each): with_thread_sync(2.4237967, 0.2224080), without_thread_sync(1.7430484, 0.1618892)  train_loss: 0.0669400 test_loss: 0.0669400
+epoch: 12   train_time (total, each): with_thread_sync(2.6533894, 0.2295924), without_thread_sync(1.9135340, 0.1704855)  train_loss: 0.0643896 test_loss: 0.0643896
+epoch: 13   train_time (total, each): with_thread_sync(2.8691322, 0.2157426), without_thread_sync(2.0751152, 0.1615812)  train_loss: 0.0621342 test_loss: 0.0621342
+epoch: 14   train_time (total, each): with_thread_sync(3.0842510, 0.2151185), without_thread_sync(2.2308412, 0.1557259)  train_loss: 0.0601246 test_loss: 0.0601246
+epoch: 15   train_time (total, each): with_thread_sync(3.2923519, 0.2081006), without_thread_sync(2.3924263, 0.1615851)  train_loss: 0.0583288 test_loss: 0.0583288
+epoch: 16   train_time (total, each): with_thread_sync(3.5066934, 0.2143412), without_thread_sync(2.5568342, 0.1644079)  train_loss: 0.0567102 test_loss: 0.0567102
+epoch: 17   train_time (total, each): with_thread_sync(3.7058494, 0.1991557), without_thread_sync(2.7186367, 0.1618025)  train_loss: 0.0552514 test_loss: 0.0552514
+epoch: 18   train_time (total, each): with_thread_sync(3.9422310, 0.2363814), without_thread_sync(2.8929149, 0.1742782)  train_loss: 0.0539241 test_loss: 0.0539241
+epoch: 19   train_time (total, each): with_thread_sync(4.1546748, 0.2124434), without_thread_sync(3.0496664, 0.1567515)  train_loss: 0.0527151 test_loss: 0.0527151
+epoch: 20   train_time (total, each): with_thread_sync(4.4003312, 0.2456562), without_thread_sync(3.2270947, 0.1774284)  train_loss: 0.0516098 test_loss: 0.0516098
+0.220016
+Finished!
+zeke@sgs-harp-02:~/ml_cpu/zeke-sgd$ ./bin/LINREG_HOGWILD_NON_DENSE_AVX_FP --beta=0.001 --epochs=20 --stepinitial=0.00085 --step_decay=0.98 --class_model=1 --target_label=1 --batch_size=1 --splits=14  --dimension=47236 --quantization=0 --matlab-tsv=1 data/rcv1_train.tsv data/rcv1_train.tsv
+Use floating point.......
+0 - Loading training samples from 'data/rcv1_train.tsv'
+0 - Loading test samples from 'data/rcv1_train.tsv'
+0 - Loaded 20241 training samples
+0 - Loaded 20241 test samples
+0 - Run threadpool with 14 threads
+this->params_->step_size = 0.000850000
+epoch: 00   train_time (total, each): with_thread_sync(0.0000000, 0.0000000), without_thread_sync(0.0000000, 0.0000000)  train_loss: 0.2591275 test_loss: 0.2591275
+epoch: 01   train_time (total, each): with_thread_sync(0.2124877, 0.2124875), without_thread_sync(0.1679149, 0.1679149)  train_loss: 0.1838551 test_loss: 0.1838551
+epoch: 02   train_time (total, each): with_thread_sync(0.4394815, 0.2269937), without_thread_sync(0.3433553, 0.1754405)  train_loss: 0.1431453 test_loss: 0.1431453
+epoch: 03   train_time (total, each): with_thread_sync(0.6787219, 0.2392402), without_thread_sync(0.5240860, 0.1807307)  train_loss: 0.1196475 test_loss: 0.1196475
+epoch: 04   train_time (total, each): with_thread_sync(0.9305735, 0.2518514), without_thread_sync(0.7112478, 0.1871617)  train_loss: 0.1049445 test_loss: 0.1049445
+epoch: 05   train_time (total, each): with_thread_sync(1.1595704, 0.2289963), without_thread_sync(0.8747500, 0.1635022)  train_loss: 0.0949176 test_loss: 0.0949176
+epoch: 06   train_time (total, each): with_thread_sync(1.3694203, 0.2098497), without_thread_sync(1.0429626, 0.1682127)  train_loss: 0.0875565 test_loss: 0.0875565
+epoch: 07   train_time (total, each): with_thread_sync(1.5901970, 0.2207764), without_thread_sync(1.1991273, 0.1561647)  train_loss: 0.0818091 test_loss: 0.0818091
+epoch: 08   train_time (total, each): with_thread_sync(1.8261594, 0.2359622), without_thread_sync(1.3776245, 0.1784972)  train_loss: 0.0771307 test_loss: 0.0771307
+epoch: 09   train_time (total, each): with_thread_sync(2.0379081, 0.2117485), without_thread_sync(1.5499115, 0.1722870)  train_loss: 0.0732099 test_loss: 0.0732099
+epoch: 10   train_time (total, each): with_thread_sync(2.2432505, 0.2053422), without_thread_sync(1.7101544, 0.1602429)  train_loss: 0.0698577 test_loss: 0.0698577
+epoch: 11   train_time (total, each): with_thread_sync(2.4860099, 0.2427592), without_thread_sync(1.8900317, 0.1798772)  train_loss: 0.0669452 test_loss: 0.0669452
+epoch: 12   train_time (total, each): with_thread_sync(2.7078345, 0.2218243), without_thread_sync(2.0704257, 0.1803940)  train_loss: 0.0643929 test_loss: 0.0643929
+epoch: 13   train_time (total, each): with_thread_sync(2.9360168, 0.2281821), without_thread_sync(2.2344220, 0.1639964)  train_loss: 0.0621388 test_loss: 0.0621388
+epoch: 14   train_time (total, each): with_thread_sync(3.1500954, 0.2140783), without_thread_sync(2.4071735, 0.1727514)  train_loss: 0.0601297 test_loss: 0.0601296
+epoch: 15   train_time (total, each): with_thread_sync(3.3699435, 0.2198480), without_thread_sync(2.5672529, 0.1600794)  train_loss: 0.0583345 test_loss: 0.0583345
+epoch: 16   train_time (total, each): with_thread_sync(3.5858094, 0.2158658), without_thread_sync(2.7439957, 0.1767428)  train_loss: 0.0567167 test_loss: 0.0567167
+epoch: 17   train_time (total, each): with_thread_sync(3.8154971, 0.2296875), without_thread_sync(2.9212526, 0.1772569)  train_loss: 0.0552529 test_loss: 0.0552529
+epoch: 18   train_time (total, each): with_thread_sync(4.0405071, 0.2250098), without_thread_sync(3.0857075, 0.1644548)  train_loss: 0.0539251 test_loss: 0.0539251
+epoch: 19   train_time (total, each): with_thread_sync(4.2846148, 0.2441076), without_thread_sync(3.2683633, 0.1826558)  train_loss: 0.0527148 test_loss: 0.0527148
+epoch: 20   train_time (total, each): with_thread_sync(4.5076602, 0.2230452), without_thread_sync(3.4449674, 0.1766041)  train_loss: 0.0516087 test_loss: 0.0516087
+0.225383
+Finished!
+
+
