@@ -23,7 +23,12 @@
 #include "hazy/vector/scale_add-inl.h"
 #endif
 
+#ifdef CPU_BINDING_EN
+#include "hazy/thread/thread_pool-inl_binding.h"
+#else
 #include "hazy/thread/thread_pool-inl.h"
+#endif
+
 #include "hazy/util/clock.h"
 #include "hazy/util/simple_random-inl.h"
 

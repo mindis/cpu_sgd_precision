@@ -20,6 +20,8 @@
 #ifndef HAZY_THREAD_THREAD_POOL_INL_H
 #define HAZY_THREAD_THREAD_POOL_INL_H
 
+#include "cpu_mapping.h"
+
 #include <assert.h>
 
 // See for documentation
@@ -74,10 +76,24 @@ void ThreadPool::Init() {
     metas_[i].finished = &finished_;
     metas_[i].tpool = this;
   }
+  
+  //for affinity setting.
+  pthread_t tid[n_threads_];
+  pthread_attr_t attr;
+  cpu_set_t set; //cpu_set_t *set = (cpu_set_t *) malloc (sizeof (cpu_set_t)); //
+  pthread_attr_init(&attr);
+
 
   threads_ = new pthread_t[n_threads_];
-  for (unsigned i = 0; i < n_threads_; i++) {
-    pthread_create(&threads_[i], NULL, __threadpool::RunThread,
+  for (unsigned i = 0; i < n_threads_; i++) 
+  	{
+	//for affinity setting. 	
+	int cpu_idx = get_cpu_id(i);
+	//DEBUGMSG(1, "Assigning thread-%d to CPU-%d\n", i, cpu_idx);
+	CPU_ZERO(&set);
+	CPU_SET(cpu_idx, &set);
+	pthread_attr_setaffinity_np(&attr, sizeof(cpu_set_t), &set);
+    pthread_create(&threads_[i], &attr, __threadpool::RunThread,
                    static_cast<void*>(&metas_[i]));
 #ifdef _NUMA_INIT
     cpu_set_t cpuset;
