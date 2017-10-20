@@ -9,6 +9,8 @@ CPP_LAST = -lpthread
 
 BIN_DIR = bin
 APP_DIR = app
+
+TEST_AVX2 = ${BIN_DIR}/TEST_AVX
 SPLIT_DATA_TOOL = ${BIN_DIR}/tools/split_data.out
 RANDOM_RESHUFFLE_TOOL = ${BIN_DIR}/tools/random_reshuffle.out
 GENERATE_SPLIT_FILE_TOOL = ${BIN_DIR}/tools/generate_split_file.out
@@ -23,7 +25,7 @@ SIMD := SCALAR AVX
 FORMAT:= SHORT FP CHAR 
 
 .PHONY: depend clean all
-all: LINREG 
+all: LINREG ${TEST_AVX2}
 #LOGIT SVM #$(SPLIT_DATA_TOOL) ${RANDOM_RESHUFFLE_TOOL} ${GENERATE_SPLIT_FILE_TOOL}
 
 clean: CLEAN-LINREG CLEAN-LOGIT CLEAN-SVM
@@ -68,6 +70,7 @@ $(foreach f, $(ALLEXECS), $(if $(findstring _DENSE_, $f),$f,)): PARAMS += -D_DEN
 $(foreach f, $(ALLEXECS), $(if $(findstring _SPARSE_, $f),$f,)):PARAMS += -D_SPARSE
 $(foreach f, $(ALLEXECS), $(if $(findstring _SHORT, $f),$f,)):PARAMS += -D_HOGWILD_SHORT
 $(foreach f, $(ALLEXECS), $(if $(findstring _CHAR,  $f),$f,)):PARAMS += -D_HOGWILD_CHAR
+$(foreach f, $(ALLEXECS), $(if $(findstring _AVX,  $f),$f,)):PARAMS  += -DAVX2_EN
 
 
 # Add Stepsize behavior
@@ -80,9 +83,11 @@ $(filter %_EXPBACKOFF_STEPSIZES_DENSE %_EXPBACKOFF_STEPSIZES_SPARSE,$(ALLEXECS))
 #$(filter %_DENSE,$(ALLEXECS)): PARAMS += -D_DENSE
 #$(filter %_SPARSE,$(ALLEXECS)): PARAMS += -D_SPARSE
 
-# Add simd
-$(filter %_AVX,$(ALLEXECS)): PARAMS += -DAVX2_EN
 
+
+${TEST_AVX2}: test/test.cpp
+	mkdir -p $(BIN_DIR)
+	${CXX} ${CPP_FLAG} ${CPP_INCLUDE} $< -o $@
 
 
 ${SPLIT_DATA_TOOL}: src/tools/split_data.cpp

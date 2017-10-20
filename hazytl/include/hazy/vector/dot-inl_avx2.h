@@ -53,13 +53,13 @@ float_u inline Dot(FVector<float_u> const& u, SVector<float_v> const& v) {
 }
 
 //template <typename float_u, typename float_v>
-float inline Dot(FVector<float> const &uVector, FVector<unsigned char> const &vVector) {
+float inline Dot(FVector<float> const &uVector, FVector<unsigned char> const &vVector) 
 {
 
             const uint64_t n0 = uVector.size;
             const uint64_t n1 = n0 & 0xFFFFFFFFFFFFFFE0UL;
             const float * u            = uVector.values;
-            const unsigned short * v   = vVector.values;
+            const unsigned char * v   = vVector.values;
 
             __m256 acc1 = _mm256_setzero_ps(); 
             __m256 acc2 = _mm256_setzero_ps();
@@ -121,24 +121,9 @@ float inline Dot(FVector<float> const &uVector, FVector<unsigned char> const &vV
             return result;
 }
 
-#if 0
-template <typename float_u, typename float_v>
-float_u inline Dot(FVector<float_u> const &u, FVector<float_v> const &v) {
- 
-  float_u p = 0.0;
 
-  float_u const * const /*__restrict__*/ uvals = u.values;
-  float_v const * const /*__restrict__*/ vvals = v.values;
-
-  #pragma omp simd reduction(+:p) aligned(uvals, vvals)
-  for (size_t i = 0; i < v.size; ++i){
-    p += uvals[i] * vvals[i]; 
-  }
-  return p;
-}
-#else
 //template <typename float_u, typename float_v>
-float inline Dot(FVector<float> const &uVector, FVector<unsigned short> const &vVector) {
+float inline Dot(FVector<float> const &uVector, FVector<unsigned short> const &vVector) 
 {
 
             const uint64_t n0 = uVector.size;
@@ -159,10 +144,10 @@ float inline Dot(FVector<float> const &uVector, FVector<unsigned short> const &v
                 //const __m256 v2 = _mm256_loadu_ps(v + i + 8);
                 //const __m256 v3 = _mm256_loadu_ps(v + i + 16);
                 //const __m256 v4 = _mm256_loadu_ps(v + i + 24);
-				   __m128i v1_128 = _mm_loadu_si128(v + i + 0);
-				   __m128i v2_128 = _mm_loadu_si128(v + i + 8);
-				   __m128i v3_128 = _mm_loadu_si128(v + i + 16);
-				   __m128i v4_128 = _mm_loadu_si128(v + i + 24);
+				   __m128i v1_128 = _mm_loadu_si128((const __m128i *) (v + i + 0 ));
+				   __m128i v2_128 = _mm_loadu_si128((const __m128i *) (v + i + 8 ));
+				   __m128i v3_128 = _mm_loadu_si128((const __m128i *) (v + i + 16));
+				   __m128i v4_128 = _mm_loadu_si128((const __m128i *) (v + i + 24));
 				   //__m256i v1_256 = _mm256_cvtepi16_epi32(v1_128);
 				   //__m256i v2_256 = _mm256_cvtepi16_epi32(v2_128);
 				   //__m256i v3_256 = _mm256_cvtepi16_epi32(v3_128);
@@ -181,10 +166,10 @@ float inline Dot(FVector<float> const &uVector, FVector<unsigned short> const &v
                         __m256 v3 = _mm256_cvtepi32_ps(v3_abs);
                         __m256 v4 = _mm256_cvtepi32_ps(v4_abs);
 
-                const __m256 u1 = _mm256_loadu_ps(u + i + 0);
-                const __m256 u2 = _mm256_loadu_ps(u + i + 8);
-                const __m256 u3 = _mm256_loadu_ps(u + i + 16);
-                const __m256 u4 = _mm256_loadu_ps(u + i + 24);
+                const __m256 u1 = _mm256_loadu_ps((u + i + 0 ));
+                const __m256 u2 = _mm256_loadu_ps((u + i + 8 ));
+                const __m256 u3 = _mm256_loadu_ps((u + i + 16));
+                const __m256 u4 = _mm256_loadu_ps((u + i + 24));
 
                 acc1 = _mm256_fmadd_ps(v1, u1, acc1);
                 acc2 = _mm256_fmadd_ps(v2, u2, acc2);
@@ -212,7 +197,7 @@ float inline Dot(FVector<float> const &uVector, FVector<unsigned short> const &v
 }
 
 
-float inline Dot(FVector<float> const &uVector, FVector<float> const &vVector) {
+float inline Dot(FVector<float> const &uVector, FVector<float> const &vVector) 
 {
 
             const uint64_t n0 = uVector.size;
@@ -261,10 +246,10 @@ float inline Dot(FVector<float> const &uVector, FVector<float> const &vVector) {
             }
             return result;
 }
-#endif
 
 template <typename float_u, typename float_v>
-float_u inline Dot(SVector<float_u> const& x, SVector<float_v> const& y) {
+float_u inline Dot(SVector<float_u> const& x, SVector<float_v> const& y) 
+{
   long xi = (long)x.size - 1;
   long yi = (long)y.size - 1;
   float_u ret = 0.0;

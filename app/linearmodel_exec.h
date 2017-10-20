@@ -55,6 +55,9 @@ public:
   	printf("Use floating point.......\n");  
   #endif
 
+  #ifdef AVX2_EN
+    printf("Using AVX!.......\n");  
+  #endif
 #endif
 
     bool matlab_tsv = false;

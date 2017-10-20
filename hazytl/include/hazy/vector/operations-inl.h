@@ -25,6 +25,46 @@
 namespace hazy {
 namespace vector {
 
+
+//add src to the destination. 
+template <typename T>
+
+void inline avg_list(FVector<T> & dest, FVector<T> *src, unsigned N) {
+  T scale_factor = 1.0 /(T)N;
+
+  for (size_t i = 0; i < dest.size; i++) 
+  {
+    T sum  = 0.0;
+    for (unsigned j = 0; j < N; j++)  
+      sum += (src[j])[i];
+
+
+    dest[i] = sum * scale_factor;
+  }
+}
+
+
+//add src to the destination. streaming load from src, no tag for the source...
+template <typename T>
+void inline add(FVector<T> & dest, FVector<T> const &src) {
+  unsigned vix = 0;
+  unsigned i = 0;
+  for (size_t i = 0; i < dest.size; i++) {
+    dest.values[i]  += dest.values[i] + src.values[i];
+  }
+}
+
+//add src to the destination. 
+template <typename T>
+void inline add_mult(FVector<T> & dest, FVector<T> const &src1, FVector<T> const &src2, T scale_factor) {
+  unsigned vix = 0;
+  unsigned i = 0;
+  for (size_t i = 0; i < dest.size; i++) {
+    dest.values[i]  += (src1.values[i] + src2.values[i])*scale_factor;
+  }
+}
+
+
 template <typename T>
 bool IsValid(SVector<T> const &v) {
   for (size_t i = 0; i < v.size; i++) {

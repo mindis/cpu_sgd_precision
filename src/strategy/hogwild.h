@@ -14,11 +14,12 @@
 #include "hazy/scan/memscan.h"
 #include "hazy/scan/sampleblock.h"
 
-#include "hazy/vector/operations-inl.h"
 
 #ifdef AVX2_EN
+#include "hazy/vector/operations-inl_avx2.h"
 #include "hazy/vector/scale_add-inl_avx2.h"
 #else
+#include "hazy/vector/operations-inl.h"
 #include "hazy/vector/scale_add-inl.h"
 #endif
 

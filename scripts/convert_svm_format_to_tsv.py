@@ -16,11 +16,14 @@ def process(filename):
         with open(output, 'w') as o:
             for line in f:
                 vals = line.split();
-                o.write("{0}\t-2\t{1}\n".format(id, vals[0]));
+                o.write("{0}\t-2\t{1}\n".format(id, float(vals[0]) ));
+                print("{0}\t-2\t{1}\n".format(id, float(vals[0])) );
                 for pair in vals[1:]:
                     s = pair.split(':');
-                    o.write("{0}\t{1}\t{2}\n".format(id, s[0], s[1]));
+                    o.write("{0}\t{1}\t{2}\n".format(id, s[0], float(s[1]) ) );
+                      print("{0}\t{1}\t{2}\n".format(id, s[0], float(s[1]) ) );
                 id = id+1;
+                break;
 
 if __name__ == '__main__':
     if (len(sys.argv) != 2):

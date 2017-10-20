@@ -144,7 +144,7 @@ void inline ScaleAndAdd(FVector<float> &uVector, FVector<unsigned short> const &
 void inline ScaleAndAdd(FVector<float> &uVector, FVector<unsigned char> const &vVector,
                                              float const& s) {
                float  * u  = uVector.values;
-  const unsigned short * v  = vVector.values;
+  const unsigned char * v  = vVector.values;
   const uint64_t n0         = uVector.size;
   const uint64_t n1         = (n0 >> 4) << 4;
   const __m256 scale       = _mm256_set1_ps(s);
