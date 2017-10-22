@@ -72,23 +72,25 @@ public:
     unsigned quantizationLevel = 0;
 	unsigned class_model  = 0;
 	unsigned target_label = 1;
+	unsigned target_epoch = 0;
 	
     static struct extended_option long_options[] = {
-      {"beta", required_argument, NULL, 'h', "the exponent constant for the stepsizes"},
-      {"batch_size", required_argument, NULL, 'b', "batch_size (default to 1)"},
-      {"dimension"    ,required_argument, NULL, 'd', "dimension"},
-      {"epochs"    ,required_argument, NULL, 'e', "number of epochs (default is 20)"},
-      {"stepinitial",required_argument, NULL, 'i', "intial stepsize (default is 5e-2)"},
-      {"step_decay",required_argument, NULL, 'x', "stepsize decay per epoch (default is 0.8)"},
+      {"beta", required_argument, NULL,              'h', "the exponent constant for the stepsizes"},
+      {"batch_size", required_argument, NULL,        'b', "batch_size (default to 1)"},
+      {"dimension"    ,required_argument, NULL,      'd', "dimension"},
+      {"epochs"    ,required_argument, NULL,         'e', "number of epochs (default is 20)"},
+      {"stepinitial",required_argument, NULL,        'i', "intial stepsize (default is 5e-2)"},
+      {"step_decay",required_argument, NULL,         'x', "stepsize decay per epoch (default is 0.8)"},
       {"lasso_regularizer", required_argument, NULL, 'a', "lasso regularizer (L1 norm)"},
-      {"quantization", required_argument, NULL, 'q', "quantization (for LinReg) 0: No quantization / 1: Quatize samples / 2: Quantize gradients / 3: Quantize samples & gradient / 4: Quantize model / 5: Quantize model & samples / 6: Quantize model & gradient / 7: Quantize model & samples & gradient"},
-      {"qlevel", required_argument, NULL, 'l', "Quantization level"},
-      {"splits", required_argument, NULL, 'r', "number of thread per working process (default is 1)"},
-      {"binary", required_argument,NULL, 'v', "load the file in a binary fashion"},
-      {"matlab-tsv", required_argument,NULL, 'm', "load TSVs indexing from 1 instead of 0"},
+      {"quantization", required_argument, NULL,      'q', "quantization (for LinReg) 0: No quantization / 1: Quatize samples / 2: Quantize gradients / 3: Quantize samples & gradient / 4: Quantize model / 5: Quantize model & samples / 6: Quantize model & gradient / 7: Quantize model & samples & gradient"},
+      {"qlevel", required_argument, NULL,            'l', "Quantization level"},
+      {"splits", required_argument, NULL,            'r', "number of thread per working process (default is 1)"},
+      {"binary", required_argument,NULL,             'v', "load the file in a binary fashion"},
+      {"matlab-tsv", required_argument,NULL,         'm', "load TSVs indexing from 1 instead of 0"},
 
-      {"class_model",  required_argument,NULL, 'c', "First bit: enable binary classification, second bit: -1 or 0  Default: 0"},
-	  {"target_label", required_argument,NULL, 't', "Target label to be identified. default:1"},
+      {"class_model",  required_argument,NULL,       'c', "First bit: enable binary classification, second bit: -1 or 0  Default: 0"},
+	  {"target_label", required_argument,NULL,       't', "Target label to be identified. default:1"},
+	  {"pcm_epoch", required_argument,NULL,          'p', "Target epoch to be analyzed. Default:0 "},
 
 	  
       {NULL,0,NULL,0,0}
@@ -142,6 +144,10 @@ public:
         case 't':
           target_label      = atoi(optarg);
           break;			  
+		case 'p':
+		  target_epoch	     = atoi(optarg);
+		  break;				
+		  
         case ':':
         case '?':
 		  printf("wrong parameter: %d\n", c);
@@ -158,7 +164,9 @@ public:
     p.quantizationLevel = quantizationLevel;
 
     p.class_model       = class_model;
-    p.target_label       = target_label;
+    p.target_label      = target_label;
+    p.target_epoch      = target_epoch;
+	
 
     char *szTrainFile, *szTestFile, *szMetadataFile;
 	szMetadataFile = NULL;

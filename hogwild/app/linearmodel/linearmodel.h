@@ -75,6 +75,8 @@ struct LinearModelParams
 {
   unsigned class_model;       //first bit: enable binary classification, second bit: -1 or 0  Default: 0"
   unsigned target_label;      //Target label to be identified. default:1
+  unsigned target_epoch;
+
   
   unsigned batch_size;        //!< batch size
   float step_size;            //!< stepsize (decayed by step decay at each epoch and/or after each mini batch...)

@@ -40,6 +40,37 @@
 
 #include <stddef.h> 
 
+#include "perf_counters.h"
+struct Monitor_Event inst_Monitor_Event = {
+	{
+		{0x2e,0x41},
+		{0xd2,0x08},
+		{0xd2,0x07},
+		{0xd1,0x02},
+	},
+	1,
+	{
+		"UOPS_ISSUED.ANY: ",
+		"DTLB_LOAD_MISSES: ",
+		"OPS_ISSUED: ",
+		"DTLB_LOAD_MISSES: ",
+	},
+	{
+		{0,0},
+		{0,0},
+		{0,0},
+		{0,0},		
+	},
+	2,
+	{
+		"MIC_0",
+		"MIC_1",
+		"MIC_2",
+		"MIC_3",
+	},
+    0	 
+};
+
 namespace __executor
 {
   template< class Model, class Params, class Sample, class Exec > void ComputeLossPerThread(ThreadArgs<Model, Params, Sample> &threadArgs, unsigned tid, unsigned total)
@@ -408,7 +439,23 @@ class Hogwild
         double avgCommunicateTime = 0.0;
         if(e > 0)
         {
+
+          if (e == this->params_->target_epoch)
+          {
+		     PCM_initPerformanceMonitor(&inst_Monitor_Event, NULL);
+		     PCM_start();
+          }
+		  
           this->RunEpoch(trainScan_);
+
+          if (e == this->params_->target_epoch)
+          {
+
+		    PCM_stop();
+		    printf("=====print the profiling result==========\n");
+		    PCM_printResults();	  
+		    PCM_cleanup();
+          }			  
 
           // Calc average and reset compute and communicate timers
           for(unsigned i = 0; i < params_->nthreads; ++i)

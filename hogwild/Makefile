@@ -4,7 +4,7 @@ CPP_FLAG = -O3 -std=c++11 -lrt #-Wall -fopenmp -Wno-unknown-pragmas -mavx2 #-mar
 ADDITIONAL_FLAG = -D_DEBUG   #####debug purpose...-D_HOGWILD_SHORT 
 #ADDITIONAL_FLAG = -D_PRINT_GRADIENT
 #ADDITIONAL_FLAG = -DLOAD_FILE_PER_WORKER -D_DEBUG
-CPP_INCLUDE = -I./src -I./hazytl/include/
+CPP_INCLUDE = -I./src -I./hazytl/include/ -I../IntelPCM/
 CPP_LAST = -lpthread
 
 BIN_DIR = bin
@@ -49,7 +49,7 @@ CLEAN-SVM:
 
 $(LINREGS): ${APP_DIR}/linreg.cpp ${APP_DIR}/linreg/linreg_exec.h $(SRC_FILES)
 	mkdir -p $(BIN_DIR)
-	${CXX} $(CPP_FLAG) ${ADDITIONAL_FLAG} $(PARAMS) $(CPP_INCLUDE) $< -o $@ $(CPP_LAST) 
+	${CXX} $(CPP_FLAG) ${ADDITIONAL_FLAG} $(PARAMS) $(CPP_INCLUDE) $< -o $@ $(CPP_LAST) ../IntelPCM/libpcm_2_11.a
 
 $(LOGITS): ${APP_DIR}/logit.cpp ${APP_DIR}/logit/logit_exec.h $(SRC_FILES)
 	mkdir -p $(BIN_DIR)
