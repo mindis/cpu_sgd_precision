@@ -23,17 +23,18 @@ STEPSIZE := NON  # DECREASING_STEPSIZES EXPBACKOFF_STEPSIZES
 REPRESENTATION := DENSE # SPARSE
 SIMD := SCALAR AVX 
 FORMAT:= SHORT FP CHAR 
+THREADBING:= BIND RANDOM
 
 .PHONY: depend clean all
-all: LINREG  ${TEST_AVX2}
+all: LINREG ${TEST_AVX2}
 #LOGIT SVM #$(SPLIT_DATA_TOOL) ${RANDOM_RESHUFFLE_TOOL} ${GENERATE_SPLIT_FILE_TOOL}
 
 clean: CLEAN-LINREG CLEAN-LOGIT CLEAN-SVM
 	rm -f ${BIN_DIR}/tools/*.out
 
-LINREGS := $(foreach SY,$(STRATEGY), $(foreach SE, $(STEPSIZE), $(foreach RN, $(REPRESENTATION), $(foreach FM, $(FORMAT), $(foreach SD, $(SIMD), $(BIN_DIR)/LINREG_$(SY)_$(SE)_$(RN)_$(SD)_$(FM) ) ) ) ) )
-LOGITS  := $(foreach SY,$(STRATEGY), $(foreach SE, $(STEPSIZE), $(foreach RN, $(REPRESENTATION), $(foreach FM, $(FORMAT), $(foreach SD, $(SIMD),  $(BIN_DIR)/LOGIT_$(SY)_$(SE)_$(RN)_$(SD)_$(FM) ) ) ) ) )
-SVMS    := $(foreach SY,$(STRATEGY), $(foreach SE, $(STEPSIZE), $(foreach RN, $(REPRESENTATION), $(foreach FM, $(FORMAT), $(foreach SD, $(SIMD),    $(BIN_DIR)/SVM_$(SY)_$(SE)_$(RN)_$(SD)_$(FM) ) ) ) ) )
+LINREGS := $(foreach SY,$(STRATEGY), $(foreach SE, $(STEPSIZE), $(foreach RN, $(REPRESENTATION), $(foreach FM, $(FORMAT), $(foreach SD, $(SIMD), $(foreach TB, $(THREADBING), $(BIN_DIR)/LINREG_$(SY)_$(SE)_$(RN)_$(SD)_$(FM)_$(TB) ) ) ) ) ) )
+LOGITS  := $(foreach SY,$(STRATEGY), $(foreach SE, $(STEPSIZE), $(foreach RN, $(REPRESENTATION), $(foreach FM, $(FORMAT), $(foreach SD, $(SIMD), $(foreach TB, $(THREADBING),  $(BIN_DIR)/LOGIT_$(SY)_$(SE)_$(RN)_$(SD)_$(FM)_$(TB) ) ) ) ) ) )
+SVMS    := $(foreach SY,$(STRATEGY), $(foreach SE, $(STEPSIZE), $(foreach RN, $(REPRESENTATION), $(foreach FM, $(FORMAT), $(foreach SD, $(SIMD), $(foreach TB, $(THREADBING),    $(BIN_DIR)/SVM_$(SY)_$(SE)_$(RN)_$(SD)_$(FM)_$(TB) ) ) ) ) ) )
 
 ALLEXECS = $(LINREGS) $(LOGITS) $(SVMS)
 
@@ -71,6 +72,7 @@ $(foreach f, $(ALLEXECS), $(if $(findstring _SPARSE_, $f),$f,)):PARAMS += -D_SPA
 $(foreach f, $(ALLEXECS), $(if $(findstring _SHORT, $f),$f,)):PARAMS += -D_HOGWILD_SHORT
 $(foreach f, $(ALLEXECS), $(if $(findstring _CHAR,  $f),$f,)):PARAMS += -D_HOGWILD_CHAR
 $(foreach f, $(ALLEXECS), $(if $(findstring _AVX,  $f),$f,)):PARAMS  += -DAVX2_EN
+$(foreach f, $(ALLEXECS), $(if $(findstring _BIND,  $f),$f,)):PARAMS  += -DCPU_BINDING_EN
 
 
 # Add Stepsize behavior
@@ -83,8 +85,6 @@ $(filter %_EXPBACKOFF_STEPSIZES_DENSE %_EXPBACKOFF_STEPSIZES_SPARSE,$(ALLEXECS))
 #$(filter %_DENSE,$(ALLEXECS)): PARAMS += -D_DENSE
 #$(filter %_SPARSE,$(ALLEXECS)): PARAMS += -D_SPARSE
 
-# Add simd
-#$(filter %,$(ALLEXECS)): PARAMS += -DAVX2_EN
 
 
 ${TEST_AVX2}: test/test.cpp
