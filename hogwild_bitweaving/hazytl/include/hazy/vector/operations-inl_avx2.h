@@ -27,10 +27,117 @@
 namespace hazy {
 namespace vector {
 
+void inline Convert_from_bitweaving(FVector<unsigned char> & dest, FVector<unsigned int> src, unsigned num_bits) 
+{
+	uint64_t numFeatures    = dest.size;
+	unsigned char* vec_char = dest.values;
+	unsigned int* vec_int   = src.values;
+	
+#define uint32_t unsigned int
+#define BITS_OF_ONE_CACHE_LINE 512
+
+	uint32_t num_features_main = (numFeatures/BITS_OF_ONE_CACHE_LINE) * BITS_OF_ONE_CACHE_LINE;
+	
+	for (size_t i = 0; i < numFeatures; i++) 
+  	{
+    //vec_char[i] = extract_from_bitweaving(src.values, i, numFeatures);
+	
+	  //Compute the main part of numFeatures.
+	  if (i < num_features_main)
+	  {
+		uint32_t main_offset = ( i/BITS_OF_ONE_CACHE_LINE	  ) * BITS_OF_ONE_CACHE_LINE; //
+		uint32_t int_offset  = ( i&(BITS_OF_ONE_CACHE_LINE-1) )/32;
+		uint32_t bit_offset  = i & 31;
+	
+		//The next 32 CLs contains the information of the feature. 
+		unsigned char result = 0;
+		unsigned int tmp;
+		for (uint32_t j = 0; j < num_bits; j++)
+		{
+								//main		  bit	 which ints 
+		  tmp	  = vec_int[main_offset + 16 * j + int_offset]; 
+		  result |= (( (tmp&(1<<bit_offset)) >> bit_offset ) << (7-j)); //
+		}
+		vec_char[i] = result; //return result;
+	  }
+	  else
+	  {
+		uint32_t num_r_f = numFeatures - num_features_main;
+	
+		if (num_r_f <= 64)												 //////remainder <= 64
+		{ 
+		  uint32_t main_offset = ( i/BITS_OF_ONE_CACHE_LINE ) * BITS_OF_ONE_CACHE_LINE;
+		  uint32_t int_offset  = ( i & (64-1) )/32;
+		  uint32_t bit_offset  = i & 31;
+	
+		  //The next 32 CLs contains the information of the feature. 
+		  uint32_t result = 0;
+		  uint32_t tmp;
+		  for (uint32_t j = 0; j < num_bits; j++)
+		  {
+							  //main		  bit	 which ints 
+			tmp 	= vec_int[main_offset + 2 * j + int_offset]; 
+			result |= (( (tmp&(1<<bit_offset)) >> bit_offset ) << (7-j)); //
+		  }
+		  vec_char[i] = result; //return result;
+		}
+		else if (num_r_f <= 128)										  //////64 < remainder <= 128
+		{ 
+		  uint32_t main_offset = ( i/BITS_OF_ONE_CACHE_LINE ) * BITS_OF_ONE_CACHE_LINE;
+		  uint32_t int_offset  = ( i&(128-1) )/32;
+		  uint32_t bit_offset  = i & 31;
+	
+		  //The next 32 CLs contains the information of the feature. 
+		  uint32_t result = 0;
+		  uint32_t tmp;
+		  for (uint32_t j = 0; j < num_bits; j++)
+		  {
+							  //main		  bit	 which ints 
+			tmp 	= vec_int[main_offset + 4 * j + int_offset]; 
+			result |= (( (tmp&(1<<bit_offset)) >> bit_offset ) << (7-j)); //
+		  }
+		  vec_char[i] = result; //return result;
+		}
+		else if (num_r_f <= 256)										  //////128 < remainder <= 256
+		{ 
+		  uint32_t main_offset = ( i/BITS_OF_ONE_CACHE_LINE ) * BITS_OF_ONE_CACHE_LINE;
+		  uint32_t int_offset  = ( i&(256-1) )/32;
+		  uint32_t bit_offset  = i & 31;
+	
+		  //The next 32 CLs contains the information of the feature. 
+		  uint32_t result = 0;
+		  uint32_t tmp;
+		  for (uint32_t j = 0; j < num_bits; j++)
+		  {
+							  //main		  bit	 which ints 
+			tmp 	= vec_int[main_offset + 8 * j + int_offset]; 
+			result |= (( (tmp&(1<<bit_offset)) >> bit_offset ) << (7-j)); //
+		  }
+		  vec_char[i] = result; //return result;
+		}
+		else if (num_r_f < 512) 										 //////256 < remainder < 512
+		{ 
+		  uint32_t main_offset = ( i/BITS_OF_ONE_CACHE_LINE ) * BITS_OF_ONE_CACHE_LINE;
+		  uint32_t int_offset  = ( i&(512-1) )/32;
+		  uint32_t bit_offset  = i & 31;
+		//The next 32 CLs contains the information of the feature. 
+		  uint32_t result = 0;
+		  uint32_t tmp;
+		  for (uint32_t j = 0; j < num_bits; j++)
+		  {
+							  //main		  bit	 which ints 
+			tmp 	= vec_int[main_offset + 16 * j + int_offset]; 
+			result |= (( (tmp&(1<<bit_offset)) >> bit_offset ) << (7-j)); //
+		  }
+		  vec_char[i] = result; //return result;
+		}			
+	  }
+    
+  }
+}
 
 //add src to the destination. 
 template <typename T>
-
 void inline avg_list(FVector<T> & dest, FVector<T> *src, unsigned N) {
   const uint64_t n0         = dest.size;
   const uint64_t n1         = (n0 >> 4) << 4;

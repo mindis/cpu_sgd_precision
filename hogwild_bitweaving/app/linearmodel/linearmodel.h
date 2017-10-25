@@ -75,8 +75,8 @@ struct LinearModelParams
 {
   unsigned class_model;       //first bit: enable binary classification, second bit: -1 or 0  Default: 0"
   unsigned target_label;      //Target label to be identified. default:1
-  unsigned target_epoch;
-
+  unsigned target_epoch;      //The index of the epoch where the Intel PCM performs.
+  unsigned num_bits;          //Number of bits used for training...
   
   unsigned batch_size;        //!< batch size
   float step_size;            //!< stepsize (decayed by step decay at each epoch and/or after each mini batch...)
@@ -95,6 +95,220 @@ struct LinearModelParams
   LinearModelParams(fp_type stepsize, fp_type stepdecay) : step_size(stepsize), step_decay(stepdecay) { }
 };
 
+
+
+#if 1
+
+#define uint32_t unsigned int
+#define BITS_OF_ONE_CACHE_LINE 512
+
+//Suppose the size of each value of training dataset is 32-bit, always true for our case...
+uint32_t compute_num_CLs_per_sample(uint32_t dr_numFeatures) {
+  //With the chunk of 512 features...
+  uint32_t main_num           = (dr_numFeatures/BITS_OF_ONE_CACHE_LINE)*32; //It is for CLs
+  uint32_t rem_num            = 0;
+
+  //For the remainder of dr_numFeatures...
+  uint32_t remainder_features = dr_numFeatures & (BITS_OF_ONE_CACHE_LINE - 1); 
+  if (remainder_features == 0)
+    rem_num = 0;
+  else if (remainder_features <= 64)
+    rem_num = 4;
+  else if (remainder_features <= 128) 
+    rem_num = 8;
+  else if (remainder_features <= 256) 
+    rem_num = 16;
+  else  
+    rem_num = 32;
+  //printf("main_num = %d, rem_num = %d\t", main_num, rem_num);
+  return main_num + rem_num;
+}
+
+void bitweaving_on_each_sample(uint32_t *dest, uint32_t *src, uint32_t numFeatures) 
+{
+  //Compute the number of CLs for each sample...
+  int num_CLs_per_sample     = compute_num_CLs_per_sample(numFeatures);
+  //printf("num_CLs_per_sample = %d\n", num_CLs_per_sample);
+  //uint32_t *a_fpga_tmp       = a_bitweaving_fpga;
+  uint32_t address_index     = 0;
+  int num_features_main      = (numFeatures/BITS_OF_ONE_CACHE_LINE)*BITS_OF_ONE_CACHE_LINE;  
+
+    //Deal with the main part of dr_numFeatures.
+    for (int j = 0; j < num_features_main; j += BITS_OF_ONE_CACHE_LINE)
+    {
+      uint32_t tmp_buffer[BITS_OF_ONE_CACHE_LINE] = {0};
+      //1: initilization off tmp buffer..
+      for (int k = 0; k < BITS_OF_ONE_CACHE_LINE; k++)
+      {
+        tmp_buffer[k] = src[j + k];
+        //printf("src[%d] = 0x%8x\t", j+k, src[j + k]);
+      }  
+
+
+      //2: focus on the data from index: j...
+      for (int k = 0; k < 32; k++)
+      { 
+        uint32_t result_buffer[BITS_OF_ONE_CACHE_LINE/32] = {0};  //16 ints == 512 bits...
+        //2.1: re-order the data according to the bit-level...
+        for (int m = 0; m < BITS_OF_ONE_CACHE_LINE; m++)
+        {
+          result_buffer[m>>5] = result_buffer[m>>5] | ((tmp_buffer[m] >>31)<<(m&31));
+          tmp_buffer[m]       = tmp_buffer[m] << 1;       
+        }
+        //2.2: store the bit-level result back to the memory...
+        dest[address_index++] = result_buffer[0]; //printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+        dest[address_index++] = result_buffer[1]; //printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+        dest[address_index++] = result_buffer[2]; //printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+        dest[address_index++] = result_buffer[3]; //printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+        dest[address_index++] = result_buffer[4]; //printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+        dest[address_index++] = result_buffer[5]; //printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+        dest[address_index++] = result_buffer[6]; //printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+        dest[address_index++] = result_buffer[7]; //printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+        dest[address_index++] = result_buffer[8]; //printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+        dest[address_index++] = result_buffer[9]; //printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+        dest[address_index++] = result_buffer[10];//printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+        dest[address_index++] = result_buffer[11];//printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+        dest[address_index++] = result_buffer[12];//printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+        dest[address_index++] = result_buffer[13];//printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+        dest[address_index++] = result_buffer[14];//printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+        dest[address_index++] = result_buffer[15];//printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+      }
+    }
+
+    //Deal with the remainder of features, with the index from j...
+    uint32_t num_r_f = numFeatures - num_features_main;
+    //handle the remainder....It is important...
+    if (num_r_f > 0)
+    {
+      uint32_t tmp_buffer[BITS_OF_ONE_CACHE_LINE] = {0};
+      for (int k = 0; k < num_r_f; k++)
+        tmp_buffer[k] = src[num_features_main + k]; //j is the existing index...
+
+      for (int k = 0; k < 32; k++) //64 bits for each bit...
+      {
+        uint32_t result_buffer[BITS_OF_ONE_CACHE_LINE] = {0};
+        for (int m = 0; m < num_r_f; m++)
+        {
+          result_buffer[m>>5] = result_buffer[m>>5] | ((tmp_buffer[m] >>31)<<(m&31));
+          tmp_buffer[m]       = tmp_buffer[m] << 1;       
+        }
+          //1--64 
+          dest[address_index++] = result_buffer[0];
+          dest[address_index++] = result_buffer[1];
+
+        if (num_r_f > 64)
+        { //65--128 
+          dest[address_index++] = result_buffer[2];
+          dest[address_index++] = result_buffer[3];
+        }
+
+        if (num_r_f > 128)
+        { //129--256 
+          dest[address_index++] = result_buffer[4];
+          dest[address_index++] = result_buffer[5];
+          dest[address_index++] = result_buffer[6];
+          dest[address_index++] = result_buffer[7];
+        }
+
+        if (num_r_f > 256)
+        { //257-511
+          dest[address_index++] = result_buffer[8];
+          dest[address_index++] = result_buffer[9];
+          dest[address_index++] = result_buffer[10];
+          dest[address_index++] = result_buffer[11];
+          dest[address_index++] = result_buffer[12];
+          dest[address_index++] = result_buffer[13];
+          dest[address_index++] = result_buffer[14];
+          dest[address_index++] = result_buffer[15];
+        }
+      }             
+    }
+}
+
+
+
+
+//////////////////////////////////////////int//////////////////////////////////////////////////////////
+struct LinearModelSample_int
+{
+  fp_type value;            //!< rating of this example
+  DENSE_ONLY( hazy::vector::FVector<unsigned int> vector;); //!< feature vector
+
+  LinearModelSample_int()
+  { }
+
+
+  LinearModelSample_int(
+    fp_type val,
+    unsigned int  *values,
+    int *index, 
+    unsigned len,
+    int dimension
+  ) : value(val) {
+
+    hazy::vector::SVector<unsigned int> sparse_vector(values, index, len);
+
+    unsigned int *zeros = new unsigned int[dimension];
+    hazy::vector::FVector<unsigned int> *temp_vector = new hazy::vector::FVector<unsigned int>(zeros, dimension);
+
+    // set to zero
+    hazy::vector::Zero(*temp_vector);
+    
+    hazy::vector::ScaleAndAdd(
+		      *temp_vector,
+		      sparse_vector,
+		      1.0
+    );
+
+//Converte from tmp_vector to dest_vector.
+	unsigned int *dest_addr =  (unsigned int *)aligned_alloc(64, compute_num_CLs_per_sample(dimension)*16 * sizeof(unsigned int));
+    //hazy::vector::FVector<unsigned int> *dest_vector = new hazy::vector::FVector<unsigned int>(zeros, dimension);
+	bitweaving_on_each_sample(dest_addr, zeros, dimension);
+
+    vector.size   = (*temp_vector).size;
+    vector.values = dest_addr; //(*temp_vector).values;
+    free(zeros);
+  }
+
+
+  LinearModelSample_int(const LinearModelSample_int &o) {
+    value = o.value;
+    vector.values = o.vector.values;
+    SPARSE_ONLY(vector.index = o.vector.index;);
+    vector.size = o.vector.size;
+  }
+
+  float b_binary_to_value()
+  {
+    //printf("In char binary to value\n");
+  	return 256.0;
+  }
+  
+  void exchange_sample(LinearModelSample_int &exchange)
+  {
+    //exhange the values.
+    unsigned int* this_vector = (unsigned int*)(this->vector.values);
+    unsigned int* exch_vector = (unsigned int*)exchange.vector.values;
+    unsigned this_size   = this->vector.size;
+    unsigned exch_size   = exchange.vector.size;
+    unsigned char temp[this_size];
+
+	unsigned real_size = 16 * compute_num_CLs_per_sample(this_size);
+		
+    memcpy(         temp,            (void *) this_vector,   real_size * sizeof(int));
+    memcpy((void *) this_vector,     (void *) exch_vector,   real_size * sizeof(int));
+    memcpy((void *) exch_vector,          temp,              real_size * sizeof(int));
+
+     //exhange the label.
+    fp_type label_tmp;
+    label_tmp        = this->value;
+    this->value      = exchange.value;      
+    exchange.value   = label_tmp;    
+  }
+
+};
+
+#endif
 
 //////////////////////////////////////////char//////////////////////////////////////////////////////////
 struct LinearModelSample_char
@@ -148,6 +362,29 @@ struct LinearModelSample_char
     SPARSE_ONLY(vector.index = o.vector.index;);
     vector.size = o.vector.size;
   }
+
+  LinearModelSample_char(int dimension) {
+	unsigned char *zeros = (unsigned char *)aligned_alloc(64, dimension * sizeof(char)); //new unsigned char[dimension];
+	hazy::vector::FVector<unsigned char> *temp_vector = new hazy::vector::FVector<unsigned char>(zeros, dimension);
+
+    vector.size   = (*temp_vector).size;
+    vector.values = (*temp_vector).values;
+
+  }
+
+
+void regroup_from_bitweaving(LinearModelSample_int &src, unsigned num_bits)
+  {
+    //copy the label of this sample...
+	this->value  = src.value;
+
+    //copy the vectors of this sample...		
+  	hazy::vector::FVector<unsigned  int> src_vector   = src.vector;
+  	hazy::vector::FVector<unsigned char> dest_vector  = this->vector;
+	
+	hazy::vector::Convert_from_bitweaving (dest_vector, src_vector, num_bits);
+  }
+  
 
   float b_binary_to_value()
   {
@@ -256,13 +493,6 @@ struct LinearModelSample_short
   }
 
 };
-
-
-
-
-
-
-
 
 
 

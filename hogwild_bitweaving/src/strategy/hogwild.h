@@ -17,9 +17,11 @@
 
 #ifdef AVX2_EN
 #include "hazy/vector/operations-inl_avx2.h"
+#include "hazy/vector/dot-inl_avx2.h"
 #include "hazy/vector/scale_add-inl_avx2.h"
 #else
 #include "hazy/vector/operations-inl.h"
+#include "hazy/vector/dot-inl.h"
 #include "hazy/vector/scale_add-inl.h"
 #endif
 
@@ -75,30 +77,39 @@ namespace __executor
 {
   template< class Model, class Params, class Sample, class Exec > void ComputeLossPerThread(ThreadArgs<Model, Params, Sample> &threadArgs, unsigned tid, unsigned total)
   {
-    Model *model = threadArgs.model_;
-    //Params const &params = *threadArgs.params_;
+    Model *model          = threadArgs.model_;
     size_t *current_batch = threadArgs.current_batch_;
-    size_t numElems = threadArgs.actual_num_elements_in_batch;
+    size_t numElems       = threadArgs.actual_num_elements_in_batch;
+
+    Params const &params  = *threadArgs.params_;
+    unsigned num_bits     = params.num_bits;
 
     hazy::vector::FVector<Sample> const & sampsvec = threadArgs.block_->ex;
 
     // calculate which chunk of examples we work on
     size_t start = GetStartIndex(numElems, tid, total); 
-    size_t end = GetEndIndex(numElems, tid, total);
+    size_t end   = GetEndIndex(numElems, tid, total);
 
     if((end - start) == 0)
       return; // DO NOTHING ON THIS THREAD
 
     // keep const correctness
-    Sample const * const samps = sampsvec.values;
+    Sample  *samps = sampsvec.values;
     fp_type loss = 0.0;
+    fp_type l;
     // compute the loss for each example
     for (unsigned i = start; i < end; i++)
     {
       /* use this commented function to calculate statistics of x_hat, also uncomment params */
       //fp_type l = Exec::ComputeMetaLoss(samps[i], params);
+      if (num_bits <= 8)
+      {
+        LinearModelSample_char sample_char(samps[*current_batch + i].vector.size); //Need the dimension information...
+        sample_char.regroup_from_bitweaving(samps[*current_batch + i], num_bits);
 
-      fp_type l = Exec::SingleLoss(samps[*current_batch + i], model); // Ignore permutation
+        l = Exec::SingleLoss(sample_char, model); // Ignore permutation
+
+      }
       loss += l;
     }
 
@@ -107,58 +118,89 @@ namespace __executor
 
   template< class Model, class Params, class Sample, class Exec > void RunHogwildPerThread(ThreadArgs<Model, Params, Sample> &threadArgs, unsigned tid, unsigned total)
   {
-    Model *model = threadArgs.model_;
+    Model *model         = threadArgs.model_;
     Params const &params = *threadArgs.params_;
     hazy::vector::FVector<Sample> const & sampsvec = threadArgs.block_->ex;
     Sample * samps = sampsvec.values;
-    size_t *perm = threadArgs.block_->perm.values;
+    size_t *perm   = threadArgs.block_->perm.values;
 
 	        threadArgs.compute_times_[tid].ptr->Start();//wzk: pure computation time...
 
     // calculate which chunk of examples we work on
     size_t start = GetStartIndex(sampsvec.size, tid, total); 
-    size_t end = GetEndIndex(sampsvec.size, tid, total);
+    size_t end   = GetEndIndex(sampsvec.size, tid, total);
 
-    size_t batch_size = params.batch_size;
-    size_t * current_batch = new size_t[batch_size];
-    size_t actual_num_elements_in_batch = 0;
+    size_t batch_size      = params.batch_size;
+    //size_t * current_batch = new size_t[batch_size];
+    //size_t actual_num_elements_in_batch = 0;
 
-	float b_base = samps[0].b_binary_to_value();  //65536.0; //1.0; // //2^16 or  1
-	//samps
+  	float b_base = samps[0].b_binary_to_value();  //65536.0; //1.0; // //2^16 or  1
+	   //samps
     model->batch_step_size = params.step_size/((float)batch_size*b_base*b_base); 
 
-    for (unsigned i = start; i < end; i++) {
-      size_t indirect = perm[i];
-      current_batch[i % batch_size] = indirect;
+    //Sample: should be LinearModelSample_int, no other formats are supported....
+	  unsigned num_bits = params.num_bits;
 
-      if((i - start) % batch_size == batch_size - 1 || i == end - 1)
+    hazy::vector::FVector<fp_type> &x       = model->weights;
+    hazy::vector::FVector<fp_type> &g_local = model->local_gradients[tid];
+
+    float scale = -model->batch_step_size; ///(float)params.batch_size;
+
+    if (num_bits <= 8)
+    {
+      bool initilization_gradient = true;
+
+      //It will allocate the space for it, but no values...
+      LinearModelSample_char sample_char(samps[0].vector.size); //Need the dimension information...
+
+      for (unsigned i = start; i < end; i++) 
       {
-        DECREASING_STEPSIZES_ONLY(model->batch_step_size *= pow(model->k, -params.beta));
+        if (initilization_gradient == true)
+        {
+          initilization_gradient = false;
+          hazy::vector::Zero(model->local_gradients[tid]);
+        }
 
-        // Reset gradient
-        hazy::vector::Zero(model->local_gradients[tid]);
+        //Converte the input data into Sample_char;
+        sample_char.regroup_from_bitweaving(samps[i], num_bits);
+        
+        fp_type delta;
+        delta = scale * (Dot( x, sample_char.vector) - sample_char.value);
 
-        actual_num_elements_in_batch = ((i - start) % batch_size) + 1;
-
-        //
-        Exec::CalcModelUpdate( samps, current_batch, actual_num_elements_in_batch, model, params, tid);
-        //
-
-        //threadArgs.communicate_times_[tid].ptr->Start();
+        // linear regression
         hazy::vector::ScaleAndAdd(
-            model->weights,
-            model->local_gradients[tid],
+          g_local,
+          sample_char.vector, //sample.vector,
+          delta
+          );        
+
+        //At the end of each mini-batch, update the global model...
+        if((i - start) % batch_size == batch_size - 1 || i == end - 1)
+        {
+          // Reset gradient at the beginning of next sample.
+          initilization_gradient = true;
+
+          hazy::vector::ScaleAndAdd(
+            x,       //model->weights,               //
+            g_local, //model->local_gradients[tid],  //
             1.0
             );
-        //threadArgs.communicate_times_[tid].ptr->Pause();
+        }
+        
+      }  
+    }
+    else if (num_bits <= 16)
+    {
 
-        DECREASING_STEPSIZES_ONLY(model->k += actual_num_elements_in_batch);
-      }
-    }  
+      printf("Bits: %d. Not Supported yet...", num_bits);
+    }
+    else if (num_bits <= 32)
+    {
+      printf("Bits: %d. Not Supported yet...", num_bits);
+    }
 
 	       threadArgs.compute_times_[tid].ptr->Pause();//wzk: pure computation time...
 
-    delete[] current_batch;
   }
 
   template< class Model, class Params, class Sample, class Exec > void InitPerThread(ThreadArgs<Model, Params, Sample> &threadArgs, unsigned tid, unsigned total)
@@ -283,7 +325,7 @@ class Hogwild
 		float not_targeted      = toMinus1_1? (base*(-1.0)): 0.0;
 		unsigned num_samps      = samps.size;
 
-		//printf("base = %f, class_model = %d, normalize_enable = %d, toMinus1_1=%d, num_samps= %d\n", base, class_model, normalize_enable, toMinus1_1, num_samps );
+		printf("base = %f, class_model = %d, normalize_enable = %d, toMinus1_1=%d, num_samps= %d\n", base, class_model, normalize_enable, toMinus1_1, num_samps );
 		
 		if (normalize_enable)
 		{
@@ -335,7 +377,6 @@ class Hogwild
       hazy::vector::FVector<Sample> metadata;
 
       printDebug(rank_, "Loading training samples from '%s'", szTrainFile);
-
       if (loadBinary) {
         hazy::scan::BinaryFileScanner scan(szTrainFile);
         Loader::LoadSamples(scan, train_samps, dimension);
@@ -450,7 +491,6 @@ class Hogwild
 
           if (e == this->params_->target_epoch)
           {
-
 		    PCM_stop();
 		    printf("=====print the profiling result==========\n");
 		    PCM_printResults();	  

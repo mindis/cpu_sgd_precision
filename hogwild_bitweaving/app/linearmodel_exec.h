@@ -50,6 +50,9 @@ public:
   #elif defined(_HOGWILD_CHAR) 
 	  Hogwild<LinearModel, LinearModelParams, LinearModelSample_char, LinearModelLoader, Exec> executor;
 	  printf("Use char.......\n");
+  #elif defined(_HOGWILD_INT) 
+	  Hogwild<LinearModel, LinearModelParams, LinearModelSample_int, LinearModelLoader, Exec> executor;
+	  printf("Use int: BitWeaving.......\n");	  
   #else 
     Hogwild<LinearModel, LinearModelParams, LinearModelSample, LinearModelLoader, Exec> executor;
   	printf("Use floating point.......\n");  
@@ -73,7 +76,8 @@ public:
 	unsigned class_model  = 0;
 	unsigned target_label = 1;
 	unsigned target_epoch = 0;
-	
+	unsigned num_bits = 8;
+
     static struct extended_option long_options[] = {
       {"beta", required_argument, NULL,              'h', "the exponent constant for the stepsizes"},
       {"batch_size", required_argument, NULL,        'b', "batch_size (default to 1)"},
@@ -89,9 +93,9 @@ public:
       {"matlab-tsv", required_argument,NULL,         'm', "load TSVs indexing from 1 instead of 0"},
 
       {"class_model",  required_argument,NULL,       'c', "First bit: enable binary classification, second bit: -1 or 0  Default: 0"},
-	  {"target_label", required_argument,NULL,       't', "Target label to be identified. default:1"},
-	  {"pcm_epoch", required_argument,NULL,          'p', "Target epoch to be analyzed. Default:0 "},
-
+      {"target_label", required_argument,NULL,       't', "Target label to be identified. default:1"},
+      {"pcm_epoch", required_argument,NULL,          'p', "Target epoch to be analyzed. Default:0 "},
+      {"num_bits",     required_argument,NULL,       'n', "Number of bits used. default:8"},
 	  
       {NULL,0,NULL,0,0}
     };
@@ -143,10 +147,12 @@ public:
           break;	
         case 't':
           target_label      = atoi(optarg);
+        case 'n':
+          num_bits          = atoi(optarg);		  
           break;			  
-		case 'p':
-		  target_epoch	     = atoi(optarg);
-		  break;				
+        case 'p':
+          target_epoch	     = atoi(optarg);
+          break;				
 		  
         case ':':
         case '?':
@@ -166,7 +172,7 @@ public:
     p.class_model       = class_model;
     p.target_label      = target_label;
     p.target_epoch      = target_epoch;
-	
+    p.num_bits          = num_bits;	
 
     char *szTrainFile, *szTestFile, *szMetadataFile;
 	szMetadataFile = NULL;

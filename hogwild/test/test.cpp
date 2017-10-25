@@ -11,6 +11,7 @@ void test_srv ()
     printf("===============================================================\n");
     printf("= Test __m256i  _mm256_srav_epi32  (__m256i a, __m256i count) \n");
     printf("===============================================================\n");
+
     unsigned int data_1 = 0x00000000;
     unsigned int data_2 = 0x11111111;
     unsigned int data_3 = 0x22222222;
@@ -25,9 +26,9 @@ void test_srv ()
 
     __m256i v_sum, v_data_1, v_data_2, v_data_3, v_data_4;
 
-    __m256i v_data =  _mm256_set1_epi32 (data_1); 
-          v_data   =  _mm256_srav_epi32(v_data, v_offset); //shift it...
-          v_data_1 =  _mm256_and_si256( v_data, v_mask); //1  v_data
+    __m256i v_data =  _mm256_set1_epi32(data_1);           //1, load the compressed data.
+          v_data   =  _mm256_srav_epi32(v_data, v_offset); //1, shift it...
+          v_data_1 =  _mm256_and_si256 (v_data, v_mask);   //1, prune the uncessary parts.
           v_sum    =  v_data_1;
 
           v_data   =  _mm256_set1_epi32(data_2); 
@@ -40,53 +41,38 @@ void test_srv ()
           v_data_1 =  _mm256_and_si256 (v_data, v_mask  ); //3  v_data
           v_sum    =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 2) );
 
-
           v_data   =  _mm256_set1_epi32(data_4); 
           v_data   =  _mm256_srav_epi32(v_data, v_offset); //shift it...
           v_data_1 =  _mm256_and_si256 (v_data, v_mask  ); //3  v_data
           v_sum    =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 3) );
-
-
 
           v_data   =  _mm256_set1_epi32(data_5); 
           v_data   =  _mm256_srav_epi32(v_data, v_offset); //shift it...
           v_data_1 =  _mm256_and_si256 (v_data, v_mask  ); //3  v_data
           v_sum    =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 4) );
 
-
-
           v_data   =  _mm256_set1_epi32(data_6); 
           v_data   =  _mm256_srav_epi32(v_data, v_offset); //shift it...
           v_data_1 =  _mm256_and_si256 (v_data, v_mask  ); //3  v_data
           v_sum    =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 5) );
-
-
 
           v_data   =  _mm256_set1_epi32(data_7); 
           v_data   =  _mm256_srav_epi32(v_data, v_offset); //shift it...
           v_data_1 =  _mm256_and_si256 (v_data, v_mask  ); //3  v_data
           v_sum    =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 6) );
 
-
-
           v_data   =  _mm256_set1_epi32(data_8); 
           v_data   =  _mm256_srav_epi32(v_data, v_offset); //shift it...
           v_data_1 =  _mm256_and_si256 (v_data, v_mask  ); //3  v_data
           v_sum    =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 7) );
 
+        int sum_array[8];
+        _mm256_store_si256((__m256i *)sum_array, v_sum);
 
 
-
-
-
-
-    int sum_array[8];
-    _mm256_store_si256((__m256i *)sum_array, v_sum);
-
-
-    for (int i = 0; i < 8; i += 1) {
-        printf("0x%x ", sum_array[i]);
-    }
+        for (int i = 0; i < 8; i += 1) {
+            printf("0x%x ", sum_array[i]);
+        }
     printf("\n");
     printf("\n");
 }

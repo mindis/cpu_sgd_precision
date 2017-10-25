@@ -22,7 +22,7 @@ STRATEGY := HOGWILD
 STEPSIZE := NON  # DECREASING_STEPSIZES EXPBACKOFF_STEPSIZES
 REPRESENTATION := DENSE # SPARSE
 SIMD := SCALAR AVX 
-FORMAT:= SHORT FP CHAR 
+FORMAT:= INT #SHORT FP CHAR 
 THREADBING:= BIND RANDOM
 
 .PHONY: depend clean all
@@ -71,6 +71,8 @@ $(foreach f, $(ALLEXECS), $(if $(findstring _DENSE_, $f),$f,)): PARAMS += -D_DEN
 $(foreach f, $(ALLEXECS), $(if $(findstring _SPARSE_, $f),$f,)):PARAMS += -D_SPARSE
 $(foreach f, $(ALLEXECS), $(if $(findstring _SHORT, $f),$f,)):PARAMS += -D_HOGWILD_SHORT
 $(foreach f, $(ALLEXECS), $(if $(findstring _CHAR,  $f),$f,)):PARAMS += -D_HOGWILD_CHAR
+$(foreach f, $(ALLEXECS), $(if $(findstring _INT,  $f),$f,)):PARAMS += -D_HOGWILD_INT
+
 $(foreach f, $(ALLEXECS), $(if $(findstring _AVX,  $f),$f,)):PARAMS  += -DAVX2_EN
 $(foreach f, $(ALLEXECS), $(if $(findstring _BIND,  $f),$f,)):PARAMS  += -DCPU_BINDING_EN
 
