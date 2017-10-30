@@ -164,15 +164,92 @@ namespace vector {
 #define uint32_t unsigned int
 #define BITS_OF_ONE_CACHE_LINE 512
 		
+    	__m256i v_offset = _mm256_set_epi32 (7, 6, 5, 4, 3, 2, 1, 0); 
+    	__m256i v_mask   = _mm256_set1_epi32(0x01010101);
+    	__m256i v_sum, v_data, v_data_1;
 	
 		uint32_t num_features_main = (numFeatures/BITS_OF_ONE_CACHE_LINE) * BITS_OF_ONE_CACHE_LINE;
 		
 		//for (size_t i = 0; i < numFeatures; i++) 
-		{
 		//vec_char[i] = extract_from_bitweaving(src.values, i, numFeatures);
 		
 		  //Compute the main part of numFeatures.
-		for (size_t i = 0; i < num_features_main; i++) //if (i < num_features_main)
+		//For each 512-code chunk
+		for (size_t base = 0; base < num_features_main; base += BITS_OF_ONE_CACHE_LINE) 
+		{	
+			//for each 32 values.
+			for (size_t offset = 0; offset < (BITS_OF_ONE_CACHE_LINE/32); offset++)
+			{
+				v_sum = _mm256_set1_epi32(0);
+				unsigned int data_src;
+
+				data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*0 + offset];
+				v_data   =  _mm256_set1_epi32(data_src); 
+				v_data   =  _mm256_srav_epi32(v_data, v_offset); //shift it...
+				v_data_1 =  _mm256_and_si256 (v_data, v_mask  ); //3  v_data
+				v_sum    =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 7) );
+
+				data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*1 + offset];
+				v_data   =  _mm256_set1_epi32(data_src); 
+				v_data   =  _mm256_srav_epi32(v_data, v_offset); //shift it...
+				v_data_1 =  _mm256_and_si256 (v_data, v_mask  ); //3  v_data
+				v_sum    =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 6) );
+
+				data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*2 + offset];
+				v_data   =  _mm256_set1_epi32(data_src); 
+				v_data   =  _mm256_srav_epi32(v_data, v_offset); //shift it...
+				v_data_1 =  _mm256_and_si256 (v_data, v_mask  ); //3  v_data
+				v_sum    =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 5) );
+
+				data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*3 + offset];
+				v_data   =  _mm256_set1_epi32(data_src); 
+				v_data   =  _mm256_srav_epi32(v_data, v_offset); //shift it...
+				v_data_1 =  _mm256_and_si256 (v_data, v_mask  ); //3  v_data
+				v_sum    =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 4) );
+
+				data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*4 + offset];
+				v_data   =  _mm256_set1_epi32(data_src); 
+				v_data   =  _mm256_srav_epi32(v_data, v_offset); //shift it...
+				v_data_1 =  _mm256_and_si256 (v_data, v_mask  ); //3  v_data
+				v_sum    =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 3) );
+
+				data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*5 + offset];
+				v_data   =  _mm256_set1_epi32(data_src); 
+				v_data   =  _mm256_srav_epi32(v_data, v_offset); //shift it...
+				v_data_1 =  _mm256_and_si256 (v_data, v_mask  ); //3  v_data
+				v_sum    =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 2) );
+
+				data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*6 + offset];
+				v_data   =  _mm256_set1_epi32(data_src); 
+				v_data   =  _mm256_srav_epi32(v_data, v_offset); //shift it...
+				v_data_1 =  _mm256_and_si256 (v_data, v_mask  ); //3  v_data
+				v_sum    =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 1) );
+
+				data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*7 + offset];
+				v_data   =  _mm256_set1_epi32(data_src); 
+				v_data   =  _mm256_srav_epi32(v_data, v_offset); //shift it...
+				v_data_1 =  _mm256_and_si256 (v_data, v_mask  ); //3  v_data
+				v_sum    =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 0) );
+/*				
+				for (unsigned j = 0; j < num_bits; j++)
+				{
+					unsigned int data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*j+offset];
+					v_data   =  _mm256_set1_epi32(data_src); 
+					v_data   =  _mm256_srav_epi32(v_data, v_offset); //shift it...
+					v_data_1 =  _mm256_and_si256 (v_data, v_mask  ); //3  v_data
+					v_sum    =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 7) );
+				}
+*/
+				unsigned char sum_array[64]; //32 is enough.
+				_mm256_store_si256((__m256i *)sum_array, v_sum);
+				for (unsigned k = 0; k < 32; k++) //it is possible to use AVX instructions?
+					vec_char[base + offset*32 + k] = sum_array[(k>>3)+((k&7)<<2)]; 
+			}
+			//Do the storing...
+		}
+
+/*
+		for (size_t i = 0; i < num_features_main; i+=32) //if (i < num_features_main)
 		{
 			uint32_t main_offset = ( i/BITS_OF_ONE_CACHE_LINE	  ) * BITS_OF_ONE_CACHE_LINE; //
 			uint32_t int_offset  = ( i&(BITS_OF_ONE_CACHE_LINE-1) )/32;
@@ -188,11 +265,8 @@ namespace vector {
 			  result |= (( (tmp&(1<<bit_offset)) >> bit_offset ) << (7-j)); //
 			}
 			vec_char[i] = result; //return result;
-			//if (result != 0)
-			//   printf("%d:0x%x\t", i, result);//return result; 1
-			
 		}
-		  
+*/		  
 		for (size_t i = num_features_main; i < numFeatures; i++) 
 		{
 			uint32_t num_r_f = numFeatures - num_features_main;
@@ -265,7 +339,6 @@ namespace vector {
 			  vec_char[i] = result; //return result;
 			}			
 		}
-	  }
 	}
 	
 	
