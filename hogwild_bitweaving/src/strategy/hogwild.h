@@ -166,6 +166,9 @@ namespace __executor
 
       //It will allocate the space for it, but no values...
 	  //LinearModelSample_char sample_char(samps[1].vector.size); //Need the dimension information...
+	  
+	  unsigned char dest[samps[0].vector.size];
+	  hazy::vector::FVector<unsigned char> dest_char_vector (dest, samps[0].vector.size);
 
       for (unsigned i = start; i < end; i++) 
       {
@@ -175,15 +178,12 @@ namespace __executor
           initilization_gradient = false;
           hazy::vector::Zero(g_local);//(model->local_gradients[tid]);
         }
-
         //Converte the input data into Sample_char;
        // sample_char.regroup_from_bitweaving(samps[i], num_bits);
-       
 		//unsigned char *data_addr = (unsigned char *)aligned_alloc(64, samps[i].vector.size * sizeof(char)); //new unsigned char[dimension];
     	//hazy::vector::FVector<unsigned char> *temp_vector = new hazy::vector::FVector<unsigned char>(data_addr, samps[i].vector.size);
 		//hazy::vector::Convert_from_bitweaving (*temp_vector, samps[i].vector, num_bits);       
-		unsigned char dest[samps[i].vector.size];
-		hazy::vector::FVector<unsigned char> dest_char_vector (dest, samps[i].vector.size);
+
 		hazy::vector::Convert_from_bitweaving(dest_char_vector, samps[i].vector, num_bits);
 		
 /*		

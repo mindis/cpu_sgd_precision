@@ -172,8 +172,8 @@ namespace vector {
 		//vec_char[i] = extract_from_bitweaving(src.values, i, numFeatures);
 		
 		  //Compute the main part of numFeatures.
-		  for (size_t i = 0; i < num_features_main; i++) //if (i < num_features_main)
-		  {
+		for (size_t i = 0; i < num_features_main; i++) //if (i < num_features_main)
+		{
 			uint32_t main_offset = ( i/BITS_OF_ONE_CACHE_LINE	  ) * BITS_OF_ONE_CACHE_LINE; //
 			uint32_t int_offset  = ( i&(BITS_OF_ONE_CACHE_LINE-1) )/32;
 			uint32_t bit_offset  = i & 31;
@@ -191,10 +191,10 @@ namespace vector {
 			//if (result != 0)
 			//   printf("%d:0x%x\t", i, result);//return result; 1
 			
-		  }
+		}
 		  
-		  for (size_t i = num_features_main; i < numFeatures; i++) 
-		  {
+		for (size_t i = num_features_main; i < numFeatures; i++) 
+		{
 			uint32_t num_r_f = numFeatures - num_features_main;
 		
 			if (num_r_f <= 64)												 //////remainder <= 64
@@ -264,8 +264,7 @@ namespace vector {
 			  }
 			  vec_char[i] = result; //return result;
 			}			
-		  }
-		
+		}
 	  }
 	}
 	
