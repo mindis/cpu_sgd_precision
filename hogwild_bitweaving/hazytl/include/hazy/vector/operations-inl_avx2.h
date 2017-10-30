@@ -153,6 +153,250 @@ namespace vector {
 		}
 	}
 	
+		
+		
+		
+		void inline Convert_from_bitweaving(FVector<unsigned short> & dest, FVector<unsigned int> &src, unsigned num_bits) 
+		{
+			uint64_t numFeatures	  = dest.size;
+			unsigned short* vec_short = dest.values;
+			unsigned int* vec_int	  = src.values;
+
+#define uint32_t unsigned int
+#define BITS_OF_ONE_CACHE_LINE 512
+
+			__m256i v_offset = _mm256_set_epi32 (7, 6, 5, 4, 3, 2, 1, 0); 
+			__m256i v_mask	 = _mm256_set1_epi32(0x01010101);
+			__m256i v_sum, v_data, v_data_1;
+		
+			uint32_t num_features_main = (numFeatures/BITS_OF_ONE_CACHE_LINE) * BITS_OF_ONE_CACHE_LINE;
+			
+			//for (size_t i = 0; i < numFeatures; i++) 
+			//vec_short[i] = extract_from_bitweaving(src.values, i, numFeatures);
+			
+			  //Compute the main part of numFeatures.
+			//For each 512-code chunk
+			for (size_t base = 0; base < num_features_main; base += BITS_OF_ONE_CACHE_LINE) 
+			{	
+				//for each 32 values.
+				for (size_t offset = 0; offset < (BITS_OF_ONE_CACHE_LINE/32); offset++)
+				{
+					v_sum = _mm256_set1_epi32(0);
+					unsigned int data_src;
+	
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*0 + offset];          //0
+					v_data	 =	_mm256_set1_epi32(data_src); 
+					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
+					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
+					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 7) );
+
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*1 + offset];          //1
+					v_data	 =	_mm256_set1_epi32(data_src); 
+					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
+					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
+					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 6) );
+
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*2 + offset];          //2
+					v_data	 =	_mm256_set1_epi32(data_src); 
+					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
+					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
+					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 5) );
+
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*3 + offset];          //3
+					v_data	 =	_mm256_set1_epi32(data_src); 
+					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
+					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
+					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 4) );
+
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*4 + offset];          //4
+					v_data	 =	_mm256_set1_epi32(data_src); 
+					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
+					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
+					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 3) );
+
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*5 + offset];          //5
+					v_data	 =	_mm256_set1_epi32(data_src); 
+					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
+					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
+					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 2) );
+
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*6 + offset];          //6
+					v_data	 =	_mm256_set1_epi32(data_src); 
+					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
+					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
+					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 1) );
+
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*7 + offset];          //7
+					v_data	 =	_mm256_set1_epi32(data_src); 
+					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
+					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
+					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 0) );
+
+					unsigned char sum_array_high[64]; //32 is enough.
+					_mm256_store_si256((__m256i *)sum_array_high, v_sum);
+
+					v_sum = _mm256_set1_epi32(0);
+
+
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*8 + offset];          //8
+					v_data	 =	_mm256_set1_epi32(data_src); 
+					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
+					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
+					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 7) );
+				if (num_bits >=10)
+				{
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*9 + offset];          //9
+					v_data	 =	_mm256_set1_epi32(data_src); 
+					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
+					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
+					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 6) );
+				 if (num_bits >=11)
+				 {
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*10 + offset];          //10
+					v_data	 =	_mm256_set1_epi32(data_src); 
+					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
+					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
+					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 5) );
+				 if (num_bits >=12)
+				 {
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*11 + offset];          //11
+					v_data	 =	_mm256_set1_epi32(data_src); 
+					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
+					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
+					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 4) );
+				 if (num_bits >=13)
+				 {
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*12 + offset];          //12
+					v_data	 =	_mm256_set1_epi32(data_src); 
+					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
+					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
+					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 3) );
+				 if (num_bits >=14)
+				 {
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*13 + offset];          //13
+					v_data	 =	_mm256_set1_epi32(data_src); 
+					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
+					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
+					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 2) );
+				 if (num_bits >=15)
+				 {
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*14 + offset];          //14
+					v_data	 =	_mm256_set1_epi32(data_src); 
+					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
+					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
+					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 1) );
+				 if (num_bits >=16)
+				 {
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*15 + offset];          //15
+					v_data	 =	_mm256_set1_epi32(data_src); 
+					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
+					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
+					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 0) );
+				 }}}}}} }	
+
+					unsigned char sum_array_low[64]; //32 is enough.
+					_mm256_store_si256((__m256i *)sum_array_low, v_sum);
+
+
+					for (unsigned k = 0; k < 32; k++) //it is possible to use AVX instructions?
+						vec_short[base + offset*32 + k] = ( (sum_array_high[(k>>3)+((k&7)<<2)]<<8) | sum_array_low[(k>>3)+((k&7)<<2)] ); 
+				}
+				//Do the storing...
+			}
+	
+	/*
+			for (size_t i = 0; i < num_features_main; i+=32) //if (i < num_features_main)
+			{
+				uint32_t main_offset = ( i/BITS_OF_ONE_CACHE_LINE	  ) * BITS_OF_ONE_CACHE_LINE; //
+				uint32_t int_offset  = ( i&(BITS_OF_ONE_CACHE_LINE-1) )/32;
+				uint32_t bit_offset  = i & 31;
+			
+				//The next 32 CLs contains the information of the feature. 
+				unsigned char result = 0;
+				unsigned int tmp;
+				for (uint32_t j = 0; j < num_bits; j++)
+				{
+									 //main 		bit    which ints 
+				  tmp	  = vec_int[main_offset + 16 * j + int_offset]; 
+				  result |= (( (tmp&(1<<bit_offset)) >> bit_offset ) << (7-j)); //
+				}
+				vec_char[i] = result; //return result;
+			}
+	*/		  
+
+  for (size_t i = num_features_main; i < numFeatures; i++) 
+  {
+		uint32_t num_r_f = numFeatures - num_features_main;
+	
+		if (num_r_f <= 64)												 //////remainder <= 64
+		{ 
+		  uint32_t main_offset = ( i/BITS_OF_ONE_CACHE_LINE ) * BITS_OF_ONE_CACHE_LINE;
+		  uint32_t int_offset  = ( i & (64-1) )/32;
+		  uint32_t bit_offset  = i & 31;
+	
+		  //The next 32 CLs contains the information of the feature. 
+		  unsigned short result = 0;
+		  uint32_t tmp;
+		  for (uint32_t j = 0; j < num_bits; j++)
+		  {
+							  //main		  bit	 which ints 
+			tmp 	= vec_int[main_offset + 2 * j + int_offset]; 
+			result |= (( (tmp&(1<<bit_offset)) >> bit_offset ) << (15-j)); //
+		  }
+		  vec_short[i] = result; //return result;
+		}
+		else if (num_r_f <= 128)										  //////64 < remainder <= 128
+		{ 
+		  uint32_t main_offset = ( i/BITS_OF_ONE_CACHE_LINE ) * BITS_OF_ONE_CACHE_LINE;
+		  uint32_t int_offset  = ( i&(128-1) )/32;
+		  uint32_t bit_offset  = i & 31;
+	
+		  //The next 32 CLs contains the information of the feature. 
+		  unsigned short result = 0;
+		  uint32_t tmp;
+		  for (uint32_t j = 0; j < num_bits; j++)
+		  {
+							  //main		  bit	 which ints 
+			tmp 	= vec_int[main_offset + 4 * j + int_offset]; 
+			result |= (( (tmp&(1<<bit_offset)) >> bit_offset ) << (15-j)); //
+		  }
+		  vec_short[i] = result; //return result;
+		}
+		else if (num_r_f <= 256)										  //////128 < remainder <= 256
+		{ 
+		  uint32_t main_offset = ( i/BITS_OF_ONE_CACHE_LINE ) * BITS_OF_ONE_CACHE_LINE;
+		  uint32_t int_offset  = ( i&(256-1) )/32;
+		  uint32_t bit_offset  = i & 31;
+	
+		  //The next 32 CLs contains the information of the feature. 
+		  unsigned short result = 0;
+		  uint32_t tmp;
+		  for (uint32_t j = 0; j < num_bits; j++)
+		  {
+							  //main		  bit	 which ints 
+			tmp 	= vec_int[main_offset + 8 * j + int_offset]; 
+			result |= (( (tmp&(1<<bit_offset)) >> bit_offset ) << (15-j)); //
+		  }
+		  vec_short[i] = result; //return result;
+		}
+		else if (num_r_f < 512) 										 //////256 < remainder < 512
+		{ 
+		  uint32_t main_offset = ( i/BITS_OF_ONE_CACHE_LINE ) * BITS_OF_ONE_CACHE_LINE;
+		  uint32_t int_offset  = ( i&(512-1) )/32;
+		  uint32_t bit_offset  = i & 31;
+		//The next 32 CLs contains the information of the feature. 
+		  unsigned short result = 0;
+		  uint32_t tmp;
+		  for (uint32_t j = 0; j < num_bits; j++)
+		  {
+							  //main		  bit	 which ints 
+			tmp 	= vec_int[main_offset + 16 * j + int_offset]; 
+			result |= (( (tmp&(1<<bit_offset)) >> bit_offset ) << (15-j)); //
+		  }
+		  vec_short[i] = result; //return result;
+		}			
+	}
+		}
 	
 	
 	void inline Convert_from_bitweaving(FVector<unsigned char> & dest, FVector<unsigned int> &src, unsigned num_bits) 
@@ -188,48 +432,58 @@ namespace vector {
 				v_data   =  _mm256_srav_epi32(v_data, v_offset); //shift it...
 				v_data_1 =  _mm256_and_si256 (v_data, v_mask  ); //3  v_data
 				v_sum    =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 7) );
-
+			if (num_bits >=2)
+			{
 				data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*1 + offset];
 				v_data   =  _mm256_set1_epi32(data_src); 
 				v_data   =  _mm256_srav_epi32(v_data, v_offset); //shift it...
 				v_data_1 =  _mm256_and_si256 (v_data, v_mask  ); //3  v_data
 				v_sum    =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 6) );
-
+			 if (num_bits >=3)
+			 {
 				data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*2 + offset];
 				v_data   =  _mm256_set1_epi32(data_src); 
 				v_data   =  _mm256_srav_epi32(v_data, v_offset); //shift it...
 				v_data_1 =  _mm256_and_si256 (v_data, v_mask  ); //3  v_data
 				v_sum    =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 5) );
-
+			 if (num_bits >=4)
+			 {
 				data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*3 + offset];
 				v_data   =  _mm256_set1_epi32(data_src); 
 				v_data   =  _mm256_srav_epi32(v_data, v_offset); //shift it...
 				v_data_1 =  _mm256_and_si256 (v_data, v_mask  ); //3  v_data
 				v_sum    =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 4) );
-
+			 if (num_bits >=5)
+			 {
 				data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*4 + offset];
 				v_data   =  _mm256_set1_epi32(data_src); 
 				v_data   =  _mm256_srav_epi32(v_data, v_offset); //shift it...
 				v_data_1 =  _mm256_and_si256 (v_data, v_mask  ); //3  v_data
 				v_sum    =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 3) );
-
+			 if (num_bits >=6)
+			 {
 				data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*5 + offset];
 				v_data   =  _mm256_set1_epi32(data_src); 
 				v_data   =  _mm256_srav_epi32(v_data, v_offset); //shift it...
 				v_data_1 =  _mm256_and_si256 (v_data, v_mask  ); //3  v_data
 				v_sum    =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 2) );
-
+			 if (num_bits >=7)
+			 {
 				data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*6 + offset];
 				v_data   =  _mm256_set1_epi32(data_src); 
 				v_data   =  _mm256_srav_epi32(v_data, v_offset); //shift it...
 				v_data_1 =  _mm256_and_si256 (v_data, v_mask  ); //3  v_data
 				v_sum    =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 1) );
-
+			 if (num_bits >=8)
+			 {
 				data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*7 + offset];
 				v_data   =  _mm256_set1_epi32(data_src); 
 				v_data   =  _mm256_srav_epi32(v_data, v_offset); //shift it...
 				v_data_1 =  _mm256_and_si256 (v_data, v_mask  ); //3  v_data
 				v_sum    =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 0) );
+			 
+			 }}}}}} }
+
 /*				
 				for (unsigned j = 0; j < num_bits; j++)
 				{

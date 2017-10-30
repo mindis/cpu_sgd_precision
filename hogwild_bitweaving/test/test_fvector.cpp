@@ -44,17 +44,17 @@ void test_Convert_from_bitweaving()
 
 
     //Set up the destination...
-    unsigned char dest[NUM_VALUES];
+    unsigned short dest[NUM_VALUES];
 
-    hazy::vector::FVector<unsigned char> dest_char_vector (dest, NUM_VALUES);
+    hazy::vector::FVector<unsigned short> dest_char_vector (dest, NUM_VALUES);
 
-    hazy::vector::Convert_from_bitweaving(dest_char_vector, src_int_vector, 8);
+    hazy::vector::Convert_from_bitweaving(dest_char_vector, src_int_vector, 16);
 
     //    sample_char.regroup_from_bitweaving(samps[i], num_bits);
 
 
     for (int i = 0; i < NUM_VALUES; i++)
-        if ( ( (data[i]>>24)<<0 ) != dest_char_vector[i])
+        if ( ( (data[i]>>16)<<0 ) != dest_char_vector[i])
         {
             printf("Error::::::%d: src_0x%8x, dest_0x%x\n", i, data[i], dest_char_vector[i]);
             return;
@@ -64,7 +64,7 @@ void test_Convert_from_bitweaving()
         //    printf("ERROR: %d, %f\n", i, data[i]);
         //    break;
         //}
-    printf("Congratuation!!! Your test is passed...");
+    printf("Congratuation!!! Your test is passed...\n");
 }        
 
 

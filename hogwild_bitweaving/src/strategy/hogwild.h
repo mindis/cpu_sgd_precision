@@ -104,23 +104,30 @@ namespace __executor
       //fp_type l = Exec::ComputeMetaLoss(samps[i], params);
       if (num_bits <= 8)
       {
-      
-        //LinearModelSample_char sample_char(samps[*current_batch + i].vector.size); //Need the dimension information...
-        //sample_char.regroup_from_bitweaving(samps[*current_batch + i], num_bits);
-		//l = Exec::SingleLoss(sample_char, model); // Ignore permutation
-		unsigned char dest[samps[*current_batch + i].vector.size];
-		hazy::vector::FVector<unsigned char> dest_char_vector (dest, samps[*current_batch + i].vector.size);
-		hazy::vector::Convert_from_bitweaving(dest_char_vector, samps[*current_batch + i].vector, num_bits);
-		//l = Exec::SingleLoss(dest_char_vector, model); // Ignore permutation
-		
-		hazy::vector::FVector<fp_type> const &x = model->weights;
-		fp_type dot = hazy::vector::Dot(x, dest_char_vector);
-		
-		// linear regression
-		//printf("dot = %f, s.value = %f\n", dot, s.value);
-		fp_type difference = (dot - samps[*current_batch + i].value)/256.0;
-		l =  0.5 *difference * difference;// 
+        unsigned char dest[samps[*current_batch + i].vector.size];
+        hazy::vector::FVector<unsigned char> dest_char_vector (dest, samps[*current_batch + i].vector.size);
+        hazy::vector::Convert_from_bitweaving(dest_char_vector, samps[*current_batch + i].vector, num_bits);
+		    //l = Exec::SingleLoss(dest_char_vector, model); // Ignore permutation
+    		
+    		hazy::vector::FVector<fp_type> const &x = model->weights;
+        fp_type dot = hazy::vector::Dot(x, dest_char_vector);
+
+        fp_type difference = (dot - samps[*current_batch + i].value)/256.0;
+        l =  0.5 *difference * difference;// 
       }
+      else if (num_bits <= 16)
+      {
+        unsigned short dest[samps[*current_batch + i].vector.size];
+        hazy::vector::FVector<unsigned short> dest_short_vector (dest, samps[*current_batch + i].vector.size);
+        hazy::vector::Convert_from_bitweaving(dest_short_vector, samps[*current_batch + i].vector, num_bits);
+        //l = Exec::SingleLoss(dest_short_vector, model); // Ignore permutation
+        
+        hazy::vector::FVector<fp_type> const &x = model->weights;
+        fp_type dot = hazy::vector::Dot(x, dest_short_vector);
+
+        fp_type difference = (dot - 256.0 * samps[*current_batch + i].value)/65536.0;
+        l =  0.5 *difference * difference;// 
+      }	  
       loss += l;
     }
 
@@ -145,9 +152,7 @@ namespace __executor
     //size_t * current_batch = new size_t[batch_size];
     //size_t actual_num_elements_in_batch = 0;
 
-  	float b_base = samps[0].b_binary_to_value();  //65536.0; //1.0; // //2^16 or  1
 	   //samps
-    model->batch_step_size = params.step_size/((float)batch_size*b_base*b_base); 
 	   
 	//printf("real model->batch_step_size = %f\n", model->batch_step_size);
 	//printf("samps[0].vector.size = %d\n", samps[0].vector.size);
@@ -158,48 +163,32 @@ namespace __executor
     hazy::vector::FVector<fp_type> &x       = model->weights;
     hazy::vector::FVector<fp_type> &g_local = model->local_gradients[tid];
 
+
+    float b_base = samps[0].b_binary_to_value();  //65536.0; //1.0; // //2^16 or  1
+    model->batch_step_size = params.step_size/((float)batch_size*b_base*b_base); 
     float scale = -model->batch_step_size; ///(float)params.batch_size;
 
     if (num_bits <= 8)
     {
       bool initilization_gradient = true;
-
-      //It will allocate the space for it, but no values...
-	  //LinearModelSample_char sample_char(samps[1].vector.size); //Need the dimension information...
+      float b_base = 256.0;  //65536.0; //1.0; // //2^16 or  1
+      model->batch_step_size = params.step_size/((float)batch_size*b_base*b_base); 
+      float scale = -model->batch_step_size; ///(float)params.batch_size;
 	  
-	  unsigned char dest[samps[0].vector.size];
-	  hazy::vector::FVector<unsigned char> dest_char_vector (dest, samps[0].vector.size);
+	   unsigned char dest[samps[0].vector.size];
+	   hazy::vector::FVector<unsigned char> dest_char_vector (dest, samps[0].vector.size);
 
       for (unsigned i = start; i < end; i++) 
       {
-      
         if (initilization_gradient == true)
         {
           initilization_gradient = false;
           hazy::vector::Zero(g_local);//(model->local_gradients[tid]);
         }
-        //Converte the input data into Sample_char;
-       // sample_char.regroup_from_bitweaving(samps[i], num_bits);
-		//unsigned char *data_addr = (unsigned char *)aligned_alloc(64, samps[i].vector.size * sizeof(char)); //new unsigned char[dimension];
-    	//hazy::vector::FVector<unsigned char> *temp_vector = new hazy::vector::FVector<unsigned char>(data_addr, samps[i].vector.size);
-		//hazy::vector::Convert_from_bitweaving (*temp_vector, samps[i].vector, num_bits);       
 
 		hazy::vector::Convert_from_bitweaving(dest_char_vector, samps[i].vector, num_bits);
-		
-/*		
-	   if (i == 1)
-	   { 
-		//printf("\nsample_char.vector.size = %d, samps[1].value = %f, sample_char.value = %f\n", sample_char.vector.size, samps[1].value, sample_char.value);
-		//printf("After loading: addr of ex[1].data is 0x%x, samps[0].vector.size = %d\n", samps[1].vector.values, samps[0].vector.size);
 
-		for (int kk=0; kk < dest_char_vector.size; kk++) //
-		 if ((dest_char_vector)[kk] != 0)
-		   printf("id_%d: char_%x\n", kk, dest_char_vector[kk] );
-		  // break;
-	   }
-*/	   
-
-       fp_type delta;
+        fp_type delta;
         delta = scale * (Dot( x, dest_char_vector) - samps[i].value);
 
         // linear regression
@@ -209,13 +198,10 @@ namespace __executor
           delta
           );        
 
-		//delete sample_char;
-        //At the end of each mini-batch, update the global model...
         if((i - start) % batch_size == batch_size - 1 || i == end - 1)
         {
           // Reset gradient at the beginning of next sample.
           initilization_gradient = true;
-
           hazy::vector::ScaleAndAdd(
             x,       //model->weights,               //
             g_local, //model->local_gradients[tid],  //
@@ -223,12 +209,48 @@ namespace __executor
             );
         }
       }  
-	  //sample_char.release_memory();//delete sample_char;
     }
-    else if (num_bits <= 16)
+    else if (num_bits <= 16)  
     {
-
-      printf("Bits: %d. Not Supported yet...", num_bits);
+		  bool initilization_gradient = true;
+      float b_base = 65536.0; //256.0;  //1.0; // //2^16 or  1
+      model->batch_step_size = params.step_size/((float)batch_size*b_base*b_base); 
+      float scale = -model->batch_step_size; ///(float)params.batch_size;
+		
+		  unsigned short dest[samps[0].vector.size];
+		  hazy::vector::FVector<unsigned short> dest_short_vector (dest, samps[0].vector.size);
+		
+		  for (unsigned i = start; i < end; i++) 
+		  {
+		    if (initilization_gradient == true)
+		    {
+			    initilization_gradient = false;
+			    hazy::vector::Zero(g_local);//(model->local_gradients[tid]);
+		    }
+		
+		  hazy::vector::Convert_from_bitweaving(dest_short_vector, samps[i].vector, num_bits);
+		
+		  fp_type delta;
+		  delta = scale * (Dot( x, dest_short_vector) - 256.0 * samps[i].value); //Align 1.0 to 256.0...
+		
+		  // linear regression
+		  hazy::vector::ScaleAndAdd(
+			g_local,
+			dest_short_vector, //sample_char.vector, //sample.vector,
+			delta
+			);		  
+		
+		  if((i - start) % batch_size == batch_size - 1 || i == end - 1)
+		  {
+			// Reset gradient at the beginning of next sample.
+			initilization_gradient = true;
+			hazy::vector::ScaleAndAdd(
+			  x,	   //model->weights,			   //
+			  g_local, //model->local_gradients[tid],  //
+			  1.0
+			  );
+		  }
+		}  
     }
     else if (num_bits <= 32)
     {
