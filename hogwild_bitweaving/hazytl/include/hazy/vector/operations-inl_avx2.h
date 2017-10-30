@@ -324,8 +324,8 @@ namespace vector {
 			}
 	*/		  
 
-  for (size_t i = num_features_main; i < numFeatures; i++) 
-  {
+	for (size_t i = num_features_main; i < numFeatures; i++) 
+	{
 		uint32_t num_r_f = numFeatures - num_features_main;
 	
 		if (num_r_f <= 64)												 //////remainder <= 64
@@ -396,7 +396,7 @@ namespace vector {
 		  vec_short[i] = result; //return result;
 		}			
 	}
-		}
+}
 	
 	
 	void inline Convert_from_bitweaving(FVector<unsigned char> & dest, FVector<unsigned int> &src, unsigned num_bits) 

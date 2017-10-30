@@ -164,16 +164,15 @@ namespace __executor
     hazy::vector::FVector<fp_type> &g_local = model->local_gradients[tid];
 
 
-    float b_base = samps[0].b_binary_to_value();  //65536.0; //1.0; // //2^16 or  1
-    model->batch_step_size = params.step_size/((float)batch_size*b_base*b_base); 
-    float scale = -model->batch_step_size; ///(float)params.batch_size;
+    //float b_base = samps[0].b_binary_to_value();  //65536.0; //1.0; // //2^16 or  1
+    //model->batch_step_size = params.step_size/((float)batch_size*b_base*b_base); 
 
     if (num_bits <= 8)
     {
       bool initilization_gradient = true;
-      float b_base = 256.0;  //65536.0; //1.0; // //2^16 or  1
-      model->batch_step_size = params.step_size/((float)batch_size*b_base*b_base); 
-      float scale = -model->batch_step_size; ///(float)params.batch_size;
+	  float b_base           = 256.0;  //65536.0; //1.0; // //2^16 or  1
+	  model->batch_step_size = params.step_size/((float)batch_size*b_base); // model->batch_step_size = params.step_size/((float)batch_size*b_base*b_base); 
+	  float scale = -model->batch_step_size; ///(float)params.batch_size;
 	  
 	   unsigned char dest[samps[0].vector.size];
 	   hazy::vector::FVector<unsigned char> dest_char_vector (dest, samps[0].vector.size);
@@ -213,10 +212,10 @@ namespace __executor
     else if (num_bits <= 16)  
     {
 		  bool initilization_gradient = true;
-      float b_base = 65536.0; //256.0;  //1.0; // //2^16 or  1
-      model->batch_step_size = params.step_size/((float)batch_size*b_base*b_base); 
-      float scale = -model->batch_step_size; ///(float)params.batch_size;
-		
+		  float b_base			 = 65536.0;  //; //1.0; // //2^16 or  1
+		  model->batch_step_size = params.step_size/((float)batch_size*b_base); // model->batch_step_size = params.step_size/((float)batch_size*b_base*b_base); 
+		  float scale = -model->batch_step_size; ///(float)params.batch_size;
+
 		  unsigned short dest[samps[0].vector.size];
 		  hazy::vector::FVector<unsigned short> dest_short_vector (dest, samps[0].vector.size);
 		
