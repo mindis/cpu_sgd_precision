@@ -509,7 +509,7 @@ class Hogwild
             norm_x_minus_x_hat
             );
 */
-        printf("epoch_%.2d::::::::: train_time (total, each): with_thread_sync(%.7f, %.7f), without_thread_sync(%.7f, %.7f)  train_loss: %.7f test_loss: %.7f\n", //communicate_time: %.7f
+        printf("epoch=%.2d, total_train_time_with_sync=%.7f, each_train_time_with_sync=%.7f, total_train_time_wo_sync=%.7f, each_train_time_wo_sync=%.7f, train_loss=%.7f, test_loss=%.7f\n", //communicate_time: %.7f
             e,
             train_time_.value,
             epoch_time_.value,

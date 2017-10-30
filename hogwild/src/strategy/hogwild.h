@@ -126,6 +126,7 @@ namespace __executor
 	float b_base = samps[0].b_binary_to_value();  //65536.0; //1.0; // //2^16 or  1
 	//samps
     model->batch_step_size = params.step_size/((float)batch_size*b_base*b_base); 
+  printf("real model->batch_step_size = %f\n", model->batch_step_size);
 
     for (unsigned i = start; i < end; i++) {
       size_t indirect = perm[i];
@@ -496,7 +497,7 @@ class Hogwild
             norm_x_minus_x_hat
             );
 */
-        printf("epoch: %.2d   train_time (total, each): with_thread_sync(%.7f, %.7f), without_thread_sync(%.7f, %.7f)  train_loss: %.7f test_loss: %.7f\n", //communicate_time: %.7f
+        printf("epoch=%.2d, total_train_time_with_sync=%.7f, each_train_time_with_sync=%.7f, total_train_time_wo_sync=%.7f, each_train_time_wo_sync=%.7f, train_loss=%.7f, test_loss=%.7f\n", //communicate_time: %.7f
             e,
             train_time_.value,
             epoch_time_.value,

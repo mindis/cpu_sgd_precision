@@ -63,7 +63,7 @@ class MemoryScanPermuteValues {
       if (swapi == i) 
         continue;
 
-	  fv[i].exchange_sample(fv[swapi]);
+//	  fv[i].exchange_sample(fv[swapi]);
 /*
       //change the value.
       memcpy(         temp,                    (void *) fv[i].vector.values,     samp_size * sizeof(fp_type));

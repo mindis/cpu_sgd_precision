@@ -10,7 +10,7 @@ CPP_LAST = -lpthread
 BIN_DIR = bin
 APP_DIR = app
 
-TEST_AVX2 = ${BIN_DIR}/TEST_AVX
+TEST_AVX2 = ${BIN_DIR}/TEST_AVX #${BIN_DIR}/TEST_FVECTOR
 SPLIT_DATA_TOOL = ${BIN_DIR}/tools/split_data.out
 RANDOM_RESHUFFLE_TOOL = ${BIN_DIR}/tools/random_reshuffle.out
 GENERATE_SPLIT_FILE_TOOL = ${BIN_DIR}/tools/generate_split_file.out
@@ -30,7 +30,7 @@ all: LINREG ${TEST_AVX2}
 #LOGIT SVM #$(SPLIT_DATA_TOOL) ${RANDOM_RESHUFFLE_TOOL} ${GENERATE_SPLIT_FILE_TOOL}
 
 clean: CLEAN-LINREG CLEAN-LOGIT CLEAN-SVM
-	rm -f ${BIN_DIR}/tools/*.out
+	rm -f ${TEST_AVX2}
 
 LINREGS := $(foreach SY,$(STRATEGY), $(foreach SE, $(STEPSIZE), $(foreach RN, $(REPRESENTATION), $(foreach FM, $(FORMAT), $(foreach SD, $(SIMD), $(foreach TB, $(THREADBING), $(BIN_DIR)/LINREG_$(SY)_$(SE)_$(RN)_$(SD)_$(FM)_$(TB) ) ) ) ) ) )
 LOGITS  := $(foreach SY,$(STRATEGY), $(foreach SE, $(STEPSIZE), $(foreach RN, $(REPRESENTATION), $(foreach FM, $(FORMAT), $(foreach SD, $(SIMD), $(foreach TB, $(THREADBING),  $(BIN_DIR)/LOGIT_$(SY)_$(SE)_$(RN)_$(SD)_$(FM)_$(TB) ) ) ) ) ) )
@@ -89,7 +89,7 @@ $(filter %_EXPBACKOFF_STEPSIZES_DENSE %_EXPBACKOFF_STEPSIZES_SPARSE,$(ALLEXECS))
 
 
 
-${TEST_AVX2}: test/test.cpp
+${TEST_AVX2}: test/test_fvector.cpp
 	mkdir -p $(BIN_DIR)
 	${CXX} ${CPP_FLAG} ${CPP_INCLUDE} $< -o $@
 

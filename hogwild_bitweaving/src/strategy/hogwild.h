@@ -104,11 +104,22 @@ namespace __executor
       //fp_type l = Exec::ComputeMetaLoss(samps[i], params);
       if (num_bits <= 8)
       {
-        LinearModelSample_char sample_char(samps[*current_batch + i].vector.size); //Need the dimension information...
-        sample_char.regroup_from_bitweaving(samps[*current_batch + i], num_bits);
-
-        l = Exec::SingleLoss(sample_char, model); // Ignore permutation
-
+      
+        //LinearModelSample_char sample_char(samps[*current_batch + i].vector.size); //Need the dimension information...
+        //sample_char.regroup_from_bitweaving(samps[*current_batch + i], num_bits);
+		//l = Exec::SingleLoss(sample_char, model); // Ignore permutation
+		unsigned char dest[samps[*current_batch + i].vector.size];
+		hazy::vector::FVector<unsigned char> dest_char_vector (dest, samps[*current_batch + i].vector.size);
+		hazy::vector::Convert_from_bitweaving(dest_char_vector, samps[*current_batch + i].vector, num_bits);
+		//l = Exec::SingleLoss(dest_char_vector, model); // Ignore permutation
+		
+		hazy::vector::FVector<fp_type> const &x = model->weights;
+		fp_type dot = hazy::vector::Dot(x, dest_char_vector);
+		
+		// linear regression
+		//printf("dot = %f, s.value = %f\n", dot, s.value);
+		fp_type difference = (dot - samps[*current_batch + i].value)/256.0;
+		l =  0.5 *difference * difference;// 
       }
       loss += l;
     }
@@ -137,7 +148,10 @@ namespace __executor
   	float b_base = samps[0].b_binary_to_value();  //65536.0; //1.0; // //2^16 or  1
 	   //samps
     model->batch_step_size = params.step_size/((float)batch_size*b_base*b_base); 
-
+	   
+	//printf("real model->batch_step_size = %f\n", model->batch_step_size);
+	//printf("samps[0].vector.size = %d\n", samps[0].vector.size);
+	
     //Sample: should be LinearModelSample_int, no other formats are supported....
 	  unsigned num_bits = params.num_bits;
 
@@ -151,29 +165,51 @@ namespace __executor
       bool initilization_gradient = true;
 
       //It will allocate the space for it, but no values...
-      LinearModelSample_char sample_char(samps[0].vector.size); //Need the dimension information...
+	  //LinearModelSample_char sample_char(samps[1].vector.size); //Need the dimension information...
 
       for (unsigned i = start; i < end; i++) 
       {
+      
         if (initilization_gradient == true)
         {
           initilization_gradient = false;
-          hazy::vector::Zero(model->local_gradients[tid]);
+          hazy::vector::Zero(g_local);//(model->local_gradients[tid]);
         }
 
         //Converte the input data into Sample_char;
-        sample_char.regroup_from_bitweaving(samps[i], num_bits);
-        
-        fp_type delta;
-        delta = scale * (Dot( x, sample_char.vector) - sample_char.value);
+       // sample_char.regroup_from_bitweaving(samps[i], num_bits);
+       
+		//unsigned char *data_addr = (unsigned char *)aligned_alloc(64, samps[i].vector.size * sizeof(char)); //new unsigned char[dimension];
+    	//hazy::vector::FVector<unsigned char> *temp_vector = new hazy::vector::FVector<unsigned char>(data_addr, samps[i].vector.size);
+		//hazy::vector::Convert_from_bitweaving (*temp_vector, samps[i].vector, num_bits);       
+		unsigned char dest[samps[i].vector.size];
+		hazy::vector::FVector<unsigned char> dest_char_vector (dest, samps[i].vector.size);
+		hazy::vector::Convert_from_bitweaving(dest_char_vector, samps[i].vector, num_bits);
+		
+/*		
+	   if (i == 1)
+	   { 
+		//printf("\nsample_char.vector.size = %d, samps[1].value = %f, sample_char.value = %f\n", sample_char.vector.size, samps[1].value, sample_char.value);
+		//printf("After loading: addr of ex[1].data is 0x%x, samps[0].vector.size = %d\n", samps[1].vector.values, samps[0].vector.size);
+
+		for (int kk=0; kk < dest_char_vector.size; kk++) //
+		 if ((dest_char_vector)[kk] != 0)
+		   printf("id_%d: char_%x\n", kk, dest_char_vector[kk] );
+		  // break;
+	   }
+*/	   
+
+       fp_type delta;
+        delta = scale * (Dot( x, dest_char_vector) - samps[i].value);
 
         // linear regression
         hazy::vector::ScaleAndAdd(
           g_local,
-          sample_char.vector, //sample.vector,
+          dest_char_vector, //sample_char.vector, //sample.vector,
           delta
           );        
 
+		//delete sample_char;
         //At the end of each mini-batch, update the global model...
         if((i - start) % batch_size == batch_size - 1 || i == end - 1)
         {
@@ -186,8 +222,8 @@ namespace __executor
             1.0
             );
         }
-        
       }  
+	  //sample_char.release_memory();//delete sample_char;
     }
     else if (num_bits <= 16)
     {
@@ -387,7 +423,7 @@ class Hogwild
         hazy::scan::TSVFileScanner scan(szTrainFile);
         Loader::LoadSamples(scan, train_samps, dimension);
       }
-
+/*
       printDebug(rank_, "Loading test samples from '%s'", szTestFile);
       if (matlab_tsv) {
         hazy::scan::MatlabTSVFileScanner scantest(szTestFile);
@@ -396,6 +432,8 @@ class Hogwild
         hazy::scan::TSVFileScanner scantest(szTestFile);
         Loader::LoadSamples(scantest, test_samps, dimension);
       }
+*/
+test_samps = train_samps;
 
       //hazy::scan::TSVFileScanner scan_metadata(szMetadataFile);
       //Loader::LoadSamples(scan_metadata, metadata, dimension);
@@ -404,7 +442,9 @@ class Hogwild
       printDebug(rank_, "Loaded %lu test samples", test_samps.size);
 
       b_normalize(train_samps);
+/*
       b_normalize(test_samps);
+*/
       //printDebug(rank_, "After b normalization. \n");
 
       params_->ndim = dimension;
@@ -420,10 +460,10 @@ class Hogwild
 
       //trainScan_ = new hazy::scan::MemoryScan< Sample >(train_samps);
       //testScan_ = new hazy::scan::MemoryScan< Sample >(test_samps);
-      //trainScan_ = new hazy::scan::MemoryScanNoPermutation< Sample >(train_samps);
-      //testScan_ = new hazy::scan::MemoryScanNoPermutation< Sample >(test_samps);
-      trainScan_  = new hazy::scan::MemoryScanPermuteValues< Sample >(train_samps);
-      testScan_   = new hazy::scan::MemoryScanPermuteValues< Sample >(test_samps);
+      trainScan_ = new hazy::scan::MemoryScanNoPermutation< Sample >(train_samps);
+      testScan_ = new hazy::scan::MemoryScanNoPermutation< Sample >(test_samps);
+      //trainScan_  = new hazy::scan::MemoryScanPermuteValues< Sample >(train_samps);
+      //testScan_   = new hazy::scan::MemoryScanPermuteValues< Sample >(test_samps);
 
       // Get max number of samples on any worker
       params_->maxSamplesProc = train_samps.size;
@@ -570,10 +610,10 @@ class Hogwild
 
     //hazy::scan::MemoryScan< Sample > *trainScan_;
     //hazy::scan::MemoryScan< Sample > *testScan_;
-    //hazy::scan::MemoryScanNoPermutation< Sample > *trainScan_;
-    //hazy::scan::MemoryScanNoPermutation< Sample > *testScan_;
-    hazy::scan::MemoryScanPermuteValues< Sample > *trainScan_;
-    hazy::scan::MemoryScanPermuteValues< Sample > *testScan_;    
+    hazy::scan::MemoryScanNoPermutation< Sample > *trainScan_;
+    hazy::scan::MemoryScanNoPermutation< Sample > *testScan_;
+    //hazy::scan::MemoryScanPermuteValues< Sample > *trainScan_;
+    //hazy::scan::MemoryScanPermuteValues< Sample > *testScan_;    
 };
 
 #endif
