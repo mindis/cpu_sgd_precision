@@ -151,13 +151,13 @@ void test_char_Convert_from_bitweaving()
 
     hazy::vector::FVector<unsigned char> dest_char_vector (dest, NUM_VALUES);
 
-    hazy::vector::Convert_from_bitweaving(dest_char_vector, src_int_vector, 8);
+    hazy::vector::Convert_from_bitweaving(dest_char_vector, src_int_vector, 6);
 
     //    sample_char.regroup_from_bitweaving(samps[i], num_bits);
 
 
     for (int i = 0; i < 32; i++)
-        if ( ( (data[i]>>24) ) != dest_char_vector[i])
+        if ( ( (data[i]>>26)<<2 ) != dest_char_vector[i])
         {
             printf("Error::::::%d: src_0x%8x, dest_0x%2x\n", i, data[i], dest_char_vector[i]);
             return;
