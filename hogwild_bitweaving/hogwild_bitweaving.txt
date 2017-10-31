@@ -1,0 +1,993 @@
+Run all the the: Hogwild with 27 threads... Step size: 0.01085
+1-bit
+Use int: BitWeaving.......
+Using AVX!.......
+0 - Loading training samples from '../../data/rcv1_train.tsv'
+0 - Loaded 20242 training samples
+0 - Loaded 20242 test samples
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+0 - Run threadpool with 27 threads
+this->params_->step_size = 0.010850000
+epoch: 00   train_time (total, each): with_thread_sync(0.0000000, 0.0000000), without_thread_sync(0.0000000, 0.0000000)  train_loss: 0.2591394 test_loss: 0.2591394
+epoch: 01   train_time (total, each): with_thread_sync(0.1455647, 0.1455645), without_thread_sync(0.0953614, 0.0953614)  train_loss: 0.2383248 test_loss: 0.2383248
+=====print the profiling result==========
+Instructions-retired 12455103914
+Active-cycles 5830974329
+IPC 2.13602
+UOPS_ISSUED.ANY:  10414857
+DTLB_LOAD_MISSES:  15804890
+OPS_ISSUED:  735500
+DTLB_LOAD_MISSES:  67018255
+BytesReadFromMC: 672588480
+BytesWrittenToMC: 30296832
+epoch: 02   train_time (total, each): with_thread_sync(0.2800524, 0.1344714), without_thread_sync(0.1890539, 0.0936925)  train_loss: 0.2248678 test_loss: 0.2248678
+epoch: 03   train_time (total, each): with_thread_sync(0.4176469, 0.1375943), without_thread_sync(0.2856675, 0.0966135)  train_loss: 0.2149436 test_loss: 0.2149436
+epoch: 04   train_time (total, each): with_thread_sync(0.5501100, 0.1324630), without_thread_sync(0.3767483, 0.0910808)  train_loss: 0.2073335 test_loss: 0.2073335
+epoch: 05   train_time (total, each): with_thread_sync(0.6794930, 0.1293829), without_thread_sync(0.4707769, 0.0940286)  train_loss: 0.2013597 test_loss: 0.2013597
+epoch: 06   train_time (total, each): with_thread_sync(0.8114230, 0.1319299), without_thread_sync(0.5639952, 0.0932183)  train_loss: 0.1965852 test_loss: 0.1965852
+epoch: 07   train_time (total, each): with_thread_sync(0.9461814, 0.1347583), without_thread_sync(0.6557781, 0.0917829)  train_loss: 0.1927126 test_loss: 0.1927126
+epoch: 08   train_time (total, each): with_thread_sync(1.0896722, 0.1434907), without_thread_sync(0.7471787, 0.0914006)  train_loss: 0.1895412 test_loss: 0.1895412
+epoch: 09   train_time (total, each): with_thread_sync(1.2201682, 0.1304958), without_thread_sync(0.8405772, 0.0933985)  train_loss: 0.1869224 test_loss: 0.1869224
+epoch: 10   train_time (total, each): with_thread_sync(1.3718388, 0.1516705), without_thread_sync(0.9339254, 0.0933482)  train_loss: 0.1847442 test_loss: 0.1847442
+epoch: 11   train_time (total, each): with_thread_sync(1.5034344, 0.1315954), without_thread_sync(1.0285823, 0.0946569)  train_loss: 0.1829212 test_loss: 0.1829212
+epoch: 12   train_time (total, each): with_thread_sync(1.6255372, 0.1221026), without_thread_sync(1.1193633, 0.0907810)  train_loss: 0.1813884 test_loss: 0.1813884
+epoch: 13   train_time (total, each): with_thread_sync(1.7592684, 0.1337311), without_thread_sync(1.2141685, 0.0948052)  train_loss: 0.1800932 test_loss: 0.1800932
+epoch: 14   train_time (total, each): with_thread_sync(1.8789044, 0.1196358), without_thread_sync(1.3084369, 0.0942684)  train_loss: 0.1789960 test_loss: 0.1789960
+epoch: 15   train_time (total, each): with_thread_sync(2.0107624, 0.1318579), without_thread_sync(1.4031075, 0.0946706)  train_loss: 0.1780624 test_loss: 0.1780624
+epoch: 16   train_time (total, each): with_thread_sync(2.1447652, 0.1340026), without_thread_sync(1.4989224, 0.0958149)  train_loss: 0.1772672 test_loss: 0.1772672
+epoch: 17   train_time (total, each): with_thread_sync(2.2667399, 0.1219745), without_thread_sync(1.5897752, 0.0908528)  train_loss: 0.1765882 test_loss: 0.1765882
+epoch: 18   train_time (total, each): with_thread_sync(2.3995332, 0.1327932), without_thread_sync(1.6838304, 0.0940552)  train_loss: 0.1760047 test_loss: 0.1760047
+epoch: 19   train_time (total, each): with_thread_sync(2.5333050, 0.1337716), without_thread_sync(1.7794159, 0.0955855)  train_loss: 0.1755046 test_loss: 0.1755046
+epoch: 20   train_time (total, each): with_thread_sync(2.6780977, 0.1447926), without_thread_sync(1.8721906, 0.0927748)  train_loss: 0.1750745 test_loss: 0.1750745
+epoch: 21   train_time (total, each): with_thread_sync(2.8100737, 0.1319759), without_thread_sync(1.9673087, 0.0951180)  train_loss: 0.1747058 test_loss: 0.1747058
+epoch: 22   train_time (total, each): with_thread_sync(2.9330579, 0.1229840), without_thread_sync(2.0617530, 0.0944444)  train_loss: 0.1743879 test_loss: 0.1743879
+epoch: 23   train_time (total, each): with_thread_sync(3.0548170, 0.1217590), without_thread_sync(2.1555746, 0.0938216)  train_loss: 0.1741146 test_loss: 0.1741146
+epoch: 24   train_time (total, each): with_thread_sync(3.1887849, 0.1339678), without_thread_sync(2.2494922, 0.0939176)  train_loss: 0.1738778 test_loss: 0.1738778
+epoch: 25   train_time (total, each): with_thread_sync(3.3232702, 0.1344851), without_thread_sync(2.3456319, 0.0961397)  train_loss: 0.1736730 test_loss: 0.1736730
+epoch: 26   train_time (total, each): with_thread_sync(3.4422276, 0.1189572), without_thread_sync(2.4348278, 0.0891959)  train_loss: 0.1734965 test_loss: 0.1734965
+epoch: 27   train_time (total, each): with_thread_sync(3.5658136, 0.1235859), without_thread_sync(2.5266816, 0.0918538)  train_loss: 0.1733438 test_loss: 0.1733438
+epoch: 28   train_time (total, each): with_thread_sync(3.6986112, 0.1327975), without_thread_sync(2.6210066, 0.0943250)  train_loss: 0.1732119 test_loss: 0.1732119
+epoch: 29   train_time (total, each): with_thread_sync(3.8495384, 0.1509270), without_thread_sync(2.7154328, 0.0944262)  train_loss: 0.1730973 test_loss: 0.1730973
+epoch: 30   train_time (total, each): with_thread_sync(3.9829845, 0.1334278), without_thread_sync(2.8095416, 0.0941088)  train_loss: 0.1729985 test_loss: 0.1729985
+epoch: 31   train_time (total, each): with_thread_sync(4.1179054, 0.1349208), without_thread_sync(2.9042696, 0.0947280)  train_loss: 0.1729127 test_loss: 0.1729127
+epoch: 32   train_time (total, each): with_thread_sync(4.2510161, 0.1331105), without_thread_sync(2.9964344, 0.0921649)  train_loss: 0.1728387 test_loss: 0.1728387
+epoch: 33   train_time (total, each): with_thread_sync(4.3851926, 0.1341764), without_thread_sync(3.0905732, 0.0941388)  train_loss: 0.1727743 test_loss: 0.1727743
+epoch: 34   train_time (total, each): with_thread_sync(4.5193104, 0.1341176), without_thread_sync(3.1858842, 0.0953109)  train_loss: 0.1727183 test_loss: 0.1727183
+epoch: 35   train_time (total, each): with_thread_sync(4.6392678, 0.1199573), without_thread_sync(3.2769702, 0.0910860)  train_loss: 0.1726698 test_loss: 0.1726698
+epoch: 36   train_time (total, each): with_thread_sync(4.7697596, 0.1304917), without_thread_sync(3.3699593, 0.0929891)  train_loss: 0.1726278 test_loss: 0.1726278
+epoch: 37   train_time (total, each): with_thread_sync(4.9035118, 0.1337520), without_thread_sync(3.4650820, 0.0951227)  train_loss: 0.1725914 test_loss: 0.1725914
+epoch: 38   train_time (total, each): with_thread_sync(5.0350955, 0.1315836), without_thread_sync(3.5578062, 0.0927242)  train_loss: 0.1725593 test_loss: 0.1725593
+epoch: 39   train_time (total, each): with_thread_sync(5.1684968, 0.1334011), without_thread_sync(3.6501843, 0.0923781)  train_loss: 0.1725316 test_loss: 0.1725316
+epoch: 40   train_time (total, each): with_thread_sync(5.3118697, 0.1433728), without_thread_sync(3.7458115, 0.0956272)  train_loss: 0.1725079 test_loss: 0.1725079
+0.132796
+Finished!
+2-bit
+Use int: BitWeaving.......
+Using AVX!.......
+0 - Loading training samples from '../../data/rcv1_train.tsv'
+0 - Loaded 20242 training samples
+0 - Loaded 20242 test samples
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+0 - Run threadpool with 27 threads
+this->params_->step_size = 0.010850000
+epoch: 00   train_time (total, each): with_thread_sync(0.0000000, 0.0000000), without_thread_sync(0.0000000, 0.0000000)  train_loss: 0.2591394 test_loss: 0.2591394
+epoch: 01   train_time (total, each): with_thread_sync(0.1396409, 0.1396407), without_thread_sync(0.0990138, 0.0990138)  train_loss: 0.1305484 test_loss: 0.1305484
+=====print the profiling result==========
+Instructions-retired 12800393034
+Active-cycles 5932351025
+IPC 2.15773
+UOPS_ISSUED.ANY:  13236018
+DTLB_LOAD_MISSES:  14424657
+OPS_ISSUED:  701580
+DTLB_LOAD_MISSES:  64918649
+BytesReadFromMC: 854079232
+BytesWrittenToMC: 31175680
+epoch: 02   train_time (total, each): with_thread_sync(0.2876963, 0.1480551), without_thread_sync(0.1964907, 0.0974769)  train_loss: 0.0991376 test_loss: 0.0991376
+epoch: 03   train_time (total, each): with_thread_sync(0.4213416, 0.1336451), without_thread_sync(0.2943213, 0.0978306)  train_loss: 0.0821925 test_loss: 0.0821925
+epoch: 04   train_time (total, each): with_thread_sync(0.5463325, 0.1249907), without_thread_sync(0.3916201, 0.0972988)  train_loss: 0.0713066 test_loss: 0.0713066
+epoch: 05   train_time (total, each): with_thread_sync(0.6958463, 0.1495137), without_thread_sync(0.4915033, 0.0998832)  train_loss: 0.0636145 test_loss: 0.0636145
+epoch: 06   train_time (total, each): with_thread_sync(0.8204248, 0.1245783), without_thread_sync(0.5841093, 0.0926060)  train_loss: 0.0578083 test_loss: 0.0578083
+epoch: 07   train_time (total, each): with_thread_sync(0.9465534, 0.1261283), without_thread_sync(0.6809664, 0.0968571)  train_loss: 0.0532762 test_loss: 0.0532762
+epoch: 08   train_time (total, each): with_thread_sync(1.0716342, 0.1250806), without_thread_sync(0.7747921, 0.0938257)  train_loss: 0.0496335 test_loss: 0.0496335
+epoch: 09   train_time (total, each): with_thread_sync(1.1970753, 0.1254409), without_thread_sync(0.8710326, 0.0962404)  train_loss: 0.0466241 test_loss: 0.0466241
+epoch: 10   train_time (total, each): with_thread_sync(1.3322603, 0.1351848), without_thread_sync(0.9680099, 0.0969773)  train_loss: 0.0440987 test_loss: 0.0440987
+epoch: 11   train_time (total, each): with_thread_sync(1.4680137, 0.1357533), without_thread_sync(1.0640269, 0.0960170)  train_loss: 0.0419493 test_loss: 0.0419493
+epoch: 12   train_time (total, each): with_thread_sync(1.5943234, 0.1263094), without_thread_sync(1.1617040, 0.0976771)  train_loss: 0.0400981 test_loss: 0.0400981
+epoch: 13   train_time (total, each): with_thread_sync(1.7203735, 0.1260499), without_thread_sync(1.2553997, 0.0936957)  train_loss: 0.0384843 test_loss: 0.0384843
+epoch: 14   train_time (total, each): with_thread_sync(1.8558380, 0.1354644), without_thread_sync(1.3525221, 0.0971223)  train_loss: 0.0370635 test_loss: 0.0370635
+epoch: 15   train_time (total, each): with_thread_sync(1.9940184, 0.1381637), without_thread_sync(1.4478592, 0.0953371)  train_loss: 0.0357885 test_loss: 0.0357885
+epoch: 16   train_time (total, each): with_thread_sync(2.1292705, 0.1352519), without_thread_sync(1.5426721, 0.0948129)  train_loss: 0.0346690 test_loss: 0.0346690
+epoch: 17   train_time (total, each): with_thread_sync(2.2665399, 0.1372693), without_thread_sync(1.6404561, 0.0977840)  train_loss: 0.0336638 test_loss: 0.0336638
+epoch: 18   train_time (total, each): with_thread_sync(2.3918957, 0.1253555), without_thread_sync(1.7357328, 0.0952768)  train_loss: 0.0327405 test_loss: 0.0327405
+epoch: 19   train_time (total, each): with_thread_sync(2.5399025, 0.1480067), without_thread_sync(1.8339482, 0.0982154)  train_loss: 0.0319066 test_loss: 0.0319066
+epoch: 20   train_time (total, each): with_thread_sync(2.6656507, 0.1257479), without_thread_sync(1.9310482, 0.0971001)  train_loss: 0.0311510 test_loss: 0.0311510
+epoch: 21   train_time (total, each): with_thread_sync(2.7940324, 0.1283815), without_thread_sync(2.0275841, 0.0965359)  train_loss: 0.0304563 test_loss: 0.0304563
+epoch: 22   train_time (total, each): with_thread_sync(2.9191802, 0.1251476), without_thread_sync(2.1242381, 0.0966540)  train_loss: 0.0298119 test_loss: 0.0298119
+epoch: 23   train_time (total, each): with_thread_sync(3.0541901, 0.1350098), without_thread_sync(2.2196564, 0.0954184)  train_loss: 0.0292264 test_loss: 0.0292264
+epoch: 24   train_time (total, each): with_thread_sync(3.2019578, 0.1477676), without_thread_sync(2.3155159, 0.0958595)  train_loss: 0.0286778 test_loss: 0.0286778
+epoch: 25   train_time (total, each): with_thread_sync(3.3391158, 0.1371577), without_thread_sync(2.4129063, 0.0973904)  train_loss: 0.0281740 test_loss: 0.0281740
+epoch: 26   train_time (total, each): with_thread_sync(3.4737035, 0.1345876), without_thread_sync(2.5082968, 0.0953905)  train_loss: 0.0276978 test_loss: 0.0276978
+epoch: 27   train_time (total, each): with_thread_sync(3.5992572, 0.1255535), without_thread_sync(2.6052423, 0.0969455)  train_loss: 0.0272573 test_loss: 0.0272573
+epoch: 28   train_time (total, each): with_thread_sync(3.7256320, 0.1263747), without_thread_sync(2.7004981, 0.0952558)  train_loss: 0.0268530 test_loss: 0.0268530
+epoch: 29   train_time (total, each): with_thread_sync(3.8657647, 0.1401325), without_thread_sync(2.7968890, 0.0963908)  train_loss: 0.0264571 test_loss: 0.0264571
+epoch: 30   train_time (total, each): with_thread_sync(3.9922329, 0.1264681), without_thread_sync(2.8898568, 0.0929678)  train_loss: 0.0260934 test_loss: 0.0260934
+epoch: 31   train_time (total, each): with_thread_sync(4.1170370, 0.1248039), without_thread_sync(2.9865940, 0.0967371)  train_loss: 0.0257488 test_loss: 0.0257488
+epoch: 32   train_time (total, each): with_thread_sync(4.2432459, 0.1262086), without_thread_sync(3.0833840, 0.0967901)  train_loss: 0.0254283 test_loss: 0.0254283
+epoch: 33   train_time (total, each): with_thread_sync(4.3798353, 0.1365892), without_thread_sync(3.1800727, 0.0966887)  train_loss: 0.0251259 test_loss: 0.0251259
+epoch: 34   train_time (total, each): with_thread_sync(4.5167381, 0.1369026), without_thread_sync(3.2763134, 0.0962407)  train_loss: 0.0248364 test_loss: 0.0248364
+epoch: 35   train_time (total, each): with_thread_sync(4.6421025, 0.1253641), without_thread_sync(3.3716661, 0.0953527)  train_loss: 0.0245603 test_loss: 0.0245603
+epoch: 36   train_time (total, each): with_thread_sync(4.7689322, 0.1268295), without_thread_sync(3.4658458, 0.0941796)  train_loss: 0.0243033 test_loss: 0.0243033
+epoch: 37   train_time (total, each): with_thread_sync(4.8938903, 0.1249579), without_thread_sync(3.5627925, 0.0969468)  train_loss: 0.0240554 test_loss: 0.0240554
+epoch: 38   train_time (total, each): with_thread_sync(5.0306935, 0.1368028), without_thread_sync(3.6594905, 0.0966980)  train_loss: 0.0238222 test_loss: 0.0238222
+epoch: 39   train_time (total, each): with_thread_sync(5.1578260, 0.1271324), without_thread_sync(3.7564464, 0.0969559)  train_loss: 0.0236016 test_loss: 0.0236016
+epoch: 40   train_time (total, each): with_thread_sync(5.3062346, 0.1484085), without_thread_sync(3.8556727, 0.0992263)  train_loss: 0.0233873 test_loss: 0.0233873
+0.132655
+Finished!
+3-bit
+Use int: BitWeaving.......
+Using AVX!.......
+0 - Loading training samples from '../../data/rcv1_train.tsv'
+0 - Loaded 20242 training samples
+0 - Loaded 20242 test samples
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+0 - Run threadpool with 27 threads
+this->params_->step_size = 0.010850000
+epoch: 00   train_time (total, each): with_thread_sync(0.0000000, 0.0000000), without_thread_sync(0.0000000, 0.0000000)  train_loss: 0.2591394 test_loss: 0.2591394
+epoch: 01   train_time (total, each): with_thread_sync(0.1289808, 0.1289806), without_thread_sync(0.1002990, 0.1002990)  train_loss: 0.0418539 test_loss: 0.0418539
+=====print the profiling result==========
+Instructions-retired 13106767677
+Active-cycles 6206525405
+IPC 2.11177
+UOPS_ISSUED.ANY:  16150713
+DTLB_LOAD_MISSES:  13191574
+OPS_ISSUED:  612080
+DTLB_LOAD_MISSES:  65588939
+BytesReadFromMC: 1043662336
+BytesWrittenToMC: 34239104
+epoch: 02   train_time (total, each): with_thread_sync(0.2587533, 0.1297722), without_thread_sync(0.1995018, 0.0992028)  train_loss: 0.0304774 test_loss: 0.0304774
+epoch: 03   train_time (total, each): with_thread_sync(0.3878254, 0.1290720), without_thread_sync(0.2985928, 0.0990910)  train_loss: 0.0247284 test_loss: 0.0247284
+epoch: 04   train_time (total, each): with_thread_sync(0.5267415, 0.1389159), without_thread_sync(0.3951535, 0.0965606)  train_loss: 0.0210567 test_loss: 0.0210567
+epoch: 05   train_time (total, each): with_thread_sync(0.6569351, 0.1301934), without_thread_sync(0.4943478, 0.0991943)  train_loss: 0.0184686 test_loss: 0.0184686
+epoch: 06   train_time (total, each): with_thread_sync(0.7873977, 0.1304624), without_thread_sync(0.5906676, 0.0963198)  train_loss: 0.0165142 test_loss: 0.0165142
+epoch: 07   train_time (total, each): with_thread_sync(0.9162873, 0.1288895), without_thread_sync(0.6876221, 0.0969545)  train_loss: 0.0149990 test_loss: 0.0149990
+epoch: 08   train_time (total, each): with_thread_sync(1.0466517, 0.1303642), without_thread_sync(0.7871374, 0.0995153)  train_loss: 0.0137235 test_loss: 0.0137235
+epoch: 09   train_time (total, each): with_thread_sync(1.1853378, 0.1386860), without_thread_sync(0.8835700, 0.0964326)  train_loss: 0.0127403 test_loss: 0.0127403
+epoch: 10   train_time (total, each): with_thread_sync(1.3141865, 0.1288485), without_thread_sync(0.9810515, 0.0974815)  train_loss: 0.0118567 test_loss: 0.0118567
+epoch: 11   train_time (total, each): with_thread_sync(1.4654140, 0.1512274), without_thread_sync(1.0831220, 0.1020705)  train_loss: 0.0111156 test_loss: 0.0111156
+epoch: 12   train_time (total, each): with_thread_sync(1.6049573, 0.1395431), without_thread_sync(1.1820558, 0.0989338)  train_loss: 0.0105052 test_loss: 0.0105052
+epoch: 13   train_time (total, each): with_thread_sync(1.7348207, 0.1298633), without_thread_sync(1.2812997, 0.0992439)  train_loss: 0.0099367 test_loss: 0.0099367
+epoch: 14   train_time (total, each): with_thread_sync(1.8865990, 0.1517781), without_thread_sync(1.3819897, 0.1006900)  train_loss: 0.0094399 test_loss: 0.0094399
+epoch: 15   train_time (total, each): with_thread_sync(2.0146172, 0.1280181), without_thread_sync(1.4808077, 0.0988181)  train_loss: 0.0090174 test_loss: 0.0090174
+epoch: 16   train_time (total, each): with_thread_sync(2.1566751, 0.1420577), without_thread_sync(1.5818323, 0.1010245)  train_loss: 0.0086270 test_loss: 0.0086270
+epoch: 17   train_time (total, each): with_thread_sync(2.2873925, 0.1307171), without_thread_sync(1.6800322, 0.0982000)  train_loss: 0.0082739 test_loss: 0.0082739
+epoch: 18   train_time (total, each): with_thread_sync(2.4161196, 0.1287269), without_thread_sync(1.7795837, 0.0995515)  train_loss: 0.0079580 test_loss: 0.0079580
+epoch: 19   train_time (total, each): with_thread_sync(2.5453360, 0.1292162), without_thread_sync(1.8787797, 0.0991959)  train_loss: 0.0076878 test_loss: 0.0076878
+epoch: 20   train_time (total, each): with_thread_sync(2.6842420, 0.1389058), without_thread_sync(1.9771455, 0.0983659)  train_loss: 0.0074033 test_loss: 0.0074033
+epoch: 21   train_time (total, each): with_thread_sync(2.8144778, 0.1302356), without_thread_sync(2.0751567, 0.0980112)  train_loss: 0.0071662 test_loss: 0.0071662
+epoch: 22   train_time (total, each): with_thread_sync(2.9815614, 0.1670835), without_thread_sync(2.1748574, 0.0997007)  train_loss: 0.0069429 test_loss: 0.0069429
+epoch: 23   train_time (total, each): with_thread_sync(3.1204630, 0.1389014), without_thread_sync(2.2741312, 0.0992739)  train_loss: 0.0067421 test_loss: 0.0067421
+epoch: 24   train_time (total, each): with_thread_sync(3.2523340, 0.1318708), without_thread_sync(2.3739661, 0.0998349)  train_loss: 0.0065595 test_loss: 0.0065595
+epoch: 25   train_time (total, each): with_thread_sync(3.3826963, 0.1303622), without_thread_sync(2.4734517, 0.0994855)  train_loss: 0.0063690 test_loss: 0.0063690
+epoch: 26   train_time (total, each): with_thread_sync(3.5246808, 0.1419844), without_thread_sync(2.5732879, 0.0998363)  train_loss: 0.0061910 test_loss: 0.0061910
+epoch: 27   train_time (total, each): with_thread_sync(3.6542706, 0.1295896), without_thread_sync(2.6727614, 0.0994735)  train_loss: 0.0060403 test_loss: 0.0060403
+epoch: 28   train_time (total, each): with_thread_sync(3.7949270, 0.1406563), without_thread_sync(2.7685442, 0.0957827)  train_loss: 0.0058762 test_loss: 0.0058762
+epoch: 29   train_time (total, each): with_thread_sync(3.9340963, 0.1391691), without_thread_sync(2.8660680, 0.0975238)  train_loss: 0.0057378 test_loss: 0.0057378
+epoch: 30   train_time (total, each): with_thread_sync(4.0609352, 0.1268388), without_thread_sync(2.9649206, 0.0988526)  train_loss: 0.0056237 test_loss: 0.0056237
+epoch: 31   train_time (total, each): with_thread_sync(4.1907724, 0.1298371), without_thread_sync(3.0640797, 0.0991591)  train_loss: 0.0055006 test_loss: 0.0055006
+epoch: 32   train_time (total, each): with_thread_sync(4.3191572, 0.1283846), without_thread_sync(3.1631682, 0.0990886)  train_loss: 0.0053666 test_loss: 0.0053666
+epoch: 33   train_time (total, each): with_thread_sync(4.4492539, 0.1300966), without_thread_sync(3.2615652, 0.0983969)  train_loss: 0.0052735 test_loss: 0.0052735
+epoch: 34   train_time (total, each): with_thread_sync(4.5783560, 0.1291019), without_thread_sync(3.3590781, 0.0975130)  train_loss: 0.0051639 test_loss: 0.0051639
+epoch: 35   train_time (total, each): with_thread_sync(4.7174989, 0.1391427), without_thread_sync(3.4578517, 0.0987736)  train_loss: 0.0050530 test_loss: 0.0050530
+epoch: 36   train_time (total, each): with_thread_sync(4.8691827, 0.1516837), without_thread_sync(3.5592471, 0.1013954)  train_loss: 0.0049706 test_loss: 0.0049706
+epoch: 37   train_time (total, each): with_thread_sync(4.9986127, 0.1294297), without_thread_sync(3.6590056, 0.0997585)  train_loss: 0.0048871 test_loss: 0.0048871
+epoch: 38   train_time (total, each): with_thread_sync(5.1288635, 0.1302507), without_thread_sync(3.7561889, 0.0971833)  train_loss: 0.0047798 test_loss: 0.0047798
+epoch: 39   train_time (total, each): with_thread_sync(5.2685397, 0.1396761), without_thread_sync(3.8546904, 0.0985015)  train_loss: 0.0047180 test_loss: 0.0047180
+epoch: 40   train_time (total, each): with_thread_sync(5.3968186, 0.1282787), without_thread_sync(3.9540581, 0.0993678)  train_loss: 0.0046508 test_loss: 0.0046508
+0.134920
+Finished!
+4-bit
+Use int: BitWeaving.......
+Using AVX!.......
+0 - Loading training samples from '../../data/rcv1_train.tsv'
+0 - Loaded 20242 training samples
+0 - Loaded 20242 test samples
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+0 - Run threadpool with 27 threads
+this->params_->step_size = 0.010850000
+epoch: 00   train_time (total, each): with_thread_sync(0.0000000, 0.0000000), without_thread_sync(0.0000000, 0.0000000)  train_loss: 0.2591394 test_loss: 0.2591394
+epoch: 01   train_time (total, each): with_thread_sync(0.1349859, 0.1349857), without_thread_sync(0.1015986, 0.1015986)  train_loss: 0.0243192 test_loss: 0.0243192
+=====print the profiling result==========
+Instructions-retired 13399741740
+Active-cycles 6366076380
+IPC 2.10487
+UOPS_ISSUED.ANY:  19829856
+DTLB_LOAD_MISSES:  11471172
+OPS_ISSUED:  541047
+DTLB_LOAD_MISSES:  65341996
+BytesReadFromMC: 1283026560
+BytesWrittenToMC: 34250240
+epoch: 02   train_time (total, each): with_thread_sync(0.2910864, 0.1561003), without_thread_sync(0.2038496, 0.1022510)  train_loss: 0.0186887 test_loss: 0.0186887
+epoch: 03   train_time (total, each): with_thread_sync(0.4348335, 0.1437468), without_thread_sync(0.3044334, 0.1005839)  train_loss: 0.0153983 test_loss: 0.0153983
+epoch: 04   train_time (total, each): with_thread_sync(0.5794344, 0.1446008), without_thread_sync(0.4064283, 0.1019948)  train_loss: 0.0133571 test_loss: 0.0133571
+epoch: 05   train_time (total, each): with_thread_sync(0.7239159, 0.1444812), without_thread_sync(0.5078760, 0.1014477)  train_loss: 0.0119146 test_loss: 0.0119146
+epoch: 06   train_time (total, each): with_thread_sync(0.8591270, 0.1352109), without_thread_sync(0.6099628, 0.1020869)  train_loss: 0.0107138 test_loss: 0.0107138
+epoch: 07   train_time (total, each): with_thread_sync(0.9934453, 0.1343181), without_thread_sync(0.7118486, 0.1018858)  train_loss: 0.0099516 test_loss: 0.0099516
+epoch: 08   train_time (total, each): with_thread_sync(1.1283224, 0.1348770), without_thread_sync(0.8145725, 0.1027239)  train_loss: 0.0090457 test_loss: 0.0090457
+epoch: 09   train_time (total, each): with_thread_sync(1.2625924, 0.1342698), without_thread_sync(0.9146795, 0.1001069)  train_loss: 0.0085093 test_loss: 0.0085093
+epoch: 10   train_time (total, each): with_thread_sync(1.3978217, 0.1352292), without_thread_sync(1.0162439, 0.1015644)  train_loss: 0.0079538 test_loss: 0.0079538
+epoch: 11   train_time (total, each): with_thread_sync(1.5330495, 0.1352277), without_thread_sync(1.1182049, 0.1019610)  train_loss: 0.0075123 test_loss: 0.0075123
+epoch: 12   train_time (total, each): with_thread_sync(1.6683644, 0.1353147), without_thread_sync(1.2219771, 0.1037722)  train_loss: 0.0071506 test_loss: 0.0071506
+epoch: 13   train_time (total, each): with_thread_sync(1.8168591, 0.1484946), without_thread_sync(1.3242778, 0.1023007)  train_loss: 0.0067511 test_loss: 0.0067511
+epoch: 14   train_time (total, each): with_thread_sync(1.9596415, 0.1427823), without_thread_sync(1.4245621, 0.1002843)  train_loss: 0.0065521 test_loss: 0.0065521
+epoch: 15   train_time (total, each): with_thread_sync(2.0917011, 0.1320595), without_thread_sync(1.5257772, 0.1012151)  train_loss: 0.0061912 test_loss: 0.0061912
+epoch: 16   train_time (total, each): with_thread_sync(2.2246558, 0.1329545), without_thread_sync(1.6272863, 0.1015091)  train_loss: 0.0059692 test_loss: 0.0059692
+epoch: 17   train_time (total, each): with_thread_sync(2.3587366, 0.1340806), without_thread_sync(1.7255301, 0.0982439)  train_loss: 0.0057441 test_loss: 0.0057441
+epoch: 18   train_time (total, each): with_thread_sync(2.4990300, 0.1402932), without_thread_sync(1.8296244, 0.1040943)  train_loss: 0.0055696 test_loss: 0.0055696
+epoch: 19   train_time (total, each): with_thread_sync(2.6321013, 0.1330712), without_thread_sync(1.9327873, 0.1031628)  train_loss: 0.0053582 test_loss: 0.0053582
+epoch: 20   train_time (total, each): with_thread_sync(2.7764021, 0.1443007), without_thread_sync(2.0365472, 0.1037599)  train_loss: 0.0051716 test_loss: 0.0051716
+epoch: 21   train_time (total, each): with_thread_sync(2.9114025, 0.1350002), without_thread_sync(2.1412983, 0.1047512)  train_loss: 0.0050206 test_loss: 0.0050206
+epoch: 22   train_time (total, each): with_thread_sync(3.0469758, 0.1355732), without_thread_sync(2.2458356, 0.1045372)  train_loss: 0.0049292 test_loss: 0.0049292
+epoch: 23   train_time (total, each): with_thread_sync(3.1826901, 0.1357142), without_thread_sync(2.3473629, 0.1015273)  train_loss: 0.0047346 test_loss: 0.0047346
+epoch: 24   train_time (total, each): with_thread_sync(3.3230488, 0.1403586), without_thread_sync(2.4478317, 0.1004689)  train_loss: 0.0046050 test_loss: 0.0046050
+epoch: 25   train_time (total, each): with_thread_sync(3.4576359, 0.1345869), without_thread_sync(2.5505973, 0.1027656)  train_loss: 0.0045207 test_loss: 0.0045207
+epoch: 26   train_time (total, each): with_thread_sync(3.5934006, 0.1357646), without_thread_sync(2.6549718, 0.1043745)  train_loss: 0.0043895 test_loss: 0.0043895
+epoch: 27   train_time (total, each): with_thread_sync(3.7258319, 0.1324311), without_thread_sync(2.7598434, 0.1048717)  train_loss: 0.0042961 test_loss: 0.0042961
+epoch: 28   train_time (total, each): with_thread_sync(3.8612205, 0.1353885), without_thread_sync(2.8636078, 0.1037644)  train_loss: 0.0041693 test_loss: 0.0041693
+epoch: 29   train_time (total, each): with_thread_sync(3.9965425, 0.1353218), without_thread_sync(2.9649966, 0.1013889)  train_loss: 0.0041558 test_loss: 0.0041558
+epoch: 30   train_time (total, each): with_thread_sync(4.1319498, 0.1354072), without_thread_sync(3.0649045, 0.0999079)  train_loss: 0.0039987 test_loss: 0.0039987
+epoch: 31   train_time (total, each): with_thread_sync(4.2743557, 0.1424057), without_thread_sync(3.1687877, 0.1038832)  train_loss: 0.0039249 test_loss: 0.0039249
+epoch: 32   train_time (total, each): with_thread_sync(4.4084068, 0.1340509), without_thread_sync(3.2706764, 0.1018888)  train_loss: 0.0038595 test_loss: 0.0038595
+epoch: 33   train_time (total, each): with_thread_sync(4.5434264, 0.1350195), without_thread_sync(3.3723266, 0.1016502)  train_loss: 0.0037693 test_loss: 0.0037693
+epoch: 34   train_time (total, each): with_thread_sync(4.6788321, 0.1354056), without_thread_sync(3.4719505, 0.0996239)  train_loss: 0.0036950 test_loss: 0.0036950
+epoch: 35   train_time (total, each): with_thread_sync(4.8130536, 0.1342213), without_thread_sync(3.5742112, 0.1022607)  train_loss: 0.0036363 test_loss: 0.0036363
+epoch: 36   train_time (total, each): with_thread_sync(4.9476641, 0.1346104), without_thread_sync(3.6742263, 0.1000151)  train_loss: 0.0035721 test_loss: 0.0035721
+epoch: 37   train_time (total, each): with_thread_sync(5.0915316, 0.1438674), without_thread_sync(3.7734759, 0.0992496)  train_loss: 0.0035643 test_loss: 0.0035643
+epoch: 38   train_time (total, each): with_thread_sync(5.2265150, 0.1349833), without_thread_sync(3.8774785, 0.1040025)  train_loss: 0.0034788 test_loss: 0.0034788
+epoch: 39   train_time (total, each): with_thread_sync(5.3611690, 0.1346538), without_thread_sync(3.9763431, 0.0988646)  train_loss: 0.0034034 test_loss: 0.0034034
+epoch: 40   train_time (total, each): with_thread_sync(5.4971883, 0.1360192), without_thread_sync(4.0798279, 0.1034848)  train_loss: 0.0033281 test_loss: 0.0033281
+0.137430
+Finished!
+5-bit
+Use int: BitWeaving.......
+Using AVX!.......
+0 - Loading training samples from '../../data/rcv1_train.tsv'
+0 - Loaded 20242 training samples
+0 - Loaded 20242 test samples
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+0 - Run threadpool with 27 threads
+this->params_->step_size = 0.010850000
+epoch: 00   train_time (total, each): with_thread_sync(0.0000000, 0.0000000), without_thread_sync(0.0000000, 0.0000000)  train_loss: 0.2591394 test_loss: 0.2591394
+epoch: 01   train_time (total, each): with_thread_sync(0.1492449, 0.1492448), without_thread_sync(0.1053615, 0.1053615)  train_loss: 0.0221341 test_loss: 0.0221341
+=====print the profiling result==========
+Instructions-retired 13696599898
+Active-cycles 6452800351
+IPC 2.12258
+UOPS_ISSUED.ANY:  26321599
+DTLB_LOAD_MISSES:  12217078
+OPS_ISSUED:  535600
+DTLB_LOAD_MISSES:  61864328
+BytesReadFromMC: 1715893120
+BytesWrittenToMC: 38347328
+epoch: 02   train_time (total, each): with_thread_sync(0.2952559, 0.1460108), without_thread_sync(0.2112951, 0.1059336)  train_loss: 0.0169928 test_loss: 0.0169928
+epoch: 03   train_time (total, each): with_thread_sync(0.4365189, 0.1412628), without_thread_sync(0.3175532, 0.1062581)  train_loss: 0.0142241 test_loss: 0.0142241
+epoch: 04   train_time (total, each): with_thread_sync(0.5858483, 0.1493293), without_thread_sync(0.4237618, 0.1062086)  train_loss: 0.0122166 test_loss: 0.0122166
+epoch: 05   train_time (total, each): with_thread_sync(0.7299623, 0.1441139), without_thread_sync(0.5305095, 0.1067478)  train_loss: 0.0108740 test_loss: 0.0108740
+epoch: 06   train_time (total, each): with_thread_sync(0.8679388, 0.1379597), without_thread_sync(0.6333054, 0.1027959)  train_loss: 0.0099304 test_loss: 0.0099304
+epoch: 07   train_time (total, each): with_thread_sync(1.0174857, 0.1495468), without_thread_sync(0.7412280, 0.1079226)  train_loss: 0.0089787 test_loss: 0.0089787
+epoch: 08   train_time (total, each): with_thread_sync(1.1646993, 0.1472133), without_thread_sync(0.8458849, 0.1046569)  train_loss: 0.0083188 test_loss: 0.0083188
+epoch: 09   train_time (total, each): with_thread_sync(1.3032225, 0.1385229), without_thread_sync(0.9486663, 0.1027814)  train_loss: 0.0077973 test_loss: 0.0077973
+epoch: 10   train_time (total, each): with_thread_sync(1.4400722, 0.1368496), without_thread_sync(1.0522060, 0.1035397)  train_loss: 0.0073440 test_loss: 0.0073440
+epoch: 11   train_time (total, each): with_thread_sync(1.5845635, 0.1444907), without_thread_sync(1.1596313, 0.1074253)  train_loss: 0.0070832 test_loss: 0.0070832
+epoch: 12   train_time (total, each): with_thread_sync(1.7216071, 0.1370435), without_thread_sync(1.2656764, 0.1060451)  train_loss: 0.0066395 test_loss: 0.0066395
+epoch: 13   train_time (total, each): with_thread_sync(1.8608374, 0.1392302), without_thread_sync(1.3685229, 0.1028465)  train_loss: 0.0064101 test_loss: 0.0064101
+epoch: 14   train_time (total, each): with_thread_sync(1.9974948, 0.1366572), without_thread_sync(1.4745734, 0.1060505)  train_loss: 0.0060813 test_loss: 0.0060813
+epoch: 15   train_time (total, each): with_thread_sync(2.1373820, 0.1398871), without_thread_sync(1.5803767, 0.1058033)  train_loss: 0.0059122 test_loss: 0.0059122
+epoch: 16   train_time (total, each): with_thread_sync(2.2752270, 0.1378448), without_thread_sync(1.6841819, 0.1038052)  train_loss: 0.0055462 test_loss: 0.0055462
+epoch: 17   train_time (total, each): with_thread_sync(2.4140740, 0.1388469), without_thread_sync(1.7860280, 0.1018461)  train_loss: 0.0054076 test_loss: 0.0054076
+epoch: 18   train_time (total, each): with_thread_sync(2.5523769, 0.1383028), without_thread_sync(1.8888538, 0.1028258)  train_loss: 0.0051990 test_loss: 0.0051990
+epoch: 19   train_time (total, each): with_thread_sync(2.7004041, 0.1480269), without_thread_sync(1.9924612, 0.1036074)  train_loss: 0.0050591 test_loss: 0.0050591
+epoch: 20   train_time (total, each): with_thread_sync(2.8652539, 0.1648497), without_thread_sync(2.1010768, 0.1086156)  train_loss: 0.0049488 test_loss: 0.0049488
+epoch: 21   train_time (total, each): with_thread_sync(3.0153435, 0.1500894), without_thread_sync(2.2068752, 0.1057984)  train_loss: 0.0047202 test_loss: 0.0047202
+epoch: 22   train_time (total, each): with_thread_sync(3.1516304, 0.1362867), without_thread_sync(2.3130280, 0.1061528)  train_loss: 0.0046077 test_loss: 0.0046077
+epoch: 23   train_time (total, each): with_thread_sync(3.2973306, 0.1457001), without_thread_sync(2.4159895, 0.1029615)  train_loss: 0.0044560 test_loss: 0.0044560
+epoch: 24   train_time (total, each): with_thread_sync(3.4435584, 0.1462277), without_thread_sync(2.5214341, 0.1054446)  train_loss: 0.0044338 test_loss: 0.0044338
+epoch: 25   train_time (total, each): with_thread_sync(3.5939801, 0.1504215), without_thread_sync(2.6248126, 0.1033785)  train_loss: 0.0042866 test_loss: 0.0042866
+epoch: 26   train_time (total, each): with_thread_sync(3.7313416, 0.1373614), without_thread_sync(2.7262015, 0.1013889)  train_loss: 0.0041764 test_loss: 0.0041764
+epoch: 27   train_time (total, each): with_thread_sync(3.8702456, 0.1389038), without_thread_sync(2.8312507, 0.1050492)  train_loss: 0.0041212 test_loss: 0.0041212
+epoch: 28   train_time (total, each): with_thread_sync(4.0183797, 0.1481339), without_thread_sync(2.9385566, 0.1073059)  train_loss: 0.0039539 test_loss: 0.0039539
+epoch: 29   train_time (total, each): with_thread_sync(4.1584762, 0.1400964), without_thread_sync(3.0396573, 0.1011006)  train_loss: 0.0038847 test_loss: 0.0038847
+epoch: 30   train_time (total, each): with_thread_sync(4.3100498, 0.1515734), without_thread_sync(3.1431499, 0.1034926)  train_loss: 0.0038019 test_loss: 0.0038019
+epoch: 31   train_time (total, each): with_thread_sync(4.4590397, 0.1489897), without_thread_sync(3.2470192, 0.1038693)  train_loss: 0.0037723 test_loss: 0.0037723
+epoch: 32   train_time (total, each): with_thread_sync(4.6051143, 0.1460745), without_thread_sync(3.3528678, 0.1058486)  train_loss: 0.0037101 test_loss: 0.0037101
+epoch: 33   train_time (total, each): with_thread_sync(4.7506902, 0.1455757), without_thread_sync(3.4594577, 0.1065899)  train_loss: 0.0036450 test_loss: 0.0036450
+epoch: 34   train_time (total, each): with_thread_sync(4.8909386, 0.1402483), without_thread_sync(3.5631185, 0.1036607)  train_loss: 0.0035759 test_loss: 0.0035759
+epoch: 35   train_time (total, each): with_thread_sync(5.0360707, 0.1451320), without_thread_sync(3.6699641, 0.1068456)  train_loss: 0.0034929 test_loss: 0.0034929
+epoch: 36   train_time (total, each): with_thread_sync(5.1859567, 0.1498859), without_thread_sync(3.7736688, 0.1037047)  train_loss: 0.0034320 test_loss: 0.0034320
+epoch: 37   train_time (total, each): with_thread_sync(5.3225889, 0.1366319), without_thread_sync(3.8777355, 0.1040667)  train_loss: 0.0033777 test_loss: 0.0033777
+epoch: 38   train_time (total, each): with_thread_sync(5.4601099, 0.1375208), without_thread_sync(3.9801227, 0.1023872)  train_loss: 0.0033448 test_loss: 0.0033448
+epoch: 39   train_time (total, each): with_thread_sync(5.6041903, 0.1440802), without_thread_sync(4.0859854, 0.1058627)  train_loss: 0.0032937 test_loss: 0.0032937
+epoch: 40   train_time (total, each): with_thread_sync(5.7435071, 0.1393167), without_thread_sync(4.1910698, 0.1050844)  train_loss: 0.0032036 test_loss: 0.0032036
+0.143587
+Finished!
+6-bit
+Use int: BitWeaving.......
+Using AVX!.......
+0 - Loading training samples from '../../data/rcv1_train.tsv'
+0 - Loaded 20242 training samples
+0 - Loaded 20242 test samples
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+0 - Run threadpool with 27 threads
+this->params_->step_size = 0.010850000
+epoch: 00   train_time (total, each): with_thread_sync(0.0000000, 0.0000000), without_thread_sync(0.0000000, 0.0000000)  train_loss: 0.2591394 test_loss: 0.2591394
+epoch: 01   train_time (total, each): with_thread_sync(0.1720263, 0.1720261), without_thread_sync(0.1142271, 0.1142271)  train_loss: 0.0217222 test_loss: 0.0217222
+=====print the profiling result==========
+Instructions-retired 13997907294
+Active-cycles 6656139697
+IPC 2.10301
+UOPS_ISSUED.ANY:  29809034
+DTLB_LOAD_MISSES:  12795520
+OPS_ISSUED:  632286
+DTLB_LOAD_MISSES:  65941571
+BytesReadFromMC: 1986313728
+BytesWrittenToMC: 24137920
+epoch: 02   train_time (total, each): with_thread_sync(0.3392437, 0.1672173), without_thread_sync(0.2284009, 0.1141738)  train_loss: 0.0166832 test_loss: 0.0166832
+epoch: 03   train_time (total, each): with_thread_sync(0.4948419, 0.1555981), without_thread_sync(0.3393744, 0.1109734)  train_loss: 0.0139477 test_loss: 0.0139477
+epoch: 04   train_time (total, each): with_thread_sync(0.6438859, 0.1490438), without_thread_sync(0.4488953, 0.1095209)  train_loss: 0.0119673 test_loss: 0.0119673
+epoch: 05   train_time (total, each): with_thread_sync(0.7992252, 0.1553392), without_thread_sync(0.5602712, 0.1113758)  train_loss: 0.0108669 test_loss: 0.0108669
+epoch: 06   train_time (total, each): with_thread_sync(0.9548336, 0.1556083), without_thread_sync(0.6716871, 0.1114160)  train_loss: 0.0096587 test_loss: 0.0096587
+epoch: 07   train_time (total, each): with_thread_sync(1.1113780, 0.1565443), without_thread_sync(0.7828763, 0.1111892)  train_loss: 0.0088144 test_loss: 0.0088144
+epoch: 08   train_time (total, each): with_thread_sync(1.2677891, 0.1564109), without_thread_sync(0.8951445, 0.1122682)  train_loss: 0.0083311 test_loss: 0.0083311
+epoch: 09   train_time (total, each): with_thread_sync(1.4237890, 0.1559997), without_thread_sync(1.0063474, 0.1112029)  train_loss: 0.0078226 test_loss: 0.0078226
+epoch: 10   train_time (total, each): with_thread_sync(1.5737208, 0.1499317), without_thread_sync(1.1165512, 0.1102038)  train_loss: 0.0071808 test_loss: 0.0071808
+epoch: 11   train_time (total, each): with_thread_sync(1.7303800, 0.1566590), without_thread_sync(1.2284413, 0.1118900)  train_loss: 0.0067708 test_loss: 0.0067708
+epoch: 12   train_time (total, each): with_thread_sync(1.8868425, 0.1564620), without_thread_sync(1.3402990, 0.1118577)  train_loss: 0.0065105 test_loss: 0.0065105
+epoch: 13   train_time (total, each): with_thread_sync(2.0423316, 0.1554890), without_thread_sync(1.4512333, 0.1109343)  train_loss: 0.0062808 test_loss: 0.0062808
+epoch: 14   train_time (total, each): with_thread_sync(2.2081210, 0.1657893), without_thread_sync(1.5617831, 0.1105498)  train_loss: 0.0060183 test_loss: 0.0060183
+epoch: 15   train_time (total, each): with_thread_sync(2.3638068, 0.1556857), without_thread_sync(1.6729150, 0.1111319)  train_loss: 0.0056523 test_loss: 0.0056523
+epoch: 16   train_time (total, each): with_thread_sync(2.5193764, 0.1555694), without_thread_sync(1.7841746, 0.1112596)  train_loss: 0.0055298 test_loss: 0.0055298
+epoch: 17   train_time (total, each): with_thread_sync(2.6743607, 0.1549842), without_thread_sync(1.8949545, 0.1107799)  train_loss: 0.0052322 test_loss: 0.0052322
+epoch: 18   train_time (total, each): with_thread_sync(2.8305586, 0.1561977), without_thread_sync(2.0030296, 0.1080751)  train_loss: 0.0050857 test_loss: 0.0050857
+epoch: 19   train_time (total, each): with_thread_sync(2.9864764, 0.1559176), without_thread_sync(2.1128157, 0.1097860)  train_loss: 0.0049181 test_loss: 0.0049181
+epoch: 20   train_time (total, each): with_thread_sync(3.1416820, 0.1552054), without_thread_sync(2.2212465, 0.1084309)  train_loss: 0.0049153 test_loss: 0.0049153
+epoch: 21   train_time (total, each): with_thread_sync(3.2964606, 0.1547785), without_thread_sync(2.3307154, 0.1094689)  train_loss: 0.0046850 test_loss: 0.0046850
+epoch: 22   train_time (total, each): with_thread_sync(3.4465165, 0.1500557), without_thread_sync(2.4404606, 0.1097452)  train_loss: 0.0045699 test_loss: 0.0045699
+epoch: 23   train_time (total, each): with_thread_sync(3.5881876, 0.1416710), without_thread_sync(2.5481367, 0.1076760)  train_loss: 0.0044254 test_loss: 0.0044254
+epoch: 24   train_time (total, each): with_thread_sync(3.7447467, 0.1565589), without_thread_sync(2.6583904, 0.1102537)  train_loss: 0.0043259 test_loss: 0.0043259
+epoch: 25   train_time (total, each): with_thread_sync(3.8996160, 0.1548692), without_thread_sync(2.7685840, 0.1101935)  train_loss: 0.0041982 test_loss: 0.0041982
+epoch: 26   train_time (total, each): with_thread_sync(4.0555703, 0.1559542), without_thread_sync(2.8790890, 0.1105050)  train_loss: 0.0041993 test_loss: 0.0041993
+epoch: 27   train_time (total, each): with_thread_sync(4.2131518, 0.1575814), without_thread_sync(2.9906284, 0.1115395)  train_loss: 0.0040548 test_loss: 0.0040548
+epoch: 28   train_time (total, each): with_thread_sync(4.3692660, 0.1561141), without_thread_sync(3.1009314, 0.1103029)  train_loss: 0.0040333 test_loss: 0.0040333
+epoch: 29   train_time (total, each): with_thread_sync(4.5258148, 0.1565486), without_thread_sync(3.2116141, 0.1106827)  train_loss: 0.0039215 test_loss: 0.0039215
+epoch: 30   train_time (total, each): with_thread_sync(4.6814724, 0.1556575), without_thread_sync(3.3187506, 0.1071366)  train_loss: 0.0038816 test_loss: 0.0038816
+epoch: 31   train_time (total, each): with_thread_sync(4.8383703, 0.1568978), without_thread_sync(3.4301556, 0.1114050)  train_loss: 0.0037407 test_loss: 0.0037407
+epoch: 32   train_time (total, each): with_thread_sync(4.9948475, 0.1564770), without_thread_sync(3.5395701, 0.1094145)  train_loss: 0.0036557 test_loss: 0.0036557
+epoch: 33   train_time (total, each): with_thread_sync(5.1504940, 0.1556464), without_thread_sync(3.6466289, 0.1070588)  train_loss: 0.0036692 test_loss: 0.0036692
+epoch: 34   train_time (total, each): with_thread_sync(5.2936229, 0.1431288), without_thread_sync(3.7556657, 0.1090368)  train_loss: 0.0035224 test_loss: 0.0035224
+epoch: 35   train_time (total, each): with_thread_sync(5.4474539, 0.1538307), without_thread_sync(3.8649849, 0.1093192)  train_loss: 0.0035816 test_loss: 0.0035816
+epoch: 36   train_time (total, each): with_thread_sync(5.6036892, 0.1562352), without_thread_sync(3.9772677, 0.1122829)  train_loss: 0.0033930 test_loss: 0.0033930
+epoch: 37   train_time (total, each): with_thread_sync(5.7600055, 0.1563162), without_thread_sync(4.0889411, 0.1116734)  train_loss: 0.0033765 test_loss: 0.0033765
+epoch: 38   train_time (total, each): with_thread_sync(5.9164088, 0.1564032), without_thread_sync(4.2022395, 0.1132983)  train_loss: 0.0032583 test_loss: 0.0032583
+epoch: 39   train_time (total, each): with_thread_sync(6.0738029, 0.1573940), without_thread_sync(4.3096322, 0.1073928)  train_loss: 0.0032446 test_loss: 0.0032446
+epoch: 40   train_time (total, each): with_thread_sync(6.2294735, 0.1556703), without_thread_sync(4.4211174, 0.1114852)  train_loss: 0.0031712 test_loss: 0.0031712
+0.155737
+Finished!
+7-bit
+Use int: BitWeaving.......
+Using AVX!.......
+0 - Loading training samples from '../../data/rcv1_train.tsv'
+0 - Loaded 20242 training samples
+0 - Loaded 20242 test samples
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+0 - Run threadpool with 27 threads
+this->params_->step_size = 0.010850000
+epoch: 00   train_time (total, each): with_thread_sync(0.0000000, 0.0000000), without_thread_sync(0.0000000, 0.0000000)  train_loss: 0.2591394 test_loss: 0.2591394
+epoch: 01   train_time (total, each): with_thread_sync(0.1562270, 0.1562268), without_thread_sync(0.1134027, 0.1134027)  train_loss: 0.0219705 test_loss: 0.0219705
+=====print the profiling result==========
+Instructions-retired 14294880026
+Active-cycles 6958170885
+IPC 2.0544
+UOPS_ISSUED.ANY:  33950129
+DTLB_LOAD_MISSES:  11456767
+OPS_ISSUED:  503136
+DTLB_LOAD_MISSES:  60408088
+BytesReadFromMC: 2294661632
+BytesWrittenToMC: 20901120
+epoch: 02   train_time (total, each): with_thread_sync(0.3061706, 0.1499433), without_thread_sync(0.2221506, 0.1087478)  train_loss: 0.0164049 test_loss: 0.0164049
+epoch: 03   train_time (total, each): with_thread_sync(0.4779494, 0.1717785), without_thread_sync(0.3365029, 0.1143523)  train_loss: 0.0136830 test_loss: 0.0136830
+epoch: 04   train_time (total, each): with_thread_sync(0.6250404, 0.1470908), without_thread_sync(0.4495077, 0.1130049)  train_loss: 0.0118830 test_loss: 0.0118830
+epoch: 05   train_time (total, each): with_thread_sync(0.7707302, 0.1456897), without_thread_sync(0.5571782, 0.1076705)  train_loss: 0.0106891 test_loss: 0.0106891
+epoch: 06   train_time (total, each): with_thread_sync(0.9145884, 0.1438579), without_thread_sync(0.6696604, 0.1124822)  train_loss: 0.0097121 test_loss: 0.0097121
+epoch: 07   train_time (total, each): with_thread_sync(1.0762015, 0.1616130), without_thread_sync(0.7843946, 0.1147342)  train_loss: 0.0088744 test_loss: 0.0088744
+epoch: 08   train_time (total, each): with_thread_sync(1.2216343, 0.1454325), without_thread_sync(0.8967839, 0.1123893)  train_loss: 0.0082566 test_loss: 0.0082566
+epoch: 09   train_time (total, each): with_thread_sync(1.3682084, 0.1465737), without_thread_sync(1.0094557, 0.1126718)  train_loss: 0.0075955 test_loss: 0.0075955
+epoch: 10   train_time (total, each): with_thread_sync(1.5290751, 0.1608665), without_thread_sync(1.1235182, 0.1140625)  train_loss: 0.0071180 test_loss: 0.0071180
+epoch: 11   train_time (total, each): with_thread_sync(1.6851546, 0.1560793), without_thread_sync(1.2325952, 0.1090771)  train_loss: 0.0070140 test_loss: 0.0070140
+epoch: 12   train_time (total, each): with_thread_sync(1.8458508, 0.1606959), without_thread_sync(1.3478897, 0.1152945)  train_loss: 0.0065664 test_loss: 0.0065664
+epoch: 13   train_time (total, each): with_thread_sync(2.0060149, 0.1601639), without_thread_sync(1.4627493, 0.1148596)  train_loss: 0.0062934 test_loss: 0.0062934
+epoch: 14   train_time (total, each): with_thread_sync(2.1777637, 0.1717486), without_thread_sync(1.5783008, 0.1155515)  train_loss: 0.0059769 test_loss: 0.0059769
+epoch: 15   train_time (total, each): with_thread_sync(2.3234307, 0.1456668), without_thread_sync(1.6916831, 0.1133823)  train_loss: 0.0056903 test_loss: 0.0056903
+epoch: 16   train_time (total, each): with_thread_sync(2.4700492, 0.1466183), without_thread_sync(1.8048620, 0.1131789)  train_loss: 0.0054676 test_loss: 0.0054676
+epoch: 17   train_time (total, each): with_thread_sync(2.6307532, 0.1607037), without_thread_sync(1.9195969, 0.1147349)  train_loss: 0.0053635 test_loss: 0.0053635
+epoch: 18   train_time (total, each): with_thread_sync(2.7882484, 0.1574951), without_thread_sync(2.0287992, 0.1092023)  train_loss: 0.0051211 test_loss: 0.0051211
+epoch: 19   train_time (total, each): with_thread_sync(2.9495874, 0.1613388), without_thread_sync(2.1426454, 0.1138462)  train_loss: 0.0051161 test_loss: 0.0051161
+epoch: 20   train_time (total, each): with_thread_sync(3.1219765, 0.1723888), without_thread_sync(2.2579060, 0.1152606)  train_loss: 0.0047709 test_loss: 0.0047709
+epoch: 21   train_time (total, each): with_thread_sync(3.2684543, 0.1464777), without_thread_sync(2.3698827, 0.1119767)  train_loss: 0.0048075 test_loss: 0.0048075
+epoch: 22   train_time (total, each): with_thread_sync(3.4218285, 0.1533740), without_thread_sync(2.4805499, 0.1106672)  train_loss: 0.0045004 test_loss: 0.0045004
+epoch: 23   train_time (total, each): with_thread_sync(3.5677132, 0.1458844), without_thread_sync(2.5940149, 0.1134649)  train_loss: 0.0044323 test_loss: 0.0044323
+epoch: 24   train_time (total, each): with_thread_sync(3.7268115, 0.1590981), without_thread_sync(2.7076194, 0.1136045)  train_loss: 0.0043367 test_loss: 0.0043367
+epoch: 25   train_time (total, each): with_thread_sync(3.8704419, 0.1436302), without_thread_sync(2.8178962, 0.1102768)  train_loss: 0.0041922 test_loss: 0.0041922
+epoch: 26   train_time (total, each): with_thread_sync(4.0301922, 0.1597501), without_thread_sync(2.9324031, 0.1145069)  train_loss: 0.0041541 test_loss: 0.0041541
+epoch: 27   train_time (total, each): with_thread_sync(4.1773566, 0.1471642), without_thread_sync(3.0442130, 0.1118099)  train_loss: 0.0040096 test_loss: 0.0040096
+epoch: 28   train_time (total, each): with_thread_sync(4.3235558, 0.1461990), without_thread_sync(3.1575446, 0.1133315)  train_loss: 0.0039737 test_loss: 0.0039737
+epoch: 29   train_time (total, each): with_thread_sync(4.4688978, 0.1453418), without_thread_sync(3.2667829, 0.1092383)  train_loss: 0.0039524 test_loss: 0.0039524
+epoch: 30   train_time (total, each): with_thread_sync(4.6145314, 0.1456333), without_thread_sync(3.3802938, 0.1135109)  train_loss: 0.0037761 test_loss: 0.0037761
+epoch: 31   train_time (total, each): with_thread_sync(4.7638135, 0.1492818), without_thread_sync(3.4932008, 0.1129070)  train_loss: 0.0037625 test_loss: 0.0037625
+epoch: 32   train_time (total, each): with_thread_sync(4.9247738, 0.1609602), without_thread_sync(3.6061401, 0.1129394)  train_loss: 0.0036313 test_loss: 0.0036313
+epoch: 33   train_time (total, each): with_thread_sync(5.0714569, 0.1466829), without_thread_sync(3.7195688, 0.1134287)  train_loss: 0.0035902 test_loss: 0.0035902
+epoch: 34   train_time (total, each): with_thread_sync(5.2243976, 0.1529403), without_thread_sync(3.8310048, 0.1114360)  train_loss: 0.0034950 test_loss: 0.0034950
+epoch: 35   train_time (total, each): with_thread_sync(5.3707652, 0.1463674), without_thread_sync(3.9428685, 0.1118637)  train_loss: 0.0034434 test_loss: 0.0034434
+epoch: 36   train_time (total, each): with_thread_sync(5.5289914, 0.1582260), without_thread_sync(4.0506091, 0.1077406)  train_loss: 0.0033812 test_loss: 0.0033812
+epoch: 37   train_time (total, each): with_thread_sync(5.6762294, 0.1472377), without_thread_sync(4.1627099, 0.1121009)  train_loss: 0.0033508 test_loss: 0.0033508
+epoch: 38   train_time (total, each): with_thread_sync(5.8219992, 0.1457696), without_thread_sync(4.2760778, 0.1133679)  train_loss: 0.0033107 test_loss: 0.0033107
+epoch: 39   train_time (total, each): with_thread_sync(5.9694090, 0.1474096), without_thread_sync(4.3878111, 0.1117333)  train_loss: 0.0032527 test_loss: 0.0032527
+epoch: 40   train_time (total, each): with_thread_sync(6.1217532, 0.1523441), without_thread_sync(4.4990252, 0.1112141)  train_loss: 0.0032300 test_loss: 0.0032300
+0.153044
+Finished!
+8-bit
+Use int: BitWeaving.......
+Using AVX!.......
+0 - Loading training samples from '../../data/rcv1_train.tsv'
+0 - Loaded 20242 training samples
+0 - Loaded 20242 test samples
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+0 - Run threadpool with 27 threads
+this->params_->step_size = 0.010850000
+epoch: 00   train_time (total, each): with_thread_sync(0.0000000, 0.0000000), without_thread_sync(0.0000000, 0.0000000)  train_loss: 0.2591394 test_loss: 0.2591394
+epoch: 01   train_time (total, each): with_thread_sync(0.1485179, 0.1485178), without_thread_sync(0.1123831, 0.1123831)  train_loss: 0.0217375 test_loss: 0.0217375
+=====print the profiling result==========
+Instructions-retired 14505672286
+Active-cycles 6856711335
+IPC 2.11554
+UOPS_ISSUED.ANY:  35529206
+DTLB_LOAD_MISSES:  12779312
+OPS_ISSUED:  650170
+DTLB_LOAD_MISSES:  67176190
+BytesReadFromMC: 2471952000
+BytesWrittenToMC: 22392896
+epoch: 02   train_time (total, each): with_thread_sync(0.2969322, 0.1484141), without_thread_sync(0.2221406, 0.1097576)  train_loss: 0.0163494 test_loss: 0.0163494
+epoch: 03   train_time (total, each): with_thread_sync(0.4575283, 0.1605960), without_thread_sync(0.3377385, 0.1155979)  train_loss: 0.0137013 test_loss: 0.0137013
+epoch: 04   train_time (total, each): with_thread_sync(0.6051918, 0.1476632), without_thread_sync(0.4530138, 0.1152754)  train_loss: 0.0117869 test_loss: 0.0117869
+epoch: 05   train_time (total, each): with_thread_sync(0.7527443, 0.1475523), without_thread_sync(0.5681342, 0.1151204)  train_loss: 0.0105390 test_loss: 0.0105390
+epoch: 06   train_time (total, each): with_thread_sync(0.9260562, 0.1733117), without_thread_sync(0.6872781, 0.1191439)  train_loss: 0.0095599 test_loss: 0.0095599
+epoch: 07   train_time (total, each): with_thread_sync(1.0906933, 0.1646370), without_thread_sync(0.8006270, 0.1133489)  train_loss: 0.0088885 test_loss: 0.0088885
+epoch: 08   train_time (total, each): with_thread_sync(1.2560347, 0.1653412), without_thread_sync(0.9179136, 0.1172866)  train_loss: 0.0081926 test_loss: 0.0081926
+epoch: 09   train_time (total, each): with_thread_sync(1.4060678, 0.1500330), without_thread_sync(1.0296106, 0.1116970)  train_loss: 0.0076071 test_loss: 0.0076071
+epoch: 10   train_time (total, each): with_thread_sync(1.5544099, 0.1483419), without_thread_sync(1.1453315, 0.1157209)  train_loss: 0.0074088 test_loss: 0.0074088
+epoch: 11   train_time (total, each): with_thread_sync(1.7028984, 0.1484884), without_thread_sync(1.2556746, 0.1103430)  train_loss: 0.0069059 test_loss: 0.0069059
+epoch: 12   train_time (total, each): with_thread_sync(1.8518367, 0.1489382), without_thread_sync(1.3700090, 0.1143345)  train_loss: 0.0065759 test_loss: 0.0065759
+epoch: 13   train_time (total, each): with_thread_sync(2.0078205, 0.1559836), without_thread_sync(1.4810770, 0.1110679)  train_loss: 0.0061272 test_loss: 0.0061272
+epoch: 14   train_time (total, each): with_thread_sync(2.1828826, 0.1750619), without_thread_sync(1.5963461, 0.1152691)  train_loss: 0.0059184 test_loss: 0.0059184
+epoch: 15   train_time (total, each): with_thread_sync(2.3548255, 0.1719427), without_thread_sync(1.7143299, 0.1179837)  train_loss: 0.0056242 test_loss: 0.0056242
+epoch: 16   train_time (total, each): with_thread_sync(2.5198594, 0.1650337), without_thread_sync(1.8298418, 0.1155119)  train_loss: 0.0055191 test_loss: 0.0055191
+epoch: 17   train_time (total, each): with_thread_sync(2.6836247, 0.1637651), without_thread_sync(1.9465171, 0.1166753)  train_loss: 0.0052132 test_loss: 0.0052132
+epoch: 18   train_time (total, each): with_thread_sync(2.8322457, 0.1486209), without_thread_sync(2.0573854, 0.1108682)  train_loss: 0.0052497 test_loss: 0.0052497
+epoch: 19   train_time (total, each): with_thread_sync(2.9819855, 0.1497396), without_thread_sync(2.1735761, 0.1161908)  train_loss: 0.0050214 test_loss: 0.0050214
+epoch: 20   train_time (total, each): with_thread_sync(3.1388968, 0.1569111), without_thread_sync(2.2884959, 0.1149198)  train_loss: 0.0047759 test_loss: 0.0047759
+epoch: 21   train_time (total, each): with_thread_sync(3.2882579, 0.1493609), without_thread_sync(2.4045413, 0.1160454)  train_loss: 0.0046505 test_loss: 0.0046505
+epoch: 22   train_time (total, each): with_thread_sync(3.4368268, 0.1485688), without_thread_sync(2.5205663, 0.1160250)  train_loss: 0.0045071 test_loss: 0.0045071
+epoch: 23   train_time (total, each): with_thread_sync(3.5859702, 0.1491431), without_thread_sync(2.6315551, 0.1109888)  train_loss: 0.0044443 test_loss: 0.0044443
+epoch: 24   train_time (total, each): with_thread_sync(3.7505057, 0.1645353), without_thread_sync(2.7462156, 0.1146605)  train_loss: 0.0043162 test_loss: 0.0043162
+epoch: 25   train_time (total, each): with_thread_sync(3.9124707, 0.1619648), without_thread_sync(2.8625368, 0.1163212)  train_loss: 0.0042704 test_loss: 0.0042704
+epoch: 26   train_time (total, each): with_thread_sync(4.0693582, 0.1568874), without_thread_sync(2.9778713, 0.1153345)  train_loss: 0.0041243 test_loss: 0.0041243
+epoch: 27   train_time (total, each): with_thread_sync(4.2310403, 0.1616820), without_thread_sync(3.0944330, 0.1165617)  train_loss: 0.0039870 test_loss: 0.0039870
+epoch: 28   train_time (total, each): with_thread_sync(4.3875428, 0.1565022), without_thread_sync(3.2101788, 0.1157458)  train_loss: 0.0039482 test_loss: 0.0039482
+epoch: 29   train_time (total, each): with_thread_sync(4.5521698, 0.1646269), without_thread_sync(3.3274501, 0.1172713)  train_loss: 0.0039226 test_loss: 0.0039226
+epoch: 30   train_time (total, each): with_thread_sync(4.7011640, 0.1489941), without_thread_sync(3.4427183, 0.1152681)  train_loss: 0.0038611 test_loss: 0.0038611
+epoch: 31   train_time (total, each): with_thread_sync(4.8506526, 0.1494884), without_thread_sync(3.5584430, 0.1157247)  train_loss: 0.0037416 test_loss: 0.0037416
+epoch: 32   train_time (total, each): with_thread_sync(5.0225742, 0.1719214), without_thread_sync(3.6721853, 0.1137424)  train_loss: 0.0035634 test_loss: 0.0035634
+epoch: 33   train_time (total, each): with_thread_sync(5.1858939, 0.1633196), without_thread_sync(3.7873010, 0.1151157)  train_loss: 0.0035489 test_loss: 0.0035489
+epoch: 34   train_time (total, each): with_thread_sync(5.3347451, 0.1488509), without_thread_sync(3.9042355, 0.1169346)  train_loss: 0.0034833 test_loss: 0.0034833
+epoch: 35   train_time (total, each): with_thread_sync(5.4846915, 0.1499463), without_thread_sync(4.0199040, 0.1156684)  train_loss: 0.0035792 test_loss: 0.0035792
+epoch: 36   train_time (total, each): with_thread_sync(5.6328450, 0.1481533), without_thread_sync(4.1351481, 0.1152441)  train_loss: 0.0034889 test_loss: 0.0034889
+epoch: 37   train_time (total, each): with_thread_sync(5.7822545, 0.1494093), without_thread_sync(4.2462597, 0.1111116)  train_loss: 0.0033425 test_loss: 0.0033425
+epoch: 38   train_time (total, each): with_thread_sync(5.9461178, 0.1638631), without_thread_sync(4.3606812, 0.1144215)  train_loss: 0.0033862 test_loss: 0.0033862
+epoch: 39   train_time (total, each): with_thread_sync(6.1113512, 0.1652332), without_thread_sync(4.4726080, 0.1119268)  train_loss: 0.0032765 test_loss: 0.0032765
+epoch: 40   train_time (total, each): with_thread_sync(6.2612381, 0.1498867), without_thread_sync(4.5855526, 0.1129446)  train_loss: 0.0032149 test_loss: 0.0032149
+0.156531
+Finished!
+9-bit
+Use int: BitWeaving.......
+Using AVX!.......
+0 - Loading training samples from '../../data/rcv1_train.tsv'
+0 - Loaded 20242 training samples
+0 - Loaded 20242 test samples
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+0 - Run threadpool with 27 threads
+this->params_->step_size = 0.010850000
+epoch: 00   train_time (total, each): with_thread_sync(0.0000000, 0.0000000), without_thread_sync(0.0000000, 0.0000000)  train_loss: 0.2591394 test_loss: 0.2591394
+epoch: 01   train_time (total, each): with_thread_sync(0.2103261, 0.2103259), without_thread_sync(0.1424579, 0.1424579)  train_loss: -nan test_loss: -nan
+=====print the profiling result==========
+Instructions-retired 16859943072
+Active-cycles 8497430528
+IPC 1.98412
+UOPS_ISSUED.ANY:  40965900
+DTLB_LOAD_MISSES:  18158914
+OPS_ISSUED:  557009
+DTLB_LOAD_MISSES:  66736593
+BytesReadFromMC: 2705301568
+BytesWrittenToMC: 46715584
+epoch: 02   train_time (total, each): with_thread_sync(0.4252998, 0.2149736), without_thread_sync(0.2853788, 0.1429208)  train_loss: -nan test_loss: -nan
+epoch: 03   train_time (total, each): with_thread_sync(0.6206083, 0.1953083), without_thread_sync(0.4214749, 0.1360961)  train_loss: -nan test_loss: -nan
+epoch: 04   train_time (total, each): with_thread_sync(0.8021344, 0.1815260), without_thread_sync(0.5634475, 0.1419726)  train_loss: -nan test_loss: -nan
+epoch: 05   train_time (total, each): with_thread_sync(0.9846340, 0.1824994), without_thread_sync(0.7037011, 0.1402536)  train_loss: -nan test_loss: -nan
+epoch: 06   train_time (total, each): with_thread_sync(1.1655085, 0.1808742), without_thread_sync(0.8434257, 0.1397247)  train_loss: -nan test_loss: -nan
+epoch: 07   train_time (total, each): with_thread_sync(1.3584422, 0.1929336), without_thread_sync(0.9790828, 0.1356570)  train_loss: -nan test_loss: -nan
+epoch: 08   train_time (total, each): with_thread_sync(1.5410273, 0.1825849), without_thread_sync(1.1199469, 0.1408641)  train_loss: -nan test_loss: -nan
+epoch: 09   train_time (total, each): with_thread_sync(1.7228595, 0.1818319), without_thread_sync(1.2608548, 0.1409079)  train_loss: -nan test_loss: -nan
+epoch: 10   train_time (total, each): with_thread_sync(1.9182434, 0.1953837), without_thread_sync(1.4011553, 0.1403005)  train_loss: -nan test_loss: -nan
+epoch: 11   train_time (total, each): with_thread_sync(2.0993692, 0.1811256), without_thread_sync(1.5427467, 0.1415913)  train_loss: -nan test_loss: -nan
+epoch: 12   train_time (total, each): with_thread_sync(2.2947696, 0.1954003), without_thread_sync(1.6811031, 0.1383564)  train_loss: -nan test_loss: -nan
+epoch: 13   train_time (total, each): with_thread_sync(2.4909348, 0.1961650), without_thread_sync(1.8211096, 0.1400065)  train_loss: -nan test_loss: -nan
+epoch: 14   train_time (total, each): with_thread_sync(2.6872837, 0.1963488), without_thread_sync(1.9633817, 0.1422721)  train_loss: -nan test_loss: -nan
+epoch: 15   train_time (total, each): with_thread_sync(2.8819714, 0.1946875), without_thread_sync(2.1014393, 0.1380576)  train_loss: -nan test_loss: -nan
+epoch: 16   train_time (total, each): with_thread_sync(3.0773208, 0.1953491), without_thread_sync(2.2405491, 0.1391098)  train_loss: -nan test_loss: -nan
+epoch: 17   train_time (total, each): with_thread_sync(3.2744386, 0.1971176), without_thread_sync(2.3816247, 0.1410756)  train_loss: -nan test_loss: -nan
+epoch: 18   train_time (total, each): with_thread_sync(3.4584805, 0.1840417), without_thread_sync(2.5216705, 0.1400458)  train_loss: -nan test_loss: -nan
+epoch: 19   train_time (total, each): with_thread_sync(3.6551558, 0.1966752), without_thread_sync(2.6643959, 0.1427254)  train_loss: -nan test_loss: -nan
+epoch: 20   train_time (total, each): with_thread_sync(3.8573070, 0.2021511), without_thread_sync(2.8063472, 0.1419513)  train_loss: -nan test_loss: -nan
+epoch: 21   train_time (total, each): with_thread_sync(4.0519600, 0.1946528), without_thread_sync(2.9483443, 0.1419971)  train_loss: -nan test_loss: -nan
+epoch: 22   train_time (total, each): with_thread_sync(4.2464021, 0.1944420), without_thread_sync(3.0866067, 0.1382624)  train_loss: -nan test_loss: -nan
+epoch: 23   train_time (total, each): with_thread_sync(4.4413776, 0.1949753), without_thread_sync(3.2259243, 0.1393176)  train_loss: -nan test_loss: -nan
+epoch: 24   train_time (total, each): with_thread_sync(4.6363690, 0.1949913), without_thread_sync(3.3663127, 0.1403884)  train_loss: -nan test_loss: -nan
+epoch: 25   train_time (total, each): with_thread_sync(4.8289461, 0.1925769), without_thread_sync(3.5080965, 0.1417838)  train_loss: -nan test_loss: -nan
+epoch: 26   train_time (total, each): with_thread_sync(5.0237256, 0.1947794), without_thread_sync(3.6503894, 0.1422929)  train_loss: -nan test_loss: -nan
+epoch: 27   train_time (total, each): with_thread_sync(5.2200188, 0.1962930), without_thread_sync(3.7934251, 0.1430357)  train_loss: -nan test_loss: -nan
+epoch: 28   train_time (total, each): with_thread_sync(5.4149728, 0.1949539), without_thread_sync(3.9377124, 0.1442873)  train_loss: -nan test_loss: -nan
+epoch: 29   train_time (total, each): with_thread_sync(5.6116320, 0.1966590), without_thread_sync(4.0781867, 0.1404742)  train_loss: -nan test_loss: -nan
+epoch: 30   train_time (total, each): with_thread_sync(5.8054886, 0.1938565), without_thread_sync(4.2202160, 0.1420293)  train_loss: -nan test_loss: -nan
+epoch: 31   train_time (total, each): with_thread_sync(5.9902536, 0.1847648), without_thread_sync(4.3571847, 0.1369687)  train_loss: -nan test_loss: -nan
+epoch: 32   train_time (total, each): with_thread_sync(6.1878555, 0.1976018), without_thread_sync(4.4975581, 0.1403734)  train_loss: -nan test_loss: -nan
+epoch: 33   train_time (total, each): with_thread_sync(6.3819874, 0.1941318), without_thread_sync(4.6384719, 0.1409138)  train_loss: -nan test_loss: -nan
+epoch: 34   train_time (total, each): with_thread_sync(6.5775367, 0.1955491), without_thread_sync(4.7818140, 0.1433421)  train_loss: -nan test_loss: -nan
+epoch: 35   train_time (total, each): with_thread_sync(6.7599962, 0.1824593), without_thread_sync(4.9181342, 0.1363202)  train_loss: -nan test_loss: -nan
+epoch: 36   train_time (total, each): with_thread_sync(6.9545608, 0.1945644), without_thread_sync(5.0618869, 0.1437528)  train_loss: -nan test_loss: -nan
+epoch: 37   train_time (total, each): with_thread_sync(7.1477900, 0.1932290), without_thread_sync(5.2014264, 0.1395395)  train_loss: -nan test_loss: -nan
+epoch: 38   train_time (total, each): with_thread_sync(7.3588713, 0.2110812), without_thread_sync(5.3427392, 0.1413128)  train_loss: -nan test_loss: -nan
+epoch: 39   train_time (total, each): with_thread_sync(7.5534460, 0.1945745), without_thread_sync(5.4842855, 0.1415462)  train_loss: -nan test_loss: -nan
+epoch: 40   train_time (total, each): with_thread_sync(7.7481322, 0.1946860), without_thread_sync(5.6254117, 0.1411262)  train_loss: -nan test_loss: -nan
+0.193703
+Finished!
+10-bit
+Use int: BitWeaving.......
+Using AVX!.......
+0 - Loading training samples from '../../data/rcv1_train.tsv'
+0 - Loaded 20242 training samples
+0 - Loaded 20242 test samples
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+0 - Run threadpool with 27 threads
+this->params_->step_size = 0.010850000
+epoch: 00   train_time (total, each): with_thread_sync(0.0000000, 0.0000000), without_thread_sync(0.0000000, 0.0000000)  train_loss: 0.2591394 test_loss: 0.2591394
+epoch: 01   train_time (total, each): with_thread_sync(0.1862409, 0.1862407), without_thread_sync(0.1439139, 0.1439139)  train_loss: -nan test_loss: -nan
+=====print the profiling result==========
+Instructions-retired 17159048138
+Active-cycles 8672338715
+IPC 1.9786
+UOPS_ISSUED.ANY:  42635910
+DTLB_LOAD_MISSES:  18117110
+OPS_ISSUED:  611230
+DTLB_LOAD_MISSES:  70369473
+BytesReadFromMC: 2875516160
+BytesWrittenToMC: 30679680
+epoch: 02   train_time (total, each): with_thread_sync(0.4033502, 0.2171092), without_thread_sync(0.2875421, 0.1436282)  train_loss: -nan test_loss: -nan
+epoch: 03   train_time (total, each): with_thread_sync(0.5894854, 0.1861350), without_thread_sync(0.4270167, 0.1394745)  train_loss: -nan test_loss: -nan
+epoch: 04   train_time (total, each): with_thread_sync(0.7895054, 0.2000199), without_thread_sync(0.5722294, 0.1452127)  train_loss: -nan test_loss: -nan
+epoch: 05   train_time (total, each): with_thread_sync(0.9884165, 0.1989107), without_thread_sync(0.7168147, 0.1445853)  train_loss: -nan test_loss: -nan
+epoch: 06   train_time (total, each): with_thread_sync(1.1857043, 0.1972877), without_thread_sync(0.8586193, 0.1418046)  train_loss: -nan test_loss: -nan
+epoch: 07   train_time (total, each): with_thread_sync(1.3717712, 0.1860668), without_thread_sync(0.9999308, 0.1413114)  train_loss: -nan test_loss: -nan
+epoch: 08   train_time (total, each): with_thread_sync(1.5570783, 0.1853069), without_thread_sync(1.1431465, 0.1432157)  train_loss: -nan test_loss: -nan
+epoch: 09   train_time (total, each): with_thread_sync(1.7434134, 0.1863350), without_thread_sync(1.2837322, 0.1405858)  train_loss: -nan test_loss: -nan
+epoch: 10   train_time (total, each): with_thread_sync(1.9420819, 0.1986683), without_thread_sync(1.4287755, 0.1450432)  train_loss: -nan test_loss: -nan
+epoch: 11   train_time (total, each): with_thread_sync(2.1419499, 0.1998678), without_thread_sync(1.5666282, 0.1378528)  train_loss: -nan test_loss: -nan
+epoch: 12   train_time (total, each): with_thread_sync(2.3274301, 0.1854800), without_thread_sync(1.7091612, 0.1425330)  train_loss: -nan test_loss: -nan
+epoch: 13   train_time (total, each): with_thread_sync(2.5261532, 0.1987230), without_thread_sync(1.8537194, 0.1445582)  train_loss: -nan test_loss: -nan
+epoch: 14   train_time (total, each): with_thread_sync(2.7253185, 0.1991650), without_thread_sync(1.9981467, 0.1444273)  train_loss: -nan test_loss: -nan
+epoch: 15   train_time (total, each): with_thread_sync(2.9121742, 0.1868556), without_thread_sync(2.1397567, 0.1416100)  train_loss: -nan test_loss: -nan
+epoch: 16   train_time (total, each): with_thread_sync(3.1122097, 0.2000353), without_thread_sync(2.2861470, 0.1463903)  train_loss: -nan test_loss: -nan
+epoch: 17   train_time (total, each): with_thread_sync(3.3104384, 0.1982286), without_thread_sync(2.4319752, 0.1458281)  train_loss: -nan test_loss: -nan
+epoch: 18   train_time (total, each): with_thread_sync(3.4956185, 0.1851799), without_thread_sync(2.5729208, 0.1409456)  train_loss: -nan test_loss: -nan
+epoch: 19   train_time (total, each): with_thread_sync(3.6928822, 0.1972635), without_thread_sync(2.7146962, 0.1417754)  train_loss: -nan test_loss: -nan
+epoch: 20   train_time (total, each): with_thread_sync(3.9009018, 0.2080195), without_thread_sync(2.8570773, 0.1423811)  train_loss: -nan test_loss: -nan
+epoch: 21   train_time (total, each): with_thread_sync(4.0972574, 0.1963555), without_thread_sync(2.9988440, 0.1417667)  train_loss: -nan test_loss: -nan
+epoch: 22   train_time (total, each): with_thread_sync(4.3097901, 0.2125325), without_thread_sync(3.1420160, 0.1431719)  train_loss: -nan test_loss: -nan
+epoch: 23   train_time (total, each): with_thread_sync(4.4995380, 0.1897478), without_thread_sync(3.2828363, 0.1408204)  train_loss: -nan test_loss: -nan
+epoch: 24   train_time (total, each): with_thread_sync(4.6868198, 0.1872817), without_thread_sync(3.4275191, 0.1446828)  train_loss: -nan test_loss: -nan
+epoch: 25   train_time (total, each): with_thread_sync(4.8860647, 0.1992447), without_thread_sync(3.5735576, 0.1460385)  train_loss: -nan test_loss: -nan
+epoch: 26   train_time (total, each): with_thread_sync(5.0841482, 0.1980834), without_thread_sync(3.7159621, 0.1424045)  train_loss: -nan test_loss: -nan
+epoch: 27   train_time (total, each): with_thread_sync(5.2701666, 0.1860183), without_thread_sync(3.8567063, 0.1407441)  train_loss: -nan test_loss: -nan
+epoch: 28   train_time (total, each): with_thread_sync(5.4696929, 0.1995262), without_thread_sync(3.9992672, 0.1425609)  train_loss: -nan test_loss: -nan
+epoch: 29   train_time (total, each): with_thread_sync(5.6721550, 0.2024619), without_thread_sync(4.1451804, 0.1459132)  train_loss: -nan test_loss: -nan
+epoch: 30   train_time (total, each): with_thread_sync(5.8719421, 0.1997870), without_thread_sync(4.2869754, 0.1417950)  train_loss: -nan test_loss: -nan
+epoch: 31   train_time (total, each): with_thread_sync(6.0692530, 0.1973108), without_thread_sync(4.4301713, 0.1431959)  train_loss: -nan test_loss: -nan
+epoch: 32   train_time (total, each): with_thread_sync(6.2543628, 0.1851096), without_thread_sync(4.5732855, 0.1431142)  train_loss: -nan test_loss: -nan
+epoch: 33   train_time (total, each): with_thread_sync(6.4405781, 0.1862151), without_thread_sync(4.7156388, 0.1423533)  train_loss: -nan test_loss: -nan
+epoch: 34   train_time (total, each): with_thread_sync(6.6272394, 0.1866612), without_thread_sync(4.8577559, 0.1421171)  train_loss: -nan test_loss: -nan
+epoch: 35   train_time (total, each): with_thread_sync(6.8264399, 0.1992004), without_thread_sync(4.9974137, 0.1396578)  train_loss: -nan test_loss: -nan
+epoch: 36   train_time (total, each): with_thread_sync(7.0127043, 0.1862642), without_thread_sync(5.1401815, 0.1427678)  train_loss: -nan test_loss: -nan
+epoch: 37   train_time (total, each): with_thread_sync(7.2126018, 0.1998973), without_thread_sync(5.2828656, 0.1426841)  train_loss: -nan test_loss: -nan
+epoch: 38   train_time (total, each): with_thread_sync(7.3990305, 0.1864285), without_thread_sync(5.4247146, 0.1418490)  train_loss: -nan test_loss: -nan
+epoch: 39   train_time (total, each): with_thread_sync(7.5981368, 0.1991062), without_thread_sync(5.5668187, 0.1421041)  train_loss: -nan test_loss: -nan
+epoch: 40   train_time (total, each): with_thread_sync(7.7998577, 0.2017208), without_thread_sync(5.7115599, 0.1447412)  train_loss: -nan test_loss: -nan
+0.194996
+Finished!
+11-bit
+Use int: BitWeaving.......
+Using AVX!.......
+0 - Loading training samples from '../../data/rcv1_train.tsv'
+0 - Loaded 20242 training samples
+0 - Loaded 20242 test samples
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+0 - Run threadpool with 27 threads
+this->params_->step_size = 0.010850000
+epoch: 00   train_time (total, each): with_thread_sync(0.0000000, 0.0000000), without_thread_sync(0.0000000, 0.0000000)  train_loss: 0.2591394 test_loss: 0.2591394
+epoch: 01   train_time (total, each): with_thread_sync(0.1867850, 0.1867848), without_thread_sync(0.1471688, 0.1471688)  train_loss: -nan test_loss: -nan
+=====print the profiling result==========
+Instructions-retired 17458321044
+Active-cycles 8918174831
+IPC 1.95761
+UOPS_ISSUED.ANY:  45007461
+DTLB_LOAD_MISSES:  18847131
+OPS_ISSUED:  638356
+DTLB_LOAD_MISSES:  73796488
+BytesReadFromMC: 3061540800
+BytesWrittenToMC: 48329088
+epoch: 02   train_time (total, each): with_thread_sync(0.4129124, 0.2261273), without_thread_sync(0.2994611, 0.1522923)  train_loss: -nan test_loss: -nan
+epoch: 03   train_time (total, each): with_thread_sync(0.6013060, 0.1883934), without_thread_sync(0.4422661, 0.1428050)  train_loss: -nan test_loss: -nan
+epoch: 04   train_time (total, each): with_thread_sync(0.7901218, 0.1888157), without_thread_sync(0.5866233, 0.1443573)  train_loss: -nan test_loss: -nan
+epoch: 05   train_time (total, each): with_thread_sync(1.0008831, 0.2107612), without_thread_sync(0.7367302, 0.1501069)  train_loss: -nan test_loss: -nan
+epoch: 06   train_time (total, each): with_thread_sync(1.2029490, 0.2020657), without_thread_sync(0.8829626, 0.1462324)  train_loss: -nan test_loss: -nan
+epoch: 07   train_time (total, each): with_thread_sync(1.4071021, 0.2041530), without_thread_sync(1.0289242, 0.1459616)  train_loss: -nan test_loss: -nan
+epoch: 08   train_time (total, each): with_thread_sync(1.6229440, 0.2158417), without_thread_sync(1.1799084, 0.1509842)  train_loss: -nan test_loss: -nan
+epoch: 09   train_time (total, each): with_thread_sync(1.8357991, 0.2128550), without_thread_sync(1.3300554, 0.1501470)  train_loss: -nan test_loss: -nan
+epoch: 10   train_time (total, each): with_thread_sync(2.0470281, 0.2112288), without_thread_sync(1.4793114, 0.1492559)  train_loss: -nan test_loss: -nan
+epoch: 11   train_time (total, each): with_thread_sync(2.2366458, 0.1896176), without_thread_sync(1.6268709, 0.1475595)  train_loss: -nan test_loss: -nan
+epoch: 12   train_time (total, each): with_thread_sync(2.4368606, 0.2002146), without_thread_sync(1.7685066, 0.1416357)  train_loss: -nan test_loss: -nan
+epoch: 13   train_time (total, each): with_thread_sync(2.6389283, 0.2020676), without_thread_sync(1.9165976, 0.1480910)  train_loss: -nan test_loss: -nan
+epoch: 14   train_time (total, each): with_thread_sync(2.8415396, 0.2026111), without_thread_sync(2.0618280, 0.1452304)  train_loss: -nan test_loss: -nan
+epoch: 15   train_time (total, each): with_thread_sync(3.0304180, 0.1888783), without_thread_sync(2.2086325, 0.1468045)  train_loss: -nan test_loss: -nan
+epoch: 16   train_time (total, each): with_thread_sync(3.2406768, 0.2102586), without_thread_sync(2.3584610, 0.1498285)  train_loss: -nan test_loss: -nan
+epoch: 17   train_time (total, each): with_thread_sync(3.4284916, 0.1878147), without_thread_sync(2.5019049, 0.1434440)  train_loss: -nan test_loss: -nan
+epoch: 18   train_time (total, each): with_thread_sync(3.6178107, 0.1893190), without_thread_sync(2.6477978, 0.1458929)  train_loss: -nan test_loss: -nan
+epoch: 19   train_time (total, each): with_thread_sync(3.8210829, 0.2032721), without_thread_sync(2.7978973, 0.1500995)  train_loss: -nan test_loss: -nan
+epoch: 20   train_time (total, each): with_thread_sync(4.0107108, 0.1896277), without_thread_sync(2.9444886, 0.1465913)  train_loss: -nan test_loss: -nan
+epoch: 21   train_time (total, each): with_thread_sync(4.2206267, 0.2099158), without_thread_sync(3.0941235, 0.1496349)  train_loss: -nan test_loss: -nan
+epoch: 22   train_time (total, each): with_thread_sync(4.4091499, 0.1885231), without_thread_sync(3.2406640, 0.1465405)  train_loss: -nan test_loss: -nan
+epoch: 23   train_time (total, each): with_thread_sync(4.5971832, 0.1880332), without_thread_sync(3.3876451, 0.1469810)  train_loss: -nan test_loss: -nan
+epoch: 24   train_time (total, each): with_thread_sync(4.8050370, 0.2078536), without_thread_sync(3.5330898, 0.1454447)  train_loss: -nan test_loss: -nan
+epoch: 25   train_time (total, each): with_thread_sync(4.9933731, 0.1883360), without_thread_sync(3.6807284, 0.1476386)  train_loss: -nan test_loss: -nan
+epoch: 26   train_time (total, each): with_thread_sync(5.2036013, 0.2102280), without_thread_sync(3.8309107, 0.1501824)  train_loss: -nan test_loss: -nan
+epoch: 27   train_time (total, each): with_thread_sync(5.3929527, 0.1893513), without_thread_sync(3.9748294, 0.1439187)  train_loss: -nan test_loss: -nan
+epoch: 28   train_time (total, each): with_thread_sync(5.5825087, 0.1895558), without_thread_sync(4.1193176, 0.1444882)  train_loss: -nan test_loss: -nan
+epoch: 29   train_time (total, each): with_thread_sync(5.7722981, 0.1897893), without_thread_sync(4.2660852, 0.1467676)  train_loss: -nan test_loss: -nan
+epoch: 30   train_time (total, each): with_thread_sync(5.9880776, 0.2157793), without_thread_sync(4.4162435, 0.1501583)  train_loss: -nan test_loss: -nan
+epoch: 31   train_time (total, each): with_thread_sync(6.1986409, 0.2105632), without_thread_sync(4.5659635, 0.1497200)  train_loss: -nan test_loss: -nan
+epoch: 32   train_time (total, each): with_thread_sync(6.3941175, 0.1954764), without_thread_sync(4.7117997, 0.1458362)  train_loss: -nan test_loss: -nan
+epoch: 33   train_time (total, each): with_thread_sync(6.5835817, 0.1894640), without_thread_sync(4.8585073, 0.1467076)  train_loss: -nan test_loss: -nan
+epoch: 34   train_time (total, each): with_thread_sync(6.7826435, 0.1990617), without_thread_sync(5.0045297, 0.1460223)  train_loss: -nan test_loss: -nan
+epoch: 35   train_time (total, each): with_thread_sync(6.9709068, 0.1882631), without_thread_sync(5.1490438, 0.1445141)  train_loss: -nan test_loss: -nan
+epoch: 36   train_time (total, each): with_thread_sync(7.1764812, 0.2055743), without_thread_sync(5.2962116, 0.1471678)  train_loss: -nan test_loss: -nan
+epoch: 37   train_time (total, each): with_thread_sync(7.3659005, 0.1894192), without_thread_sync(5.4428380, 0.1466264)  train_loss: -nan test_loss: -nan
+epoch: 38   train_time (total, each): with_thread_sync(7.5556112, 0.1897106), without_thread_sync(5.5890038, 0.1461658)  train_loss: -nan test_loss: -nan
+epoch: 39   train_time (total, each): with_thread_sync(7.7612578, 0.2056464), without_thread_sync(5.7375729, 0.1485692)  train_loss: -nan test_loss: -nan
+epoch: 40   train_time (total, each): with_thread_sync(7.9725708, 0.2113129), without_thread_sync(5.8879004, 0.1503275)  train_loss: -nan test_loss: -nan
+0.199314
+Finished!
+12-bit
+Use int: BitWeaving.......
+Using AVX!.......
+0 - Loading training samples from '../../data/rcv1_train.tsv'
+0 - Loaded 20242 training samples
+0 - Loaded 20242 test samples
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+0 - Run threadpool with 27 threads
+this->params_->step_size = 0.010850000
+epoch: 00   train_time (total, each): with_thread_sync(0.0000000, 0.0000000), without_thread_sync(0.0000000, 0.0000000)  train_loss: 0.2591394 test_loss: 0.2591394
+epoch: 01   train_time (total, each): with_thread_sync(0.1931863, 0.1931859), without_thread_sync(0.1501996, 0.1501996)  train_loss: -nan test_loss: -nan
+=====print the profiling result==========
+Instructions-retired 17756982400
+Active-cycles 9156055702
+IPC 1.93937
+UOPS_ISSUED.ANY:  45772698
+DTLB_LOAD_MISSES:  16860461
+OPS_ISSUED:  517960
+DTLB_LOAD_MISSES:  67333440
+BytesReadFromMC: 3131209280
+BytesWrittenToMC: 42529920
+epoch: 02   train_time (total, each): with_thread_sync(0.3837158, 0.1905293), without_thread_sync(0.2929800, 0.1427804)  train_loss: -nan test_loss: -nan
+epoch: 03   train_time (total, each): with_thread_sync(0.5905991, 0.2068832), without_thread_sync(0.4434909, 0.1505109)  train_loss: -nan test_loss: -nan
+epoch: 04   train_time (total, each): with_thread_sync(0.7829212, 0.1923220), without_thread_sync(0.5915797, 0.1480888)  train_loss: -nan test_loss: -nan
+epoch: 05   train_time (total, each): with_thread_sync(0.9749829, 0.1920616), without_thread_sync(0.7420532, 0.1504735)  train_loss: -nan test_loss: -nan
+epoch: 06   train_time (total, each): with_thread_sync(1.1828567, 0.2078736), without_thread_sync(0.8936196, 0.1515664)  train_loss: -nan test_loss: -nan
+epoch: 07   train_time (total, each): with_thread_sync(1.3738294, 0.1909724), without_thread_sync(1.0433462, 0.1497266)  train_loss: -nan test_loss: -nan
+epoch: 08   train_time (total, each): with_thread_sync(1.5764446, 0.2026151), without_thread_sync(1.1938002, 0.1504539)  train_loss: -nan test_loss: -nan
+epoch: 09   train_time (total, each): with_thread_sync(1.7688040, 0.1923593), without_thread_sync(1.3430177, 0.1492175)  train_loss: -nan test_loss: -nan
+epoch: 10   train_time (total, each): with_thread_sync(1.9606908, 0.1918867), without_thread_sync(1.4936719, 0.1506542)  train_loss: -nan test_loss: -nan
+epoch: 11   train_time (total, each): with_thread_sync(2.1675189, 0.2068280), without_thread_sync(1.6462223, 0.1525504)  train_loss: -nan test_loss: -nan
+epoch: 12   train_time (total, each): with_thread_sync(2.3594834, 0.1919643), without_thread_sync(1.7953213, 0.1490989)  train_loss: -nan test_loss: -nan
+epoch: 13   train_time (total, each): with_thread_sync(2.5507787, 0.1912951), without_thread_sync(1.9450881, 0.1497668)  train_loss: -nan test_loss: -nan
+epoch: 14   train_time (total, each): with_thread_sync(2.7703437, 0.2195649), without_thread_sync(2.0937831, 0.1486950)  train_loss: -nan test_loss: -nan
+epoch: 15   train_time (total, each): with_thread_sync(2.9771433, 0.2067994), without_thread_sync(2.2448873, 0.1511043)  train_loss: -nan test_loss: -nan
+epoch: 16   train_time (total, each): with_thread_sync(3.1697116, 0.1925682), without_thread_sync(2.3938146, 0.1489272)  train_loss: -nan test_loss: -nan
+epoch: 17   train_time (total, each): with_thread_sync(3.3632798, 0.1935681), without_thread_sync(2.5389324, 0.1451179)  train_loss: -nan test_loss: -nan
+epoch: 18   train_time (total, each): with_thread_sync(3.5545409, 0.1912610), without_thread_sync(2.6871564, 0.1482240)  train_loss: -nan test_loss: -nan
+epoch: 19   train_time (total, each): with_thread_sync(3.7456514, 0.1911104), without_thread_sync(2.8352705, 0.1481140)  train_loss: -nan test_loss: -nan
+epoch: 20   train_time (total, each): with_thread_sync(3.9378751, 0.1922236), without_thread_sync(2.9852497, 0.1499792)  train_loss: -nan test_loss: -nan
+epoch: 21   train_time (total, each): with_thread_sync(4.1291985, 0.1913233), without_thread_sync(3.1363519, 0.1511022)  train_loss: -nan test_loss: -nan
+epoch: 22   train_time (total, each): with_thread_sync(4.3353778, 0.2061791), without_thread_sync(3.2858882, 0.1495363)  train_loss: -nan test_loss: -nan
+epoch: 23   train_time (total, each): with_thread_sync(4.5420724, 0.2066945), without_thread_sync(3.4373014, 0.1514132)  train_loss: -nan test_loss: -nan
+epoch: 24   train_time (total, each): with_thread_sync(4.7351915, 0.1931189), without_thread_sync(3.5835414, 0.1462401)  train_loss: -nan test_loss: -nan
+epoch: 25   train_time (total, each): with_thread_sync(4.9282976, 0.1931059), without_thread_sync(3.7341778, 0.1506364)  train_loss: -nan test_loss: -nan
+epoch: 26   train_time (total, each): with_thread_sync(5.1314837, 0.2031860), without_thread_sync(3.8845473, 0.1503695)  train_loss: -nan test_loss: -nan
+epoch: 27   train_time (total, each): with_thread_sync(5.3353706, 0.2038868), without_thread_sync(4.0298332, 0.1452858)  train_loss: -nan test_loss: -nan
+epoch: 28   train_time (total, each): with_thread_sync(5.5415290, 0.2061582), without_thread_sync(4.1803553, 0.1505221)  train_loss: -nan test_loss: -nan
+epoch: 29   train_time (total, each): with_thread_sync(5.7476722, 0.2061431), without_thread_sync(4.3296520, 0.1492967)  train_loss: -nan test_loss: -nan
+epoch: 30   train_time (total, each): with_thread_sync(5.9518802, 0.2042078), without_thread_sync(4.4804792, 0.1508272)  train_loss: -nan test_loss: -nan
+epoch: 31   train_time (total, each): with_thread_sync(6.1436228, 0.1917425), without_thread_sync(4.6253887, 0.1449095)  train_loss: -nan test_loss: -nan
+epoch: 32   train_time (total, each): with_thread_sync(6.3503697, 0.2067468), without_thread_sync(4.7780161, 0.1526274)  train_loss: -nan test_loss: -nan
+epoch: 33   train_time (total, each): with_thread_sync(6.5577802, 0.2074103), without_thread_sync(4.9290096, 0.1509934)  train_loss: -nan test_loss: -nan
+epoch: 34   train_time (total, each): with_thread_sync(6.7491113, 0.1913310), without_thread_sync(5.0773705, 0.1483610)  train_loss: -nan test_loss: -nan
+epoch: 35   train_time (total, each): with_thread_sync(6.9677557, 0.2186442), without_thread_sync(5.2293154, 0.1519449)  train_loss: -nan test_loss: -nan
+epoch: 36   train_time (total, each): with_thread_sync(7.1800265, 0.2122707), without_thread_sync(5.3779795, 0.1486641)  train_loss: -nan test_loss: -nan
+epoch: 37   train_time (total, each): with_thread_sync(7.3830833, 0.2030567), without_thread_sync(5.5244112, 0.1464317)  train_loss: -nan test_loss: -nan
+epoch: 38   train_time (total, each): with_thread_sync(7.5760638, 0.1929804), without_thread_sync(5.6739250, 0.1495139)  train_loss: -nan test_loss: -nan
+epoch: 39   train_time (total, each): with_thread_sync(7.7681457, 0.1920818), without_thread_sync(5.8190091, 0.1450841)  train_loss: -nan test_loss: -nan
+epoch: 40   train_time (total, each): with_thread_sync(7.9602240, 0.1920782), without_thread_sync(5.9615508, 0.1425417)  train_loss: -nan test_loss: -nan
+0.199005
+Finished!
+13-bit
+Use int: BitWeaving.......
+Using AVX!.......
+0 - Loading training samples from '../../data/rcv1_train.tsv'
+0 - Loaded 20242 training samples
+0 - Loaded 20242 test samples
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+0 - Run threadpool with 27 threads
+this->params_->step_size = 0.010850000
+epoch: 00   train_time (total, each): with_thread_sync(0.0000000, 0.0000000), without_thread_sync(0.0000000, 0.0000000)  train_loss: 0.2591394 test_loss: 0.2591394
+epoch: 01   train_time (total, each): with_thread_sync(0.2076391, 0.2076390), without_thread_sync(0.1492714, 0.1492714)  train_loss: -nan test_loss: -nan
+=====print the profiling result==========
+Instructions-retired 18059659458
+Active-cycles 9259702190
+IPC 1.95035
+UOPS_ISSUED.ANY:  49313109
+DTLB_LOAD_MISSES:  17615884
+OPS_ISSUED:  542896
+DTLB_LOAD_MISSES:  69515242
+BytesReadFromMC: 3386433984
+BytesWrittenToMC: 33604224
+epoch: 02   train_time (total, each): with_thread_sync(0.4111089, 0.2034697), without_thread_sync(0.3007671, 0.1514957)  train_loss: -nan test_loss: -nan
+epoch: 03   train_time (total, each): with_thread_sync(0.6058697, 0.1947605), without_thread_sync(0.4531676, 0.1524005)  train_loss: -nan test_loss: -nan
+epoch: 04   train_time (total, each): with_thread_sync(0.8004897, 0.1946199), without_thread_sync(0.6003400, 0.1471723)  train_loss: -nan test_loss: -nan
+epoch: 05   train_time (total, each): with_thread_sync(0.9955563, 0.1950664), without_thread_sync(0.7515931, 0.1512532)  train_loss: -nan test_loss: -nan
+epoch: 06   train_time (total, each): with_thread_sync(1.2042479, 0.2086915), without_thread_sync(0.9010018, 0.1494087)  train_loss: -nan test_loss: -nan
+epoch: 07   train_time (total, each): with_thread_sync(1.3993664, 0.1951183), without_thread_sync(1.0487404, 0.1477385)  train_loss: -nan test_loss: -nan
+epoch: 08   train_time (total, each): with_thread_sync(1.5942104, 0.1948438), without_thread_sync(1.2013669, 0.1526265)  train_loss: -nan test_loss: -nan
+epoch: 09   train_time (total, each): with_thread_sync(1.7880882, 0.1938777), without_thread_sync(1.3485638, 0.1471969)  train_loss: -nan test_loss: -nan
+epoch: 10   train_time (total, each): with_thread_sync(1.9835551, 0.1954667), without_thread_sync(1.5010349, 0.1524711)  train_loss: -nan test_loss: -nan
+epoch: 11   train_time (total, each): with_thread_sync(2.1789591, 0.1954038), without_thread_sync(1.6495722, 0.1485373)  train_loss: -nan test_loss: -nan
+epoch: 12   train_time (total, each): with_thread_sync(2.3728518, 0.1938926), without_thread_sync(1.8017381, 0.1521659)  train_loss: -nan test_loss: -nan
+epoch: 13   train_time (total, each): with_thread_sync(2.5672751, 0.1944232), without_thread_sync(1.9535408, 0.1518027)  train_loss: -nan test_loss: -nan
+epoch: 14   train_time (total, each): with_thread_sync(2.7619937, 0.1947184), without_thread_sync(2.1054206, 0.1518798)  train_loss: -nan test_loss: -nan
+epoch: 15   train_time (total, each): with_thread_sync(2.9703463, 0.2083524), without_thread_sync(2.2574433, 0.1520227)  train_loss: -nan test_loss: -nan
+epoch: 16   train_time (total, each): with_thread_sync(3.1801784, 0.2098320), without_thread_sync(2.4055306, 0.1480873)  train_loss: -nan test_loss: -nan
+epoch: 17   train_time (total, each): with_thread_sync(3.3888303, 0.2086517), without_thread_sync(2.5551161, 0.1495855)  train_loss: -nan test_loss: -nan
+epoch: 18   train_time (total, each): with_thread_sync(3.5828838, 0.1940534), without_thread_sync(2.7075023, 0.1523862)  train_loss: -nan test_loss: -nan
+epoch: 19   train_time (total, each): with_thread_sync(3.7791097, 0.1962257), without_thread_sync(2.8594796, 0.1519773)  train_loss: -nan test_loss: -nan
+epoch: 20   train_time (total, each): with_thread_sync(3.9892592, 0.2101494), without_thread_sync(3.0119626, 0.1524830)  train_loss: -nan test_loss: -nan
+epoch: 21   train_time (total, each): with_thread_sync(4.1977518, 0.2084924), without_thread_sync(3.1662462, 0.1542836)  train_loss: -nan test_loss: -nan
+epoch: 22   train_time (total, each): with_thread_sync(4.4061127, 0.2083608), without_thread_sync(3.3120783, 0.1458321)  train_loss: -nan test_loss: -nan
+epoch: 23   train_time (total, each): with_thread_sync(4.5997726, 0.1936598), without_thread_sync(3.4599846, 0.1479063)  train_loss: -nan test_loss: -nan
+epoch: 24   train_time (total, each): with_thread_sync(4.8103185, 0.2105457), without_thread_sync(3.6135790, 0.1535944)  train_loss: -nan test_loss: -nan
+epoch: 25   train_time (total, each): with_thread_sync(5.0047489, 0.1944303), without_thread_sync(3.7648989, 0.1513199)  train_loss: -nan test_loss: -nan
+epoch: 26   train_time (total, each): with_thread_sync(5.2136834, 0.2089343), without_thread_sync(3.9196314, 0.1547325)  train_loss: -nan test_loss: -nan
+epoch: 27   train_time (total, each): with_thread_sync(5.4092941, 0.1956105), without_thread_sync(4.0691262, 0.1494948)  train_loss: -nan test_loss: -nan
+epoch: 28   train_time (total, each): with_thread_sync(5.6062139, 0.1969197), without_thread_sync(4.2209576, 0.1518314)  train_loss: -nan test_loss: -nan
+epoch: 29   train_time (total, each): with_thread_sync(5.8027186, 0.1965044), without_thread_sync(4.3723180, 0.1513605)  train_loss: -nan test_loss: -nan
+epoch: 30   train_time (total, each): with_thread_sync(6.0108087, 0.2080900), without_thread_sync(4.5255239, 0.1532058)  train_loss: -nan test_loss: -nan
+epoch: 31   train_time (total, each): with_thread_sync(6.2177198, 0.2069110), without_thread_sync(4.6762676, 0.1507438)  train_loss: -nan test_loss: -nan
+epoch: 32   train_time (total, each): with_thread_sync(6.4119585, 0.1942385), without_thread_sync(4.8278434, 0.1515758)  train_loss: -nan test_loss: -nan
+epoch: 33   train_time (total, each): with_thread_sync(6.6072018, 0.1952431), without_thread_sync(4.9797719, 0.1519285)  train_loss: -nan test_loss: -nan
+epoch: 34   train_time (total, each): with_thread_sync(6.8024022, 0.1952002), without_thread_sync(5.1324776, 0.1527056)  train_loss: -nan test_loss: -nan
+epoch: 35   train_time (total, each): with_thread_sync(7.0112249, 0.2088226), without_thread_sync(5.2853155, 0.1528380)  train_loss: -nan test_loss: -nan
+epoch: 36   train_time (total, each): with_thread_sync(7.2056247, 0.1943997), without_thread_sync(5.4374336, 0.1521181)  train_loss: -nan test_loss: -nan
+epoch: 37   train_time (total, each): with_thread_sync(7.4007054, 0.1950805), without_thread_sync(5.5886592, 0.1512255)  train_loss: -nan test_loss: -nan
+epoch: 38   train_time (total, each): with_thread_sync(7.6091933, 0.2084878), without_thread_sync(5.7422856, 0.1536264)  train_loss: -nan test_loss: -nan
+epoch: 39   train_time (total, each): with_thread_sync(7.8153490, 0.2061556), without_thread_sync(5.8905067, 0.1482211)  train_loss: -nan test_loss: -nan
+epoch: 40   train_time (total, each): with_thread_sync(8.0102304, 0.1948812), without_thread_sync(6.0400125, 0.1495058)  train_loss: -nan test_loss: -nan
+0.200256
+Finished!
+14-bit
+Use int: BitWeaving.......
+Using AVX!.......
+0 - Loading training samples from '../../data/rcv1_train.tsv'
+0 - Loaded 20242 training samples
+0 - Loaded 20242 test samples
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+0 - Run threadpool with 27 threads
+this->params_->step_size = 0.010850000
+epoch: 00   train_time (total, each): with_thread_sync(0.0000000, 0.0000000), without_thread_sync(0.0000000, 0.0000000)  train_loss: 0.2591394 test_loss: 0.2591394
+epoch: 01   train_time (total, each): with_thread_sync(0.1995541, 0.1995538), without_thread_sync(0.1545114, 0.1545114)  train_loss: -nan test_loss: -nan
+=====print the profiling result==========
+Instructions-retired 18355280047
+Active-cycles 9549291829
+IPC 1.92216
+UOPS_ISSUED.ANY:  51055760
+DTLB_LOAD_MISSES:  18585754
+OPS_ISSUED:  571302
+DTLB_LOAD_MISSES:  71729186
+BytesReadFromMC: 3523536064
+BytesWrittenToMC: 45014400
+epoch: 02   train_time (total, each): with_thread_sync(0.4121127, 0.2125584), without_thread_sync(0.3078420, 0.1533306)  train_loss: -nan test_loss: -nan
+epoch: 03   train_time (total, each): with_thread_sync(0.6237712, 0.2116584), without_thread_sync(0.4637296, 0.1558876)  train_loss: -nan test_loss: -nan
+epoch: 04   train_time (total, each): with_thread_sync(0.8215331, 0.1977615), without_thread_sync(0.6186046, 0.1548750)  train_loss: -nan test_loss: -nan
+epoch: 05   train_time (total, each): with_thread_sync(1.0334408, 0.2119076), without_thread_sync(0.7742408, 0.1556362)  train_loss: -nan test_loss: -nan
+epoch: 06   train_time (total, each): with_thread_sync(1.2599581, 0.2265171), without_thread_sync(0.9303898, 0.1561490)  train_loss: -nan test_loss: -nan
+epoch: 07   train_time (total, each): with_thread_sync(1.4719154, 0.2119572), without_thread_sync(1.0810499, 0.1506601)  train_loss: -nan test_loss: -nan
+epoch: 08   train_time (total, each): with_thread_sync(1.6691197, 0.1972042), without_thread_sync(1.2358985, 0.1548486)  train_loss: -nan test_loss: -nan
+epoch: 09   train_time (total, each): with_thread_sync(1.8668309, 0.1977111), without_thread_sync(1.3886299, 0.1527314)  train_loss: -nan test_loss: -nan
+epoch: 10   train_time (total, each): with_thread_sync(2.0783399, 0.2115088), without_thread_sync(1.5439754, 0.1553456)  train_loss: -nan test_loss: -nan
+epoch: 11   train_time (total, each): with_thread_sync(2.2908673, 0.2125273), without_thread_sync(1.6979214, 0.1539459)  train_loss: -nan test_loss: -nan
+epoch: 12   train_time (total, each): with_thread_sync(2.5028438, 0.2119764), without_thread_sync(1.8490314, 0.1511100)  train_loss: -nan test_loss: -nan
+epoch: 13   train_time (total, each): with_thread_sync(2.7156867, 0.2128427), without_thread_sync(2.0017135, 0.1526822)  train_loss: -nan test_loss: -nan
+epoch: 14   train_time (total, each): with_thread_sync(2.9162516, 0.2005648), without_thread_sync(2.1524175, 0.1507040)  train_loss: -nan test_loss: -nan
+epoch: 15   train_time (total, each): with_thread_sync(3.1297072, 0.2134554), without_thread_sync(2.3067036, 0.1542862)  train_loss: -nan test_loss: -nan
+epoch: 16   train_time (total, each): with_thread_sync(3.3422584, 0.2125510), without_thread_sync(2.4597734, 0.1530698)  train_loss: -nan test_loss: -nan
+epoch: 17   train_time (total, each): with_thread_sync(3.5534109, 0.2111523), without_thread_sync(2.6144149, 0.1546415)  train_loss: -nan test_loss: -nan
+epoch: 18   train_time (total, each): with_thread_sync(3.7648721, 0.2114610), without_thread_sync(2.7699611, 0.1555462)  train_loss: -nan test_loss: -nan
+epoch: 19   train_time (total, each): with_thread_sync(3.9771702, 0.2122980), without_thread_sync(2.9210071, 0.1510460)  train_loss: -nan test_loss: -nan
+epoch: 20   train_time (total, each): with_thread_sync(4.1877154, 0.2105450), without_thread_sync(3.0773661, 0.1563591)  train_loss: -nan test_loss: -nan
+epoch: 21   train_time (total, each): with_thread_sync(4.3987487, 0.2110329), without_thread_sync(3.2334175, 0.1560514)  train_loss: -nan test_loss: -nan
+epoch: 22   train_time (total, each): with_thread_sync(4.5957644, 0.1970155), without_thread_sync(3.3881448, 0.1547273)  train_loss: -nan test_loss: -nan
+epoch: 23   train_time (total, each): with_thread_sync(4.8075013, 0.2117368), without_thread_sync(3.5454339, 0.1572891)  train_loss: -nan test_loss: -nan
+epoch: 24   train_time (total, each): with_thread_sync(5.0054229, 0.1979214), without_thread_sync(3.6961350, 0.1507012)  train_loss: -nan test_loss: -nan
+epoch: 25   train_time (total, each): with_thread_sync(5.2160767, 0.2106536), without_thread_sync(3.8492542, 0.1531191)  train_loss: -nan test_loss: -nan
+epoch: 26   train_time (total, each): with_thread_sync(5.4282440, 0.2121672), without_thread_sync(4.0067357, 0.1574816)  train_loss: -nan test_loss: -nan
+epoch: 27   train_time (total, each): with_thread_sync(5.6394438, 0.2111997), without_thread_sync(4.1598269, 0.1530911)  train_loss: -nan test_loss: -nan
+epoch: 28   train_time (total, each): with_thread_sync(5.8504609, 0.2110170), without_thread_sync(4.3146999, 0.1548731)  train_loss: -nan test_loss: -nan
+epoch: 29   train_time (total, each): with_thread_sync(6.0477066, 0.1972456), without_thread_sync(4.4692236, 0.1545237)  train_loss: -nan test_loss: -nan
+epoch: 30   train_time (total, each): with_thread_sync(6.2744959, 0.2267891), without_thread_sync(4.6256863, 0.1564627)  train_loss: -nan test_loss: -nan
+epoch: 31   train_time (total, each): with_thread_sync(6.4729012, 0.1984052), without_thread_sync(4.7811907, 0.1555044)  train_loss: -nan test_loss: -nan
+epoch: 32   train_time (total, each): with_thread_sync(6.6929888, 0.2200874), without_thread_sync(4.9355504, 0.1543597)  train_loss: -nan test_loss: -nan
+epoch: 33   train_time (total, each): with_thread_sync(6.9050797, 0.2120908), without_thread_sync(5.0934980, 0.1579476)  train_loss: -nan test_loss: -nan
+epoch: 34   train_time (total, each): with_thread_sync(7.1155313, 0.2104516), without_thread_sync(5.2498203, 0.1563223)  train_loss: -nan test_loss: -nan
+epoch: 35   train_time (total, each): with_thread_sync(7.3132053, 0.1976738), without_thread_sync(5.4015258, 0.1517055)  train_loss: -nan test_loss: -nan
+epoch: 36   train_time (total, each): with_thread_sync(7.5135033, 0.2002978), without_thread_sync(5.5555638, 0.1540380)  train_loss: -nan test_loss: -nan
+epoch: 37   train_time (total, each): with_thread_sync(7.7261132, 0.2126098), without_thread_sync(5.7082759, 0.1527121)  train_loss: -nan test_loss: -nan
+epoch: 38   train_time (total, each): with_thread_sync(7.9390777, 0.2129643), without_thread_sync(5.8636960, 0.1554202)  train_loss: -nan test_loss: -nan
+epoch: 39   train_time (total, each): with_thread_sync(8.1507894, 0.2117116), without_thread_sync(6.0214893, 0.1577932)  train_loss: -nan test_loss: -nan
+epoch: 40   train_time (total, each): with_thread_sync(8.3618527, 0.2110630), without_thread_sync(6.1778404, 0.1563511)  train_loss: -nan test_loss: -nan
+0.209046
+Finished!
+15-bit
+Use int: BitWeaving.......
+Using AVX!.......
+0 - Loading training samples from '../../data/rcv1_train.tsv'
+0 - Loaded 20242 training samples
+0 - Loaded 20242 test samples
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+0 - Run threadpool with 27 threads
+this->params_->step_size = 0.010850000
+epoch: 00   train_time (total, each): with_thread_sync(0.0000000, 0.0000000), without_thread_sync(0.0000000, 0.0000000)  train_loss: 0.2591394 test_loss: 0.2591394
+epoch: 01   train_time (total, each): with_thread_sync(0.2042690, 0.2042688), without_thread_sync(0.1551286, 0.1551286)  train_loss: -nan test_loss: -nan
+=====print the profiling result==========
+Instructions-retired 18653918815
+Active-cycles 9668304018
+IPC 1.92939
+UOPS_ISSUED.ANY:  51921066
+DTLB_LOAD_MISSES:  18484142
+OPS_ISSUED:  467744
+DTLB_LOAD_MISSES:  66447094
+BytesReadFromMC: 3606863232
+BytesWrittenToMC: 46278912
+epoch: 02   train_time (total, each): with_thread_sync(0.4179649, 0.2136958), without_thread_sync(0.3061776, 0.1510490)  train_loss: -nan test_loss: -nan
+epoch: 03   train_time (total, each): with_thread_sync(0.6417104, 0.2237454), without_thread_sync(0.4604081, 0.1542305)  train_loss: -nan test_loss: -nan
+epoch: 04   train_time (total, each): with_thread_sync(0.8652719, 0.2235614), without_thread_sync(0.6173222, 0.1569141)  train_loss: -nan test_loss: -nan
+epoch: 05   train_time (total, each): with_thread_sync(1.0797063, 0.2144342), without_thread_sync(0.7754600, 0.1581379)  train_loss: -nan test_loss: -nan
+epoch: 06   train_time (total, each): with_thread_sync(1.2951237, 0.2154171), without_thread_sync(0.9291330, 0.1536730)  train_loss: -nan test_loss: -nan
+epoch: 07   train_time (total, each): with_thread_sync(1.5105228, 0.2153990), without_thread_sync(1.0872586, 0.1581255)  train_loss: -nan test_loss: -nan
+epoch: 08   train_time (total, each): with_thread_sync(1.7256589, 0.2151360), without_thread_sync(1.2458907, 0.1586322)  train_loss: -nan test_loss: -nan
+epoch: 09   train_time (total, each): with_thread_sync(1.9400732, 0.2144142), without_thread_sync(1.4036366, 0.1577459)  train_loss: -nan test_loss: -nan
+epoch: 10   train_time (total, each): with_thread_sync(2.1402614, 0.2001712), without_thread_sync(1.5581591, 0.1545225)  train_loss: -nan test_loss: -nan
+epoch: 11   train_time (total, each): with_thread_sync(2.3558300, 0.2155685), without_thread_sync(1.7150773, 0.1569181)  train_loss: -nan test_loss: -nan
+epoch: 12   train_time (total, each): with_thread_sync(2.5693073, 0.2134772), without_thread_sync(1.8721813, 0.1571040)  train_loss: -nan test_loss: -nan
+epoch: 13   train_time (total, each): with_thread_sync(2.7834356, 0.2141282), without_thread_sync(2.0299080, 0.1577267)  train_loss: -nan test_loss: -nan
+epoch: 14   train_time (total, each): with_thread_sync(2.9856498, 0.2022141), without_thread_sync(2.1867647, 0.1568568)  train_loss: -nan test_loss: -nan
+epoch: 15   train_time (total, each): with_thread_sync(3.1990358, 0.2133858), without_thread_sync(2.3436252, 0.1568604)  train_loss: -nan test_loss: -nan
+epoch: 16   train_time (total, each): with_thread_sync(3.3988092, 0.1997733), without_thread_sync(2.4991933, 0.1555682)  train_loss: -nan test_loss: -nan
+epoch: 17   train_time (total, each): with_thread_sync(3.6119147, 0.2131054), without_thread_sync(2.6558207, 0.1566274)  train_loss: -nan test_loss: -nan
+epoch: 18   train_time (total, each): with_thread_sync(3.8271258, 0.2152109), without_thread_sync(2.8118898, 0.1560691)  train_loss: -nan test_loss: -nan
+epoch: 19   train_time (total, each): with_thread_sync(4.0409247, 0.2137987), without_thread_sync(2.9689891, 0.1570993)  train_loss: -nan test_loss: -nan
+epoch: 20   train_time (total, each): with_thread_sync(4.2570846, 0.2161598), without_thread_sync(3.1228543, 0.1538652)  train_loss: -nan test_loss: -nan
+epoch: 21   train_time (total, each): with_thread_sync(4.4601376, 0.2030529), without_thread_sync(3.2790656, 0.1562113)  train_loss: -nan test_loss: -nan
+epoch: 22   train_time (total, each): with_thread_sync(4.6632196, 0.2030819), without_thread_sync(3.4352635, 0.1561980)  train_loss: -nan test_loss: -nan
+epoch: 23   train_time (total, each): with_thread_sync(4.8773237, 0.2141039), without_thread_sync(3.5933243, 0.1580608)  train_loss: -nan test_loss: -nan
+epoch: 24   train_time (total, each): with_thread_sync(5.0915054, 0.2141815), without_thread_sync(3.7497378, 0.1564135)  train_loss: -nan test_loss: -nan
+epoch: 25   train_time (total, each): with_thread_sync(5.3066878, 0.2151822), without_thread_sync(3.9043070, 0.1545693)  train_loss: -nan test_loss: -nan
+epoch: 26   train_time (total, each): with_thread_sync(5.5202363, 0.2135484), without_thread_sync(4.0582730, 0.1539659)  train_loss: -nan test_loss: -nan
+epoch: 27   train_time (total, each): with_thread_sync(5.7373303, 0.2170938), without_thread_sync(4.2135349, 0.1552619)  train_loss: -nan test_loss: -nan
+epoch: 28   train_time (total, each): with_thread_sync(5.9519361, 0.2146056), without_thread_sync(4.3702187, 0.1566839)  train_loss: -nan test_loss: -nan
+epoch: 29   train_time (total, each): with_thread_sync(6.1665321, 0.2145959), without_thread_sync(4.5257475, 0.1555288)  train_loss: -nan test_loss: -nan
+epoch: 30   train_time (total, each): with_thread_sync(6.3810934, 0.2145612), without_thread_sync(4.6840339, 0.1582864)  train_loss: -nan test_loss: -nan
+epoch: 31   train_time (total, each): with_thread_sync(6.5946879, 0.2135944), without_thread_sync(4.8407314, 0.1566974)  train_loss: -nan test_loss: -nan
+epoch: 32   train_time (total, each): with_thread_sync(6.8077664, 0.2130783), without_thread_sync(4.9978551, 0.1571237)  train_loss: -nan test_loss: -nan
+epoch: 33   train_time (total, each): with_thread_sync(7.0076678, 0.1999013), without_thread_sync(5.1540678, 0.1562127)  train_loss: -nan test_loss: -nan
+epoch: 34   train_time (total, each): with_thread_sync(7.2078735, 0.2002056), without_thread_sync(5.3104211, 0.1563533)  train_loss: -nan test_loss: -nan
+epoch: 35   train_time (total, each): with_thread_sync(7.4216169, 0.2137432), without_thread_sync(5.4696127, 0.1591916)  train_loss: -nan test_loss: -nan
+epoch: 36   train_time (total, each): with_thread_sync(7.6215747, 0.1999577), without_thread_sync(5.6252269, 0.1556142)  train_loss: -nan test_loss: -nan
+epoch: 37   train_time (total, each): with_thread_sync(7.8221569, 0.2005821), without_thread_sync(5.7815661, 0.1563393)  train_loss: -nan test_loss: -nan
+epoch: 38   train_time (total, each): with_thread_sync(8.0374126, 0.2152556), without_thread_sync(5.9387155, 0.1571494)  train_loss: -nan test_loss: -nan
+epoch: 39   train_time (total, each): with_thread_sync(8.2388154, 0.2014027), without_thread_sync(6.0911123, 0.1523968)  train_loss: -nan test_loss: -nan
+epoch: 40   train_time (total, each): with_thread_sync(8.4537899, 0.2149743), without_thread_sync(6.2421534, 0.1510411)  train_loss: -nan test_loss: -nan
+0.211344
+Finished!
+16-bit
+Use int: BitWeaving.......
+Using AVX!.......
+0 - Loading training samples from '../../data/rcv1_train.tsv'
+0 - Loaded 20242 training samples
+0 - Loaded 20242 test samples
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+0 - Run threadpool with 27 threads
+this->params_->step_size = 0.010850000
+epoch: 00   train_time (total, each): with_thread_sync(0.0000000, 0.0000000), without_thread_sync(0.0000000, 0.0000000)  train_loss: 0.2591394 test_loss: 0.2591394
+epoch: 01   train_time (total, each): with_thread_sync(0.2062995, 0.2062994), without_thread_sync(0.1576166, 0.1576166)  train_loss: -nan test_loss: -nan
+=====print the profiling result==========
+Instructions-retired 18865230975
+Active-cycles 9724807342
+IPC 1.93991
+UOPS_ISSUED.ANY:  52515776
+DTLB_LOAD_MISSES:  19491685
+OPS_ISSUED:  675955
+DTLB_LOAD_MISSES:  79324481
+BytesReadFromMC: 3666833088
+BytesWrittenToMC: 50449472
+epoch: 02   train_time (total, each): with_thread_sync(0.4489622, 0.2426626), without_thread_sync(0.3188535, 0.1612369)  train_loss: -nan test_loss: -nan
+epoch: 03   train_time (total, each): with_thread_sync(0.6526650, 0.2037026), without_thread_sync(0.4746981, 0.1558446)  train_loss: -nan test_loss: -nan
+epoch: 04   train_time (total, each): with_thread_sync(0.8714825, 0.2188174), without_thread_sync(0.6308193, 0.1561212)  train_loss: -nan test_loss: -nan
+epoch: 05   train_time (total, each): with_thread_sync(1.0779395, 0.2064569), without_thread_sync(0.7911307, 0.1603113)  train_loss: -nan test_loss: -nan
+epoch: 06   train_time (total, each): with_thread_sync(1.2973456, 0.2194059), without_thread_sync(0.9493573, 0.1582266)  train_loss: -nan test_loss: -nan
+epoch: 07   train_time (total, each): with_thread_sync(1.5172386, 0.2198928), without_thread_sync(1.1087523, 0.1593951)  train_loss: -nan test_loss: -nan
+epoch: 08   train_time (total, each): with_thread_sync(1.7238097, 0.2065710), without_thread_sync(1.2683795, 0.1596272)  train_loss: -nan test_loss: -nan
+epoch: 09   train_time (total, each): with_thread_sync(1.9554248, 0.2316150), without_thread_sync(1.4313639, 0.1629844)  train_loss: -nan test_loss: -nan
+epoch: 10   train_time (total, each): with_thread_sync(2.1729151, 0.2174902), without_thread_sync(1.5907327, 0.1593688)  train_loss: -nan test_loss: -nan
+epoch: 11   train_time (total, each): with_thread_sync(2.3787032, 0.2057879), without_thread_sync(1.7497681, 0.1590354)  train_loss: -nan test_loss: -nan
+epoch: 12   train_time (total, each): with_thread_sync(2.5862497, 0.2075464), without_thread_sync(1.9096049, 0.1598369)  train_loss: -nan test_loss: -nan
+epoch: 13   train_time (total, each): with_thread_sync(2.7929062, 0.2066564), without_thread_sync(2.0698428, 0.1602379)  train_loss: -nan test_loss: -nan
+epoch: 14   train_time (total, each): with_thread_sync(3.0097491, 0.2168427), without_thread_sync(2.2303273, 0.1604845)  train_loss: -nan test_loss: -nan
+epoch: 15   train_time (total, each): with_thread_sync(3.2400716, 0.2303224), without_thread_sync(2.3926485, 0.1623212)  train_loss: -nan test_loss: -nan
+epoch: 16   train_time (total, each): with_thread_sync(3.4641261, 0.2240543), without_thread_sync(2.5486617, 0.1560132)  train_loss: -nan test_loss: -nan
+epoch: 17   train_time (total, each): with_thread_sync(3.6685410, 0.2044149), without_thread_sync(2.7085795, 0.1599178)  train_loss: -nan test_loss: -nan
+epoch: 18   train_time (total, each): with_thread_sync(3.8716755, 0.2031343), without_thread_sync(2.8675122, 0.1589327)  train_loss: -nan test_loss: -nan
+epoch: 19   train_time (total, each): with_thread_sync(4.0912261, 0.2195505), without_thread_sync(3.0253541, 0.1578419)  train_loss: -nan test_loss: -nan
+epoch: 20   train_time (total, each): with_thread_sync(4.3084672, 0.2172410), without_thread_sync(3.1847856, 0.1594315)  train_loss: -nan test_loss: -nan
+epoch: 21   train_time (total, each): with_thread_sync(4.5320129, 0.2235455), without_thread_sync(3.3437858, 0.1590002)  train_loss: -nan test_loss: -nan
+epoch: 22   train_time (total, each): with_thread_sync(4.7379530, 0.2059400), without_thread_sync(3.4998169, 0.1560312)  train_loss: -nan test_loss: -nan
+epoch: 23   train_time (total, each): with_thread_sync(4.9556448, 0.2176916), without_thread_sync(3.6563444, 0.1565274)  train_loss: -nan test_loss: -nan
+epoch: 24   train_time (total, each): with_thread_sync(5.1628116, 0.2071667), without_thread_sync(3.8150443, 0.1586999)  train_loss: -nan test_loss: -nan
+epoch: 25   train_time (total, each): with_thread_sync(5.3824009, 0.2195891), without_thread_sync(3.9740694, 0.1590251)  train_loss: -nan test_loss: -nan
+epoch: 26   train_time (total, each): with_thread_sync(5.5883910, 0.2059900), without_thread_sync(4.1350201, 0.1609508)  train_loss: -nan test_loss: -nan
+epoch: 27   train_time (total, each): with_thread_sync(5.8082681, 0.2198769), without_thread_sync(4.2952860, 0.1602659)  train_loss: -nan test_loss: -nan
+epoch: 28   train_time (total, each): with_thread_sync(6.0555462, 0.2472780), without_thread_sync(4.4581219, 0.1628359)  train_loss: -nan test_loss: -nan
+epoch: 29   train_time (total, each): with_thread_sync(6.2617819, 0.2062355), without_thread_sync(4.6119933, 0.1538714)  train_loss: -nan test_loss: -nan
+epoch: 30   train_time (total, each): with_thread_sync(6.4798394, 0.2180574), without_thread_sync(4.7694010, 0.1574078)  train_loss: -nan test_loss: -nan
+epoch: 31   train_time (total, each): with_thread_sync(6.6963833, 0.2165437), without_thread_sync(4.9285320, 0.1591310)  train_loss: -nan test_loss: -nan
+epoch: 32   train_time (total, each): with_thread_sync(6.9018642, 0.2054808), without_thread_sync(5.0877699, 0.1592379)  train_loss: -nan test_loss: -nan
+epoch: 33   train_time (total, each): with_thread_sync(7.1083623, 0.2064979), without_thread_sync(5.2476054, 0.1598356)  train_loss: -nan test_loss: -nan
+epoch: 34   train_time (total, each): with_thread_sync(7.3140425, 0.2056801), without_thread_sync(5.4072525, 0.1596471)  train_loss: -nan test_loss: -nan
+epoch: 35   train_time (total, each): with_thread_sync(7.5341018, 0.2200591), without_thread_sync(5.5666963, 0.1594438)  train_loss: -nan test_loss: -nan
+epoch: 36   train_time (total, each): with_thread_sync(7.7375677, 0.2034657), without_thread_sync(5.7264467, 0.1597504)  train_loss: -nan test_loss: -nan
+epoch: 37   train_time (total, each): with_thread_sync(7.9439050, 0.2063372), without_thread_sync(5.8802174, 0.1537707)  train_loss: -nan test_loss: -nan
+epoch: 38   train_time (total, each): with_thread_sync(8.1745727, 0.2306676), without_thread_sync(6.0401523, 0.1599349)  train_loss: -nan test_loss: -nan
+epoch: 39   train_time (total, each): with_thread_sync(8.3808056, 0.2062328), without_thread_sync(6.2006278, 0.1604756)  train_loss: -nan test_loss: -nan
+epoch: 40   train_time (total, each): with_thread_sync(8.5856826, 0.2048768), without_thread_sync(6.3601578, 0.1595300)  train_loss: -nan test_loss: -nan
+0.214642
+Finished!
