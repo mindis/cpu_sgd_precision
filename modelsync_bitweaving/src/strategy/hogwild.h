@@ -166,89 +166,63 @@ namespace __executor
 
     //float b_base = samps[0].b_binary_to_value();  //65536.0; //1.0; // //2^16 or  1
     //model->batch_step_size = params.step_size/((float)batch_size*b_base*b_base); 
+    
+	//1,  Load the local model from the global model
+    hazy::vector::CopyInto(model->weights, model->local_gradients[tid]);
+	
 
     if (num_bits <= 8)
     {
       bool initilization_gradient = true;
 	  float b_base           = 256.0;  //65536.0; //1.0; // //2^16 or  1
-	  model->batch_step_size = params.step_size/((float)batch_size*b_base*b_base); // model->batch_step_size = params.step_size/((float)batch_size*b_base*b_base); 
+	  model->batch_step_size = params.step_size/(b_base*b_base); // model->batch_step_size = params.step_size/((float)batch_size*b_base*b_base); 
 	  float scale = -model->batch_step_size; ///(float)params.batch_size;
-	  
+
 	   unsigned char dest[512+samps[0].vector.size];
 	   hazy::vector::FVector<unsigned char> dest_char_vector (dest, samps[0].vector.size);
 
       for (unsigned i = start; i < end; i++) 
       {
-        if (initilization_gradient == true)
-        {
-          initilization_gradient = false;
-          hazy::vector::Zero(g_local);//(model->local_gradients[tid]);
-        }
-
+		//2.1: Regroup the data from bitweaving...
 		hazy::vector::Convert_from_bitweaving(dest_char_vector, samps[i].vector, num_bits);
 
+		//2.2: Compute the loss value...
         fp_type delta;
-        delta = scale * (Dot( x, dest_char_vector) - samps[i].value);
+        delta = scale * (Dot( model->local_gradients[tid], dest_char_vector) - samps[i].value);
 
-        // linear regression
+        //2.3: Update the local model.
         hazy::vector::ScaleAndAdd(
           g_local,
           dest_char_vector, //sample_char.vector, //sample.vector,
           delta
           );        
-
-        if((i - start) % batch_size == batch_size - 1 || i == end - 1)
-        {
-          // Reset gradient at the beginning of next sample.
-          initilization_gradient = true;
-          hazy::vector::ScaleAndAdd(
-            x,       //model->weights,               //
-            g_local, //model->local_gradients[tid],  //
-            1.0
-            );
-        }
       }  
     }
     else if (num_bits <= 16)  
     {
 		  bool initilization_gradient = true;
 		  float b_base			 = 65536.0;  //; //1.0; // //2^16 or  1
-		  model->batch_step_size = params.step_size/((float)batch_size*b_base*b_base); // model->batch_step_size = params.step_size/((float)batch_size*b_base*b_base); 
+		  model->batch_step_size = params.step_size/(b_base*b_base); // model->batch_step_size = params.step_size/((float)batch_size*b_base*b_base); 
 		  float scale = -model->batch_step_size; ///(float)params.batch_size;
 
 		  unsigned short dest[512+samps[0].vector.size];
-		  hazy::vector::FVector<unsigned short> dest_short_vector (dest, samps[0].vector.size);
+		  hazy::vector::FVector<unsigned short>dest_short_vector(dest, samps[0].vector.size);
 		
-		  for (unsigned i = start; i < end; i++) 
-		  {
-		    if (initilization_gradient == true)
-		    {
-			    initilization_gradient = false;
-			    hazy::vector::Zero(g_local);//(model->local_gradients[tid]);
-		    }
-		
-		  hazy::vector::Convert_from_bitweaving(dest_short_vector, samps[i].vector, num_bits);
-		
-		  fp_type delta;
-		  delta = scale * (Dot( x, dest_short_vector) - 256.0 * samps[i].value); //Align 1.0 to 256.0...
-		
-		  // linear regression
-		  hazy::vector::ScaleAndAdd(
-			g_local,
-			dest_short_vector, //sample_char.vector, //sample.vector,
-			delta
-			);		  
-		
-		  if((i - start) % batch_size == batch_size - 1 || i == end - 1)
-		  {
-			// Reset gradient at the beginning of next sample.
-			initilization_gradient = true;
+		for (unsigned i = start; i < end; i++) 
+		{
+			//2.1: Regroup the data from bitweaving...
+			hazy::vector::Convert_from_bitweaving(dest_short_vector, samps[i].vector, num_bits);
+			  
+			//2.2: Compute the loss value...
+			fp_type delta;
+			delta = scale * (Dot( model->local_gradients[tid], dest_short_vector) - 256.0 * samps[i].value);
+			  
+			//2.3: Update the local model.
 			hazy::vector::ScaleAndAdd(
-			  x,	   //model->weights,			   //
-			  g_local, //model->local_gradients[tid],  //
-			  1.0
-			  );
-		  }
+				model->local_gradients[tid],
+				dest_short_vector, //sample_char.vector, //sample.vector,
+				delta
+				);		  
 		}  
     }
     else if (num_bits <= 32)
@@ -422,6 +396,10 @@ class Hogwild
         threadPool_->Execute(args, __executor::RunHogwildPerThread<Model, Params, Sample, Exec>);
         threadPool_->Wait();
       }
+	  
+	//After all threads updates its local model, it is the time to average all the local models to the globa model.
+	  unsigned num_threads = this->model_->nthreads_;
+	  hazy::vector::avg_list(this->model_->weights, this->model_->local_gradients, num_threads);
 
       epoch_time_.Stop();
       train_time_.Pause();
@@ -481,10 +459,10 @@ test_samps = train_samps;
 
       //trainScan_ = new hazy::scan::MemoryScan< Sample >(train_samps);
       //testScan_ = new hazy::scan::MemoryScan< Sample >(test_samps);
-      trainScan_ = new hazy::scan::MemoryScanNoPermutation< Sample >(train_samps);
-      testScan_ = new hazy::scan::MemoryScanNoPermutation< Sample >(test_samps);
-      //trainScan_  = new hazy::scan::MemoryScanPermuteValues< Sample >(train_samps);
-      //testScan_   = new hazy::scan::MemoryScanPermuteValues< Sample >(test_samps);
+      //trainScan_ = new hazy::scan::MemoryScanNoPermutation< Sample >(train_samps);
+      //testScan_ = new hazy::scan::MemoryScanNoPermutation< Sample >(test_samps);
+      trainScan_  = new hazy::scan::MemoryScanPermuteValues< Sample >(train_samps);
+      testScan_   = new hazy::scan::MemoryScanPermuteValues< Sample >(test_samps); 
 
       // Get max number of samples on any worker
       params_->maxSamplesProc = train_samps.size;
@@ -631,10 +609,10 @@ test_samps = train_samps;
 
     //hazy::scan::MemoryScan< Sample > *trainScan_;
     //hazy::scan::MemoryScan< Sample > *testScan_;
-    hazy::scan::MemoryScanNoPermutation< Sample > *trainScan_;
-    hazy::scan::MemoryScanNoPermutation< Sample > *testScan_;
-    //hazy::scan::MemoryScanPermuteValues< Sample > *trainScan_;
-    //hazy::scan::MemoryScanPermuteValues< Sample > *testScan_;    
+    //hazy::scan::MemoryScanNoPermutation< Sample > *trainScan_;
+    //hazy::scan::MemoryScanNoPermutation< Sample > *testScan_;
+    hazy::scan::MemoryScanPermuteValues< Sample > *trainScan_;
+    hazy::scan::MemoryScanPermuteValues< Sample > *testScan_;    
 };
 
 #endif
