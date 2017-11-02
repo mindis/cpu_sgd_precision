@@ -432,6 +432,8 @@ class Hogwild
       hazy::vector::FVector<Sample> train_samps;
       hazy::vector::FVector<Sample> test_samps;
       hazy::vector::FVector<Sample> metadata;
+	  
+	  dimension += 1;
 
       printDebug(rank_, "Loading training samples from '%s'", szTrainFile);
       if (loadBinary) {

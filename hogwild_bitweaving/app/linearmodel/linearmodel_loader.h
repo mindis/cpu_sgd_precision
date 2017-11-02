@@ -98,23 +98,18 @@ public:
           index.push_back(e.col);
         }
 
-        unsigned int *d = new unsigned int[data.size()];
-                   int *ii = new int[data.size()];
+        unsigned int *d = new unsigned int[data.size()+1];
+                   int *ii = new int[data.size()+1];
         for (size_t j = 0; j < data.size(); j++) {
           d[j] = data[j];
-          ii[j] = index[j];
-/*		  
-		  if (inc_counter == 1)
-		  {
-			 printf("%d: 0x%8x\n", ii[j], data[j]);//
-			 tmp_data[ii[j]] =  data[j]; //printf("%d:%x  ", kk, (ex.values[i].vector)[kk] );
-		  } 	
-*/		  
+          ii[j] = index[j];		  
         }
+		d[data.size()]  = 4294967295;
+		ii[data.size()] = dimension-1;		
 
 		//inc_counter++;
 		
-        LinearModelSample_int temp(rating, d, ii, data.size(), dimension);
+        LinearModelSample_int temp(rating, d, ii, data.size()+1, dimension);
         examps.push_back(temp);
         rating = 0.0;
         data.clear();

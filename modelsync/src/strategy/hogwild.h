@@ -93,7 +93,7 @@ namespace __executor
     size_t actual_num_elements_in_batch = 0;
 	   float b_base                       = samps[0].b_binary_to_value();  //65536.0; //1.0; // //2^16 or  1
 	//samps
-    model->batch_step_size              = params.step_size/((float)batch_size*b_base); 
+    model->batch_step_size              = params.step_size/((float)batch_size*b_base*b_base); 
 
     //for (unsigned i = start; i < end; i++) {
     //  size_t indirect = perm[i];
@@ -362,6 +362,8 @@ class Hogwild
       hazy::vector::FVector<Sample> train_samps;
       hazy::vector::FVector<Sample> test_samps;
       hazy::vector::FVector<Sample> metadata;
+
+	  dimension += 1;
 
       printDebug(rank_, "Loading training samples from '%s'", szTrainFile);
 

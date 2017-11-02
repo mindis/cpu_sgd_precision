@@ -33,17 +33,23 @@ public:
           index.push_back(e.col);
         }
 
-        fp_type *d = new fp_type[data.size()];
-        int *i = new int[data.size()];
+        fp_type *d = new fp_type[data.size()+1];
+        int *i = new int[data.size()+1];
         for (size_t j = 0; j < data.size(); j++) {
           d[j] = data[j];
           i[j] = index[j];
         }
-        LinearModelSample temp(rating, d, i, data.size(), dimension);
+
+		d[data.size()] = 1.0;		 //add the biased.
+		i[data.size()] = dimension-1;
+
+        LinearModelSample temp(rating, d, i, data.size()+1, dimension);
         examps.push_back(temp);
         rating = 0.0;
         data.clear();
         index.clear();
+		
+		free(d); free(i);
       }
 
       if (e.col < 0) {
@@ -91,17 +97,23 @@ public:
           index.push_back(e.col);
         }
 
-        unsigned short *d = new unsigned short[data.size()];
-                   int *i = new int[data.size()];
+        unsigned short *d = new unsigned short[data.size()+1];
+                   int *i = new int[data.size()+1];
         for (size_t j = 0; j < data.size(); j++) {
           d[j] = data[j];
           i[j] = index[j];
         }
-        LinearModelSample_short temp(rating, d, i, data.size(), dimension);
+
+		d[data.size()] = 65535;		 //add the biased.
+		i[data.size()] = dimension-1;
+		
+        LinearModelSample_short temp(rating, d, i, data.size()+1, dimension);
         examps.push_back(temp);
         rating = 0.0;
         data.clear();
         index.clear();
+		
+		free(d); free(i);
       }
 
       if (e.col < 0) {
@@ -150,17 +162,23 @@ template <class Scan> static size_t LoadSamples(Scan &scan, hazy::vector::FVecto
 		index.push_back(e.col);
 	  }
 
-	  unsigned char *d = new unsigned char[data.size()];
-				 int *i = new int[data.size()];
+	  unsigned char *d = new unsigned char[data.size()+1];
+				 int *i = new int[data.size()+1];
 	  for (size_t j = 0; j < data.size(); j++) {
 		d[j] = data[j];
 		i[j] = index[j];
 	  }
-	  LinearModelSample_char temp(rating, d, i, data.size(), dimension);
+	  
+	  d[data.size()] = 255;	   //add the biased.
+	  i[data.size()] = dimension-1;
+
+	  LinearModelSample_char temp(rating, d, i, data.size()+1, dimension);
 	  examps.push_back(temp);
 	  rating = 0.0;
 	  data.clear();
 	  index.clear();
+	  
+	  free(d); free(i);
 	}
 
 	if (e.col < 0) {
