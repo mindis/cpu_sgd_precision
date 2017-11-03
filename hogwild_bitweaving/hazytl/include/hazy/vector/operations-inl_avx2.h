@@ -66,25 +66,40 @@ namespace vector {
 		{
 		  uint32_t tmp_buffer[BITS_OF_ONE_CACHE_LINE] = {0};
 		  //1: initilization off tmp buffer..
+		  /*
 		  for (int k = 0; k < BITS_OF_ONE_CACHE_LINE; k++)
 		  {
 			tmp_buffer[k] = src[j + k];
-			//printf("src[%d] = 0x%8x\t", j+k, src[j + k]);
 		  }  
-	
-	
+		*/
+		  for (int k = 0; k < BITS_OF_ONE_CACHE_LINE; k += 8)
+		  {
+			__m256i v1 = _mm256_loadu_si256( (__m256i const *)&(src[j+k]) );
+			_mm256_storeu_si256( (__m256i *)&(tmp_buffer[k]), v1);
+		  }  
+
 		  //2: focus on the data from index: j...
 		  for (int k = 0; k < 32; k++)
 		  { 
-			uint32_t result_buffer[BITS_OF_ONE_CACHE_LINE/32] = {0};  //16 ints == 512 bits...
+			unsigned char result_buffer[BITS_OF_ONE_CACHE_LINE/8] = {0};  //16 ints == 512 bits...
 			//2.1: re-order the data according to the bit-level...
-			for (int m = 0; m < BITS_OF_ONE_CACHE_LINE; m++)
+			for (int m = 0; m < BITS_OF_ONE_CACHE_LINE; m+=8)
 			{
-			  result_buffer[m>>5] = result_buffer[m>>5] | ((tmp_buffer[m] >>31)<<(m&31));
-			  tmp_buffer[m] 	  = tmp_buffer[m] << 1; 	  
+			  __m256i v_data     = _mm256_loadu_si256((__m256i const *)&tmp_buffer[m]);
+			  int tmp            = _mm256_movemask_ps( _mm256_castsi256_ps(v_data) );
+			  result_buffer[m/8] = (unsigned char)tmp;
+			  v_data             = _mm256_slli_epi32(v_data, 1);
+			  _mm256_storeu_si256((__m256i *)&tmp_buffer[m], v_data);
 			}
+			
 			//2.2: store the bit-level result back to the memory...
-			dest[address_index++] = result_buffer[0]; //printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+			__m256i v_data	   = _mm256_loadu_si256((__m256i const *)&result_buffer[0]);
+			 _mm256_storeu_si256((__m256i *)&dest[address_index+0], v_data);
+			         v_data 	= _mm256_loadu_si256((__m256i const *)&result_buffer[32]);
+			  _mm256_storeu_si256((__m256i *)&dest[address_index+8], v_data);
+			address_index += 16;
+			 
+/*			dest[address_index++] = result_buffer[0]; //printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
 			dest[address_index++] = result_buffer[1]; //printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
 			dest[address_index++] = result_buffer[2]; //printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
 			dest[address_index++] = result_buffer[3]; //printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
@@ -100,7 +115,7 @@ namespace vector {
 			dest[address_index++] = result_buffer[13];//printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
 			dest[address_index++] = result_buffer[14];//printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
 			dest[address_index++] = result_buffer[15];//printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
-		  }
+*/		  }
 		}
 	
 		//Deal with the remainder of features, with the index from j...
