@@ -395,6 +395,22 @@ void inline avg_list(FVector<T> & dest, FVector<T> *src, unsigned N) {
   }
 }
 
+//add src to the destination. 
+template <typename T>
+void inline avg_list_stream(FVector<T> & dest, FVector<T> *src, unsigned N) {
+  T scale_factor = 1.0 /(T)N;
+
+  for (size_t i = 0; i < dest.size; i++) 
+  {
+    T sum  = 0.0;
+    for (unsigned j = 0; j < N; j++)  
+      sum += (src[j])[i];
+
+
+    dest[i] = sum * scale_factor;
+  }
+}
+
 
 //add src to the destination. streaming load from src, no tag for the source...
 template <typename T>
@@ -536,6 +552,14 @@ void inline ThresholdZero(SVector<float_t> &v) {
 
 template <typename float_u>
 void inline CopyInto(FVector<float_u> const &u, FVector<float_u> &out) {
+  float_u * const __restrict__ outv = out.values;
+  float_u const * const __restrict__ inv = u.values;
+  memcpy(outv, inv, sizeof(float_u)*u.size);
+  out.size = u.size;
+}
+
+template <typename float_u>
+void inline CopyInto_stream(FVector<float_u> const &u, FVector<float_u> &out) {
   float_u * const __restrict__ outv = out.values;
   float_u const * const __restrict__ inv = u.values;
   memcpy(outv, inv, sizeof(float_u)*u.size);

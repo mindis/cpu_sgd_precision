@@ -1,0 +1,374 @@
+Run all the the: Hogwild, 27 threads
+char avx
+Use char.......
+Using AVX!.......
+0 - Loading training samples from '../../data/rcv1_train.tsv'
+0 - Loading test samples from '../../data/rcv1_train.tsv'
+0 - Loaded 20242 training samples
+0 - Loaded 20242 test samples
+0 - Run threadpool with 27 threads
+this->params_->step_size = 0.159999996
+epoch=00, total_train_time_with_sync=0.0000000, each_train_time_with_sync=0.0000000, total_train_time_wo_sync=0.0000000, each_train_time_wo_sync=0.0000000, train_loss=0.2591394, test_loss=0.2591394
+epoch=01, total_train_time_with_sync=0.0747306, each_train_time_with_sync=0.0747303, total_train_time_wo_sync=0.0507531, each_train_time_wo_sync=0.0507531, train_loss=0.0410885, test_loss=0.0410885
+=====print the profiling result==========
+Instructions-retired 2775495896
+Active-cycles 2059354685
+IPC 1.34775
+UOPS_ISSUED.ANY:  13347575
+DTLB_LOAD_MISSES:  20340255
+OPS_ISSUED:  1259837
+DTLB_LOAD_MISSES:  67708095
+BytesReadFromMC: 976302720
+BytesWrittenToMC: 28477632
+epoch=02, total_train_time_with_sync=0.1622640, each_train_time_with_sync=0.0875332, total_train_time_wo_sync=0.1085133, each_train_time_wo_sync=0.0577602, train_loss=0.0305967, test_loss=0.0305967
+epoch=03, total_train_time_with_sync=0.2474952, each_train_time_with_sync=0.0852308, total_train_time_wo_sync=0.1629841, each_train_time_wo_sync=0.0544707, train_loss=0.0264991, test_loss=0.0264991
+epoch=04, total_train_time_with_sync=0.3125863, each_train_time_with_sync=0.0650909, total_train_time_wo_sync=0.2094707, each_train_time_wo_sync=0.0464867, train_loss=0.0243689, test_loss=0.0243689
+epoch=05, total_train_time_with_sync=0.3722223, each_train_time_with_sync=0.0596357, total_train_time_wo_sync=0.2518982, each_train_time_wo_sync=0.0424274, train_loss=0.0229715, test_loss=0.0229715
+epoch=06, total_train_time_with_sync=0.4379364, each_train_time_with_sync=0.0657137, total_train_time_wo_sync=0.2978871, each_train_time_wo_sync=0.0459890, train_loss=0.0220987, test_loss=0.0220987
+epoch=07, total_train_time_with_sync=0.5026394, each_train_time_with_sync=0.0647028, total_train_time_wo_sync=0.3432383, each_train_time_wo_sync=0.0453512, train_loss=0.0208852, test_loss=0.0208852
+epoch=08, total_train_time_with_sync=0.5639131, each_train_time_with_sync=0.0612734, total_train_time_wo_sync=0.3866236, each_train_time_wo_sync=0.0433853, train_loss=0.0206266, test_loss=0.0206266
+epoch=09, total_train_time_with_sync=0.6335746, each_train_time_with_sync=0.0696612, total_train_time_wo_sync=0.4329731, each_train_time_wo_sync=0.0463495, train_loss=0.0195554, test_loss=0.0195554
+epoch=10, total_train_time_with_sync=0.7167381, each_train_time_with_sync=0.0831633, total_train_time_wo_sync=0.4811098, each_train_time_wo_sync=0.0481367, train_loss=0.0188552, test_loss=0.0188552
+epoch=11, total_train_time_with_sync=0.7856742, each_train_time_with_sync=0.0689357, total_train_time_wo_sync=0.5288801, each_train_time_wo_sync=0.0477702, train_loss=0.0186360, test_loss=0.0186360
+epoch=12, total_train_time_with_sync=0.8493046, each_train_time_with_sync=0.0636302, total_train_time_wo_sync=0.5716642, each_train_time_wo_sync=0.0427841, train_loss=0.0176908, test_loss=0.0176908
+epoch=13, total_train_time_with_sync=0.9053559, each_train_time_with_sync=0.0560510, total_train_time_wo_sync=0.6118957, each_train_time_wo_sync=0.0402315, train_loss=0.0172600, test_loss=0.0172600
+epoch=14, total_train_time_with_sync=0.9793351, each_train_time_with_sync=0.0739790, total_train_time_wo_sync=0.6603599, each_train_time_wo_sync=0.0484643, train_loss=0.0167258, test_loss=0.0167258
+epoch=15, total_train_time_with_sync=1.0572164, each_train_time_with_sync=0.0778810, total_train_time_wo_sync=0.7163604, each_train_time_wo_sync=0.0560005, train_loss=0.0163472, test_loss=0.0163472
+epoch=16, total_train_time_with_sync=1.1291135, each_train_time_with_sync=0.0718967, total_train_time_wo_sync=0.7649117, each_train_time_wo_sync=0.0485514, train_loss=0.0158881, test_loss=0.0158881
+epoch=17, total_train_time_with_sync=1.1968818, each_train_time_with_sync=0.0677681, total_train_time_wo_sync=0.8095946, each_train_time_wo_sync=0.0446829, train_loss=0.0156216, test_loss=0.0156216
+epoch=18, total_train_time_with_sync=1.2643571, each_train_time_with_sync=0.0674750, total_train_time_wo_sync=0.8550014, each_train_time_wo_sync=0.0454068, train_loss=0.0152228, test_loss=0.0152228
+epoch=19, total_train_time_with_sync=1.3309513, each_train_time_with_sync=0.0665938, total_train_time_wo_sync=0.9032389, each_train_time_wo_sync=0.0482375, train_loss=0.0151210, test_loss=0.0151210
+epoch=20, total_train_time_with_sync=1.3995022, each_train_time_with_sync=0.0685506, total_train_time_wo_sync=0.9505182, each_train_time_wo_sync=0.0472793, train_loss=0.0146776, test_loss=0.0146776
+epoch=21, total_train_time_with_sync=1.4679253, each_train_time_with_sync=0.0684229, total_train_time_wo_sync=0.9994581, each_train_time_wo_sync=0.0489399, train_loss=0.0147479, test_loss=0.0147479
+epoch=22, total_train_time_with_sync=1.5372231, each_train_time_with_sync=0.0692975, total_train_time_wo_sync=1.0456859, each_train_time_wo_sync=0.0462278, train_loss=0.0141633, test_loss=0.0141633
+epoch=23, total_train_time_with_sync=1.6022325, each_train_time_with_sync=0.0650091, total_train_time_wo_sync=1.0925751, each_train_time_wo_sync=0.0468892, train_loss=0.0139878, test_loss=0.0139878
+epoch=24, total_train_time_with_sync=1.6608426, each_train_time_with_sync=0.0586098, total_train_time_wo_sync=1.1347757, each_train_time_wo_sync=0.0422006, train_loss=0.0142253, test_loss=0.0142253
+epoch=25, total_train_time_with_sync=1.7277217, each_train_time_with_sync=0.0668788, total_train_time_wo_sync=1.1808980, each_train_time_wo_sync=0.0461223, train_loss=0.0136066, test_loss=0.0136066
+epoch=26, total_train_time_with_sync=1.7963814, each_train_time_with_sync=0.0686594, total_train_time_wo_sync=1.2290185, each_train_time_wo_sync=0.0481206, train_loss=0.0133379, test_loss=0.0133379
+epoch=27, total_train_time_with_sync=1.8624405, each_train_time_with_sync=0.0660587, total_train_time_wo_sync=1.2769094, each_train_time_wo_sync=0.0478909, train_loss=0.0132027, test_loss=0.0132027
+epoch=28, total_train_time_with_sync=1.9253877, each_train_time_with_sync=0.0629470, total_train_time_wo_sync=1.3184792, each_train_time_wo_sync=0.0415697, train_loss=0.0129398, test_loss=0.0129398
+epoch=29, total_train_time_with_sync=1.9900865, each_train_time_with_sync=0.0646986, total_train_time_wo_sync=1.3627674, each_train_time_wo_sync=0.0442882, train_loss=0.0127726, test_loss=0.0127726
+epoch=30, total_train_time_with_sync=2.0592147, each_train_time_with_sync=0.0691279, total_train_time_wo_sync=1.4073923, each_train_time_wo_sync=0.0446249, train_loss=0.0125172, test_loss=0.0125172
+epoch=31, total_train_time_with_sync=2.1287364, each_train_time_with_sync=0.0695212, total_train_time_wo_sync=1.4561712, each_train_time_wo_sync=0.0487789, train_loss=0.0124200, test_loss=0.0124200
+epoch=32, total_train_time_with_sync=2.1967835, each_train_time_with_sync=0.0680467, total_train_time_wo_sync=1.5052108, each_train_time_wo_sync=0.0490397, train_loss=0.0122689, test_loss=0.0122689
+epoch=33, total_train_time_with_sync=2.2631803, each_train_time_with_sync=0.0663966, total_train_time_wo_sync=1.5520602, each_train_time_wo_sync=0.0468494, train_loss=0.0120719, test_loss=0.0120719
+epoch=34, total_train_time_with_sync=2.3374834, each_train_time_with_sync=0.0743028, total_train_time_wo_sync=1.6042208, each_train_time_wo_sync=0.0521606, train_loss=0.0121183, test_loss=0.0121183
+epoch=35, total_train_time_with_sync=2.4098328, each_train_time_with_sync=0.0723491, total_train_time_wo_sync=1.6518855, each_train_time_wo_sync=0.0476647, train_loss=0.0117384, test_loss=0.0117384
+epoch=36, total_train_time_with_sync=2.4830835, each_train_time_with_sync=0.0732504, total_train_time_wo_sync=1.7008980, each_train_time_wo_sync=0.0490125, train_loss=0.0116338, test_loss=0.0116338
+epoch=37, total_train_time_with_sync=2.5525042, each_train_time_with_sync=0.0694204, total_train_time_wo_sync=1.7511573, each_train_time_wo_sync=0.0502593, train_loss=0.0115015, test_loss=0.0115015
+epoch=38, total_train_time_with_sync=2.6206563, each_train_time_with_sync=0.0681518, total_train_time_wo_sync=1.7970801, each_train_time_wo_sync=0.0459228, train_loss=0.0114143, test_loss=0.0114143
+epoch=39, total_train_time_with_sync=2.6887290, each_train_time_with_sync=0.0680725, total_train_time_wo_sync=1.8447576, each_train_time_wo_sync=0.0476775, train_loss=0.0113876, test_loss=0.0113876
+epoch=40, total_train_time_with_sync=2.7608810, each_train_time_with_sync=0.0721515, total_train_time_wo_sync=1.8915247, each_train_time_wo_sync=0.0467672, train_loss=0.0111414, test_loss=0.0111414
+0.069022
+Finished!
+short avx
+Use short.......
+Using AVX!.......
+0 - Loading training samples from '../../data/rcv1_train.tsv'
+0 - Loading test samples from '../../data/rcv1_train.tsv'
+0 - Loaded 20242 training samples
+0 - Loaded 20242 test samples
+0 - Run threadpool with 27 threads
+this->params_->step_size = 0.159999996
+epoch=00, total_train_time_with_sync=0.0000000, each_train_time_with_sync=0.0000000, total_train_time_wo_sync=0.0000000, each_train_time_wo_sync=0.0000000, train_loss=0.2591394, test_loss=0.2591394
+epoch=01, total_train_time_with_sync=0.0810668, each_train_time_with_sync=0.0810666, total_train_time_wo_sync=0.0539292, each_train_time_wo_sync=0.0539292, train_loss=0.0399831, test_loss=0.0399831
+=====print the profiling result==========
+Instructions-retired 2417368297
+Active-cycles 2456285707
+IPC 0.984156
+UOPS_ISSUED.ANY:  23114533
+DTLB_LOAD_MISSES:  31750007
+OPS_ISSUED:  902442
+DTLB_LOAD_MISSES:  63089822
+BytesReadFromMC: 1938062720
+BytesWrittenToMC: 29677376
+epoch=02, total_train_time_with_sync=0.1638704, each_train_time_with_sync=0.0828033, total_train_time_wo_sync=0.1120898, each_train_time_wo_sync=0.0581606, train_loss=0.0299824, test_loss=0.0299824
+epoch=03, total_train_time_with_sync=0.2367774, each_train_time_with_sync=0.0729069, total_train_time_wo_sync=0.1650677, each_train_time_wo_sync=0.0529779, train_loss=0.0261574, test_loss=0.0261574
+epoch=04, total_train_time_with_sync=0.3130438, each_train_time_with_sync=0.0762662, total_train_time_wo_sync=0.2235558, each_train_time_wo_sync=0.0584881, train_loss=0.0246242, test_loss=0.0246242
+epoch=05, total_train_time_with_sync=0.3845260, each_train_time_with_sync=0.0714820, total_train_time_wo_sync=0.2740181, each_train_time_wo_sync=0.0504623, train_loss=0.0225719, test_loss=0.0225719
+epoch=06, total_train_time_with_sync=0.4591949, each_train_time_with_sync=0.0746688, total_train_time_wo_sync=0.3245303, each_train_time_wo_sync=0.0505122, train_loss=0.0214043, test_loss=0.0214043
+epoch=07, total_train_time_with_sync=0.5329429, each_train_time_with_sync=0.0737477, total_train_time_wo_sync=0.3767352, each_train_time_wo_sync=0.0522048, train_loss=0.0204101, test_loss=0.0204101
+epoch=08, total_train_time_with_sync=0.6056023, each_train_time_with_sync=0.0726593, total_train_time_wo_sync=0.4296938, each_train_time_wo_sync=0.0529586, train_loss=0.0195977, test_loss=0.0195977
+epoch=09, total_train_time_with_sync=0.6814032, each_train_time_with_sync=0.0758006, total_train_time_wo_sync=0.4793440, each_train_time_wo_sync=0.0496503, train_loss=0.0189839, test_loss=0.0189839
+epoch=10, total_train_time_with_sync=0.7502239, each_train_time_with_sync=0.0688205, total_train_time_wo_sync=0.5293855, each_train_time_wo_sync=0.0500415, train_loss=0.0182933, test_loss=0.0182933
+epoch=11, total_train_time_with_sync=0.8188654, each_train_time_with_sync=0.0686413, total_train_time_wo_sync=0.5794395, each_train_time_wo_sync=0.0500540, train_loss=0.0177774, test_loss=0.0177774
+epoch=12, total_train_time_with_sync=0.8964277, each_train_time_with_sync=0.0775621, total_train_time_wo_sync=0.6327090, each_train_time_wo_sync=0.0532695, train_loss=0.0173675, test_loss=0.0173675
+epoch=13, total_train_time_with_sync=0.9651891, each_train_time_with_sync=0.0687612, total_train_time_wo_sync=0.6836274, each_train_time_wo_sync=0.0509184, train_loss=0.0177680, test_loss=0.0177680
+epoch=14, total_train_time_with_sync=1.0337783, each_train_time_with_sync=0.0685890, total_train_time_wo_sync=0.7315653, each_train_time_wo_sync=0.0479379, train_loss=0.0163664, test_loss=0.0163664
+epoch=15, total_train_time_with_sync=1.0986172, each_train_time_with_sync=0.0648387, total_train_time_wo_sync=0.7783356, each_train_time_wo_sync=0.0467703, train_loss=0.0163567, test_loss=0.0163567
+epoch=16, total_train_time_with_sync=1.1623516, each_train_time_with_sync=0.0637341, total_train_time_wo_sync=0.8253003, each_train_time_wo_sync=0.0469647, train_loss=0.0157300, test_loss=0.0157300
+epoch=17, total_train_time_with_sync=1.2392455, each_train_time_with_sync=0.0768937, total_train_time_wo_sync=0.8777707, each_train_time_wo_sync=0.0524704, train_loss=0.0153834, test_loss=0.0153834
+epoch=18, total_train_time_with_sync=1.3136168, each_train_time_with_sync=0.0743711, total_train_time_wo_sync=0.9267577, each_train_time_wo_sync=0.0489871, train_loss=0.0151051, test_loss=0.0151051
+epoch=19, total_train_time_with_sync=1.3885150, each_train_time_with_sync=0.0748980, total_train_time_wo_sync=0.9760595, each_train_time_wo_sync=0.0493017, train_loss=0.0147492, test_loss=0.0147492
+epoch=20, total_train_time_with_sync=1.4612393, each_train_time_with_sync=0.0727240, total_train_time_wo_sync=1.0266763, each_train_time_wo_sync=0.0506168, train_loss=0.0145260, test_loss=0.0145260
+epoch=21, total_train_time_with_sync=1.5390714, each_train_time_with_sync=0.0778318, total_train_time_wo_sync=1.0805099, each_train_time_wo_sync=0.0538336, train_loss=0.0142171, test_loss=0.0142171
+epoch=22, total_train_time_with_sync=1.6033748, each_train_time_with_sync=0.0643032, total_train_time_wo_sync=1.1276839, each_train_time_wo_sync=0.0471740, train_loss=0.0139916, test_loss=0.0139916
+epoch=23, total_train_time_with_sync=1.6780908, each_train_time_with_sync=0.0747157, total_train_time_wo_sync=1.1755875, each_train_time_wo_sync=0.0479036, train_loss=0.0142474, test_loss=0.0142474
+epoch=24, total_train_time_with_sync=1.7536815, each_train_time_with_sync=0.0755904, total_train_time_wo_sync=1.2242052, each_train_time_wo_sync=0.0486177, train_loss=0.0135338, test_loss=0.0135338
+epoch=25, total_train_time_with_sync=1.8230062, each_train_time_with_sync=0.0693244, total_train_time_wo_sync=1.2723583, each_train_time_wo_sync=0.0481531, train_loss=0.0133601, test_loss=0.0133601
+epoch=26, total_train_time_with_sync=1.8937668, each_train_time_with_sync=0.0707604, total_train_time_wo_sync=1.3208696, each_train_time_wo_sync=0.0485113, train_loss=0.0131121, test_loss=0.0131120
+epoch=27, total_train_time_with_sync=1.9609264, each_train_time_with_sync=0.0671594, total_train_time_wo_sync=1.3687946, each_train_time_wo_sync=0.0479250, train_loss=0.0129586, test_loss=0.0129586
+epoch=28, total_train_time_with_sync=2.0304526, each_train_time_with_sync=0.0695260, total_train_time_wo_sync=1.4158141, each_train_time_wo_sync=0.0470195, train_loss=0.0130750, test_loss=0.0130750
+epoch=29, total_train_time_with_sync=2.1003725, each_train_time_with_sync=0.0699195, total_train_time_wo_sync=1.4646465, each_train_time_wo_sync=0.0488325, train_loss=0.0125191, test_loss=0.0125191
+epoch=30, total_train_time_with_sync=2.1650220, each_train_time_with_sync=0.0646492, total_train_time_wo_sync=1.5140711, each_train_time_wo_sync=0.0494246, train_loss=0.0127776, test_loss=0.0127776
+epoch=31, total_train_time_with_sync=2.2334148, each_train_time_with_sync=0.0683927, total_train_time_wo_sync=1.5631692, each_train_time_wo_sync=0.0490981, train_loss=0.0125809, test_loss=0.0125809
+epoch=32, total_train_time_with_sync=2.2989990, each_train_time_with_sync=0.0655838, total_train_time_wo_sync=1.6112860, each_train_time_wo_sync=0.0481168, train_loss=0.0121079, test_loss=0.0121079
+epoch=33, total_train_time_with_sync=2.3674034, each_train_time_with_sync=0.0684042, total_train_time_wo_sync=1.6565647, each_train_time_wo_sync=0.0452787, train_loss=0.0118812, test_loss=0.0118812
+epoch=34, total_train_time_with_sync=2.4377795, each_train_time_with_sync=0.0703759, total_train_time_wo_sync=1.7064848, each_train_time_wo_sync=0.0499201, train_loss=0.0117292, test_loss=0.0117292
+epoch=35, total_train_time_with_sync=2.5029142, each_train_time_with_sync=0.0651344, total_train_time_wo_sync=1.7534238, each_train_time_wo_sync=0.0469390, train_loss=0.0116032, test_loss=0.0116032
+epoch=36, total_train_time_with_sync=2.5701616, each_train_time_with_sync=0.0672471, total_train_time_wo_sync=1.8012351, each_train_time_wo_sync=0.0478113, train_loss=0.0119474, test_loss=0.0119474
+epoch=37, total_train_time_with_sync=2.6379898, each_train_time_with_sync=0.0678280, total_train_time_wo_sync=1.8511866, each_train_time_wo_sync=0.0499515, train_loss=0.0114326, test_loss=0.0114326
+epoch=38, total_train_time_with_sync=2.7106221, each_train_time_with_sync=0.0726320, total_train_time_wo_sync=1.9004501, each_train_time_wo_sync=0.0492635, train_loss=0.0114518, test_loss=0.0114518
+epoch=39, total_train_time_with_sync=2.7795207, each_train_time_with_sync=0.0688984, total_train_time_wo_sync=1.9500502, each_train_time_wo_sync=0.0496001, train_loss=0.0111447, test_loss=0.0111447
+epoch=40, total_train_time_with_sync=2.8507842, each_train_time_with_sync=0.0712632, total_train_time_wo_sync=2.0002531, each_train_time_wo_sync=0.0502029, train_loss=0.0109792, test_loss=0.0109792
+0.071269
+Finished!
+FP avx
+Use floating point.......
+Using AVX!.......
+0 - Loading training samples from '../../data/rcv1_train.tsv'
+0 - Loading test samples from '../../data/rcv1_train.tsv'
+0 - Loaded 20242 training samples
+0 - Loaded 20242 test samples
+0 - Run threadpool with 27 threads
+this->params_->step_size = 0.159999996
+epoch=00, total_train_time_with_sync=0.0000000, each_train_time_with_sync=0.0000000, total_train_time_wo_sync=0.0000000, each_train_time_wo_sync=0.0000000, train_loss=0.2591394, test_loss=0.2591394
+epoch=01, total_train_time_with_sync=0.1112439, each_train_time_with_sync=0.1112438, total_train_time_wo_sync=0.0780054, each_train_time_wo_sync=0.0780054, train_loss=0.0401498, test_loss=0.0401498
+=====print the profiling result==========
+Instructions-retired 1765696317
+Active-cycles 3106185785
+IPC 0.568445
+UOPS_ISSUED.ANY:  43132271
+DTLB_LOAD_MISSES:  59452358
+OPS_ISSUED:  1888468
+DTLB_LOAD_MISSES:  48382405
+BytesReadFromMC: 3881048192
+BytesWrittenToMC: 34162624
+epoch=02, total_train_time_with_sync=0.2140841, each_train_time_with_sync=0.1028399, total_train_time_wo_sync=0.1518309, each_train_time_wo_sync=0.0738255, train_loss=0.0298444, test_loss=0.0298444
+epoch=03, total_train_time_with_sync=0.3079843, each_train_time_with_sync=0.0939001, total_train_time_wo_sync=0.2219819, each_train_time_wo_sync=0.0701510, train_loss=0.0261451, test_loss=0.0261451
+epoch=04, total_train_time_with_sync=0.4119257, each_train_time_with_sync=0.1039412, total_train_time_wo_sync=0.2958271, each_train_time_wo_sync=0.0738452, train_loss=0.0241516, test_loss=0.0241516
+epoch=05, total_train_time_with_sync=0.5157493, each_train_time_with_sync=0.1038234, total_train_time_wo_sync=0.3637106, each_train_time_wo_sync=0.0678835, train_loss=0.0226127, test_loss=0.0226127
+epoch=06, total_train_time_with_sync=0.6207466, each_train_time_with_sync=0.1049971, total_train_time_wo_sync=0.4380544, each_train_time_wo_sync=0.0743438, train_loss=0.0219343, test_loss=0.0219343
+epoch=07, total_train_time_with_sync=0.7234662, each_train_time_with_sync=0.1027194, total_train_time_wo_sync=0.5097152, each_train_time_wo_sync=0.0716608, train_loss=0.0207875, test_loss=0.0207875
+epoch=08, total_train_time_with_sync=0.8171749, each_train_time_with_sync=0.0937084, total_train_time_wo_sync=0.5763265, each_train_time_wo_sync=0.0666114, train_loss=0.0196056, test_loss=0.0196056
+epoch=09, total_train_time_with_sync=0.9139892, each_train_time_with_sync=0.0968140, total_train_time_wo_sync=0.6461044, each_train_time_wo_sync=0.0697778, train_loss=0.0189857, test_loss=0.0189857
+epoch=10, total_train_time_with_sync=1.0189670, each_train_time_with_sync=0.1049776, total_train_time_wo_sync=0.7209388, each_train_time_wo_sync=0.0748344, train_loss=0.0183293, test_loss=0.0183293
+epoch=11, total_train_time_with_sync=1.1159336, each_train_time_with_sync=0.0969663, total_train_time_wo_sync=0.7903948, each_train_time_wo_sync=0.0694561, train_loss=0.0177234, test_loss=0.0177234
+epoch=12, total_train_time_with_sync=1.2048152, each_train_time_with_sync=0.0888815, total_train_time_wo_sync=0.8591237, each_train_time_wo_sync=0.0687289, train_loss=0.0174113, test_loss=0.0174113
+epoch=13, total_train_time_with_sync=1.3036928, each_train_time_with_sync=0.0988772, total_train_time_wo_sync=0.9299852, each_train_time_wo_sync=0.0708614, train_loss=0.0172914, test_loss=0.0172914
+epoch=14, total_train_time_with_sync=1.3986992, each_train_time_with_sync=0.0950061, total_train_time_wo_sync=0.9986598, each_train_time_wo_sync=0.0686746, train_loss=0.0169976, test_loss=0.0169976
+epoch=15, total_train_time_with_sync=1.4955724, each_train_time_with_sync=0.0968729, total_train_time_wo_sync=1.0689656, each_train_time_wo_sync=0.0703058, train_loss=0.0159645, test_loss=0.0159645
+epoch=16, total_train_time_with_sync=1.5861697, each_train_time_with_sync=0.0905969, total_train_time_wo_sync=1.1374026, each_train_time_wo_sync=0.0684371, train_loss=0.0158195, test_loss=0.0158195
+epoch=17, total_train_time_with_sync=1.6782055, each_train_time_with_sync=0.0920355, total_train_time_wo_sync=1.2058240, each_train_time_wo_sync=0.0684214, train_loss=0.0152858, test_loss=0.0152858
+epoch=18, total_train_time_with_sync=1.7761166, each_train_time_with_sync=0.0979108, total_train_time_wo_sync=1.2760994, each_train_time_wo_sync=0.0702754, train_loss=0.0155774, test_loss=0.0155774
+epoch=19, total_train_time_with_sync=1.8865427, each_train_time_with_sync=0.1104258, total_train_time_wo_sync=1.3492668, each_train_time_wo_sync=0.0731674, train_loss=0.0146907, test_loss=0.0146907
+epoch=20, total_train_time_with_sync=1.9788299, each_train_time_with_sync=0.0922868, total_train_time_wo_sync=1.4169299, each_train_time_wo_sync=0.0676631, train_loss=0.0145595, test_loss=0.0145595
+epoch=21, total_train_time_with_sync=2.0733640, each_train_time_with_sync=0.0945338, total_train_time_wo_sync=1.4858441, each_train_time_wo_sync=0.0689143, train_loss=0.0142636, test_loss=0.0142636
+epoch=22, total_train_time_with_sync=2.1829260, each_train_time_with_sync=0.1095617, total_train_time_wo_sync=1.5654573, each_train_time_wo_sync=0.0796132, train_loss=0.0140510, test_loss=0.0140510
+epoch=23, total_train_time_with_sync=2.2807426, each_train_time_with_sync=0.0978163, total_train_time_wo_sync=1.6338841, each_train_time_wo_sync=0.0684268, train_loss=0.0137162, test_loss=0.0137162
+epoch=24, total_train_time_with_sync=2.3749373, each_train_time_with_sync=0.0941944, total_train_time_wo_sync=1.7035303, each_train_time_wo_sync=0.0696462, train_loss=0.0134662, test_loss=0.0134662
+epoch=25, total_train_time_with_sync=2.4703834, each_train_time_with_sync=0.0954457, total_train_time_wo_sync=1.7721411, each_train_time_wo_sync=0.0686108, train_loss=0.0133148, test_loss=0.0133148
+epoch=26, total_train_time_with_sync=2.5647741, each_train_time_with_sync=0.0943903, total_train_time_wo_sync=1.8414516, each_train_time_wo_sync=0.0693105, train_loss=0.0130814, test_loss=0.0130814
+epoch=27, total_train_time_with_sync=2.6545439, each_train_time_with_sync=0.0897696, total_train_time_wo_sync=1.9080708, each_train_time_wo_sync=0.0666192, train_loss=0.0128721, test_loss=0.0128721
+epoch=28, total_train_time_with_sync=2.7471967, each_train_time_with_sync=0.0926394, total_train_time_wo_sync=1.9760299, each_train_time_wo_sync=0.0679590, train_loss=0.0134342, test_loss=0.0134342
+epoch=29, total_train_time_with_sync=2.8357346, each_train_time_with_sync=0.0885377, total_train_time_wo_sync=2.0416728, each_train_time_wo_sync=0.0656429, train_loss=0.0126188, test_loss=0.0126188
+epoch=30, total_train_time_with_sync=2.9294594, each_train_time_with_sync=0.0937245, total_train_time_wo_sync=2.1095235, each_train_time_wo_sync=0.0678506, train_loss=0.0124360, test_loss=0.0124360
+epoch=31, total_train_time_with_sync=3.0229894, each_train_time_with_sync=0.0935297, total_train_time_wo_sync=2.1777321, each_train_time_wo_sync=0.0682087, train_loss=0.0123731, test_loss=0.0123731
+epoch=32, total_train_time_with_sync=3.1212664, each_train_time_with_sync=0.0982767, total_train_time_wo_sync=2.2462590, each_train_time_wo_sync=0.0685269, train_loss=0.0120813, test_loss=0.0120813
+epoch=33, total_train_time_with_sync=3.2079674, each_train_time_with_sync=0.0867007, total_train_time_wo_sync=2.3126504, each_train_time_wo_sync=0.0663914, train_loss=0.0119520, test_loss=0.0119520
+epoch=34, total_train_time_with_sync=3.2962508, each_train_time_with_sync=0.0882830, total_train_time_wo_sync=2.3772528, each_train_time_wo_sync=0.0646023, train_loss=0.0118297, test_loss=0.0118297
+epoch=35, total_train_time_with_sync=3.3926235, each_train_time_with_sync=0.0963724, total_train_time_wo_sync=2.4430941, each_train_time_wo_sync=0.0658413, train_loss=0.0116018, test_loss=0.0116018
+epoch=36, total_train_time_with_sync=3.4872059, each_train_time_with_sync=0.0945821, total_train_time_wo_sync=2.5114425, each_train_time_wo_sync=0.0683484, train_loss=0.0114702, test_loss=0.0114702
+epoch=37, total_train_time_with_sync=3.5776830, each_train_time_with_sync=0.0904769, total_train_time_wo_sync=2.5800352, each_train_time_wo_sync=0.0685928, train_loss=0.0113500, test_loss=0.0113500
+epoch=38, total_train_time_with_sync=3.6738821, each_train_time_with_sync=0.0961987, total_train_time_wo_sync=2.6497313, each_train_time_wo_sync=0.0696961, train_loss=0.0113262, test_loss=0.0113262
+epoch=39, total_train_time_with_sync=3.7714068, each_train_time_with_sync=0.0975244, total_train_time_wo_sync=2.7182020, each_train_time_wo_sync=0.0684707, train_loss=0.0111970, test_loss=0.0111970
+epoch=40, total_train_time_with_sync=3.8671185, each_train_time_with_sync=0.0957114, total_train_time_wo_sync=2.7856846, each_train_time_wo_sync=0.0674826, train_loss=0.0110034, test_loss=0.0110034
+0.096677
+Finished!
+Run all the the: Hogwild, 14 threads
+char avx
+Use char.......
+Using AVX!.......
+0 - Loading training samples from '../../data/rcv1_train.tsv'
+0 - Loading test samples from '../../data/rcv1_train.tsv'
+0 - Loaded 20242 training samples
+0 - Loaded 20242 test samples
+0 - Run threadpool with 14 threads
+this->params_->step_size = 0.159999996
+epoch=00, total_train_time_with_sync=0.0000000, each_train_time_with_sync=0.0000000, total_train_time_wo_sync=0.0000000, each_train_time_wo_sync=0.0000000, train_loss=0.2591394, test_loss=0.2591394
+epoch=01, total_train_time_with_sync=0.1088322, each_train_time_with_sync=0.1088316, total_train_time_wo_sync=0.0798458, each_train_time_wo_sync=0.0798458, train_loss=0.0410011, test_loss=0.0410011
+=====print the profiling result==========
+Instructions-retired 2774952962
+Active-cycles 1503225983
+IPC 1.846
+UOPS_ISSUED.ANY:  13338942
+DTLB_LOAD_MISSES:  16908334
+OPS_ISSUED:  1652744
+DTLB_LOAD_MISSES:  89422601
+BytesReadFromMC: 969356544
+BytesWrittenToMC: 26341184
+epoch=02, total_train_time_with_sync=0.2092050, each_train_time_with_sync=0.1003724, total_train_time_wo_sync=0.1537884, each_train_time_wo_sync=0.0739426, train_loss=0.0303334, test_loss=0.0303334
+epoch=03, total_train_time_with_sync=0.3046581, each_train_time_with_sync=0.0954529, total_train_time_wo_sync=0.2200700, each_train_time_wo_sync=0.0662816, train_loss=0.0268962, test_loss=0.0268962
+epoch=04, total_train_time_with_sync=0.3917486, each_train_time_with_sync=0.0870902, total_train_time_wo_sync=0.2815837, each_train_time_wo_sync=0.0615137, train_loss=0.0245765, test_loss=0.0245765
+epoch=05, total_train_time_with_sync=0.4836413, each_train_time_with_sync=0.0918923, total_train_time_wo_sync=0.3506436, each_train_time_wo_sync=0.0690599, train_loss=0.0230760, test_loss=0.0230760
+epoch=06, total_train_time_with_sync=0.5605301, each_train_time_with_sync=0.0768886, total_train_time_wo_sync=0.4096834, each_train_time_wo_sync=0.0590398, train_loss=0.0215504, test_loss=0.0215504
+epoch=07, total_train_time_with_sync=0.6388997, each_train_time_with_sync=0.0783694, total_train_time_wo_sync=0.4677605, each_train_time_wo_sync=0.0580771, train_loss=0.0209170, test_loss=0.0209170
+epoch=08, total_train_time_with_sync=0.7163019, each_train_time_with_sync=0.0774019, total_train_time_wo_sync=0.5288762, each_train_time_wo_sync=0.0611157, train_loss=0.0200468, test_loss=0.0200468
+epoch=09, total_train_time_with_sync=0.7962161, each_train_time_with_sync=0.0799139, total_train_time_wo_sync=0.5846360, each_train_time_wo_sync=0.0557598, train_loss=0.0193386, test_loss=0.0193386
+epoch=10, total_train_time_with_sync=0.8818402, each_train_time_with_sync=0.0856238, total_train_time_wo_sync=0.6443890, each_train_time_wo_sync=0.0597530, train_loss=0.0185908, test_loss=0.0185908
+epoch=11, total_train_time_with_sync=0.9588359, each_train_time_with_sync=0.0769954, total_train_time_wo_sync=0.7044326, each_train_time_wo_sync=0.0600436, train_loss=0.0180956, test_loss=0.0180956
+epoch=12, total_train_time_with_sync=1.0405771, each_train_time_with_sync=0.0817406, total_train_time_wo_sync=0.7643242, each_train_time_wo_sync=0.0598916, train_loss=0.0175313, test_loss=0.0175313
+epoch=13, total_train_time_with_sync=1.1144022, each_train_time_with_sync=0.0738249, total_train_time_wo_sync=0.8188451, each_train_time_wo_sync=0.0545209, train_loss=0.0176165, test_loss=0.0176165
+epoch=14, total_train_time_with_sync=1.1884543, each_train_time_with_sync=0.0740519, total_train_time_wo_sync=0.8720655, each_train_time_wo_sync=0.0532204, train_loss=0.0168108, test_loss=0.0168108
+epoch=15, total_train_time_with_sync=1.2617438, each_train_time_with_sync=0.0732892, total_train_time_wo_sync=0.9279792, each_train_time_wo_sync=0.0559137, train_loss=0.0165180, test_loss=0.0165180
+epoch=16, total_train_time_with_sync=1.3321462, each_train_time_with_sync=0.0704021, total_train_time_wo_sync=0.9798632, each_train_time_wo_sync=0.0518840, train_loss=0.0159184, test_loss=0.0159184
+epoch=17, total_train_time_with_sync=1.4226114, each_train_time_with_sync=0.0904650, total_train_time_wo_sync=1.0429338, each_train_time_wo_sync=0.0630706, train_loss=0.0154146, test_loss=0.0154146
+epoch=18, total_train_time_with_sync=1.5071241, each_train_time_with_sync=0.0845124, total_train_time_wo_sync=1.1040853, each_train_time_wo_sync=0.0611515, train_loss=0.0150936, test_loss=0.0150936
+epoch=19, total_train_time_with_sync=1.5950228, each_train_time_with_sync=0.0878983, total_train_time_wo_sync=1.1715135, each_train_time_wo_sync=0.0674282, train_loss=0.0149997, test_loss=0.0149997
+epoch=20, total_train_time_with_sync=1.6709260, each_train_time_with_sync=0.0759029, total_train_time_wo_sync=1.2263262, each_train_time_wo_sync=0.0548127, train_loss=0.0145633, test_loss=0.0145633
+epoch=21, total_train_time_with_sync=1.7533042, each_train_time_with_sync=0.0823779, total_train_time_wo_sync=1.2878740, each_train_time_wo_sync=0.0615478, train_loss=0.0142677, test_loss=0.0142677
+epoch=22, total_train_time_with_sync=1.8309914, each_train_time_with_sync=0.0776869, total_train_time_wo_sync=1.3429176, each_train_time_wo_sync=0.0550437, train_loss=0.0145556, test_loss=0.0145556
+epoch=23, total_train_time_with_sync=1.9056224, each_train_time_with_sync=0.0746307, total_train_time_wo_sync=1.3960266, each_train_time_wo_sync=0.0531090, train_loss=0.0139898, test_loss=0.0139898
+epoch=24, total_train_time_with_sync=1.9998998, each_train_time_with_sync=0.0942770, total_train_time_wo_sync=1.4613750, each_train_time_wo_sync=0.0653484, train_loss=0.0140978, test_loss=0.0140978
+epoch=25, total_train_time_with_sync=2.0827023, each_train_time_with_sync=0.0828022, total_train_time_wo_sync=1.5249983, each_train_time_wo_sync=0.0636232, train_loss=0.0133663, test_loss=0.0133663
+epoch=26, total_train_time_with_sync=2.1671138, each_train_time_with_sync=0.0844112, total_train_time_wo_sync=1.5915028, each_train_time_wo_sync=0.0665046, train_loss=0.0132836, test_loss=0.0132836
+epoch=27, total_train_time_with_sync=2.2378175, each_train_time_with_sync=0.0707033, total_train_time_wo_sync=1.6453430, each_train_time_wo_sync=0.0538402, train_loss=0.0130105, test_loss=0.0130105
+epoch=28, total_train_time_with_sync=2.3202755, each_train_time_with_sync=0.0824577, total_train_time_wo_sync=1.7012657, each_train_time_wo_sync=0.0559227, train_loss=0.0131084, test_loss=0.0131084
+epoch=29, total_train_time_with_sync=2.4085715, each_train_time_with_sync=0.0882957, total_train_time_wo_sync=1.7636286, each_train_time_wo_sync=0.0623629, train_loss=0.0126096, test_loss=0.0126096
+epoch=30, total_train_time_with_sync=2.4910375, each_train_time_with_sync=0.0824655, total_train_time_wo_sync=1.8243194, each_train_time_wo_sync=0.0606909, train_loss=0.0125157, test_loss=0.0125157
+epoch=31, total_train_time_with_sync=2.5684874, each_train_time_with_sync=0.0774496, total_train_time_wo_sync=1.8867967, each_train_time_wo_sync=0.0624773, train_loss=0.0125375, test_loss=0.0125375
+epoch=32, total_train_time_with_sync=2.6468440, each_train_time_with_sync=0.0783563, total_train_time_wo_sync=1.9451169, each_train_time_wo_sync=0.0583202, train_loss=0.0126078, test_loss=0.0126078
+epoch=33, total_train_time_with_sync=2.7288617, each_train_time_with_sync=0.0820174, total_train_time_wo_sync=2.0058821, each_train_time_wo_sync=0.0607652, train_loss=0.0120792, test_loss=0.0120792
+epoch=34, total_train_time_with_sync=2.8074036, each_train_time_with_sync=0.0785416, total_train_time_wo_sync=2.0640214, each_train_time_wo_sync=0.0581393, train_loss=0.0120014, test_loss=0.0120014
+epoch=35, total_train_time_with_sync=2.8908843, each_train_time_with_sync=0.0834804, total_train_time_wo_sync=2.1275337, each_train_time_wo_sync=0.0635123, train_loss=0.0116712, test_loss=0.0116712
+epoch=36, total_train_time_with_sync=2.9817083, each_train_time_with_sync=0.0908235, total_train_time_wo_sync=2.1962851, each_train_time_wo_sync=0.0687514, train_loss=0.0120659, test_loss=0.0120659
+epoch=37, total_train_time_with_sync=3.0597031, each_train_time_with_sync=0.0779944, total_train_time_wo_sync=2.2579497, each_train_time_wo_sync=0.0616646, train_loss=0.0120599, test_loss=0.0120599
+epoch=38, total_train_time_with_sync=3.1348493, each_train_time_with_sync=0.0751459, total_train_time_wo_sync=2.3152977, each_train_time_wo_sync=0.0573480, train_loss=0.0114255, test_loss=0.0114255
+epoch=39, total_train_time_with_sync=3.2165876, each_train_time_with_sync=0.0817380, total_train_time_wo_sync=2.3798245, each_train_time_wo_sync=0.0645267, train_loss=0.0112869, test_loss=0.0112869
+epoch=40, total_train_time_with_sync=3.2969257, each_train_time_with_sync=0.0803379, total_train_time_wo_sync=2.4340153, each_train_time_wo_sync=0.0541908, train_loss=0.0110746, test_loss=0.0110746
+0.082423
+Finished!
+short avx
+Use short.......
+Using AVX!.......
+0 - Loading training samples from '../../data/rcv1_train.tsv'
+0 - Loading test samples from '../../data/rcv1_train.tsv'
+0 - Loaded 20242 training samples
+0 - Loaded 20242 test samples
+0 - Run threadpool with 14 threads
+this->params_->step_size = 0.159999996
+epoch=00, total_train_time_with_sync=0.0000000, each_train_time_with_sync=0.0000000, total_train_time_wo_sync=0.0000000, each_train_time_wo_sync=0.0000000, train_loss=0.2591394, test_loss=0.2591394
+epoch=01, total_train_time_with_sync=0.0985192, each_train_time_with_sync=0.0985191, total_train_time_wo_sync=0.0764537, each_train_time_wo_sync=0.0764537, train_loss=0.0404760, test_loss=0.0404760
+=====print the profiling result==========
+Instructions-retired 2416725432
+Active-cycles 1712897650
+IPC 1.4109
+UOPS_ISSUED.ANY:  25277254
+DTLB_LOAD_MISSES:  29793697
+OPS_ISSUED:  1424577
+DTLB_LOAD_MISSES:  95339654
+BytesReadFromMC: 1929137600
+BytesWrittenToMC: 24923328
+epoch=02, total_train_time_with_sync=0.2150817, each_train_time_with_sync=0.1165622, total_train_time_wo_sync=0.1581393, each_train_time_wo_sync=0.0816856, train_loss=0.0298370, test_loss=0.0298369
+epoch=03, total_train_time_with_sync=0.3175434, each_train_time_with_sync=0.1024615, total_train_time_wo_sync=0.2342113, each_train_time_wo_sync=0.0760720, train_loss=0.0262211, test_loss=0.0262211
+epoch=04, total_train_time_with_sync=0.4187267, each_train_time_with_sync=0.1011831, total_train_time_wo_sync=0.3059520, each_train_time_wo_sync=0.0717407, train_loss=0.0241915, test_loss=0.0241915
+epoch=05, total_train_time_with_sync=0.5212459, each_train_time_with_sync=0.1025189, total_train_time_wo_sync=0.3820587, each_train_time_wo_sync=0.0761067, train_loss=0.0226071, test_loss=0.0226071
+epoch=06, total_train_time_with_sync=0.6170015, each_train_time_with_sync=0.0957554, total_train_time_wo_sync=0.4532575, each_train_time_wo_sync=0.0711988, train_loss=0.0215230, test_loss=0.0215230
+epoch=07, total_train_time_with_sync=0.7193932, each_train_time_with_sync=0.1023914, total_train_time_wo_sync=0.5267436, each_train_time_wo_sync=0.0734861, train_loss=0.0203912, test_loss=0.0203913
+epoch=08, total_train_time_with_sync=0.8059092, each_train_time_with_sync=0.0865155, total_train_time_wo_sync=0.5959092, each_train_time_wo_sync=0.0691655, train_loss=0.0198467, test_loss=0.0198467
+epoch=09, total_train_time_with_sync=0.9012047, each_train_time_with_sync=0.0952953, total_train_time_wo_sync=0.6701517, each_train_time_wo_sync=0.0742426, train_loss=0.0189276, test_loss=0.0189276
+epoch=10, total_train_time_with_sync=0.9916110, each_train_time_with_sync=0.0904061, total_train_time_wo_sync=0.7379039, each_train_time_wo_sync=0.0677522, train_loss=0.0184293, test_loss=0.0184293
+epoch=11, total_train_time_with_sync=1.0993073, each_train_time_with_sync=0.1076961, total_train_time_wo_sync=0.8092891, each_train_time_wo_sync=0.0713852, train_loss=0.0177328, test_loss=0.0177328
+epoch=12, total_train_time_with_sync=1.2021611, each_train_time_with_sync=0.1028535, total_train_time_wo_sync=0.8846445, each_train_time_wo_sync=0.0753554, train_loss=0.0172638, test_loss=0.0172638
+epoch=13, total_train_time_with_sync=1.2945987, each_train_time_with_sync=0.0924374, total_train_time_wo_sync=0.9517054, each_train_time_wo_sync=0.0670608, train_loss=0.0167946, test_loss=0.0167946
+epoch=14, total_train_time_with_sync=1.3799449, each_train_time_with_sync=0.0853460, total_train_time_wo_sync=1.0187873, each_train_time_wo_sync=0.0670820, train_loss=0.0163396, test_loss=0.0163396
+epoch=15, total_train_time_with_sync=1.4927067, each_train_time_with_sync=0.1127616, total_train_time_wo_sync=1.0897857, each_train_time_wo_sync=0.0709983, train_loss=0.0160671, test_loss=0.0160671
+epoch=16, total_train_time_with_sync=1.5784857, each_train_time_with_sync=0.0857788, total_train_time_wo_sync=1.1562195, each_train_time_wo_sync=0.0664339, train_loss=0.0156027, test_loss=0.0156027
+epoch=17, total_train_time_with_sync=1.6654329, each_train_time_with_sync=0.0869469, total_train_time_wo_sync=1.2253027, each_train_time_wo_sync=0.0690832, train_loss=0.0154428, test_loss=0.0154428
+epoch=18, total_train_time_with_sync=1.7653879, each_train_time_with_sync=0.0999548, total_train_time_wo_sync=1.2986833, each_train_time_wo_sync=0.0733807, train_loss=0.0150619, test_loss=0.0150619
+epoch=19, total_train_time_with_sync=1.8502753, each_train_time_with_sync=0.0848872, total_train_time_wo_sync=1.3633589, each_train_time_wo_sync=0.0646756, train_loss=0.0146815, test_loss=0.0146815
+epoch=20, total_train_time_with_sync=1.9381034, each_train_time_with_sync=0.0878279, total_train_time_wo_sync=1.4271498, each_train_time_wo_sync=0.0637908, train_loss=0.0144378, test_loss=0.0144378
+epoch=21, total_train_time_with_sync=2.0202385, each_train_time_with_sync=0.0821349, total_train_time_wo_sync=1.4926189, each_train_time_wo_sync=0.0654691, train_loss=0.0141566, test_loss=0.0141566
+epoch=22, total_train_time_with_sync=2.1042789, each_train_time_with_sync=0.0840402, total_train_time_wo_sync=1.5600204, each_train_time_wo_sync=0.0674015, train_loss=0.0138981, test_loss=0.0138981
+epoch=23, total_train_time_with_sync=2.1964133, each_train_time_with_sync=0.0921342, total_train_time_wo_sync=1.6288643, each_train_time_wo_sync=0.0688439, train_loss=0.0136817, test_loss=0.0136817
+epoch=24, total_train_time_with_sync=2.2837082, each_train_time_with_sync=0.0872947, total_train_time_wo_sync=1.6921573, each_train_time_wo_sync=0.0632931, train_loss=0.0139358, test_loss=0.0139358
+epoch=25, total_train_time_with_sync=2.3650703, each_train_time_with_sync=0.0813618, total_train_time_wo_sync=1.7561077, each_train_time_wo_sync=0.0639504, train_loss=0.0132599, test_loss=0.0132599
+epoch=26, total_train_time_with_sync=2.4587185, each_train_time_with_sync=0.0936480, total_train_time_wo_sync=1.8205219, each_train_time_wo_sync=0.0644142, train_loss=0.0130515, test_loss=0.0130515
+epoch=27, total_train_time_with_sync=2.5450472, each_train_time_with_sync=0.0863285, total_train_time_wo_sync=1.8866225, each_train_time_wo_sync=0.0661006, train_loss=0.0133491, test_loss=0.0133491
+epoch=28, total_train_time_with_sync=2.6277239, each_train_time_with_sync=0.0826765, total_train_time_wo_sync=1.9494087, each_train_time_wo_sync=0.0627862, train_loss=0.0127547, test_loss=0.0127547
+epoch=29, total_train_time_with_sync=2.7080307, each_train_time_with_sync=0.0803065, total_train_time_wo_sync=2.0151287, each_train_time_wo_sync=0.0657199, train_loss=0.0124878, test_loss=0.0124878
+epoch=30, total_train_time_with_sync=2.7871847, each_train_time_with_sync=0.0791538, total_train_time_wo_sync=2.0761951, each_train_time_wo_sync=0.0610664, train_loss=0.0123183, test_loss=0.0123183
+epoch=31, total_train_time_with_sync=2.8735923, each_train_time_with_sync=0.0864074, total_train_time_wo_sync=2.1409049, each_train_time_wo_sync=0.0647099, train_loss=0.0121894, test_loss=0.0121894
+epoch=32, total_train_time_with_sync=2.9672639, each_train_time_with_sync=0.0936713, total_train_time_wo_sync=2.2065660, each_train_time_wo_sync=0.0656611, train_loss=0.0120739, test_loss=0.0120739
+epoch=33, total_train_time_with_sync=3.0550885, each_train_time_with_sync=0.0878244, total_train_time_wo_sync=2.2728964, each_train_time_wo_sync=0.0663303, train_loss=0.0118899, test_loss=0.0118899
+epoch=34, total_train_time_with_sync=3.1495188, each_train_time_with_sync=0.0944300, total_train_time_wo_sync=2.3411007, each_train_time_wo_sync=0.0682044, train_loss=0.0117115, test_loss=0.0117115
+epoch=35, total_train_time_with_sync=3.2341074, each_train_time_with_sync=0.0845883, total_train_time_wo_sync=2.4068676, each_train_time_wo_sync=0.0657669, train_loss=0.0116258, test_loss=0.0116258
+epoch=36, total_train_time_with_sync=3.3294188, each_train_time_with_sync=0.0953111, total_train_time_wo_sync=2.4760484, each_train_time_wo_sync=0.0691807, train_loss=0.0114411, test_loss=0.0114411
+epoch=37, total_train_time_with_sync=3.4213978, each_train_time_with_sync=0.0919788, total_train_time_wo_sync=2.5442647, each_train_time_wo_sync=0.0682164, train_loss=0.0113398, test_loss=0.0113398
+epoch=38, total_train_time_with_sync=3.5051607, each_train_time_with_sync=0.0837627, total_train_time_wo_sync=2.6102211, each_train_time_wo_sync=0.0659563, train_loss=0.0112950, test_loss=0.0112951
+epoch=39, total_train_time_with_sync=3.6035179, each_train_time_with_sync=0.0983569, total_train_time_wo_sync=2.6802855, each_train_time_wo_sync=0.0700644, train_loss=0.0110858, test_loss=0.0110858
+epoch=40, total_train_time_with_sync=3.6894162, each_train_time_with_sync=0.0858980, total_train_time_wo_sync=2.7470901, each_train_time_wo_sync=0.0668046, train_loss=0.0109664, test_loss=0.0109664
+0.092235
+Finished!
+FP avx
+Use floating point.......
+Using AVX!.......
+0 - Loading training samples from '../../data/rcv1_train.tsv'
+0 - Loading test samples from '../../data/rcv1_train.tsv'
+0 - Loaded 20242 training samples
+0 - Loaded 20242 test samples
+0 - Run threadpool with 14 threads
+this->params_->step_size = 0.159999996
+epoch=00, total_train_time_with_sync=0.0000000, each_train_time_with_sync=0.0000000, total_train_time_wo_sync=0.0000000, each_train_time_wo_sync=0.0000000, train_loss=0.2591394, test_loss=0.2591394
+epoch=01, total_train_time_with_sync=0.1127346, each_train_time_with_sync=0.1127343, total_train_time_wo_sync=0.0896153, each_train_time_wo_sync=0.0896153, train_loss=0.0433275, test_loss=0.0433275
+=====print the profiling result==========
+Instructions-retired 1815607202
+Active-cycles 2369928914
+IPC 0.766102
+UOPS_ISSUED.ANY:  46957604
+DTLB_LOAD_MISSES:  65116355
+OPS_ISSUED:  2834925
+DTLB_LOAD_MISSES:  74315858
+BytesReadFromMC: 3863068160
+BytesWrittenToMC: 26971520
+epoch=02, total_train_time_with_sync=0.2590655, each_train_time_with_sync=0.1463306, total_train_time_wo_sync=0.1877783, each_train_time_wo_sync=0.0981630, train_loss=0.0307763, test_loss=0.0307763
+epoch=03, total_train_time_with_sync=0.3791541, each_train_time_with_sync=0.1200884, total_train_time_wo_sync=0.2832033, each_train_time_wo_sync=0.0954250, train_loss=0.0265243, test_loss=0.0265243
+epoch=04, total_train_time_with_sync=0.5076843, each_train_time_with_sync=0.1285300, total_train_time_wo_sync=0.3733647, each_train_time_wo_sync=0.0901614, train_loss=0.0244613, test_loss=0.0244613
+epoch=05, total_train_time_with_sync=0.6317295, each_train_time_with_sync=0.1240449, total_train_time_wo_sync=0.4727955, each_train_time_wo_sync=0.0994308, train_loss=0.0235840, test_loss=0.0235840
+epoch=06, total_train_time_with_sync=0.7785309, each_train_time_with_sync=0.1468012, total_train_time_wo_sync=0.5757363, each_train_time_wo_sync=0.1029408, train_loss=0.0216412, test_loss=0.0216412
+epoch=07, total_train_time_with_sync=0.8951343, each_train_time_with_sync=0.1166032, total_train_time_wo_sync=0.6643396, each_train_time_wo_sync=0.0886033, train_loss=0.0205360, test_loss=0.0205360
+epoch=08, total_train_time_with_sync=1.0105873, each_train_time_with_sync=0.1154527, total_train_time_wo_sync=0.7503065, each_train_time_wo_sync=0.0859669, train_loss=0.0197769, test_loss=0.0197769
+epoch=09, total_train_time_with_sync=1.1177268, each_train_time_with_sync=0.1071394, total_train_time_wo_sync=0.8333384, each_train_time_wo_sync=0.0830319, train_loss=0.0191297, test_loss=0.0191297
+epoch=10, total_train_time_with_sync=1.2419321, each_train_time_with_sync=0.1242050, total_train_time_wo_sync=0.9202607, each_train_time_wo_sync=0.0869223, train_loss=0.0183021, test_loss=0.0183021
+epoch=11, total_train_time_with_sync=1.3601461, each_train_time_with_sync=0.1182138, total_train_time_wo_sync=1.0144043, each_train_time_wo_sync=0.0941436, train_loss=0.0177199, test_loss=0.0177199
+epoch=12, total_train_time_with_sync=1.5024132, each_train_time_with_sync=0.1422668, total_train_time_wo_sync=1.1109011, each_train_time_wo_sync=0.0964968, train_loss=0.0174026, test_loss=0.0174026
+epoch=13, total_train_time_with_sync=1.6205083, each_train_time_with_sync=0.1180949, total_train_time_wo_sync=1.2066732, each_train_time_wo_sync=0.0957721, train_loss=0.0168593, test_loss=0.0168593
+epoch=14, total_train_time_with_sync=1.7370099, each_train_time_with_sync=0.1165014, total_train_time_wo_sync=1.2913006, each_train_time_wo_sync=0.0846274, train_loss=0.0165381, test_loss=0.0165381
+epoch=15, total_train_time_with_sync=1.8524614, each_train_time_with_sync=0.1154513, total_train_time_wo_sync=1.3775398, each_train_time_wo_sync=0.0862392, train_loss=0.0160699, test_loss=0.0160699
+epoch=16, total_train_time_with_sync=1.9708138, each_train_time_with_sync=0.1183522, total_train_time_wo_sync=1.4638887, each_train_time_wo_sync=0.0863489, train_loss=0.0155954, test_loss=0.0155954
+epoch=17, total_train_time_with_sync=2.0785099, each_train_time_with_sync=0.1076959, total_train_time_wo_sync=1.5461381, each_train_time_wo_sync=0.0822494, train_loss=0.0153311, test_loss=0.0153311
+epoch=18, total_train_time_with_sync=2.2095950, each_train_time_with_sync=0.1310849, total_train_time_wo_sync=1.6332240, each_train_time_wo_sync=0.0870859, train_loss=0.0152242, test_loss=0.0152242
+epoch=19, total_train_time_with_sync=2.3218493, each_train_time_with_sync=0.1122541, total_train_time_wo_sync=1.7171984, each_train_time_wo_sync=0.0839744, train_loss=0.0148104, test_loss=0.0148104
+epoch=20, total_train_time_with_sync=2.4517338, each_train_time_with_sync=0.1298843, total_train_time_wo_sync=1.8086201, each_train_time_wo_sync=0.0914217, train_loss=0.0146529, test_loss=0.0146529
+epoch=21, total_train_time_with_sync=2.5549518, each_train_time_with_sync=0.1032178, total_train_time_wo_sync=1.8889018, each_train_time_wo_sync=0.0802818, train_loss=0.0141769, test_loss=0.0141769
+epoch=22, total_train_time_with_sync=2.6604323, each_train_time_with_sync=0.1054802, total_train_time_wo_sync=1.9692866, each_train_time_wo_sync=0.0803848, train_loss=0.0139292, test_loss=0.0139292
+epoch=23, total_train_time_with_sync=2.7780413, each_train_time_with_sync=0.1176087, total_train_time_wo_sync=2.0630459, each_train_time_wo_sync=0.0937593, train_loss=0.0137477, test_loss=0.0137477
+epoch=24, total_train_time_with_sync=2.8944604, each_train_time_with_sync=0.1164188, total_train_time_wo_sync=2.1499231, each_train_time_wo_sync=0.0868771, train_loss=0.0136389, test_loss=0.0136389
+epoch=25, total_train_time_with_sync=3.0094890, each_train_time_with_sync=0.1150284, total_train_time_wo_sync=2.2363264, each_train_time_wo_sync=0.0864034, train_loss=0.0135465, test_loss=0.0135465
+epoch=26, total_train_time_with_sync=3.1478990, each_train_time_with_sync=0.1384098, total_train_time_wo_sync=2.3311064, each_train_time_wo_sync=0.0947800, train_loss=0.0131114, test_loss=0.0131114
+epoch=27, total_train_time_with_sync=3.2665795, each_train_time_with_sync=0.1186801, total_train_time_wo_sync=2.4182802, each_train_time_wo_sync=0.0871738, train_loss=0.0129370, test_loss=0.0129369
+epoch=28, total_train_time_with_sync=3.3873631, each_train_time_with_sync=0.1207833, total_train_time_wo_sync=2.5184309, each_train_time_wo_sync=0.1001507, train_loss=0.0128700, test_loss=0.0128700
+epoch=29, total_train_time_with_sync=3.4996207, each_train_time_with_sync=0.1122574, total_train_time_wo_sync=2.6050104, each_train_time_wo_sync=0.0865794, train_loss=0.0124878, test_loss=0.0124878
+epoch=30, total_train_time_with_sync=3.6262584, each_train_time_with_sync=0.1266375, total_train_time_wo_sync=2.7030888, each_train_time_wo_sync=0.0980785, train_loss=0.0123573, test_loss=0.0123573
+epoch=31, total_train_time_with_sync=3.7472231, each_train_time_with_sync=0.1209645, total_train_time_wo_sync=2.7907985, each_train_time_wo_sync=0.0877097, train_loss=0.0121404, test_loss=0.0121404
+epoch=32, total_train_time_with_sync=3.8699702, each_train_time_with_sync=0.1227468, total_train_time_wo_sync=2.8845911, each_train_time_wo_sync=0.0937925, train_loss=0.0120675, test_loss=0.0120675
+epoch=33, total_train_time_with_sync=3.9815042, each_train_time_with_sync=0.1115338, total_train_time_wo_sync=2.9720161, each_train_time_wo_sync=0.0874251, train_loss=0.0118777, test_loss=0.0118778
+epoch=34, total_train_time_with_sync=4.0883066, each_train_time_with_sync=0.1068022, total_train_time_wo_sync=3.0550782, each_train_time_wo_sync=0.0830621, train_loss=0.0117439, test_loss=0.0117439
+epoch=35, total_train_time_with_sync=4.1983291, each_train_time_with_sync=0.1100222, total_train_time_wo_sync=3.1413161, each_train_time_wo_sync=0.0862378, train_loss=0.0115481, test_loss=0.0115481
+epoch=36, total_train_time_with_sync=4.3173022, each_train_time_with_sync=0.1189728, total_train_time_wo_sync=3.2357686, each_train_time_wo_sync=0.0944526, train_loss=0.0117085, test_loss=0.0117085
+epoch=37, total_train_time_with_sync=4.4388913, each_train_time_with_sync=0.1215889, total_train_time_wo_sync=3.3251374, each_train_time_wo_sync=0.0893687, train_loss=0.0112783, test_loss=0.0112783
+epoch=38, total_train_time_with_sync=4.5587815, each_train_time_with_sync=0.1198899, total_train_time_wo_sync=3.4147302, each_train_time_wo_sync=0.0895928, train_loss=0.0114607, test_loss=0.0114607
+epoch=39, total_train_time_with_sync=4.6715088, each_train_time_with_sync=0.1127271, total_train_time_wo_sync=3.5027370, each_train_time_wo_sync=0.0880068, train_loss=0.0111173, test_loss=0.0111173
+epoch=40, total_train_time_with_sync=4.7878366, each_train_time_with_sync=0.1163276, total_train_time_wo_sync=3.5904479, each_train_time_wo_sync=0.0877110, train_loss=0.0109106, test_loss=0.0109106
+0.119696
+Finished!

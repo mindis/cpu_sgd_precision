@@ -167,9 +167,9 @@ namespace __executor
     //float b_base = samps[0].b_binary_to_value();  //65536.0; //1.0; // //2^16 or  1
     //model->batch_step_size = params.step_size/((float)batch_size*b_base*b_base); 
     
-	//1,  Load the local model from the global model
+	//1,  Load the local model from the global model 
     hazy::vector::CopyInto(model->weights, model->local_gradients[tid]);
-	
+	//hazy::vector::CopyInto_stream(model->weights, model->local_gradients[tid]);
 
     if (num_bits <= 8)
     {
@@ -400,7 +400,8 @@ class Hogwild
 	//After all threads updates its local model, it is the time to average all the local models to the globa model.
 	  unsigned num_threads = this->model_->nthreads_;
 	  hazy::vector::avg_list(this->model_->weights, this->model_->local_gradients, num_threads);
-
+	  //hazy::vector::avg_list_stream(this->model_->weights, this->model_->local_gradients, num_threads);
+	  
       epoch_time_.Stop();
       train_time_.Pause();
     }
@@ -507,92 +508,169 @@ test_samps = train_samps;
      // printDebug(rank_, "After threadPool_WAIT\n");	  
     }
 
-    void Run(int nepochs)
-    {
-      //printDebug(rank_, "beginning In run, nepochs = %d\n", nepochs);	 
-	  
-      double totalTime = 0.0;
-	  double pure_total_computing_time = 0.0;
-	  printf("this->params_->step_size = %.9f\n", this->params_->step_size);
-	  
-      for(int e = 0; e <= nepochs; ++e)
-      {      
-        double avgComputeTime = 0.0;
-        double avgCommunicateTime = 0.0;
-        if(e > 0)
-        {
 
-          if (e == this->params_->target_epoch)
-          {
-		     PCM_initPerformanceMonitor(&inst_Monitor_Event, NULL);
-		     PCM_start();
-          }
+	void Run(int nepochs)
+	{
+		  //printDebug(rank_, "beginning In run, nepochs = %d\n", nepochs);  
 		  
-          this->RunEpoch(trainScan_);
-
-          if (e == this->params_->target_epoch)
-          {
-		    PCM_stop();
-		    printf("=====print the profiling result==========\n");
-		    PCM_printResults();	  
-		    PCM_cleanup();
-          }			  
-
-          // Calc average and reset compute and communicate timers
-          for(unsigned i = 0; i < params_->nthreads; ++i)
-          {
-            avgComputeTime += compute_times_[i].ptr->value;
-            avgCommunicateTime += communicate_times_[i].ptr->value;
-            compute_times_[i].ptr->Reset();     // Force reset
-            communicate_times_[i].ptr->Reset(); // Force reset
-          }
-          if(params_->nthreads > 0)
-          {
-            avgComputeTime /= params_->nthreads;
-            avgCommunicateTime /= params_->nthreads;
-          }
-		  pure_total_computing_time += avgComputeTime;
-        }
-		
+		  double totalTime = 0.0;
+		  double pure_total_computing_time = 0.0;
+		  printf("this->params_->step_size = %.9f\n", this->params_->step_size);
+		  
+		  for(int e = 0; e <= nepochs; ++e)
+		  { 	 
+			double avgComputeTime = 0.0;
+			double avgCommunicateTime = 0.0;
+			if(e > 0)
+			{
+	
+			  if (e == this->params_->target_epoch)
+			  {
+				 PCM_initPerformanceMonitor(&inst_Monitor_Event, NULL);
+				 PCM_start();
+			  }
+			  
+			  this->RunEpoch(trainScan_);
+	
+			  if (e == this->params_->target_epoch)
+			  {
+				PCM_stop();
+				printf("=====print the profiling result==========\n");
+				PCM_printResults();   
+				PCM_cleanup();
+			  } 		  
+	
+			  // Calc average and reset compute and communicate timers
+			  for(unsigned i = 0; i < params_->nthreads; ++i)
+			  {
+				avgComputeTime += compute_times_[i].ptr->value;
+				avgCommunicateTime += communicate_times_[i].ptr->value;
+				compute_times_[i].ptr->Reset(); 	// Force reset
+				communicate_times_[i].ptr->Reset(); // Force reset
+			  }
+			  if(params_->nthreads > 0)
+			  {
+				avgComputeTime /= params_->nthreads;
+				avgCommunicateTime /= params_->nthreads;
+			  }
+			  pure_total_computing_time += avgComputeTime;
+			}
+			
 #ifdef _EXPBACKOFF_STEPSIZES
-        this->params_->step_size *= this->params_->step_decay;
+			this->params_->step_size *= this->params_->step_decay;
 #endif
+	
+			double train_loss = this->ComputeLoss(trainScan_);
+			double test_loss = this->ComputeLoss(testScan_);
+	
+			totalTime += epoch_time_.value;
+	/*
+			double norm_x_minus_x_hat = this->NormTwoXMinusXHat();
+			printf("epoch: %.2d wall_clock: %.7f train_time: %.7f test_time: %.7f epoch_time: %.7f compute_time: %.7f communicate_time: %.7f train_loss: %.7f test_loss: %.7f norm_x_minus_x_hat: %.7f\n", 
+				e,
+				wall_clock_.Read(),
+				train_time_.value,
+				test_time_.value,
+				epoch_time_.value,
+				avgComputeTime,
+				avgCommunicateTime,
+				train_loss,
+				test_loss,
+				norm_x_minus_x_hat
+				);
+	*/
+			printf("epoch: %.2d   train_time (total, each): with_thread_sync(%.7f, %.7f), without_thread_sync(%.7f, %.7f)  train_loss: %.7f test_loss: %.7f\n", //communicate_time: %.7f
+				e,
+				train_time_.value,
+				epoch_time_.value,
+				pure_total_computing_time,
+				avgComputeTime,
+				//avgCommunicateTime,
+				train_loss,
+				test_loss
+				);
+			fflush(stdout);
+		  }
+	
+		printf("%f\nFinished!\n", totalTime / nepochs);
+	}
 
-        double train_loss = this->ComputeLoss(trainScan_);
-        double test_loss = this->ComputeLoss(testScan_);
-
-        totalTime += epoch_time_.value;
 /*
-        double norm_x_minus_x_hat = this->NormTwoXMinusXHat();
-        printf("epoch: %.2d wall_clock: %.7f train_time: %.7f test_time: %.7f epoch_time: %.7f compute_time: %.7f communicate_time: %.7f train_loss: %.7f test_loss: %.7f norm_x_minus_x_hat: %.7f\n", 
-            e,
-            wall_clock_.Read(),
-            train_time_.value,
-            test_time_.value,
-            epoch_time_.value,
-            avgComputeTime,
-            avgCommunicateTime,
-            train_loss,
-            test_loss,
-            norm_x_minus_x_hat
-            );
+		void Run(int nepochs)
+		{
+		  //printDebug(rank_, "beginning In run, nepochs = %d\n", nepochs);  
+		  
+		  double totalTime = 0.0;
+		  double pure_total_computing_time = 0.0;
+		  printf("this->params_->step_size = %.9f\n", this->params_->step_size);
+		  
+		  for(int e = 0; e <= nepochs; ++e)
+		  { 	 
+			double avgComputeTime = 0.0;
+			double avgCommunicateTime = 0.0;
+			if(e > 0)
+			{
+	
+			  if (e == this->params_->target_epoch)
+			  {
+				 PCM_initPerformanceMonitor(&inst_Monitor_Event, NULL);
+				 PCM_start();
+			  }
+			  
+			  this->RunEpoch(trainScan_);
+	
+			  if (e == this->params_->target_epoch)
+			  {
+				PCM_stop();
+				printf("=====print the profiling result==========\n");
+				PCM_printResults();   
+				PCM_cleanup();
+			  } 		  
+	
+			  // Calc average and reset compute and communicate timers
+			  for(unsigned i = 0; i < params_->nthreads; ++i)
+			  {
+				avgComputeTime += compute_times_[i].ptr->value;
+				avgCommunicateTime += communicate_times_[i].ptr->value;
+				compute_times_[i].ptr->Reset(); 	// Force reset
+				communicate_times_[i].ptr->Reset(); // Force reset
+			  }
+			  if(params_->nthreads > 0)
+			  {
+				avgComputeTime /= params_->nthreads;
+				avgCommunicateTime /= params_->nthreads;
+			  }
+			  pure_total_computing_time += avgComputeTime;
+			}
+			
+#ifdef _EXPBACKOFF_STEPSIZES
+			this->params_->step_size *= this->params_->step_decay;
+#endif
+	
+			double train_loss = 0;//this->ComputeLoss(trainScan_);
+			double test_loss = 0; //this->ComputeLoss(testScan_);
+	
+			totalTime += epoch_time_.value;
+
+			printf("epoch: %.2d   train_time (total, each): with_thread_sync(%.7f, %.7f), without_thread_sync(%.7f, %.7f)\n", //communicate_time: %.7f
+				e,
+				train_time_.value,
+				epoch_time_.value,
+				pure_total_computing_time,
+				avgComputeTime
+				);
+			fflush(stdout);
+		  }
+		  double train_loss = this->ComputeLoss(trainScan_);
+		  double test_loss = this->ComputeLoss(testScan_);
+			printf(" train_loss: %.7f test_loss: %.7f\n", //communicate_time: %.7f
+				train_loss,
+				test_loss
+				);
+			fflush(stdout);	
+		  printf("%f\nFinished!\n", totalTime / nepochs);
+		}
 */
-        printf("epoch: %.2d   train_time (total, each): with_thread_sync(%.7f, %.7f), without_thread_sync(%.7f, %.7f)  train_loss: %.7f test_loss: %.7f\n", //communicate_time: %.7f
-            e,
-            train_time_.value,
-            epoch_time_.value,
-            pure_total_computing_time,
-            avgComputeTime,
-            //avgCommunicateTime,
-            train_loss,
-            test_loss
-            );
-        fflush(stdout);
-      }
-
-      printf("%f\nFinished!\n", totalTime / nepochs);
-    }
-
     Model *model_;
     Params *params_;
 
