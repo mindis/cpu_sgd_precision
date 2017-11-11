@@ -19,9 +19,11 @@
 
 #ifdef AVX2_EN
 #include "hazy/vector/operations-inl_avx2.h"
+#include "hazy/vector/dot-inl_avx2.h"
 #include "hazy/vector/scale_add-inl_avx2.h"
 #else
 #include "hazy/vector/operations-inl.h"
+#include "hazy/vector/dot-inl.h"
 #include "hazy/vector/scale_add-inl.h"
 #endif
 
@@ -42,12 +44,42 @@
 
 #include <stddef.h> 
 
+#include "perf_counters.h"
+struct Monitor_Event inst_Monitor_Event = {
+	{
+		{0x2e,0x41},
+		{0x24,0x21},
+		{0xc5,0x00},
+		{0x24,0x41},
+	},
+	1,
+	{
+		"L3 cache misses: ",
+		"L2 cache misses: ",
+		"Mispredicted branchs: ",
+		"L2 cache hits: ",
+	},
+	{
+		{0,0},
+		{0,0},
+		{0,0},
+		{0,0},		
+	},
+	2,
+	{
+		"MIC_0",
+		"MIC_1",
+		"MIC_2",
+		"MIC_3",
+	},
+    0	 
+};
+
 namespace __executor
 {
   template< class Model, class Params, class Sample, class Exec > void ComputeLossPerThread(ThreadArgs<Model, Params, Sample> &threadArgs, unsigned tid, unsigned total)
   {
-    Model *model = threadArgs.model_;
-    //Params const &params = *threadArgs.params_;
+    Model *model          = threadArgs.model_;
     size_t *current_batch = threadArgs.current_batch_;
     size_t numElems = threadArgs.actual_num_elements_in_batch;
 

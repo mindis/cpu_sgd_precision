@@ -78,6 +78,9 @@ float inline Dot(FVector<float> const &uVector, FVector<unsigned char> const &vV
 				   //__m256i v2_abs = _mm256_cvtepu16_epi32(v2_128);
 				   //__m256i v3_abs = _mm256_cvtepu16_epi32(v3_128);
 				   //__m256i v4_abs = _mm256_cvtepu16_epi32(v4_128);
+				   _mm_prefetch((char *)(v + i + 64), _MM_HINT_NTA); //Stay at L3
+				   _mm_prefetch((char *)(u + i + 64), _MM_HINT_T0);  //Stay at L1
+				   _mm_prefetch((char *)(u + i + 80), _MM_HINT_T0);  //Stay at L1
 				   
 				   __m128i v1_128 = _mm_loadu_si128((__m128i const* )(v + i + 0));
 				   __m128i v3_128 = _mm_loadu_si128((__m128i const* )(v + i + 16));

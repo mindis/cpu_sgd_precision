@@ -46,16 +46,16 @@
 struct Monitor_Event inst_Monitor_Event = {
 	{
 		{0x2e,0x41},
-		{0xd2,0x08},
-		{0xd2,0x07},
-		{0xd1,0x02},
+		{0x24,0x21},
+		{0xc5,0x00},
+		{0x24,0x41},
 	},
 	1,
 	{
-		"UOPS_ISSUED.ANY: ",
-		"DTLB_LOAD_MISSES: ",
-		"OPS_ISSUED: ",
-		"DTLB_LOAD_MISSES: ",
+		"L3 cache misses: ",
+		"L2 cache misses: ",
+		"Mispredicted branchs: ",
+		"L2 cache hits: ",
 	},
 	{
 		{0,0},
@@ -188,7 +188,7 @@ namespace __executor
 
 		//2.2: Compute the loss value...
         fp_type delta;
-        delta = scale * (Dot( model->local_gradients[tid], dest_char_vector) - samps[i].value);
+        delta = scale * (Dot( model->local_gradients[tid], dest_char_vector) - samps[i].value); //0.01;//
 
         //2.3: Update the local model.
         hazy::vector::ScaleAndAdd(

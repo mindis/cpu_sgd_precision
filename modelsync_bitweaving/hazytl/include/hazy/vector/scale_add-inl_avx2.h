@@ -152,6 +152,9 @@ void inline ScaleAndAdd(FVector<float> &uVector, FVector<unsigned char> const &v
   	
             for (size_t i = 0; i < n1; i += 16)
             {
+				_mm_prefetch((char *)(v + i + 32), _MM_HINT_NTA); //Stay at L3
+				_mm_prefetch((char *)(u + i + 32), _MM_HINT_T0);  //Stay at L1
+            
                 const __m256 u1 = _mm256_loadu_ps(u + i + 0);
                 const __m256 u2 = _mm256_loadu_ps(u + i + 8);
                 //const __m256 v1 = _mm256_loadu_ps(v + i + 0);

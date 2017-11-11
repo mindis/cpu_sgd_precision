@@ -404,6 +404,15 @@ void inline Convert_from_bitweaving(FVector<unsigned char> & dest, FVector<unsig
 			}
 		}
 
+	  
+		  _mm_prefetch((char *)(&src[base + 1*BITS_OF_ONE_CACHE_LINE+ 0]), _MM_HINT_T0);	//Stay at L1
+		  _mm_prefetch((char *)(&src[base + 1*BITS_OF_ONE_CACHE_LINE+16]), _MM_HINT_T0);	//Stay at L1
+		  _mm_prefetch((char *)(&src[base + 1*BITS_OF_ONE_CACHE_LINE+32]), _MM_HINT_T0);	//Stay at L1
+		  _mm_prefetch((char *)(&src[base + 1*BITS_OF_ONE_CACHE_LINE+48]), _MM_HINT_T0);	//Stay at L1
+		  _mm_prefetch((char *)(&src[base + 1*BITS_OF_ONE_CACHE_LINE+64]), _MM_HINT_T0);	//Stay at L1
+		  _mm_prefetch((char *)(&src[base + 1*BITS_OF_ONE_CACHE_LINE+80]), _MM_HINT_T0);	//Stay at L1
+		  _mm_prefetch((char *)(&src[base + 1*BITS_OF_ONE_CACHE_LINE+96]), _MM_HINT_T0);	//Stay at L1
+		  _mm_prefetch((char *)(&src[base + 1*BITS_OF_ONE_CACHE_LINE+112]), _MM_HINT_T0);	//Stay at L1
 
 	  if (num_bits = 8)
 	  {

@@ -44,16 +44,16 @@
 struct Monitor_Event inst_Monitor_Event = {
 	{
 		{0x2e,0x41},
-		{0xd2,0x08},
-		{0xd2,0x07},
-		{0xd1,0x02},
+		{0x24,0x21},
+		{0xc5,0x00},
+		{0x24,0x41},
 	},
 	1,
 	{
-		"UOPS_ISSUED.ANY: ",
-		"DTLB_LOAD_MISSES: ",
-		"OPS_ISSUED: ",
-		"DTLB_LOAD_MISSES: ",
+		"L3 cache misses: ",
+		"L2 cache misses: ",
+		"Mispredicted branchs: ",
+		"L2 cache hits: ",
 	},
 	{
 		{0,0},
