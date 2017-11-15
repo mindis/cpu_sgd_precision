@@ -5,32 +5,21 @@
     #include <malloc.h>
 #endif
 
-#define AVX2_EN
-
-#include <stdio.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/mman.h>
-
-#ifdef AVX2_EN
-#include "hazy/vector/operations-inl_avx2.h"
-#include "hazy/vector/dot-inl_avx2.h"
-#include "hazy/vector/scale_add-inl_avx2.h"
-#else
-#include "hazy/vector/operations-inl.h"
-#include "hazy/vector/dot-inl.h"
-#include "hazy/vector/scale_add-inl.h"
-#endif
+#include <errno.h>
+#include <stdint.h>
 
 #include "cpu_mapping.h"
 #include "huge_page.h"
 #include "rand_tool.h"
-
+ 
 
 #define NUM_VALUES 16L*1024*1024*1024
-
+ 
 int test_mmap()
 {
     printf("===============================================================\n");
@@ -78,8 +67,15 @@ int test_mmap()
     {
       sum += p[i];
     }
-    
+
     printf("Sum = 0x%x\n", sum);
+    
+    if ( munmap(p, NUM_VALUES) != 0)
+        printf("There is error when doing munmap\n");
+    else 
+        printf("munmap is successful\n");
+
+
 
     return 1;
 }

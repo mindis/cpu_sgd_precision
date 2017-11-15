@@ -66,32 +66,40 @@ namespace vector {
 		{
 		  uint32_t tmp_buffer[BITS_OF_ONE_CACHE_LINE] = {0};
 		  //1: initilization off tmp buffer..
-		  for (int k = 0; k < BITS_OF_ONE_CACHE_LINE; k += 8)
+		  for (int k = 0; k < BITS_OF_ONE_CACHE_LINE; k++)
 		  {
-			__m256i v1 = _mm256_loadu_si256( (__m256i const *)&(src[j+k]) );
-			_mm256_storeu_si256( (__m256i *)&(tmp_buffer[k]), v1);
+			tmp_buffer[k] = src[j + k];
+			//printf("src[%d] = 0x%8x\t", j+k, src[j + k]);
 		  }  
-
+	
+	
 		  //2: focus on the data from index: j...
 		  for (int k = 0; k < 32; k++)
 		  { 
-			  unsigned char result_buffer[BITS_OF_ONE_CACHE_LINE/8] = {0};	//16 ints == 512 bits...
-			  //2.1: re-order the data according to the bit-level...
-			  for (int m = 0; m < BITS_OF_ONE_CACHE_LINE; m+=8)
-			  {
-				__m256i v_data	   = _mm256_loadu_si256((__m256i const *)&tmp_buffer[m]);
-				int tmp 		   = _mm256_movemask_ps( _mm256_castsi256_ps(v_data) );
-				result_buffer[m/8] = (unsigned char)tmp;
-				v_data			   = _mm256_slli_epi32(v_data, 1);
-				_mm256_storeu_si256((__m256i *)&tmp_buffer[m], v_data);
-			  }
-			  
-			  //2.2: store the bit-level result back to the memory...
-			  __m256i v_data	 = _mm256_loadu_si256((__m256i const *)&result_buffer[0]);
-			   _mm256_storeu_si256((__m256i *)&dest[address_index+0], v_data);
-					   v_data	  = _mm256_loadu_si256((__m256i const *)&result_buffer[32]);
-				_mm256_storeu_si256((__m256i *)&dest[address_index+8], v_data);
-			  address_index += 16;
+			uint32_t result_buffer[BITS_OF_ONE_CACHE_LINE/32] = {0};  //16 ints == 512 bits...
+			//2.1: re-order the data according to the bit-level...
+			for (int m = 0; m < BITS_OF_ONE_CACHE_LINE; m++)
+			{
+			  result_buffer[m>>5] = result_buffer[m>>5] | ((tmp_buffer[m] >>31)<<(m&31));
+			  tmp_buffer[m] 	  = tmp_buffer[m] << 1; 	  
+			}
+			//2.2: store the bit-level result back to the memory...
+			dest[address_index++] = result_buffer[0]; //printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+			dest[address_index++] = result_buffer[1]; //printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+			dest[address_index++] = result_buffer[2]; //printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+			dest[address_index++] = result_buffer[3]; //printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+			dest[address_index++] = result_buffer[4]; //printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+			dest[address_index++] = result_buffer[5]; //printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+			dest[address_index++] = result_buffer[6]; //printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+			dest[address_index++] = result_buffer[7]; //printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+			dest[address_index++] = result_buffer[8]; //printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+			dest[address_index++] = result_buffer[9]; //printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+			dest[address_index++] = result_buffer[10];//printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+			dest[address_index++] = result_buffer[11];//printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+			dest[address_index++] = result_buffer[12];//printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+			dest[address_index++] = result_buffer[13];//printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+			dest[address_index++] = result_buffer[14];//printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
+			dest[address_index++] = result_buffer[15];//printf("dest[%d] = 0x%8x\t", address_index-1, dest[address_index-1]);
 		  }
 		}
 	
@@ -148,171 +156,149 @@ namespace vector {
 		
 		
 		
-void inline Convert_from_bitweaving(FVector<unsigned short> & dest, FVector<unsigned int> &src, unsigned num_bits) 
-{
-	uint64_t numFeatures	  = dest.size;
-	unsigned short* vec_short = dest.values;
-	unsigned int* vec_int	  = src.values;
+		void inline Convert_from_bitweaving(FVector<unsigned short> & dest, FVector<unsigned int> &src, unsigned num_bits) 
+		{
+			uint64_t numFeatures	  = dest.size;
+			unsigned short* vec_short = dest.values;
+			unsigned int* vec_int	  = src.values;
 
 #define uint32_t unsigned int
 #define BITS_OF_ONE_CACHE_LINE 512
 
-	__m256i v_offset = _mm256_set_epi32 (7, 6, 5, 4, 3, 2, 1, 0); 
-	__m256i v_mask	 = _mm256_set1_epi32(0x01010101);
-	__m256i v_sum, v_data, v_data_1;
-	__m256i v_high, v_low;
+			__m256i v_offset = _mm256_set_epi32 (7, 6, 5, 4, 3, 2, 1, 0); 
+			__m256i v_mask	 = _mm256_set1_epi32(0x01010101);
+			__m256i v_sum, v_data, v_data_1;
+			__m256i v_high, v_low;
 			
 
-	uint32_t num_features_main = (numFeatures/BITS_OF_ONE_CACHE_LINE) * BITS_OF_ONE_CACHE_LINE;
+			uint32_t num_features_main = (numFeatures/BITS_OF_ONE_CACHE_LINE) * BITS_OF_ONE_CACHE_LINE;
 			
-	for (size_t base = 0; base < numFeatures; base += BITS_OF_ONE_CACHE_LINE) 
-	{	
-		uint32_t num_r_f       = numFeatures - num_features_main;
-		uint32_t num_iteration; // << 5 
-		uint32_t stride        = 0;
-
-		if (base < num_features_main)
-		{
-			stride             = 16;
-			num_iteration      = 16;
-		}
-		else
-		{   
-			num_iteration = ( ((num_r_f+31)>>5)); // << 5 
-			if (num_r_f <= 64)												 //////remainder <= 64
-						stride         = 2;
-			else if (num_r_f <= 128)										  //////64 < remainder <= 128
-						stride         = 4;
-			else if (num_r_f <= 256)										  //////128 < remainder <= 256
-						stride         = 8;
-			else if (num_r_f < 512) 										 //////256 < remainder < 512
-						stride         = 16;
-		}
-			//	printf("In the outer loop: base = %d\n", base);
-
+			//for (size_t i = 0; i < numFeatures; i++) 
+			//vec_short[i] = extract_from_bitweaving(src.values, i, numFeatures);
+			
+			  //Compute the main part of numFeatures.
+			//For each 512-code chunk
+			for (size_t base = 0; base < num_features_main; base += BITS_OF_ONE_CACHE_LINE) 
+			{	
 				//for each 32 values.
-		for (size_t offset = 0; offset < num_iteration; offset++)
-		{
-			if (offset < num_bits)
-			{
-				_mm_prefetch((char *)(&src[base + 1*BITS_OF_ONE_CACHE_LINE+ offset*16]), _MM_HINT_NTA);	//Stay at L1
-				//_mm_prefetch((char *)(&src[base + 2*BITS_OF_ONE_CACHE_LINE+ offset*16]), _MM_HINT_T2);//Stay at L1
-			}		
-			v_sum = _mm256_set1_epi32(0);
-			unsigned int data_src;
-				//printf("In the inner loop\n");
+				for (size_t offset = 0; offset < (BITS_OF_ONE_CACHE_LINE/32); offset++)
+				{
+					v_sum = _mm256_set1_epi32(0);
+					unsigned int data_src;
 	
-			data_src = src[base + stride*0 + offset];          //0
-			v_data	 =	_mm256_set1_epi32(data_src); 
-			v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
-			v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
-			v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 7) );
-
-			data_src = src[base + stride*1 + offset];          //1
-			v_data	 =	_mm256_set1_epi32(data_src); 
-			v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
-			v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
-			v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 6) );
-
-			data_src = src[base + stride*2 + offset];          //2
-			v_data	 =	_mm256_set1_epi32(data_src); 
-			v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
-			v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
-			v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 5) );
-
-			data_src = src[base + stride*3 + offset];          //3
-			v_data	 =	_mm256_set1_epi32(data_src); 
-			v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
-			v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
-			v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 4) );
-
-			data_src = src[base + stride*4 + offset];          //4
-			v_data	 =	_mm256_set1_epi32(data_src); 
-			v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
-			v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
-			v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 3) );
-
-			data_src = src[base + stride*5 + offset];          //5
-			v_data	 =	_mm256_set1_epi32(data_src); 
-			v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
-			v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
-			v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 2) );
-
-			data_src = src[base + stride*6 + offset];          //6
-			v_data	 =	_mm256_set1_epi32(data_src); 
-			v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
-			v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
-			v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 1) );
-
-			data_src = src[base + stride*7 + offset];          //7
-			v_data	 =	_mm256_set1_epi32(data_src); 
-			v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
-			v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
-			v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 0) );
-
-					//unsigned char sum_array_high[64]; //32 is enough.
-					//_mm256_store_si256((__m256i *)sum_array_high, v_sum);
-			v_high = v_sum;
-			v_sum = _mm256_set1_epi32(0);
-
-					data_src = src[base + stride*8 + offset];          //8
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*0 + offset];          //0
 					v_data	 =	_mm256_set1_epi32(data_src); 
 					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
 					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
 					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 7) );
-#if 1
-			if (num_bits >=10)
-			{
-					data_src = src[base + stride*9 + offset];          //9
+
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*1 + offset];          //1
 					v_data	 =	_mm256_set1_epi32(data_src); 
 					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
 					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
 					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 6) );
-			 if (num_bits >=11)
-			 {
-					data_src = src[base + stride*10 + offset];          //10
+
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*2 + offset];          //2
 					v_data	 =	_mm256_set1_epi32(data_src); 
 					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
 					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
 					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 5) );
-			  if (num_bits >=12)
-			  {
-					data_src = src[base + stride*11 + offset];          //11
+
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*3 + offset];          //3
 					v_data	 =	_mm256_set1_epi32(data_src); 
 					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
 					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
 					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 4) );
-				if (num_bits >=13)
-				{
-					data_src = src[base + stride*12 + offset];          //12
+
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*4 + offset];          //4
 					v_data	 =	_mm256_set1_epi32(data_src); 
 					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
 					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
 					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 3) );
-				if (num_bits >=14)
+
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*5 + offset];          //5
+					v_data	 =	_mm256_set1_epi32(data_src); 
+					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
+					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
+					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 2) );
+
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*6 + offset];          //6
+					v_data	 =	_mm256_set1_epi32(data_src); 
+					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
+					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
+					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 1) );
+
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*7 + offset];          //7
+					v_data	 =	_mm256_set1_epi32(data_src); 
+					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
+					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
+					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 0) );
+
+					//unsigned char sum_array_high[64]; //32 is enough.
+					//_mm256_store_si256((__m256i *)sum_array_high, v_sum);
+					v_high = v_sum;
+
+					v_sum = _mm256_set1_epi32(0);
+
+
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*8 + offset];          //8
+					v_data	 =	_mm256_set1_epi32(data_src); 
+					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
+					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
+					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 7) );
+				if (num_bits >=10)
 				{
-					data_src = src[base + stride*13 + offset];          //13
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*9 + offset];          //9
+					v_data	 =	_mm256_set1_epi32(data_src); 
+					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
+					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
+					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 6) );
+				 if (num_bits >=11)
+				 {
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*10 + offset];          //10
+					v_data	 =	_mm256_set1_epi32(data_src); 
+					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
+					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
+					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 5) );
+				 if (num_bits >=12)
+				 {
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*11 + offset];          //11
+					v_data	 =	_mm256_set1_epi32(data_src); 
+					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
+					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
+					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 4) );
+				 if (num_bits >=13)
+				 {
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*12 + offset];          //12
+					v_data	 =	_mm256_set1_epi32(data_src); 
+					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
+					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
+					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 3) );
+				 if (num_bits >=14)
+				 {
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*13 + offset];          //13
 					v_data	 =	_mm256_set1_epi32(data_src); 
 					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
 					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
 					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 2) );
 				 if (num_bits >=15)
 				 {
-					data_src = src[base + stride*14 + offset];          //14
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*14 + offset];          //14
 					v_data	 =	_mm256_set1_epi32(data_src); 
 					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
 					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
 					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 1) );
-				  if (num_bits >=16)
-				  {
-					data_src = src[base + stride*15 + offset];          //15
+				 if (num_bits >=16)
+				 {
+					data_src = src[base + (BITS_OF_ONE_CACHE_LINE/32)*15 + offset];          //15
 					v_data	 =	_mm256_set1_epi32(data_src); 
 					v_data	 =	_mm256_srav_epi32(v_data, v_offset); //shift it...
 					v_data_1 =	_mm256_and_si256 (v_data, v_mask  ); //3  v_data
 					v_sum	 =	_mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 0) );
-				  }}}}}} }	
-#endif	
+				 }}}}}} }	
+
 				v_low = v_sum;
+
 
 			__m256i v_shuffle_constant = _mm256_set_epi8 (15, 11,  7,  3, 
 			 				                              14, 10,  6,  2, 
@@ -346,14 +332,105 @@ void inline Convert_from_bitweaving(FVector<unsigned short> & dest, FVector<unsi
 				__m128i v_data_128_high = _mm_loadu_si128((__m128i*)(&vec_short[base + offset*32 + 8]) );
 
 				_mm_storeu_si128((__m128i *)(&vec_short[base + offset*32 +  8]), v_data_128_low );				
-				_mm_storeu_si128((__m128i *)(&vec_short[base + offset*32 + 16]), v_data_128_high);	
+				_mm_storeu_si128((__m128i *)(&vec_short[base + offset*32 + 16]), v_data_128_high);				
 
-
+			}
+				//Do the storing...
 		}
-		if (base == num_features_main)
-			break;
 	
+	/*
+			for (size_t i = 0; i < num_features_main; i+=32) //if (i < num_features_main)
+			{
+				uint32_t main_offset = ( i/BITS_OF_ONE_CACHE_LINE	  ) * BITS_OF_ONE_CACHE_LINE; //
+				uint32_t int_offset  = ( i&(BITS_OF_ONE_CACHE_LINE-1) )/32;
+				uint32_t bit_offset  = i & 31;
+			
+				//The next 32 CLs contains the information of the feature. 
+				unsigned char result = 0;
+				unsigned int tmp;
+				for (uint32_t j = 0; j < num_bits; j++)
+				{
+									 //main 		bit    which ints 
+				  tmp	  = vec_int[main_offset + 16 * j + int_offset]; 
+				  result |= (( (tmp&(1<<bit_offset)) >> bit_offset ) << (7-j)); //
+				}
+				vec_char[i] = result; //return result;
+			}
+	*/		  
+/*
+	for (size_t i = num_features_main; i < numFeatures; i++) 
+	{
+		uint32_t num_r_f = numFeatures - num_features_main;
+	
+		if (num_r_f <= 64)												 //////remainder <= 64
+		{ 
+		  uint32_t main_offset = ( i/BITS_OF_ONE_CACHE_LINE ) * BITS_OF_ONE_CACHE_LINE;
+		  uint32_t int_offset  = ( i & (64-1) )/32;
+		  uint32_t bit_offset  = i & 31;
+	
+		  //The next 32 CLs contains the information of the feature. 
+		  unsigned short result = 0;
+		  uint32_t tmp;
+		  for (uint32_t j = 0; j < num_bits; j++)
+		  {
+							  //main		  bit	 which ints 
+			tmp 	= vec_int[main_offset + 2 * j + int_offset]; 
+			result |= (( (tmp&(1<<bit_offset)) >> bit_offset ) << (15-j)); //
+		  }
+		  vec_short[i] = result; //return result;
+		}
+		else if (num_r_f <= 128)										  //////64 < remainder <= 128
+		{ 
+		  uint32_t main_offset = ( i/BITS_OF_ONE_CACHE_LINE ) * BITS_OF_ONE_CACHE_LINE;
+		  uint32_t int_offset  = ( i&(128-1) )/32;
+		  uint32_t bit_offset  = i & 31;
+	
+		  //The next 32 CLs contains the information of the feature. 
+		  unsigned short result = 0;
+		  uint32_t tmp;
+		  for (uint32_t j = 0; j < num_bits; j++)
+		  {
+							  //main		  bit	 which ints 
+			tmp 	= vec_int[main_offset + 4 * j + int_offset]; 
+			result |= (( (tmp&(1<<bit_offset)) >> bit_offset ) << (15-j)); //
+		  }
+		  vec_short[i] = result; //return result;
+		}
+		else if (num_r_f <= 256)										  //////128 < remainder <= 256
+		{ 
+		  uint32_t main_offset = ( i/BITS_OF_ONE_CACHE_LINE ) * BITS_OF_ONE_CACHE_LINE;
+		  uint32_t int_offset  = ( i&(256-1) )/32;
+		  uint32_t bit_offset  = i & 31;
+	
+		  //The next 32 CLs contains the information of the feature. 
+		  unsigned short result = 0;
+		  uint32_t tmp;
+		  for (uint32_t j = 0; j < num_bits; j++)
+		  {
+							  //main		  bit	 which ints 
+			tmp 	= vec_int[main_offset + 8 * j + int_offset]; 
+			result |= (( (tmp&(1<<bit_offset)) >> bit_offset ) << (15-j)); //
+		  }
+		  vec_short[i] = result; //return result;
+		}
+		else if (num_r_f < 512) 										 //////256 < remainder < 512
+		{ 
+		  uint32_t main_offset = ( i/BITS_OF_ONE_CACHE_LINE ) * BITS_OF_ONE_CACHE_LINE;
+		  uint32_t int_offset  = ( i&(512-1) )/32;
+		  uint32_t bit_offset  = i & 31;
+		//The next 32 CLs contains the information of the feature. 
+		  unsigned short result = 0;
+		  uint32_t tmp;
+		  for (uint32_t j = 0; j < num_bits; j++)
+		  {
+							  //main		  bit	 which ints 
+			tmp 	= vec_int[main_offset + 16 * j + int_offset]; 
+			result |= (( (tmp&(1<<bit_offset)) >> bit_offset ) << (15-j)); //
+		  }
+		  vec_short[i] = result; //return result;
+		}			
 	}
+*/	
 }
 	
 	
@@ -368,7 +445,7 @@ void inline Convert_from_bitweaving(FVector<unsigned char> & dest, FVector<unsig
 		
     	__m256i v_offset = _mm256_set_epi32 (7, 6, 5, 4, 3, 2, 1, 0); 
     	__m256i v_mask   = _mm256_set1_epi32(0x01010101);
-    	__m256i v_sum, v_data, v_data_1, v_data_2, v_data_3, v_data_4, v_data_5, v_data_6, v_data_7, v_data_0;
+    	__m256i v_sum, v_data, v_data_1;
 	
 		uint32_t num_features_main = (numFeatures/BITS_OF_ONE_CACHE_LINE) * BITS_OF_ONE_CACHE_LINE;
 		
@@ -409,109 +486,10 @@ void inline Convert_from_bitweaving(FVector<unsigned char> & dest, FVector<unsig
 			}
 		}
 
-	  
-		  //_mm_prefetch((char *)(&src[base + 1*BITS_OF_ONE_CACHE_LINE+ 0]), _MM_HINT_NTA);	//Stay at L1
-		  //_mm_prefetch((char *)(&src[base + 1*BITS_OF_ONE_CACHE_LINE+16]), _MM_HINT_NTA);	//Stay at L1
-		  //_mm_prefetch((char *)(&src[base + 1*BITS_OF_ONE_CACHE_LINE+32]), _MM_HINT_NTA);	//Stay at L1
-		  //_mm_prefetch((char *)(&src[base + 1*BITS_OF_ONE_CACHE_LINE+48]), _MM_HINT_NTA);	//Stay at L1
-		  //_mm_prefetch((char *)(&src[base + 1*BITS_OF_ONE_CACHE_LINE+64]), _MM_HINT_NTA);	//Stay at L1
-		  //_mm_prefetch((char *)(&src[base + 1*BITS_OF_ONE_CACHE_LINE+80]), _MM_HINT_NTA);	//Stay at L1
-		  //_mm_prefetch((char *)(&src[base + 1*BITS_OF_ONE_CACHE_LINE+96]), _MM_HINT_NTA);	//Stay at L1
-		  //_mm_prefetch((char *)(&src[base + 1*BITS_OF_ONE_CACHE_LINE+112]), _MM_HINT_NTA);	//Stay at L1
-/*
-	  if (num_bits = 8)
-	  {
 		//size_t base = num_features_main;
 						//for each 32 values.
 		for (size_t offset = 0; offset < num_iteration; offset++)
 		{
-				if (offset < num_bits)
-				{
-					_mm_prefetch((char *)(&src[base + 1*BITS_OF_ONE_CACHE_LINE+ offset*16]), _MM_HINT_NTA);	//Stay at L1
-					//_mm_prefetch((char *)(&src[base + 2*BITS_OF_ONE_CACHE_LINE+ offset*16]), _MM_HINT_T2);	//Stay at L1
-				}
-				v_sum = _mm256_set1_epi32(0);
-				unsigned int data_src_0, data_src_1, data_src_2, data_src_3, data_src_4, data_src_5, data_src_6, data_src_7;
-
-				data_src_0 = src[base + stride*0 + offset];
-				data_src_1 = src[base + stride*1 + offset];
-				data_src_2 = src[base + stride*2 + offset];
-				data_src_3 = src[base + stride*3 + offset];
-
-				v_data_0   =  _mm256_set1_epi32(data_src_0); 
-				v_data_1   =  _mm256_set1_epi32(data_src_1); 
-				v_data_2   =  _mm256_set1_epi32(data_src_2); 
-				v_data_3   =  _mm256_set1_epi32(data_src_3); 
-
-				v_data_0   =  _mm256_srav_epi32(v_data_0, v_offset); //shift it...
-				v_data_1   =  _mm256_srav_epi32(v_data_1, v_offset); //shift it...
-				v_data_2   =  _mm256_srav_epi32(v_data_2, v_offset); //shift it...
-				v_data_3   =  _mm256_srav_epi32(v_data_3, v_offset); //shift it...
-
-				v_data_0   =  _mm256_and_si256 (v_data_0, v_mask  ); //3  v_data
-				v_data_1   =  _mm256_and_si256 (v_data_1, v_mask  ); //3  v_data
-				v_data_2   =  _mm256_and_si256 (v_data_2, v_mask  ); //3  v_data
-				v_data_3   =  _mm256_and_si256 (v_data_3, v_mask  ); //3  v_data
-
-				v_sum      =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_0, 7) );
-				v_sum      =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_1, 6) );
-				v_sum      =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_2, 5) );
-				v_sum      =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_3, 4) );
-
-
-				data_src_4 = src[base + stride*4 + offset];
-				data_src_5 = src[base + stride*5 + offset];
-				data_src_6 = src[base + stride*6 + offset];
-				data_src_7 = src[base + stride*7 + offset];
-
-				v_data_4   =  _mm256_set1_epi32(data_src_4); 
-				v_data_5   =  _mm256_set1_epi32(data_src_5); 
-				v_data_6   =  _mm256_set1_epi32(data_src_6); 
-				v_data_7   =  _mm256_set1_epi32(data_src_7); 
-
-				v_data_4   =  _mm256_srav_epi32(v_data_4, v_offset); //shift it...
-				v_data_5   =  _mm256_srav_epi32(v_data_5, v_offset); //shift it...
-				v_data_6   =  _mm256_srav_epi32(v_data_6, v_offset); //shift it...
-				v_data_7   =  _mm256_srav_epi32(v_data_7, v_offset); //shift it...
-
-				v_data_4   =  _mm256_and_si256 (v_data_4, v_mask  ); //3  v_data
-				v_data_5   =  _mm256_and_si256 (v_data_5, v_mask  ); //3  v_data
-				v_data_6   =  _mm256_and_si256 (v_data_6, v_mask  ); //3  v_data
-				v_data_7   =  _mm256_and_si256 (v_data_7, v_mask  ); //3  v_data
-
-				v_sum      =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_4, 3) );
-				v_sum      =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_5, 2) );
-				v_sum      =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_6, 1) );
-				v_sum      =  _mm256_or_si256  (v_sum, _mm256_slli_epi32(v_data_7, 0) );
-
-			__m256i v_shuffle_constant = _mm256_set_epi8 (15, 11,  7,  3, 
-			 				                              14, 10,  6,  2, 
-			 				                              13,  9,  5,  1, 
-			 				                              12,  8,  4,  0,
-			 				                              15, 11,  7,  3, 
-			 				                              14, 10,  6,  2, 
-			 				                              13,  9,  5,  1, 
-			 				                              12,  8,  4,  0);
-			__m256i v_data_tmp      = _mm256_shuffle_epi8(v_sum, v_shuffle_constant);
-    		__m256i v_perm_constant = _mm256_set_epi32 (7, 3,  6, 2,   
-                                                		5,  1, 4,  0); 
-			__m256i v_result = _mm256_permutevar8x32_epi32(v_data_tmp, v_perm_constant);
-			_mm256_store_si256((__m256i *)(&vec_char[base + offset*32]), v_result);
-		}
-
-	  }
-	  else
-*/	  {
-		//size_t base = num_features_main;
-						//for each 32 values.
-		for (size_t offset = 0; offset < num_iteration; offset++)
-		{
-			if (offset < num_bits)
-			{
-				_mm_prefetch((char *)(&src[base + 1*BITS_OF_ONE_CACHE_LINE+ offset*16]), _MM_HINT_T0); //Stay at L1
-				//_mm_prefetch((char *)(&src[base + 2*BITS_OF_ONE_CACHE_LINE+ offset*16]), _MM_HINT_T2);	//Stay at L1
-			}
-		
 				v_sum = _mm256_set1_epi32(0);
 				unsigned int data_src;
 
@@ -586,7 +564,7 @@ void inline Convert_from_bitweaving(FVector<unsigned char> & dest, FVector<unsig
 			__m256i v_result = _mm256_permutevar8x32_epi32(v_data_2, v_perm_constant);
 			_mm256_store_si256((__m256i *)(&vec_char[base + offset*32]), v_result);
 		}
-	  }
+
 			//Do the storing...
 	}
 
@@ -642,58 +620,6 @@ void inline avg_list(FVector<T> & dest, FVector<T> *src, unsigned N) {
   }
 
 }
-
-
-//add src to the destination. 
-template <typename T>
-void inline avg_list_stream(FVector<T> & dest, FVector<T> *src, unsigned N) {
-  const uint64_t n0         = dest.size;
-  const uint64_t n1         = (n0 >> 4) << 4;
-
-  T scale_factor            = 1.0 /(T)N;
-  const __m256 scale_const  = _mm256_set1_ps(1.0 /(T)N); //T scale_factor = 1.0 /(T)N;
-
-  for (size_t i = 0; i < n1; i+= 32) 
-  {
-    //T sum     = 0.0;
-    __m256 sum1 = _mm256_setzero_ps();
-    __m256 sum2 = _mm256_setzero_ps();
-    __m256 sum3 = _mm256_setzero_ps();
-    __m256 sum4 = _mm256_setzero_ps();    
-    //for (unsigned j = 0; j < N; j++)  
-    //  sum += (src[j])[i];
-    for (unsigned j = 0; j < N; j++)
-    {
-		//__m256 v1 = _mm256_castsi256_ps( _mm256_stream_load_si256( (__m256i const *) (inv + i + 0)	));
-   
-      __m256 v1 =  _mm256_castsi256_ps( _mm256_stream_load_si256( (__m256i const *)&((src[j])[i + 0 ]) ));
-      __m256 v2 =  _mm256_castsi256_ps( _mm256_stream_load_si256( (__m256i const *)&((src[j])[i + 8 ]) ));
-      __m256 v3 =  _mm256_castsi256_ps( _mm256_stream_load_si256( (__m256i const *)&((src[j])[i + 16]) ));
-      __m256 v4 =  _mm256_castsi256_ps( _mm256_stream_load_si256( (__m256i const *)&((src[j])[i + 24]) ));      
-      sum1      = _mm256_add_ps ( sum1, v1 );
-      sum2      = _mm256_add_ps ( sum2, v2 );
-      sum3      = _mm256_add_ps ( sum3, v3 );
-      sum4      = _mm256_add_ps ( sum4, v4 );
-    }  
-
-    //dest[i] = sum * scale_factor;
-    _mm256_stream_ps((float *)(&dest[i + 0 ]), _mm256_mul_ps(sum1, scale_const) );
-    _mm256_stream_ps((float *)(&dest[i + 8 ]), _mm256_mul_ps(sum2, scale_const) );
-    _mm256_stream_ps((float *)(&dest[i + 16]), _mm256_mul_ps(sum3, scale_const) );
-    _mm256_stream_ps((float *)(&dest[i + 24]), _mm256_mul_ps(sum4, scale_const) );
-  }
-
-  for (size_t i = n1; i < n0; i++)
-  {
-    T sum   = 0.0;
-    for (unsigned j = 0; j < N; j++)  
-      sum  += (src[j])[i];
-
-    dest[i] = sum * scale_factor;
-  }
-
-}
-
 
 
 //add src to the destination. streaming load from src, no tag for the source...
@@ -889,36 +815,6 @@ void inline CopyInto(FVector<float_u> const &u, FVector<float_u> &out) {
     _mm256_storeu_ps((float *)(outv + i + 8 ), v2 );
     _mm256_storeu_ps((float *)(outv + i + 16), v3 );
     _mm256_storeu_ps((float *)(outv + i + 24), v4 );
-  }
-
-  for (size_t i = n1; i < n0; i++)
-  {
-    outv[i] = inv[i];
-  }
-
-}
-
-
-template <typename float_u>
-void inline CopyInto_stream(FVector<float_u> const &u, FVector<float_u> &out) {
-  float_u *  outv           = out.values;
-  float_u *  inv            = u.values;
-
-  const uint64_t n0         = out.size;
-  const uint64_t n1         = (n0 >> 4) << 4;
-
-
-  for (size_t i = 0; i < n1; i+= 32) 
-  {
-    __m256 v1 = _mm256_castsi256_ps( _mm256_stream_load_si256( (__m256i const *) (inv + i + 0)  ));
-    __m256 v2 = _mm256_castsi256_ps( _mm256_stream_load_si256( (__m256i const *) (inv + i + 8)  ));
-    __m256 v3 = _mm256_castsi256_ps( _mm256_stream_load_si256( (__m256i const *) (inv + i + 16) ));
-    __m256 v4 = _mm256_castsi256_ps( _mm256_stream_load_si256( (__m256i const *) (inv + i + 24) ));      
-
-    _mm256_stream_ps((float *)(outv + i + 0 ), v1 );
-    _mm256_stream_ps((float *)(outv + i + 8 ), v2 );
-    _mm256_stream_ps((float *)(outv + i + 16), v3 );
-    _mm256_stream_ps((float *)(outv + i + 24), v4 );
   }
 
   for (size_t i = n1; i < n0; i++)

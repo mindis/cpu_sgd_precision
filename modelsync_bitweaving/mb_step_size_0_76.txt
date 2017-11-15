@@ -1,5 +1,5 @@
 ModelSync_bitweaving: Step size: 0.76, threads:  14
-Use int: BitWeaving.......
+Use int: BitWeaving.......1
 Using AVX!.......
 0 - Loading training samples from '../../data/rcv1_train.tsv'
 0 - Loaded 20242 training samples
@@ -60,7 +60,7 @@ epoch: 39   train_time (total, each): with_thread_sync(3.7104316, 0.1130689), wi
 epoch: 40   train_time (total, each): with_thread_sync(3.8060429, 0.0956111), without_thread_sync(2.6391259, 0.0593225)  train_loss: 0.1087505 test_loss: 0.1087505
 0.095151
 Finished!
-Use int: BitWeaving.......
+Use int: BitWeaving.......2
 Using AVX!.......
 0 - Loading training samples from '../../data/rcv1_train.tsv'
 0 - Loaded 20242 training samples
@@ -121,7 +121,7 @@ epoch: 39   train_time (total, each): with_thread_sync(4.0330257, 0.1029011), wi
 epoch: 40   train_time (total, each): with_thread_sync(4.1384117, 0.1053858), without_thread_sync(2.9349554, 0.0752630)  train_loss: 0.0415679 test_loss: 0.0415679
 0.103460
 Finished!
-Use int: BitWeaving.......
+Use int: BitWeaving.......3
 Using AVX!.......
 0 - Loading training samples from '../../data/rcv1_train.tsv'
 0 - Loaded 20242 training samples
@@ -182,7 +182,7 @@ epoch: 39   train_time (total, each): with_thread_sync(4.3855468, 0.1316722), wi
 epoch: 40   train_time (total, each): with_thread_sync(4.4964748, 0.1109277), without_thread_sync(3.2490260, 0.0803852)  train_loss: 0.0146139 test_loss: 0.0146139
 0.112412
 Finished!
-Use int: BitWeaving.......
+Use int: BitWeaving.......4
 Using AVX!.......
 0 - Loading training samples from '../../data/rcv1_train.tsv'
 0 - Loaded 20242 training samples
@@ -243,7 +243,7 @@ epoch: 39   train_time (total, each): with_thread_sync(4.6535337, 0.1158949), wi
 epoch: 40   train_time (total, each): with_thread_sync(4.7826617, 0.1291277), without_thread_sync(3.5199255, 0.0916000)  train_loss: 0.0098848 test_loss: 0.0098848
 0.119566
 Finished!
-Use int: BitWeaving.......
+Use int: BitWeaving.......5
 Using AVX!.......
 0 - Loading training samples from '../../data/rcv1_train.tsv'
 0 - Loaded 20242 training samples
@@ -304,7 +304,7 @@ epoch: 39   train_time (total, each): with_thread_sync(4.6625165, 0.1145573), wi
 epoch: 40   train_time (total, each): with_thread_sync(4.7774598, 0.1149431), without_thread_sync(3.5344589, 0.0860385)  train_loss: 0.0098540 test_loss: 0.0098540
 0.119436
 Finished!
-Use int: BitWeaving.......
+Use int: BitWeaving.......6
 Using AVX!.......
 0 - Loading training samples from '../../data/rcv1_train.tsv'
 0 - Loaded 20242 training samples
@@ -365,7 +365,7 @@ epoch: 39   train_time (total, each): with_thread_sync(5.1090726, 0.1361154), wi
 epoch: 40   train_time (total, each): with_thread_sync(5.2326902, 0.1236172), without_thread_sync(3.9150439, 0.0939723)  train_loss: 0.0094313 test_loss: 0.0094313
 0.130817
 Finished!
-Use int: BitWeaving.......
+Use int: BitWeaving.......7
 Using AVX!.......
 0 - Loading training samples from '../../data/rcv1_train.tsv'
 0 - Loaded 20242 training samples
@@ -426,7 +426,7 @@ epoch: 39   train_time (total, each): with_thread_sync(5.4398155, 0.1245673), wi
 epoch: 40   train_time (total, each): with_thread_sync(5.5882369, 0.1484212), without_thread_sync(4.1190318, 0.1041238)  train_loss: 0.0090128 test_loss: 0.0090128
 0.139706
 Finished!
-Use int: BitWeaving.......
+Use int: BitWeaving.......8
 Using AVX!.......
 0 - Loading training samples from '../../data/rcv1_train.tsv'
 0 - Loaded 20242 training samples
