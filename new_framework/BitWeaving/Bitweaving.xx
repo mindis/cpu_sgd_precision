@@ -1,0 +1,99 @@
+// Copyright (C) 2017 Zeke Wang - Systems Group, ETH Zurich
+
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as published
+// by the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+
+// You should have received a copy of the GNU Affero General Public License
+// along with this program. If not, see <http://www.gnu.org/licenses/>.
+//*************************************************************************
+
+#ifndef BITWEAVING_H
+#define BITWEAVING_H
+
+#include <cmath>
+#include <cstdio>
+#include <iostream>
+#include <fstream>
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <immintrin.h>
+#ifdef __linux__
+    #include <malloc.h>
+#endif
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <sys/mman.h>
+#include <errno.h>
+#include <stdint.h>
+
+//#define uint32_t unsigned int
+#define BITS_OF_ONE_CACHE_LINE 512
+
+
+class training_dataset_manager_base
+{
+public:
+	explicit training_dataset_manager_base(const char *fname, uint64_t dimension, );
+
+	//Suppose the size of each value of training dataset is 32-bit, always true for our case...
+	uint32_t compute_num_CLs_per_sample(uint32_t dr_numFeatures) {
+	  //With the chunk of 512 features...
+	  uint32_t main_num 		  = (dr_numFeatures/BITS_OF_ONE_CACHE_LINE)*32; //It is for CLs
+	  uint32_t rem_num			  = 0;
+	
+	  //For the remainder of dr_numFeatures...
+	  uint32_t remainder_features = dr_numFeatures & (BITS_OF_ONE_CACHE_LINE - 1); 
+	  if (remainder_features == 0)
+		rem_num = 0;
+	  else if (remainder_features <= 64)
+		rem_num = 4;
+	  else if (remainder_features <= 128) 
+		rem_num = 8;
+	  else if (remainder_features <= 256) 
+		rem_num = 16;
+	  else	
+		rem_num = 32;
+	  //printf("main_num = %d, rem_num = %d\t", main_num, rem_num);
+	  //return main_num + rem_num;
+
+	  	
+	}
+
+
+private:	
+	int 		  fd;		  //File id for the input dataset...
+	uint32_t     *mem_addr;   //Mmap the fd (MAP_SHARED) to the memory address or MAP_ANONYMOUS...	
+	uint64_t	  total_len;  //Size of this memory (bytes)...
+	uint64_t      num_regions;//Number of memory regions ...	
+
+	uint32_t      num_bits;   //Number of bits in each memory region. 		
+
+	////Information of input training dataset....////
+	uint64_t      dimension;  //Dimension of each sample...		
+	uint64_t      num_samples;//Number of samples...		
+
+}
+
+class training_dataset_manager_write: public training_dataset_manager_base
+{
+public:
+	explicit training_dataset_manager_write(const char *fname, uint64_t dimension, uint64_t num_samples);
+
+	explicit training_dataset_manager_write(uint64_t dimension, uint64_t num_samples );
+
+
+}
+
+
+#endif

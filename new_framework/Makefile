@@ -1,122 +1,71 @@
-#####input#####
-#run the code with the command:::::make bit_width=BITWIDTH
-############### -g
+CXX = icc #g++
+MPICC = mpic++
+CPP_FLAG = -O3 -std=c++11 -lrt #-Wall -fopenmp -Wno-unknown-pragmas -mavx2 #-march=haswell
+ADDITIONAL_FLAG = -D_DEBUG   #####debug purpose...-D_HOGWILD_SHORT 
+#ADDITIONAL_FLAG = -D_PRINT_GRADIENT
+#ADDITIONAL_FLAG = -DLOAD_FILE_PER_WORKER -D_DEBUG
+CPP_INCLUDE = -I./BitWeaving -I./hazytl/include/ -I../IntelPCM/ -I./linearmodel/ -I. -I./tool/
+CPP_LAST = -lpthread
 
-CC=icc
-OPT=  -O3 -pthread -fPIC -fopenmp -std=c++11 -lrt
-#-std=c++0x  -std=gnu++11 
-COMMONTOOL = thread_tool.o rand_tool.o file_tool.o cpu_mapping.o huge_page.o memory_tool.o libpcm_2_11.a
+BIN_DIR = bin
+APP_DIR = app
 
+TEST_AVX2 = ${BIN_DIR}/TEST_AVX #${BIN_DIR}/TEST_FVECTOR
 
-all: Q19.x Q17.x Q10.x Q14.x Q15.x Q1.x Q12.x Q8.x Q7.x Q6.x Q5.x Q3.x impact_of_branch_on_cpu.x impact_of_prefetcher_tlb.x column_compare_with_literal_test.x 2_column_compare_with_literal_test.x 3_column_compare_with_literal_test.x 4_column_compare_with_literal_test.x 5_column_compare_with_literal_test.x
- 
-#####################common functions##########################################
-rand_tool.o: rand_tool.cpp   
-	$(CC) $(OPT) -c rand_tool.cpp
-thread_tool.o: thread_tool.cpp avx-utility.h types.h  
-	$(CC) $(OPT) -c thread_tool.cpp
-file_tool.o: file_tool.cpp   
-	$(CC) $(OPT) -c file_tool.cpp
-huge_page.o: huge_page.cpp 
-	$(CC) $(OPT) -c huge_page.cpp
-cpu_mapping.o: cpu_mapping.cpp 
-	$(CC) $(OPT) -c cpu_mapping.cpp
-#perf_counters.o: perf_counters.cpp   
-#	$(CC) $(OPT) -c perf_counters.cpp
-memory_tool.o: memory_tool.cpp   
-	$(CC) $(OPT) -c memory_tool.cpp
-#########################end of common functions################################
+#SRC_FILES = src/executor.h
+SRC_FILES += linearmodel/linearmodel_exec.h linearmodel/linearmodel.h 
 
+#SYNC ASYNC ALLREDUCE ASYNCSPARSE ALLREDUCEBINOMIAL ALLREDUCESPARSEBIG ALLREDUCESPARSESMALL ALLREDUCESPARSERECDBL
+STRATEGY := HOGWILD 
+STEPSIZE := NON  # DECREASING_STEPSIZES EXPBACKOFF_STEPSIZES
+REPRESENTATION := DENSE # SPARSE
+SIMD := SCALAR AVX 
+FORMAT:= INT #SHORT FP CHAR 
+THREADBING:= BIND RANDOM
+
+.PHONY: depend clean all
+all: LINREG ${TEST_AVX2}
 
 
-# check the impact of hardware prefetcher, branch and PCM. Also the one column case.
-impact_of_branch_on_cpu.x: impact_of_branch_on_cpu.cpp avx-utility.h types.h $(COMMONTOOL) common_tool.h 
-	$(CC) $(OPT) impact_of_branch_on_cpu.cpp -o impact_of_branch_on_cpu.x $(COMMONTOOL)
+#LOGIT SVM #$(SPLIT_DATA_TOOL) ${RANDOM_RESHUFFLE_TOOL} ${GENERATE_SPLIT_FILE_TOOL}
 
-# check the impact of hardware prefetcher, branch and PCM. Also the one column case.
-impact_of_prefetcher_tlb.x: impact_of_prefetcher_tlb.cpp avx-utility.h types.h $(COMMONTOOL) common_tool.h 
-	$(CC) $(OPT) impact_of_prefetcher_tlb.cpp -o impact_of_prefetcher_tlb.x $(COMMONTOOL)
-#####################end of motivations##########################################	
- 
- 
- 
- 
-# check the case with two columns. 2_column_compare_with_literal.cpp
-column_compare_with_literal.o: column_compare_with_literal.cpp types.h avx-utility.h 
-	$(CC) $(OPT) -c column_compare_with_literal.cpp
-column_compare_with_literal_test.x: column_compare_with_literal_test.cpp avx-utility.h types.h $(COMMONTOOL) common_tool.h column_compare_with_literal.o 
-	$(CC) $(OPT) column_compare_with_literal_test.cpp -o column_compare_with_literal_test.x $(COMMONTOOL) column_compare_with_literal.o
-	
+clean: CLEAN-LINREG 
+	rm -f ${TEST_AVX2}
 
-# check the case with two columns. 2_column_compare_with_literal.cpp
-2_column_compare_with_literal.o: 2_column_compare_with_literal.cpp types.h avx-utility.h 
-	$(CC) $(OPT) -c 2_column_compare_with_literal.cpp
-2_column_compare_with_literal_test.x: 2_column_compare_with_literal_test.cpp avx-utility.h types.h $(COMMONTOOL) common_tool.h 2_column_compare_with_literal.o 
-	$(CC) $(OPT) 2_column_compare_with_literal_test.cpp -o 2_column_compare_with_literal_test.x $(COMMONTOOL) 2_column_compare_with_literal.o
+LINREGS := $(foreach SY,$(STRATEGY), $(foreach SE, $(STEPSIZE), $(foreach RN, $(REPRESENTATION), $(foreach FM, $(FORMAT), $(foreach SD, $(SIMD), $(foreach TB, $(THREADBING), $(BIN_DIR)/LINREG_$(SY)_$(SE)_$(RN)_$(SD)_$(FM)_$(TB) ) ) ) ) ) )
+
+CLEAN-LINREG:
+	rm -f $(LINREGS)
 
 
-# check the case with three columns. 3_column_compare_with_literal.cpp
-3_column_compare_with_literal.o: 3_column_compare_with_literal.cpp types.h avx-utility.h 
-	$(CC) $(OPT) -c 3_column_compare_with_literal.cpp
-3_column_compare_with_literal_test.x: 3_column_compare_with_literal_test.cpp avx-utility-128.h types_simd.h $(COMMONTOOL) common_tool.h 3_column_compare_with_literal.o 
-	$(CC) $(OPT) 3_column_compare_with_literal_test.cpp -o 3_column_compare_with_literal_test.x $(COMMONTOOL) 3_column_compare_with_literal.o
-	
-#####################end of motivations##########################################	
+$(LINREGS): ${APP_DIR}/linreg/linreg.cpp ${APP_DIR}/linreg/linreg_exec.h $(SRC_FILES)
+	mkdir -p $(BIN_DIR)
+	${CXX} $(CPP_FLAG) ${ADDITIONAL_FLAG} $(PARAMS) $(CPP_INCLUDE) $< -o $@ $(CPP_LAST) ../IntelPCM/libpcm_2_11.a
+
+LINREG: $(LINREGS)
 
 
-# check the case with four columns. 4_column_compare_with_literal.cpp
-4_column_compare_with_literal.o: 4_column_compare_with_literal.cpp types.h avx-utility.h 
-	$(CC) $(OPT) -c 4_column_compare_with_literal.cpp
-4_column_compare_with_literal_test.x: 4_column_compare_with_literal_test.cpp avx-utility-128.h types_simd.h $(COMMONTOOL) common_tool.h 4_column_compare_with_literal.o 
-	$(CC) $(OPT) 4_column_compare_with_literal_test.cpp -o 4_column_compare_with_literal_test.x $(COMMONTOOL) 4_column_compare_with_literal.o
-###############################################################	
+# Add strategy specific options
+$(foreach f, $(ALLEXECS), $(if $(findstring _HOGWILD_, $f),$f,)): strategy/hogwild.h
 
-# check the case with four columns. 5_column_compare_with_literal.cpp
-5_column_compare_with_literal.o: 5_column_compare_with_literal.cpp types.h avx-utility.h 
-	$(CC) $(OPT) -c 5_column_compare_with_literal.cpp
-5_column_compare_with_literal_test.x: 5_column_compare_with_literal_test.cpp avx-utility.h types_simd.h $(COMMONTOOL) common_tool.h 5_column_compare_with_literal.o 
-	$(CC) $(OPT) 5_column_compare_with_literal_test.cpp -o 5_column_compare_with_literal_test.x $(COMMONTOOL) 5_column_compare_with_literal.o
-###############################################################	
-Q10.x: Q10.cpp avx-utility-128.h types_simd.h $(COMMONTOOL) common_tool.h  
-	$(CC) $(OPT) Q10.cpp -o Q10.x $(COMMONTOOL) 
-	
-Q1.x: Q1.cpp avx-utility-128.h types_simd.h $(COMMONTOOL) common_tool.h  
-	$(CC) $(OPT) Q1.cpp -o Q1.x $(COMMONTOOL) 
-	
-Q14.x: Q14.cpp avx-utility-128.h types_simd.h $(COMMONTOOL) common_tool.h  
-	$(CC) $(OPT) Q14.cpp -o Q14.x $(COMMONTOOL) 
+# Add representation
+$(foreach f, $(ALLEXECS), $(if $(findstring _DENSE_, $f),$f,)): PARAMS += -D_DENSE
+$(foreach f, $(ALLEXECS), $(if $(findstring _SPARSE_, $f),$f,)):PARAMS += -D_SPARSE
+$(foreach f, $(ALLEXECS), $(if $(findstring _SHORT, $f),$f,)):PARAMS += -D_HOGWILD_SHORT
+$(foreach f, $(ALLEXECS), $(if $(findstring _CHAR,  $f),$f,)):PARAMS += -D_HOGWILD_CHAR
+$(foreach f, $(ALLEXECS), $(if $(findstring _INT,  $f),$f,)):PARAMS += -D_HOGWILD_INT
 
-Q15.x: Q15.cpp avx-utility-128.h types_simd.h $(COMMONTOOL) common_tool.h  
-	$(CC) $(OPT) Q15.cpp -o Q15.x $(COMMONTOOL) 
-
-Q17.x: Q17.cpp avx-utility-128.h types_simd.h $(COMMONTOOL) common_tool.h  
-	$(CC) $(OPT) Q17.cpp -o Q17.x $(COMMONTOOL) 
-
-Q19.x: Q19.cpp avx-utility-128.h types_simd.h $(COMMONTOOL) common_tool.h  
-	$(CC) $(OPT) Q19.cpp -o Q19.x $(COMMONTOOL) 
+$(foreach f, $(ALLEXECS), $(if $(findstring _AVX,  $f),$f,)):PARAMS  += -DAVX2_EN
+$(foreach f, $(ALLEXECS), $(if $(findstring _BIND,  $f),$f,)):PARAMS  += -DCPU_BINDING_EN
 
 
-Q3.x: Q3.cpp avx-utility-128.h types_simd.h $(COMMONTOOL) common_tool.h 3_column_compare_with_literal.o 
-	$(CC) $(OPT) Q3.cpp -o Q3.x $(COMMONTOOL) 3_column_compare_with_literal.o
+# Add Stepsize behavior
 
+$(filter %_DECREASING_STEPSIZES_DENSE %_DECREASING_STEPSIZES_SPARSE,$(ALLEXECS)): PARAMS += -D_DECREASING_STEPSIZES
+$(filter %_EXPBACKOFF_STEPSIZES_DENSE %_EXPBACKOFF_STEPSIZES_SPARSE,$(ALLEXECS)): PARAMS += -D_EXPBACKOFF_STEPSIZES
 
-Q5.x: Q5.cpp avx-utility-128.h types_simd.h $(COMMONTOOL) common_tool.h 3_column_compare_with_literal.o 
-	$(CC) $(OPT) Q5.cpp -o Q5.x $(COMMONTOOL) 3_column_compare_with_literal.o
+# Add representation
 
-Q6.x: Q6.cpp avx-utility-128.h types_simd.h $(COMMONTOOL) common_tool.h 3_column_compare_with_literal.o 
-	$(CC) $(OPT) Q6.cpp -o Q6.x $(COMMONTOOL) 3_column_compare_with_literal.o
+#$(filter %_DENSE,$(ALLEXECS)): PARAMS += -D_DENSE
+#$(filter %_SPARSE,$(ALLEXECS)): PARAMS += -D_SPARSE
 
-Q7.x: Q7.cpp avx-utility-128.h types_simd.h $(COMMONTOOL) common_tool.h 3_column_compare_with_literal.o 
-	$(CC) $(OPT) Q7.cpp -o Q7.x $(COMMONTOOL) 3_column_compare_with_literal.o
-
-Q8.x: Q8.cpp avx-utility-128.h types_simd.h $(COMMONTOOL) common_tool.h 3_column_compare_with_literal.o 
-	$(CC) $(OPT) Q8.cpp -o Q8.x $(COMMONTOOL) 3_column_compare_with_literal.o
-
-Q12.x: Q12.cpp avx-utility-128.h types_simd.h $(COMMONTOOL) common_tool.h 3_column_compare_with_literal.o 
-	$(CC) $(OPT) Q12.cpp -o Q12.x $(COMMONTOOL) 3_column_compare_with_literal.o
-	
-clean_test:
-	rm -rf *.o	 
-	
-clean:
-	rm -rf *.o *.x
