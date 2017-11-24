@@ -148,7 +148,11 @@ size_t BitWeavingBase::write_file_to_bitweaving(Scan &scan, uint32_t dimension, 
         	}			
 
         	//Write the sample to the disk...
+			if (samp_index >= num_samples)
+				printf("samp_index = %d, num_samples = %d", samp_index, num_samples);
+			
 			assert(samp_index < num_samples);
+
 			write_to_bitweaving(samp_index, temp_vector, (float)rating);
 /*
 			LinearModelSampleBitweaving bitweaving_samp;
@@ -239,7 +243,7 @@ BitWeavingBase::BitWeavingBase(const char *fname, uint32_t dimension, uint32_t n
 
 	fd_en = true;
 	if (huge_table_en)
-    	zk_mem_addr =  (uint32_t *)mmap (0, (zk_total_len+num_samples) * sizeof(uint32_t), PROT_READ|PROT_WRITE, MAP_SHARED | MAP_HUGETLB, zk_fd, 0); //
+    	zk_mem_addr =  (uint32_t *)mmap (0, (zk_total_len+num_samples) * sizeof(uint32_t), PROT_READ|PROT_WRITE, MAP_PRIVATE | MAP_HUGETLB, zk_fd, 0); //MAP_SHARED
 	else 
     	zk_mem_addr =  (uint32_t *)mmap (0, (zk_total_len+num_samples) * sizeof(uint32_t), PROT_READ|PROT_WRITE, MAP_SHARED, zk_fd, 0); //|MAP_HUGETLB
 	//Try to mapp the file to the memory region (zk_mem_addr, zk_total_len).

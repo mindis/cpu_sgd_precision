@@ -28,20 +28,21 @@
 
 void main (int argc, char **argv)
 {
-  assert(argc > 5);   //At least has the dimentsion and samples.
+  assert(argc > 6);   //At least has the dimentsion and samples.
     //////////////////Input parameters//////////////////
   int    dimension       = argc > 1 ? atoi(argv[1]) : DIMENSION  ;
   size_t num_samples     = argc > 2 ? atoi(argv[2]) : NUM_SAMPLES;
   int    model           = argc > 3 ? atoi(argv[3]) : 2;
-  char  *input_filename  = (char *)argv[4];
-  char  *output_filename = (char *)argv[5]; // "../../../data/data_16G_4k.dat"
+  int    num_bits_per_mr = argc > 4 ? atoi(argv[4]) : 2;
+  char  *input_filename  = (char *)argv[5];
+  char  *output_filename = (char *)argv[6]; // "../../../data/data_16G_4k.dat"
 
   //argv[3]: name of file to store the dense dataset...
 
   printf("Samples: %d, dimension: %d, model: %d. \n",num_samples, dimension, model);
   printf("Input file name: %s, output file name: %s. \n",input_filename, output_filename);
 
-  BitWeavingBase bw_master(output_filename, dimension, 4, num_samples, false);
+  BitWeavingBase bw_master(output_filename, dimension, num_bits_per_mr, num_samples, false);
   bw_master.statistic_show(); 
 
   if (model == 0) {

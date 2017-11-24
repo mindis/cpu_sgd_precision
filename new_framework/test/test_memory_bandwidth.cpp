@@ -167,10 +167,15 @@ void *run(void *arg)
 #else
    for (int epoch = 0; epoch < 4; epoch++)
    { 
+        
+
         uint64_t t1;    
         //////////Log the elapsed time of each thread//////////
         if (d->thread == 0)
+        {   
+            printf("epoch = %d\t", epoch);
             t1 = thread_time();
+        }
 
         pthread_barrier_wait(barrier);
 
@@ -232,20 +237,20 @@ int main (int argc, char **argv)
         printf("Succesfully open the file (fd)!!!\n");
 
         //////////////////Open the file on the disk//////////////////
-        p_addr          =  (unsigned int *)mmap (0, byte_len, PROT_READ|PROT_WRITE, MAP_SHARED|MAP_POPULATE, fd, 0);
+        p_addr          =  (unsigned int *)mmap (0, byte_len, PROT_READ|PROT_WRITE, MAP_SHARED, fd, 0); //MAP_POPULATE
         if (p_addr == MAP_FAILED) {
             perror ("mmap to the file (fd) error");
             return 1;
         }
         printf("Succesfully map the file to the memory location!!!\n");
 
-        if(madvise(p_addr,byte_len,MADV_SEQUENTIAL|MADV_WILLNEED)!=0) 
-            printf("Couldn't set hints for p_addr\n");//cerr<<" Couldn't set hints for p_addr"<<endl;
+        //if(madvise(p_addr,byte_len,MADV_SEQUENTIAL|MADV_WILLNEED)!=0) 
+        //    printf("Couldn't set hints for p_addr\n");//cerr<<" Couldn't set hints for p_addr"<<endl;
     }   
     else
     {
-        p_addr      =  (unsigned int *) malloc_huge_pages(byte_len);
-        if (p_addr == NULL) {
+        p_addr          =  (unsigned int *) malloc_huge_pages(byte_len);
+       if (p_addr == NULL) {
             perror ("Huge malloc error\n");
             return 1;
         }
@@ -293,6 +298,9 @@ int main (int argc, char **argv)
     for (int t = 0 ; t != threads ; ++t)
         pthread_join(info[t].id, NULL);
 
+
+    if (0 != munmap (p_addr, byte_len)) 
+        printf("Mumap error\n");
 
     for (int b = 0 ; b != num_barrier ; ++b)
         pthread_barrier_destroy(&barriers[b]);

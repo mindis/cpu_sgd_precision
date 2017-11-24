@@ -221,8 +221,8 @@ void ModelSyncPerThread(ThreadArgs<Model, Params, Sample> &threadArgs, unsigned 
 
 
 	//1,  Load the local model from the global model 
-    hazy::vector::CopyInto(x, g_local);
-	//hazy::vector::CopyInto_stream(model->weights, model->local_gradients[tid]);
+    //hazy::vector::CopyInto(x, g_local);
+	  hazy::vector::CopyInto_stream(x, g_local);
 
     if (num_bits <= 8)
     {
@@ -292,7 +292,7 @@ void InitPerThread(ThreadArgs<Model, Params, Sample> &threadArgs, unsigned tid, 
 	Params const &params = *threadArgs.params_;
 	Model *model         =  threadArgs.model_;
 
-	printf("tid = %d, threads = %d\n", tid, total);
+	//printf("tid = %d, threads = %d\n", tid, total);
     
     // init in a way that each thread will allocate its own memory
 	model->initLocalVars(params.ndim, tid);
@@ -330,7 +330,10 @@ int main(int argc, char** argv)
 	unsigned target_label = 1;
 	unsigned target_epoch = 0;
 	unsigned num_bits     = 8;
-	unsigned model        = 0; //0: RCV1, 
+	unsigned model        = 0; //0: RCV1,
+  unsigned bits_per_mr  = 4;
+  unsigned huge_page_en = 0;
+
   static struct extended_option long_options[] = {
     {"beta", required_argument, NULL,              'h', "the exponent constant for the stepsizes"},
     {"batch_size", required_argument, NULL,        'b', "batch_size (default to 1)"},
@@ -345,6 +348,8 @@ int main(int argc, char** argv)
     //"binary", required_argument,NULL,             'v', "load the file in a binary fashion"},
     //{"matlab-tsv", required_argument,NULL,         'm', "load TSVs indexing from 1 instead of 0"},
     {"model", required_argument,NULL,              'm', "The index of the sample..."},
+    {"bits_per_mr",     required_argument,NULL,    'g', "Number of bits for each memory region. default:4"},
+    {"huge_page_en",     required_argument,NULL,   'z', "Using huge page or not. default:false"},
 
     {"class_model",  required_argument,NULL,       'c', "First bit: enable binary classification, second bit: -1 or 0  Default: 0"},
     {"target_label", required_argument,NULL,       't', "Target label to be identified. default:1"},
@@ -404,7 +409,14 @@ int main(int argc, char** argv)
         case 'm':
           model             = atoi(optarg);
           break;
-		  
+        case 'g':
+          bits_per_mr       = atoi(optarg);
+          break;
+        case 'z':
+          huge_page_en      = atoi(optarg);
+          break;
+
+
         case ':':
         case '?':
 		  printf("wrong parameter: %d\n", c);
@@ -456,7 +468,7 @@ int main(int argc, char** argv)
     p.ndim              = dimension;
 
 	//Add two parameters here. Number of bits for each region, and huge table enable..
-	BitWeavingBase bw_master(szTrainFile, dimension, 4, num_samples, false);
+	BitWeavingBase bw_master(szTrainFile, dimension, bits_per_mr, num_samples, huge_page_en ); //false
 	///////////////Add the other file when necessary...///////////////////
 
 	printf("step 1: prepare the training dataset. dimension = %d, num_samples = %d\n", dimension, num_samples);
@@ -501,20 +513,20 @@ int main(int argc, char** argv)
 
 	hazy::util::Clock compute_clock;
 
-	printf("step_size = %.9f\n", step_size);
+	printf("step_size = %.9f\n", step_size); fflush(stdout);
 		  
 	for(int e = 0; e <= nepochs; ++e)
 	{ 	 
 		double avgComputeTime = 0.0;
 		if(e > 0)
 		{
-	
 			if (e == target_epoch) //this->params_->
 			{
 				PCM_initPerformanceMonitor(&inst_Monitor_Event, NULL);
 				PCM_start();
 			}
 
+      //printf("begin the %d-th epoch, ", e); fflush(stdout);
 			compute_clock.Start();
 
 			//1, Start the training task on the computing threads.
@@ -523,10 +535,11 @@ int main(int argc, char** argv)
 			//this->RunEpoch(trainScan_);
 
 			//2, After the computing thread finishes the computation of local models, the main thread will aggregate the local models from the local threads. 
-			hazy::vector::avg_list(model_->weights, model_->local_gradients, nthreads);
-			//hazy::vector::avg_list_stream(this->model_->weights, this->model_->local_gradients, num_threads);
+			//hazy::vector::avg_list(model_->weights, model_->local_gradients, nthreads);
+			hazy::vector::avg_list_stream(model_->weights, model_->local_gradients, nthreads);
 
 			avgComputeTime = compute_clock.Stop();
+      //printf("end the %d-th epoch,  ", e); fflush(stdout);
 
 			sumCommunicateTime += avgComputeTime;
 
@@ -536,47 +549,26 @@ int main(int argc, char** argv)
 				printf("=====print the profiling result==========\n");
 				PCM_printResults();   
 				PCM_cleanup();
-			} 		  
+			} 
+
+
+    /////3, Compute the loss for the existing model//////////////////////////////////////////////
+    threadPool_->Execute(args, ComputeLossPerThread<LinearModel, LinearModelParams, LinearModelSampleBitweaving>);
+    threadPool_->Wait();
+
 		}
 
-		/////3, Compute the loss for the existing model//////////////////////////////////////////////
-		threadPool_->Execute(args, ComputeLossPerThread<LinearModel, LinearModelParams, LinearModelSampleBitweaving>);
-		threadPool_->Wait();
-
         // Sum uf losses from each thread....
-		double loss = 0.0;
-        for(size_t i = 0; i < nthreads; ++i)
-        {
-          loss += (args.losses_)[i];
-        }
+    double loss = 0.0;
+    for(size_t i = 0; i < nthreads; ++i)
+    {
+      loss += (args.losses_)[i];
+    }
 
-        loss /= num_samples;
+    loss /= num_samples;
 
-        printf( "Epoch: %d, loss: %0.7f, computing_time: %0.7f, sum_time: %0.7f\n", e, (float)loss, avgComputeTime, sumCommunicateTime );
+    printf( "Epoch: %d, loss: %0.7f, computing_time: %0.7f, sum_time: %0.7f\n", e, (float)loss, avgComputeTime, sumCommunicateTime );
 		//ComputeLoss(p_samp, num_samples, target_label, class_model, num_bits);
-/*
-#ifdef _EXPBACKOFF_STEPSIZES
-			this->params_->step_size *= this->params_->step_decay;
-#endif
-
-			double train_loss = this->ComputeLoss(trainScan_);
-	
-			totalTime += epoch_time_.value;
-
-			printf("epoch: %.2d   train_time (total, each): with_thread_sync(%.7f, %.7f), without_thread_sync(%.7f, %.7f)  train_loss: %.7f test_loss: %.7f\n", //communicate_time: %.7f
-				e,
-				train_time_.value,
-				epoch_time_.value,
-				pure_total_computing_time,
-				avgComputeTime,
-				//avgCommunicateTime,
-				train_loss,
-				test_loss
-				);
-			fflush(stdout);
-*/
-
-
 	}
 	//printf("%f\nFinished!\n", totalTime / nepochs);
 

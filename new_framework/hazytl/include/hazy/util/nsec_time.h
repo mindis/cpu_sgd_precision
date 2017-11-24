@@ -40,7 +40,7 @@ inline unsigned long long CurrentNSec() {
   return tv.tv_sec * 1000 *1000 *1000UL + tv.tv_usec*1000UL;
 #else
   struct timespec ts;
-  clock_gettime(CLOCK_REALTIME, &ts);
+  clock_gettime(CLOCK_MONOTONIC, &ts); //CLOCK_REALTIME 
   return (unsigned long long) ts.tv_nsec + 
       (unsigned long long) ts.tv_sec * 1000 * 1000 * 1000;
 #endif

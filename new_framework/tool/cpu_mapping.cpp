@@ -45,7 +45,7 @@ init_mappings_from_file()
         fclose(cfg);
         return 1;
     }
-    /* perror("Custom cpu mapping file not found!\n"); */
+    printf("Custom cpu mapping file not found!\n"); 
     return 0;
 }
 
