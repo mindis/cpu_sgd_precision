@@ -1,0 +1,1890 @@
+ModelSync_bitweaving with memory regions: 2. Step size: 0.81, threads:  14
+Bits:  1
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.2540391, computing_time: 7.3884090, sum_time: 7.3884090
+=====print the profiling result==========
+Instructions-retired 2050775297
+Active-cycles 1351224615
+IPC 1.51772
+L3 cache misses:  9075721
+L2 cache misses:  16451787
+Mispredicted branchs:  99484
+L2 cache hits:  29962846
+BytesReadFromMC: 586400512
+BytesWrittenToMC: 11022016
+Epoch: 2, loss: 0.2496490, computing_time: 0.0603403, sum_time: 7.4487493
+Epoch: 3, loss: 0.2457442, computing_time: 0.0485050, sum_time: 7.4972543
+Epoch: 4, loss: 0.2421970, computing_time: 0.0458243, sum_time: 7.5430786
+Epoch: 5, loss: 0.2389309, computing_time: 0.0457570, sum_time: 7.5888357
+Epoch: 6, loss: 0.2358977, computing_time: 0.0458989, sum_time: 7.6347345
+Epoch: 7, loss: 0.2330645, computing_time: 0.0457780, sum_time: 7.6805125
+Epoch: 8, loss: 0.2304078, computing_time: 0.0452065, sum_time: 7.7257190
+Epoch: 9, loss: 0.2279094, computing_time: 0.0457489, sum_time: 7.7714679
+Epoch: 10, loss: 0.2255545, computing_time: 0.0458760, sum_time: 7.8173438
+Epoch: 11, loss: 0.2233308, computing_time: 0.0448164, sum_time: 7.8621602
+Epoch: 12, loss: 0.2212278, computing_time: 0.0438214, sum_time: 7.9059816
+Epoch: 13, loss: 0.2192364, computing_time: 0.0399016, sum_time: 7.9458833
+Epoch: 14, loss: 0.2173483, computing_time: 0.0397074, sum_time: 7.9855906
+Epoch: 15, loss: 0.2155563, computing_time: 0.0399435, sum_time: 8.0255342
+Epoch: 16, loss: 0.2138538, computing_time: 0.0403918, sum_time: 8.0659260
+Epoch: 17, loss: 0.2122349, computing_time: 0.0403661, sum_time: 8.1062921
+Epoch: 18, loss: 0.2106941, computing_time: 0.0404342, sum_time: 8.1467263
+Epoch: 19, loss: 0.2092265, computing_time: 0.0402000, sum_time: 8.1869263
+Epoch: 20, loss: 0.2078276, computing_time: 0.0402525, sum_time: 8.2271788
+Epoch: 21, loss: 0.2064933, computing_time: 0.0402152, sum_time: 8.2673940
+Epoch: 22, loss: 0.2052198, computing_time: 0.0401450, sum_time: 8.3075390
+Epoch: 23, loss: 0.2040035, computing_time: 0.0402156, sum_time: 8.3477547
+Epoch: 24, loss: 0.2028411, computing_time: 0.0401234, sum_time: 8.3878781
+Epoch: 25, loss: 0.2017297, computing_time: 0.0401442, sum_time: 8.4280223
+Epoch: 26, loss: 0.2006664, computing_time: 0.0408296, sum_time: 8.4688519
+Epoch: 27, loss: 0.1996486, computing_time: 0.0406937, sum_time: 8.5095455
+Epoch: 28, loss: 0.1986740, computing_time: 0.0408004, sum_time: 8.5503459
+Epoch: 29, loss: 0.1977402, computing_time: 0.0404544, sum_time: 8.5908003
+Epoch: 30, loss: 0.1968451, computing_time: 0.0400934, sum_time: 8.6308938
+Epoch: 31, loss: 0.1959868, computing_time: 0.0405005, sum_time: 8.6713943
+Epoch: 32, loss: 0.1951634, computing_time: 0.0405124, sum_time: 8.7119066
+Epoch: 33, loss: 0.1943732, computing_time: 0.0405600, sum_time: 8.7524666
+Epoch: 34, loss: 0.1936145, computing_time: 0.0404814, sum_time: 8.7929480
+Epoch: 35, loss: 0.1928859, computing_time: 0.0405302, sum_time: 8.8334783
+Epoch: 36, loss: 0.1921858, computing_time: 0.0404048, sum_time: 8.8738831
+Epoch: 37, loss: 0.1915130, computing_time: 0.0404900, sum_time: 8.9143731
+Epoch: 38, loss: 0.1908662, computing_time: 0.0400376, sum_time: 8.9544107
+Epoch: 39, loss: 0.1902442, computing_time: 0.0400897, sum_time: 8.9945004
+Epoch: 40, loss: 0.1896457, computing_time: 0.0401442, sum_time: 9.0346446
+munmap is successful
+Bits:  2
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.2019305, computing_time: 7.3080431, sum_time: 7.3080431
+=====print the profiling result==========
+Instructions-retired 2529183081
+Active-cycles 1713178879
+IPC 1.47631
+L3 cache misses:  13368376
+L2 cache misses:  16463588
+Mispredicted branchs:  113406
+L2 cache hits:  32925449
+BytesReadFromMC: 860472256
+BytesWrittenToMC: 22847488
+Epoch: 2, loss: 0.1746757, computing_time: 0.0810866, sum_time: 7.3891297
+Epoch: 3, loss: 0.1569012, computing_time: 0.0632710, sum_time: 7.4524007
+Epoch: 4, loss: 0.1436770, computing_time: 0.0569354, sum_time: 7.5093360
+Epoch: 5, loss: 0.1331842, computing_time: 0.0569245, sum_time: 7.5662605
+Epoch: 6, loss: 0.1245424, computing_time: 0.0568013, sum_time: 7.6230618
+Epoch: 7, loss: 0.1172477, computing_time: 0.0558350, sum_time: 7.6788968
+Epoch: 8, loss: 0.1109795, computing_time: 0.0566472, sum_time: 7.7355440
+Epoch: 9, loss: 0.1055188, computing_time: 0.0531952, sum_time: 7.7887392
+Epoch: 10, loss: 0.1007086, computing_time: 0.0530414, sum_time: 7.8417806
+Epoch: 11, loss: 0.0964318, computing_time: 0.0522465, sum_time: 7.8940272
+Epoch: 12, loss: 0.0925992, computing_time: 0.0491577, sum_time: 7.9431849
+Epoch: 13, loss: 0.0891410, computing_time: 0.0490391, sum_time: 7.9922239
+Epoch: 14, loss: 0.0860018, computing_time: 0.0489628, sum_time: 8.0411867
+Epoch: 15, loss: 0.0831370, computing_time: 0.0490560, sum_time: 8.0902428
+Epoch: 16, loss: 0.0805101, computing_time: 0.0484489, sum_time: 8.1386917
+Epoch: 17, loss: 0.0780912, computing_time: 0.0486248, sum_time: 8.1873165
+Epoch: 18, loss: 0.0758551, computing_time: 0.0485126, sum_time: 8.2358291
+Epoch: 19, loss: 0.0737809, computing_time: 0.0485438, sum_time: 8.2843729
+Epoch: 20, loss: 0.0718507, computing_time: 0.0483642, sum_time: 8.3327371
+Epoch: 21, loss: 0.0700493, computing_time: 0.0483490, sum_time: 8.3810860
+Epoch: 22, loss: 0.0683636, computing_time: 0.0485478, sum_time: 8.4296338
+Epoch: 23, loss: 0.0667824, computing_time: 0.0483455, sum_time: 8.4779794
+Epoch: 24, loss: 0.0652957, computing_time: 0.0485226, sum_time: 8.5265019
+Epoch: 25, loss: 0.0638951, computing_time: 0.0482963, sum_time: 8.5747983
+Epoch: 26, loss: 0.0625730, computing_time: 0.0483878, sum_time: 8.6231860
+Epoch: 27, loss: 0.0613226, computing_time: 0.0483752, sum_time: 8.6715612
+Epoch: 28, loss: 0.0601381, computing_time: 0.0481780, sum_time: 8.7197392
+Epoch: 29, loss: 0.0590143, computing_time: 0.0481768, sum_time: 8.7679161
+Epoch: 30, loss: 0.0579465, computing_time: 0.0482579, sum_time: 8.8161739
+Epoch: 31, loss: 0.0569303, computing_time: 0.0486393, sum_time: 8.8648132
+Epoch: 32, loss: 0.0559622, computing_time: 0.0484920, sum_time: 8.9133052
+Epoch: 33, loss: 0.0550385, computing_time: 0.0483083, sum_time: 8.9616135
+Epoch: 34, loss: 0.0541564, computing_time: 0.0482042, sum_time: 9.0098177
+Epoch: 35, loss: 0.0533129, computing_time: 0.0483497, sum_time: 9.0581674
+Epoch: 36, loss: 0.0525055, computing_time: 0.0485164, sum_time: 9.1066838
+Epoch: 37, loss: 0.0517319, computing_time: 0.0484478, sum_time: 9.1551316
+Epoch: 38, loss: 0.0509899, computing_time: 0.0484686, sum_time: 9.2036002
+Epoch: 39, loss: 0.0502777, computing_time: 0.0483801, sum_time: 9.2519803
+Epoch: 40, loss: 0.0495933, computing_time: 0.0482543, sum_time: 9.3002346
+munmap is successful
+Bits:  3
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.0946735, computing_time: 7.6612085, sum_time: 7.6612085
+=====print the profiling result==========
+Instructions-retired 3007673889
+Active-cycles 2191411259
+IPC 1.37248
+L3 cache misses:  17065517
+L2 cache misses:  16527648
+Mispredicted branchs:  111904
+L2 cache hits:  35491258
+BytesReadFromMC: 1097177280
+BytesWrittenToMC: 14292736
+Epoch: 2, loss: 0.0671351, computing_time: 0.0769069, sum_time: 7.7381154
+Epoch: 3, loss: 0.0548245, computing_time: 0.0685387, sum_time: 7.8066541
+Epoch: 4, loss: 0.0477170, computing_time: 0.0686641, sum_time: 7.8753182
+Epoch: 5, loss: 0.0429540, computing_time: 0.0686313, sum_time: 7.9439495
+Epoch: 6, loss: 0.0394430, computing_time: 0.0675280, sum_time: 8.0114775
+Epoch: 7, loss: 0.0366868, computing_time: 0.0660731, sum_time: 8.0775506
+Epoch: 8, loss: 0.0344288, computing_time: 0.0588505, sum_time: 8.1364011
+Epoch: 9, loss: 0.0325228, computing_time: 0.0581808, sum_time: 8.1945819
+Epoch: 10, loss: 0.0308786, computing_time: 0.0583053, sum_time: 8.2528872
+Epoch: 11, loss: 0.0294370, computing_time: 0.0583706, sum_time: 8.3112578
+Epoch: 12, loss: 0.0281569, computing_time: 0.0582973, sum_time: 8.3695551
+Epoch: 13, loss: 0.0270087, computing_time: 0.0583023, sum_time: 8.4278575
+Epoch: 14, loss: 0.0259703, computing_time: 0.0582650, sum_time: 8.4861225
+Epoch: 15, loss: 0.0250247, computing_time: 0.0584282, sum_time: 8.5445507
+Epoch: 16, loss: 0.0241585, computing_time: 0.0584261, sum_time: 8.6029768
+Epoch: 17, loss: 0.0233611, computing_time: 0.0583610, sum_time: 8.6613378
+Epoch: 18, loss: 0.0226237, computing_time: 0.0583121, sum_time: 8.7196499
+Epoch: 19, loss: 0.0219393, computing_time: 0.0584123, sum_time: 8.7780622
+Epoch: 20, loss: 0.0213018, computing_time: 0.0584645, sum_time: 8.8365267
+Epoch: 21, loss: 0.0207061, computing_time: 0.0583188, sum_time: 8.8948455
+Epoch: 22, loss: 0.0201480, computing_time: 0.0584017, sum_time: 8.9532472
+Epoch: 23, loss: 0.0196238, computing_time: 0.0583743, sum_time: 9.0116215
+Epoch: 24, loss: 0.0191303, computing_time: 0.0583931, sum_time: 9.0700146
+Epoch: 25, loss: 0.0186647, computing_time: 0.0583499, sum_time: 9.1283645
+Epoch: 26, loss: 0.0182245, computing_time: 0.0583403, sum_time: 9.1867049
+Epoch: 27, loss: 0.0178077, computing_time: 0.0583517, sum_time: 9.2450566
+Epoch: 28, loss: 0.0174123, computing_time: 0.0583152, sum_time: 9.3033718
+Epoch: 29, loss: 0.0170366, computing_time: 0.0583105, sum_time: 9.3616823
+Epoch: 30, loss: 0.0166792, computing_time: 0.0584444, sum_time: 9.4201267
+Epoch: 31, loss: 0.0163386, computing_time: 0.0584044, sum_time: 9.4785311
+Epoch: 32, loss: 0.0160137, computing_time: 0.0583506, sum_time: 9.5368817
+Epoch: 33, loss: 0.0157034, computing_time: 0.0583498, sum_time: 9.5952315
+Epoch: 34, loss: 0.0154066, computing_time: 0.0584402, sum_time: 9.6536717
+Epoch: 35, loss: 0.0151225, computing_time: 0.0583099, sum_time: 9.7119816
+Epoch: 36, loss: 0.0148503, computing_time: 0.0583205, sum_time: 9.7703021
+Epoch: 37, loss: 0.0145891, computing_time: 0.0582247, sum_time: 9.8285268
+Epoch: 38, loss: 0.0143384, computing_time: 0.0583804, sum_time: 9.8869072
+Epoch: 39, loss: 0.0140974, computing_time: 0.0584615, sum_time: 9.9453687
+Epoch: 40, loss: 0.0138657, computing_time: 0.0582808, sum_time: 10.0036495
+munmap is successful
+Bits:  4
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.0440866, computing_time: 7.2887177, sum_time: 7.2887177
+=====print the profiling result==========
+Instructions-retired 3486481503
+Active-cycles 2592666289
+IPC 1.34475
+L3 cache misses:  23617846
+L2 cache misses:  19883110
+Mispredicted branchs:  119968
+L2 cache hits:  39801412
+BytesReadFromMC: 1518449088
+BytesWrittenToMC: 24771904
+Epoch: 2, loss: 0.0334085, computing_time: 0.1091173, sum_time: 7.3978350
+Epoch: 3, loss: 0.0291419, computing_time: 0.1136066, sum_time: 7.5114416
+Epoch: 4, loss: 0.0264401, computing_time: 0.1146912, sum_time: 7.6261328
+Epoch: 5, loss: 0.0244434, computing_time: 0.0881573, sum_time: 7.7142902
+Epoch: 6, loss: 0.0228615, computing_time: 0.0816441, sum_time: 7.7959343
+Epoch: 7, loss: 0.0215559, computing_time: 0.0817305, sum_time: 7.8776648
+Epoch: 8, loss: 0.0204482, computing_time: 0.0791469, sum_time: 7.9568117
+Epoch: 9, loss: 0.0194893, computing_time: 0.0789731, sum_time: 8.0357849
+Epoch: 10, loss: 0.0186462, computing_time: 0.0793172, sum_time: 8.1151021
+Epoch: 11, loss: 0.0178960, computing_time: 0.0779103, sum_time: 8.1930124
+Epoch: 12, loss: 0.0172219, computing_time: 0.0693755, sum_time: 8.2623879
+Epoch: 13, loss: 0.0166111, computing_time: 0.0692501, sum_time: 8.3316380
+Epoch: 14, loss: 0.0160541, computing_time: 0.0691978, sum_time: 8.4008358
+Epoch: 15, loss: 0.0155430, computing_time: 0.0692610, sum_time: 8.4700968
+Epoch: 16, loss: 0.0150718, computing_time: 0.0689878, sum_time: 8.5390846
+Epoch: 17, loss: 0.0146354, computing_time: 0.0693121, sum_time: 8.6083967
+Epoch: 18, loss: 0.0142297, computing_time: 0.0694000, sum_time: 8.6777967
+Epoch: 19, loss: 0.0138513, computing_time: 0.0692321, sum_time: 8.7470288
+Epoch: 20, loss: 0.0134971, computing_time: 0.0687169, sum_time: 8.8157458
+Epoch: 21, loss: 0.0131648, computing_time: 0.0687992, sum_time: 8.8845449
+Epoch: 22, loss: 0.0128522, computing_time: 0.0686799, sum_time: 8.9532249
+Epoch: 23, loss: 0.0125575, computing_time: 0.0691410, sum_time: 9.0223659
+Epoch: 24, loss: 0.0122790, computing_time: 0.0691091, sum_time: 9.0914750
+Epoch: 25, loss: 0.0120153, computing_time: 0.0690184, sum_time: 9.1604934
+Epoch: 26, loss: 0.0117653, computing_time: 0.0690067, sum_time: 9.2295001
+Epoch: 27, loss: 0.0115278, computing_time: 0.0692339, sum_time: 9.2987340
+Epoch: 28, loss: 0.0113018, computing_time: 0.0691591, sum_time: 9.3678931
+Epoch: 29, loss: 0.0110864, computing_time: 0.0691308, sum_time: 9.4370238
+Epoch: 30, loss: 0.0108810, computing_time: 0.0691138, sum_time: 9.5061376
+Epoch: 31, loss: 0.0106847, computing_time: 0.0693025, sum_time: 9.5754401
+Epoch: 32, loss: 0.0104969, computing_time: 0.0690216, sum_time: 9.6444617
+Epoch: 33, loss: 0.0103171, computing_time: 0.0689447, sum_time: 9.7134063
+Epoch: 34, loss: 0.0101447, computing_time: 0.0690436, sum_time: 9.7824499
+Epoch: 35, loss: 0.0099794, computing_time: 0.0691111, sum_time: 9.8515610
+Epoch: 36, loss: 0.0098205, computing_time: 0.0690483, sum_time: 9.9206094
+Epoch: 37, loss: 0.0096677, computing_time: 0.0688582, sum_time: 9.9894676
+Epoch: 38, loss: 0.0095208, computing_time: 0.0688724, sum_time: 10.0583400
+Epoch: 39, loss: 0.0093792, computing_time: 0.0691073, sum_time: 10.1274473
+Epoch: 40, loss: 0.0092428, computing_time: 0.0690896, sum_time: 10.1965369
+munmap is successful
+Bits:  5
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.0378128, computing_time: 7.1591972, sum_time: 7.1591972
+=====print the profiling result==========
+Instructions-retired 3964610905
+Active-cycles 3011723887
+IPC 1.31639
+L3 cache misses:  23204761
+L2 cache misses:  18844444
+Mispredicted branchs:  127787
+L2 cache hits:  40483939
+BytesReadFromMC: 1491767424
+BytesWrittenToMC: 10234752
+Epoch: 2, loss: 0.0302584, computing_time: 0.0971365, sum_time: 7.2563337
+Epoch: 3, loss: 0.0266776, computing_time: 0.0938659, sum_time: 7.3501996
+Epoch: 4, loss: 0.0242674, computing_time: 0.0939506, sum_time: 7.4441502
+Epoch: 5, loss: 0.0224605, computing_time: 0.0924911, sum_time: 7.5366413
+Epoch: 6, loss: 0.0210242, computing_time: 0.0806608, sum_time: 7.6173021
+Epoch: 7, loss: 0.0198381, computing_time: 0.0780477, sum_time: 7.6953499
+Epoch: 8, loss: 0.0188318, computing_time: 0.0783415, sum_time: 7.7736913
+Epoch: 9, loss: 0.0179608, computing_time: 0.0784618, sum_time: 7.8521532
+Epoch: 10, loss: 0.0171953, computing_time: 0.0775944, sum_time: 7.9297475
+Epoch: 11, loss: 0.0165144, computing_time: 0.0783578, sum_time: 8.0081054
+Epoch: 12, loss: 0.0159027, computing_time: 0.0775122, sum_time: 8.0856176
+Epoch: 13, loss: 0.0153487, computing_time: 0.0790544, sum_time: 8.1646720
+Epoch: 14, loss: 0.0148435, computing_time: 0.0789488, sum_time: 8.2436208
+Epoch: 15, loss: 0.0143801, computing_time: 0.0786746, sum_time: 8.3222955
+Epoch: 16, loss: 0.0139530, computing_time: 0.0783821, sum_time: 8.4006776
+Epoch: 17, loss: 0.0135575, computing_time: 0.0784424, sum_time: 8.4791200
+Epoch: 18, loss: 0.0131900, computing_time: 0.0783566, sum_time: 8.5574766
+Epoch: 19, loss: 0.0128472, computing_time: 0.0775466, sum_time: 8.6350232
+Epoch: 20, loss: 0.0125265, computing_time: 0.0775951, sum_time: 8.7126183
+Epoch: 21, loss: 0.0122257, computing_time: 0.0775753, sum_time: 8.7901936
+Epoch: 22, loss: 0.0119428, computing_time: 0.0777050, sum_time: 8.8678985
+Epoch: 23, loss: 0.0116761, computing_time: 0.0775267, sum_time: 8.9454252
+Epoch: 24, loss: 0.0114242, computing_time: 0.0785835, sum_time: 9.0240087
+Epoch: 25, loss: 0.0111857, computing_time: 0.0785094, sum_time: 9.1025181
+Epoch: 26, loss: 0.0109597, computing_time: 0.0774566, sum_time: 9.1799747
+Epoch: 27, loss: 0.0107450, computing_time: 0.0773796, sum_time: 9.2573543
+Epoch: 28, loss: 0.0105407, computing_time: 0.0774193, sum_time: 9.3347736
+Epoch: 29, loss: 0.0103462, computing_time: 0.0776009, sum_time: 9.4123745
+Epoch: 30, loss: 0.0101606, computing_time: 0.0782368, sum_time: 9.4906113
+Epoch: 31, loss: 0.0099833, computing_time: 0.0782291, sum_time: 9.5688403
+Epoch: 32, loss: 0.0098137, computing_time: 0.0782862, sum_time: 9.6471266
+Epoch: 33, loss: 0.0096514, computing_time: 0.0775621, sum_time: 9.7246886
+Epoch: 34, loss: 0.0094958, computing_time: 0.0775428, sum_time: 9.8022314
+Epoch: 35, loss: 0.0093465, computing_time: 0.0775324, sum_time: 9.8797638
+Epoch: 36, loss: 0.0092031, computing_time: 0.0775137, sum_time: 9.9572774
+Epoch: 37, loss: 0.0090653, computing_time: 0.0782554, sum_time: 10.0355329
+Epoch: 38, loss: 0.0089327, computing_time: 0.0775959, sum_time: 10.1131287
+Epoch: 39, loss: 0.0088050, computing_time: 0.0784333, sum_time: 10.1915620
+Epoch: 40, loss: 0.0086819, computing_time: 0.0776166, sum_time: 10.2691786
+munmap is successful
+Bits:  6
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.0368994, computing_time: 7.3331540, sum_time: 7.3331540
+=====print the profiling result==========
+Instructions-retired 4443138590
+Active-cycles 3296752004
+IPC 1.34773
+L3 cache misses:  25391220
+L2 cache misses:  16945454
+Mispredicted branchs:  151599
+L2 cache hits:  43366599
+BytesReadFromMC: 1647627072
+BytesWrittenToMC: 24150784
+Epoch: 2, loss: 0.0297553, computing_time: 0.1301344, sum_time: 7.4632884
+Epoch: 3, loss: 0.0261896, computing_time: 0.1338193, sum_time: 7.5971077
+Epoch: 4, loss: 0.0237953, computing_time: 0.1300565, sum_time: 7.7271642
+Epoch: 5, loss: 0.0220092, computing_time: 0.1331650, sum_time: 7.8603292
+Epoch: 6, loss: 0.0205944, computing_time: 0.1303350, sum_time: 7.9906642
+Epoch: 7, loss: 0.0194286, computing_time: 0.1303178, sum_time: 8.1209820
+Epoch: 8, loss: 0.0184412, computing_time: 0.1319689, sum_time: 8.2529509
+Epoch: 9, loss: 0.0175877, computing_time: 0.1347893, sum_time: 8.3877402
+Epoch: 10, loss: 0.0168383, computing_time: 0.1307629, sum_time: 8.5185031
+Epoch: 11, loss: 0.0161722, computing_time: 0.1334843, sum_time: 8.6519874
+Epoch: 12, loss: 0.0155742, computing_time: 0.1415687, sum_time: 8.7935561
+Epoch: 13, loss: 0.0150330, computing_time: 0.1338537, sum_time: 8.9274099
+Epoch: 14, loss: 0.0145399, computing_time: 0.1374936, sum_time: 9.0649035
+Epoch: 15, loss: 0.0140879, computing_time: 0.1375167, sum_time: 9.2024202
+Epoch: 16, loss: 0.0136715, computing_time: 0.1330847, sum_time: 9.3355049
+Epoch: 17, loss: 0.0132863, computing_time: 0.1355444, sum_time: 9.4710493
+Epoch: 18, loss: 0.0129285, computing_time: 0.1342751, sum_time: 9.6053244
+Epoch: 19, loss: 0.0125950, computing_time: 0.1377516, sum_time: 9.7430760
+Epoch: 20, loss: 0.0122833, computing_time: 0.1341055, sum_time: 9.8771814
+Epoch: 21, loss: 0.0119910, computing_time: 0.1290906, sum_time: 10.0062721
+Epoch: 22, loss: 0.0117163, computing_time: 0.1380930, sum_time: 10.1443651
+Epoch: 23, loss: 0.0114576, computing_time: 0.1340571, sum_time: 10.2784221
+Epoch: 24, loss: 0.0112133, computing_time: 0.1380356, sum_time: 10.4164577
+Epoch: 25, loss: 0.0109822, computing_time: 0.1320623, sum_time: 10.5485200
+Epoch: 26, loss: 0.0107632, computing_time: 0.1377406, sum_time: 10.6862606
+Epoch: 27, loss: 0.0105553, computing_time: 0.1338904, sum_time: 10.8201510
+Epoch: 28, loss: 0.0103577, computing_time: 0.1379166, sum_time: 10.9580676
+Epoch: 29, loss: 0.0101695, computing_time: 0.1341806, sum_time: 11.0922482
+Epoch: 30, loss: 0.0099900, computing_time: 0.1341874, sum_time: 11.2264356
+Epoch: 31, loss: 0.0098186, computing_time: 0.1340869, sum_time: 11.3605225
+Epoch: 32, loss: 0.0096548, computing_time: 0.1341384, sum_time: 11.4946609
+Epoch: 33, loss: 0.0094980, computing_time: 0.1311266, sum_time: 11.6257875
+Epoch: 34, loss: 0.0093478, computing_time: 0.1335244, sum_time: 11.7593119
+Epoch: 35, loss: 0.0092037, computing_time: 0.1337068, sum_time: 11.8930187
+Epoch: 36, loss: 0.0090653, computing_time: 0.1418359, sum_time: 12.0348545
+Epoch: 37, loss: 0.0089324, computing_time: 0.1341810, sum_time: 12.1690355
+Epoch: 38, loss: 0.0088044, computing_time: 0.1343076, sum_time: 12.3033431
+Epoch: 39, loss: 0.0086813, computing_time: 0.1374880, sum_time: 12.4408310
+Epoch: 40, loss: 0.0085626, computing_time: 0.1378390, sum_time: 12.5786700
+munmap is successful
+Bits:  7
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.0366204, computing_time: 7.2389694, sum_time: 7.2389694
+=====print the profiling result==========
+Instructions-retired 4921594004
+Active-cycles 3621795508
+IPC 1.35888
+L3 cache misses:  25905349
+L2 cache misses:  21298164
+Mispredicted branchs:  168786
+L2 cache hits:  44412611
+BytesReadFromMC: 1792651968
+BytesWrittenToMC: 26702144
+Epoch: 2, loss: 0.0295801, computing_time: 0.1150612, sum_time: 7.3540305
+Epoch: 3, loss: 0.0260213, computing_time: 0.1118842, sum_time: 7.4659148
+Epoch: 4, loss: 0.0236397, computing_time: 0.1106780, sum_time: 7.5765927
+Epoch: 5, loss: 0.0218670, computing_time: 0.1042984, sum_time: 7.6808912
+Epoch: 6, loss: 0.0204644, computing_time: 0.0955922, sum_time: 7.7764833
+Epoch: 7, loss: 0.0193096, computing_time: 0.0940296, sum_time: 7.8705129
+Epoch: 8, loss: 0.0183318, computing_time: 0.0958299, sum_time: 7.9663428
+Epoch: 9, loss: 0.0174868, computing_time: 0.0957603, sum_time: 8.0621031
+Epoch: 10, loss: 0.0167450, computing_time: 0.0941093, sum_time: 8.1562124
+Epoch: 11, loss: 0.0160857, computing_time: 0.0959069, sum_time: 8.2521193
+Epoch: 12, loss: 0.0154940, computing_time: 0.0958736, sum_time: 8.3479930
+Epoch: 13, loss: 0.0149585, computing_time: 0.0947021, sum_time: 8.4426950
+Epoch: 14, loss: 0.0144706, computing_time: 0.0941725, sum_time: 8.5368675
+Epoch: 15, loss: 0.0140235, computing_time: 0.0953296, sum_time: 8.6321971
+Epoch: 16, loss: 0.0136117, computing_time: 0.0958519, sum_time: 8.7280491
+Epoch: 17, loss: 0.0132308, computing_time: 0.0949124, sum_time: 8.8229615
+Epoch: 18, loss: 0.0128770, computing_time: 0.0931891, sum_time: 8.9161506
+Epoch: 19, loss: 0.0125473, computing_time: 0.0945970, sum_time: 9.0107475
+Epoch: 20, loss: 0.0122392, computing_time: 0.0957206, sum_time: 9.1064681
+Epoch: 21, loss: 0.0119503, computing_time: 0.0906440, sum_time: 9.1971121
+Epoch: 22, loss: 0.0116789, computing_time: 0.0959065, sum_time: 9.2930187
+Epoch: 23, loss: 0.0114232, computing_time: 0.0958565, sum_time: 9.3888752
+Epoch: 24, loss: 0.0111818, computing_time: 0.0884897, sum_time: 9.4773648
+Epoch: 25, loss: 0.0109535, computing_time: 0.0959209, sum_time: 9.5732858
+Epoch: 26, loss: 0.0107372, computing_time: 0.0945972, sum_time: 9.6678830
+Epoch: 27, loss: 0.0105319, computing_time: 0.0947391, sum_time: 9.7626220
+Epoch: 28, loss: 0.0103366, computing_time: 0.0956211, sum_time: 9.8582431
+Epoch: 29, loss: 0.0101507, computing_time: 0.0956819, sum_time: 9.9539250
+Epoch: 30, loss: 0.0099735, computing_time: 0.0947381, sum_time: 10.0486631
+Epoch: 31, loss: 0.0098043, computing_time: 0.0945790, sum_time: 10.1432422
+Epoch: 32, loss: 0.0096425, computing_time: 0.0959423, sum_time: 10.2391845
+Epoch: 33, loss: 0.0094877, computing_time: 0.0948955, sum_time: 10.3340799
+Epoch: 34, loss: 0.0093393, computing_time: 0.0950623, sum_time: 10.4291422
+Epoch: 35, loss: 0.0091970, computing_time: 0.0942331, sum_time: 10.5233753
+Epoch: 36, loss: 0.0090604, computing_time: 0.0957309, sum_time: 10.6191063
+Epoch: 37, loss: 0.0089291, computing_time: 0.0911461, sum_time: 10.7102523
+Epoch: 38, loss: 0.0088027, computing_time: 0.0921000, sum_time: 10.8023523
+Epoch: 39, loss: 0.0086811, computing_time: 0.0934363, sum_time: 10.8957886
+Epoch: 40, loss: 0.0085639, computing_time: 0.0955438, sum_time: 10.9913324
+munmap is successful
+Bits:  8
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.0364970, computing_time: 7.5407422, sum_time: 7.5407422
+=====print the profiling result==========
+Instructions-retired 5310282108
+Active-cycles 3912387317
+IPC 1.3573
+L3 cache misses:  24950049
+L2 cache misses:  20788038
+Mispredicted branchs:  185250
+L2 cache hits:  43087185
+BytesReadFromMC: 1841149632
+BytesWrittenToMC: 24250624
+Epoch: 2, loss: 0.0295047, computing_time: 0.1219303, sum_time: 7.6626726
+Epoch: 3, loss: 0.0259555, computing_time: 0.1214934, sum_time: 7.7841660
+Epoch: 4, loss: 0.0235838, computing_time: 0.1162612, sum_time: 7.9004272
+Epoch: 5, loss: 0.0218195, computing_time: 0.1035049, sum_time: 8.0039321
+Epoch: 6, loss: 0.0204237, computing_time: 0.1017419, sum_time: 8.1056741
+Epoch: 7, loss: 0.0192742, computing_time: 0.1019605, sum_time: 8.2076345
+Epoch: 8, loss: 0.0183007, computing_time: 0.1019503, sum_time: 8.3095848
+Epoch: 9, loss: 0.0174592, computing_time: 0.0991003, sum_time: 8.4086851
+Epoch: 10, loss: 0.0167203, computing_time: 0.1016269, sum_time: 8.5103120
+Epoch: 11, loss: 0.0160635, computing_time: 0.1019774, sum_time: 8.6122895
+Epoch: 12, loss: 0.0154740, computing_time: 0.1005991, sum_time: 8.7128886
+Epoch: 13, loss: 0.0149404, computing_time: 0.1019251, sum_time: 8.8148137
+Epoch: 14, loss: 0.0144543, computing_time: 0.1018631, sum_time: 8.9166768
+Epoch: 15, loss: 0.0140088, computing_time: 0.1016131, sum_time: 9.0182899
+Epoch: 16, loss: 0.0135984, computing_time: 0.1016367, sum_time: 9.1199266
+Epoch: 17, loss: 0.0132188, computing_time: 0.0979733, sum_time: 9.2178999
+Epoch: 18, loss: 0.0128663, computing_time: 0.1020363, sum_time: 9.3199362
+Epoch: 19, loss: 0.0125379, computing_time: 0.0984014, sum_time: 9.4183376
+Epoch: 20, loss: 0.0122309, computing_time: 0.1012828, sum_time: 9.5196204
+Epoch: 21, loss: 0.0119431, computing_time: 0.0971542, sum_time: 9.6167746
+Epoch: 22, loss: 0.0116727, computing_time: 0.1018164, sum_time: 9.7185910
+Epoch: 23, loss: 0.0114180, computing_time: 0.1018735, sum_time: 9.8204645
+Epoch: 24, loss: 0.0111775, computing_time: 0.1018067, sum_time: 9.9222712
+Epoch: 25, loss: 0.0109501, computing_time: 0.0976932, sum_time: 10.0199643
+Epoch: 26, loss: 0.0107347, computing_time: 0.1018402, sum_time: 10.1218045
+Epoch: 27, loss: 0.0105302, computing_time: 0.1019615, sum_time: 10.2237660
+Epoch: 28, loss: 0.0103357, computing_time: 0.1013521, sum_time: 10.3251181
+Epoch: 29, loss: 0.0101506, computing_time: 0.1016997, sum_time: 10.4268178
+Epoch: 30, loss: 0.0099741, computing_time: 0.1014117, sum_time: 10.5282294
+Epoch: 31, loss: 0.0098055, computing_time: 0.1019930, sum_time: 10.6302224
+Epoch: 32, loss: 0.0096444, computing_time: 0.1018565, sum_time: 10.7320789
+Epoch: 33, loss: 0.0094902, computing_time: 0.0964789, sum_time: 10.8285578
+Epoch: 34, loss: 0.0093425, computing_time: 0.1015136, sum_time: 10.9300714
+Epoch: 35, loss: 0.0092007, computing_time: 0.1017602, sum_time: 11.0318316
+Epoch: 36, loss: 0.0090647, computing_time: 0.1015370, sum_time: 11.1333686
+Epoch: 37, loss: 0.0089339, computing_time: 0.1018981, sum_time: 11.2352667
+Epoch: 38, loss: 0.0088081, computing_time: 0.1003943, sum_time: 11.3356610
+Epoch: 39, loss: 0.0086870, computing_time: 0.1016107, sum_time: 11.4372716
+Epoch: 40, loss: 0.0085703, computing_time: 0.1012377, sum_time: 11.5385094
+munmap is successful
+Bits:  9
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 65536.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.0364475, computing_time: 7.2412567, sum_time: 7.2412567
+=====print the profiling result==========
+Instructions-retired 5602321500
+Active-cycles 4830943968
+IPC 1.15967
+L3 cache misses:  25238508
+L2 cache misses:  26540404
+Mispredicted branchs:  196348
+L2 cache hits:  84538030
+BytesReadFromMC: 1924121600
+BytesWrittenToMC: 24438208
+Epoch: 2, loss: 0.0294750, computing_time: 0.1527390, sum_time: 7.3939956
+Epoch: 3, loss: 0.0259305, computing_time: 0.1477798, sum_time: 7.5417754
+Epoch: 4, loss: 0.0235639, computing_time: 0.1447033, sum_time: 7.6864787
+Epoch: 5, loss: 0.0218040, computing_time: 0.1365521, sum_time: 7.8230309
+Epoch: 6, loss: 0.0204115, computing_time: 0.1231592, sum_time: 7.9461901
+Epoch: 7, loss: 0.0192647, computing_time: 0.1231972, sum_time: 8.0693873
+Epoch: 8, loss: 0.0182932, computing_time: 0.1231902, sum_time: 8.1925775
+Epoch: 9, loss: 0.0174534, computing_time: 0.1234685, sum_time: 8.3160460
+Epoch: 10, loss: 0.0167158, computing_time: 0.1231870, sum_time: 8.4392331
+Epoch: 11, loss: 0.0160602, computing_time: 0.1231437, sum_time: 8.5623768
+Epoch: 12, loss: 0.0154716, computing_time: 0.1213036, sum_time: 8.6836804
+Epoch: 13, loss: 0.0149389, computing_time: 0.1226091, sum_time: 8.8062895
+Epoch: 14, loss: 0.0144535, computing_time: 0.1229026, sum_time: 8.9291921
+Epoch: 15, loss: 0.0140087, computing_time: 0.1195599, sum_time: 9.0487519
+Epoch: 16, loss: 0.0135990, computing_time: 0.1228300, sum_time: 9.1715819
+Epoch: 17, loss: 0.0132200, computing_time: 0.1226217, sum_time: 9.2942036
+Epoch: 18, loss: 0.0128681, computing_time: 0.1228674, sum_time: 9.4170710
+Epoch: 19, loss: 0.0125401, computing_time: 0.1222856, sum_time: 9.5393566
+Epoch: 20, loss: 0.0122337, computing_time: 0.1228639, sum_time: 9.6622205
+Epoch: 21, loss: 0.0119464, computing_time: 0.1232629, sum_time: 9.7854834
+Epoch: 22, loss: 0.0116764, computing_time: 0.1232315, sum_time: 9.9087149
+Epoch: 23, loss: 0.0114222, computing_time: 0.1222134, sum_time: 10.0309283
+Epoch: 24, loss: 0.0111822, computing_time: 0.1232277, sum_time: 10.1541560
+Epoch: 25, loss: 0.0109552, computing_time: 0.1222990, sum_time: 10.2764550
+Epoch: 26, loss: 0.0107401, computing_time: 0.1214801, sum_time: 10.3979351
+Epoch: 27, loss: 0.0105360, computing_time: 0.1231209, sum_time: 10.5210560
+Epoch: 28, loss: 0.0103419, computing_time: 0.1237132, sum_time: 10.6447691
+Epoch: 29, loss: 0.0101571, computing_time: 0.1195115, sum_time: 10.7642806
+Epoch: 30, loss: 0.0099809, computing_time: 0.1228439, sum_time: 10.8871245
+Epoch: 31, loss: 0.0098127, computing_time: 0.1228456, sum_time: 11.0099701
+Epoch: 32, loss: 0.0096519, computing_time: 0.1218442, sum_time: 11.1318143
+Epoch: 33, loss: 0.0094980, computing_time: 0.1237648, sum_time: 11.2555791
+Epoch: 34, loss: 0.0093506, computing_time: 0.1227051, sum_time: 11.3782841
+Epoch: 35, loss: 0.0092091, computing_time: 0.1204705, sum_time: 11.4987547
+Epoch: 36, loss: 0.0090733, computing_time: 0.1237380, sum_time: 11.6224927
+Epoch: 37, loss: 0.0089428, computing_time: 0.1216449, sum_time: 11.7441376
+Epoch: 38, loss: 0.0088172, computing_time: 0.1231480, sum_time: 11.8672855
+Epoch: 39, loss: 0.0086964, computing_time: 0.1231573, sum_time: 11.9904429
+Epoch: 40, loss: 0.0085799, computing_time: 0.1201946, sum_time: 12.1106375
+munmap is successful
+Bits:  10
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 65536.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.0364217, computing_time: 7.5234808, sum_time: 7.5234808
+=====print the profiling result==========
+Instructions-retired 6080954101
+Active-cycles 5273328063
+IPC 1.15315
+L3 cache misses:  25131217
+L2 cache misses:  27722970
+Mispredicted branchs:  194344
+L2 cache hits:  89421381
+BytesReadFromMC: 1933269952
+BytesWrittenToMC: 24107648
+Epoch: 2, loss: 0.0294588, computing_time: 0.1642399, sum_time: 7.6877207
+Epoch: 3, loss: 0.0259168, computing_time: 0.1597125, sum_time: 7.8474332
+Epoch: 4, loss: 0.0235529, computing_time: 0.1560578, sum_time: 8.0034910
+Epoch: 5, loss: 0.0217950, computing_time: 0.1342564, sum_time: 8.1377473
+Epoch: 6, loss: 0.0204042, computing_time: 0.1312962, sum_time: 8.2690435
+Epoch: 7, loss: 0.0192586, computing_time: 0.1301746, sum_time: 8.3992181
+Epoch: 8, loss: 0.0182881, computing_time: 0.1325134, sum_time: 8.5317315
+Epoch: 9, loss: 0.0174490, computing_time: 0.1294310, sum_time: 8.6611625
+Epoch: 10, loss: 0.0167121, computing_time: 0.1326900, sum_time: 8.7938525
+Epoch: 11, loss: 0.0160570, computing_time: 0.1320713, sum_time: 8.9259239
+Epoch: 12, loss: 0.0154688, computing_time: 0.1327275, sum_time: 9.0586514
+Epoch: 13, loss: 0.0149365, computing_time: 0.1327354, sum_time: 9.1913868
+Epoch: 14, loss: 0.0144515, computing_time: 0.1299878, sum_time: 9.3213745
+Epoch: 15, loss: 0.0140070, computing_time: 0.1325025, sum_time: 9.4538770
+Epoch: 16, loss: 0.0135976, computing_time: 0.1327512, sum_time: 9.5866283
+Epoch: 17, loss: 0.0132189, computing_time: 0.1316679, sum_time: 9.7182961
+Epoch: 18, loss: 0.0128673, computing_time: 0.1327217, sum_time: 9.8510178
+Epoch: 19, loss: 0.0125396, computing_time: 0.1304103, sum_time: 9.9814280
+Epoch: 20, loss: 0.0122334, computing_time: 0.1324627, sum_time: 10.1138907
+Epoch: 21, loss: 0.0119463, computing_time: 0.1325222, sum_time: 10.2464129
+Epoch: 22, loss: 0.0116766, computing_time: 0.1327764, sum_time: 10.3791893
+Epoch: 23, loss: 0.0114225, computing_time: 0.1327223, sum_time: 10.5119115
+Epoch: 24, loss: 0.0111827, computing_time: 0.1315242, sum_time: 10.6434357
+Epoch: 25, loss: 0.0109559, computing_time: 0.1326966, sum_time: 10.7761323
+Epoch: 26, loss: 0.0107411, computing_time: 0.1327135, sum_time: 10.9088458
+Epoch: 27, loss: 0.0105371, computing_time: 0.1324534, sum_time: 11.0412992
+Epoch: 28, loss: 0.0103432, computing_time: 0.1324144, sum_time: 11.1737136
+Epoch: 29, loss: 0.0101586, computing_time: 0.1301682, sum_time: 11.3038818
+Epoch: 30, loss: 0.0099825, computing_time: 0.1324874, sum_time: 11.4363693
+Epoch: 31, loss: 0.0098145, computing_time: 0.1327550, sum_time: 11.5691243
+Epoch: 32, loss: 0.0096538, computing_time: 0.1293626, sum_time: 11.6984868
+Epoch: 33, loss: 0.0095000, computing_time: 0.1327214, sum_time: 11.8312083
+Epoch: 34, loss: 0.0093527, computing_time: 0.1327064, sum_time: 11.9639146
+Epoch: 35, loss: 0.0092114, computing_time: 0.1327460, sum_time: 12.0966606
+Epoch: 36, loss: 0.0090757, computing_time: 0.1327023, sum_time: 12.2293629
+Epoch: 37, loss: 0.0089453, computing_time: 0.1298569, sum_time: 12.3592198
+Epoch: 38, loss: 0.0088199, computing_time: 0.1327508, sum_time: 12.4919706
+Epoch: 39, loss: 0.0086991, computing_time: 0.1327235, sum_time: 12.6246940
+Epoch: 40, loss: 0.0085827, computing_time: 0.1325069, sum_time: 12.7572009
+munmap is successful
+Bits:  11
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 65536.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.0364125, computing_time: 7.2005076, sum_time: 7.2005076
+=====print the profiling result==========
+Instructions-retired 6559407605
+Active-cycles 5582720191
+IPC 1.17495
+L3 cache misses:  25542266
+L2 cache misses:  26151962
+Mispredicted branchs:  199442
+L2 cache hits:  90756685
+BytesReadFromMC: 1935755456
+BytesWrittenToMC: 26585216
+Epoch: 2, loss: 0.0294542, computing_time: 0.2071850, sum_time: 7.4076926
+Epoch: 3, loss: 0.0259135, computing_time: 0.2112737, sum_time: 7.6189663
+Epoch: 4, loss: 0.0235507, computing_time: 0.2107115, sum_time: 7.8296778
+Epoch: 5, loss: 0.0217938, computing_time: 0.2051823, sum_time: 8.0348601
+Epoch: 6, loss: 0.0204037, computing_time: 0.2068579, sum_time: 8.2417180
+Epoch: 7, loss: 0.0192586, computing_time: 0.2058361, sum_time: 8.4475541
+Epoch: 8, loss: 0.0182885, computing_time: 0.2045010, sum_time: 8.6520551
+Epoch: 9, loss: 0.0174497, computing_time: 0.2069386, sum_time: 8.8589937
+Epoch: 10, loss: 0.0167131, computing_time: 0.2051567, sum_time: 9.0641505
+Epoch: 11, loss: 0.0160581, computing_time: 0.2044447, sum_time: 9.2685952
+Epoch: 12, loss: 0.0154702, computing_time: 0.2101865, sum_time: 9.4787817
+Epoch: 13, loss: 0.0149380, computing_time: 0.2067542, sum_time: 9.6855359
+Epoch: 14, loss: 0.0144531, computing_time: 0.2089157, sum_time: 9.8944515
+Epoch: 15, loss: 0.0140087, computing_time: 0.2054690, sum_time: 10.0999205
+Epoch: 16, loss: 0.0135994, computing_time: 0.2051137, sum_time: 10.3050343
+Epoch: 17, loss: 0.0132208, computing_time: 0.2051534, sum_time: 10.5101876
+Epoch: 18, loss: 0.0128693, computing_time: 0.2050810, sum_time: 10.7152686
+Epoch: 19, loss: 0.0125417, computing_time: 0.2044026, sum_time: 10.9196712
+Epoch: 20, loss: 0.0122356, computing_time: 0.2144679, sum_time: 11.1341391
+Epoch: 21, loss: 0.0119486, computing_time: 0.2095922, sum_time: 11.3437314
+Epoch: 22, loss: 0.0116790, computing_time: 0.2046046, sum_time: 11.5483360
+Epoch: 23, loss: 0.0114250, computing_time: 0.2059973, sum_time: 11.7543333
+Epoch: 24, loss: 0.0111853, computing_time: 0.2105483, sum_time: 11.9648816
+Epoch: 25, loss: 0.0109586, computing_time: 0.2081425, sum_time: 12.1730241
+Epoch: 26, loss: 0.0107437, computing_time: 0.2045160, sum_time: 12.3775401
+Epoch: 27, loss: 0.0105398, computing_time: 0.2201260, sum_time: 12.5976661
+Epoch: 28, loss: 0.0103460, computing_time: 0.2097827, sum_time: 12.8074489
+Epoch: 29, loss: 0.0101614, computing_time: 0.2061225, sum_time: 13.0135714
+Epoch: 30, loss: 0.0099855, computing_time: 0.2053315, sum_time: 13.2189028
+Epoch: 31, loss: 0.0098175, computing_time: 0.2093536, sum_time: 13.4282565
+Epoch: 32, loss: 0.0096569, computing_time: 0.2041718, sum_time: 13.6324283
+Epoch: 33, loss: 0.0095032, computing_time: 0.2075769, sum_time: 13.8400051
+Epoch: 34, loss: 0.0093559, computing_time: 0.2059688, sum_time: 14.0459740
+Epoch: 35, loss: 0.0092146, computing_time: 0.2060144, sum_time: 14.2519883
+Epoch: 36, loss: 0.0090790, computing_time: 0.2091301, sum_time: 14.4611184
+Epoch: 37, loss: 0.0089486, computing_time: 0.2154624, sum_time: 14.6765808
+Epoch: 38, loss: 0.0088232, computing_time: 0.2055250, sum_time: 14.8821058
+Epoch: 39, loss: 0.0087025, computing_time: 0.2102394, sum_time: 15.0923452
+Epoch: 40, loss: 0.0085862, computing_time: 0.2108443, sum_time: 15.3031895
+munmap is successful
+Bits:  12
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 65536.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.0364081, computing_time: 7.3255539, sum_time: 7.3255539
+=====print the profiling result==========
+Instructions-retired 7037940016
+Active-cycles 5985651034
+IPC 1.1758
+L3 cache misses:  25465566
+L2 cache misses:  27327064
+Mispredicted branchs:  196633
+L2 cache hits:  89570678
+BytesReadFromMC: 1935811200
+BytesWrittenToMC: 27148608
+Epoch: 2, loss: 0.0294516, computing_time: 0.2212064, sum_time: 7.5467603
+Epoch: 3, loss: 0.0259112, computing_time: 0.2165285, sum_time: 7.7632888
+Epoch: 4, loss: 0.0235490, computing_time: 0.2206038, sum_time: 7.9838926
+Epoch: 5, loss: 0.0217926, computing_time: 0.2170629, sum_time: 8.2009555
+Epoch: 6, loss: 0.0204028, computing_time: 0.2202195, sum_time: 8.4211750
+Epoch: 7, loss: 0.0192580, computing_time: 0.2192299, sum_time: 8.6404049
+Epoch: 8, loss: 0.0182881, computing_time: 0.2142463, sum_time: 8.8546512
+Epoch: 9, loss: 0.0174495, computing_time: 0.2133769, sum_time: 9.0680281
+Epoch: 10, loss: 0.0167129, computing_time: 0.2148763, sum_time: 9.2829044
+Epoch: 11, loss: 0.0160581, computing_time: 0.2150084, sum_time: 9.4979128
+Epoch: 12, loss: 0.0154702, computing_time: 0.2186793, sum_time: 9.7165921
+Epoch: 13, loss: 0.0149382, computing_time: 0.2193489, sum_time: 9.9359410
+Epoch: 14, loss: 0.0144534, computing_time: 0.2194095, sum_time: 10.1553505
+Epoch: 15, loss: 0.0140091, computing_time: 0.2196699, sum_time: 10.3750204
+Epoch: 16, loss: 0.0135998, computing_time: 0.2141716, sum_time: 10.5891919
+Epoch: 17, loss: 0.0132213, computing_time: 0.2198600, sum_time: 10.8090519
+Epoch: 18, loss: 0.0128698, computing_time: 0.2150371, sum_time: 11.0240891
+Epoch: 19, loss: 0.0125423, computing_time: 0.2145052, sum_time: 11.2385943
+Epoch: 20, loss: 0.0122362, computing_time: 0.2190947, sum_time: 11.4576890
+Epoch: 21, loss: 0.0119493, computing_time: 0.2200517, sum_time: 11.6777407
+Epoch: 22, loss: 0.0116797, computing_time: 0.2186358, sum_time: 11.8963765
+Epoch: 23, loss: 0.0114258, computing_time: 0.2236001, sum_time: 12.1199766
+Epoch: 24, loss: 0.0111861, computing_time: 0.2095521, sum_time: 12.3295287
+Epoch: 25, loss: 0.0109595, computing_time: 0.2190383, sum_time: 12.5485670
+Epoch: 26, loss: 0.0107447, computing_time: 0.2140848, sum_time: 12.7626518
+Epoch: 27, loss: 0.0105408, computing_time: 0.2150152, sum_time: 12.9776670
+Epoch: 28, loss: 0.0103470, computing_time: 0.2140883, sum_time: 13.1917553
+Epoch: 29, loss: 0.0101625, computing_time: 0.2195652, sum_time: 13.4113205
+Epoch: 30, loss: 0.0099866, computing_time: 0.2141281, sum_time: 13.6254487
+Epoch: 31, loss: 0.0098186, computing_time: 0.2145367, sum_time: 13.8399854
+Epoch: 32, loss: 0.0096580, computing_time: 0.2145064, sum_time: 14.0544918
+Epoch: 33, loss: 0.0095044, computing_time: 0.2198576, sum_time: 14.2743494
+Epoch: 34, loss: 0.0093571, computing_time: 0.2137563, sum_time: 14.4881056
+Epoch: 35, loss: 0.0092159, computing_time: 0.2146643, sum_time: 14.7027699
+Epoch: 36, loss: 0.0090803, computing_time: 0.2144108, sum_time: 14.9171807
+Epoch: 37, loss: 0.0089500, computing_time: 0.2151730, sum_time: 15.1323537
+Epoch: 38, loss: 0.0088246, computing_time: 0.2193166, sum_time: 15.3516703
+Epoch: 39, loss: 0.0087039, computing_time: 0.2200755, sum_time: 15.5717458
+Epoch: 40, loss: 0.0085876, computing_time: 0.2149582, sum_time: 15.7867040
+munmap is successful
+Bits:  13
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 65536.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.0364060, computing_time: 7.3637869, sum_time: 7.3637869
+=====print the profiling result==========
+Instructions-retired 7516737336
+Active-cycles 6304156281
+IPC 1.19235
+L3 cache misses:  26466852
+L2 cache misses:  27027568
+Mispredicted branchs:  200454
+L2 cache hits:  88037238
+BytesReadFromMC: 1937413824
+BytesWrittenToMC: 17997696
+Epoch: 2, loss: 0.0294504, computing_time: 0.2274574, sum_time: 7.5912442
+Epoch: 3, loss: 0.0259104, computing_time: 0.2273227, sum_time: 7.8185670
+Epoch: 4, loss: 0.0235484, computing_time: 0.2279019, sum_time: 8.0464689
+Epoch: 5, loss: 0.0217922, computing_time: 0.2289180, sum_time: 8.2753869
+Epoch: 6, loss: 0.0204026, computing_time: 0.2273273, sum_time: 8.5027142
+Epoch: 7, loss: 0.0192579, computing_time: 0.2270748, sum_time: 8.7297890
+Epoch: 8, loss: 0.0182882, computing_time: 0.2278401, sum_time: 8.9576290
+Epoch: 9, loss: 0.0174496, computing_time: 0.2380303, sum_time: 9.1956593
+Epoch: 10, loss: 0.0167131, computing_time: 0.2275865, sum_time: 9.4232459
+Epoch: 11, loss: 0.0160584, computing_time: 0.2277280, sum_time: 9.6509739
+Epoch: 12, loss: 0.0154705, computing_time: 0.2280462, sum_time: 9.8790201
+Epoch: 13, loss: 0.0149385, computing_time: 0.2270285, sum_time: 10.1060487
+Epoch: 14, loss: 0.0144537, computing_time: 0.2262035, sum_time: 10.3322521
+Epoch: 15, loss: 0.0140094, computing_time: 0.2277929, sum_time: 10.5600451
+Epoch: 16, loss: 0.0136002, computing_time: 0.2281059, sum_time: 10.7881509
+Epoch: 17, loss: 0.0132217, computing_time: 0.2270079, sum_time: 11.0151588
+Epoch: 18, loss: 0.0128703, computing_time: 0.2275874, sum_time: 11.2427462
+Epoch: 19, loss: 0.0125428, computing_time: 0.2323060, sum_time: 11.4750522
+Epoch: 20, loss: 0.0122367, computing_time: 0.2280207, sum_time: 11.7030728
+Epoch: 21, loss: 0.0119498, computing_time: 0.2274005, sum_time: 11.9304733
+Epoch: 22, loss: 0.0116802, computing_time: 0.2340371, sum_time: 12.1645104
+Epoch: 23, loss: 0.0114263, computing_time: 0.2343401, sum_time: 12.3988505
+Epoch: 24, loss: 0.0111867, computing_time: 0.2310300, sum_time: 12.6298805
+Epoch: 25, loss: 0.0109600, computing_time: 0.2275229, sum_time: 12.8574034
+Epoch: 26, loss: 0.0107452, computing_time: 0.2324554, sum_time: 13.0898588
+Epoch: 27, loss: 0.0105414, computing_time: 0.2372282, sum_time: 13.3270870
+Epoch: 28, loss: 0.0103476, computing_time: 0.2327594, sum_time: 13.5598463
+Epoch: 29, loss: 0.0101631, computing_time: 0.2352408, sum_time: 13.7950871
+Epoch: 30, loss: 0.0099872, computing_time: 0.2324713, sum_time: 14.0275584
+Epoch: 31, loss: 0.0098192, computing_time: 0.2327916, sum_time: 14.2603500
+Epoch: 32, loss: 0.0096587, computing_time: 0.2284664, sum_time: 14.4888163
+Epoch: 33, loss: 0.0095050, computing_time: 0.2311190, sum_time: 14.7199353
+Epoch: 34, loss: 0.0093578, computing_time: 0.2286764, sum_time: 14.9486117
+Epoch: 35, loss: 0.0092165, computing_time: 0.2311759, sum_time: 15.1797877
+Epoch: 36, loss: 0.0090810, computing_time: 0.2318361, sum_time: 15.4116238
+Epoch: 37, loss: 0.0089506, computing_time: 0.2269084, sum_time: 15.6385322
+Epoch: 38, loss: 0.0088253, computing_time: 0.2339096, sum_time: 15.8724418
+Epoch: 39, loss: 0.0087046, computing_time: 0.2271593, sum_time: 16.0996011
+Epoch: 40, loss: 0.0085883, computing_time: 0.2270277, sum_time: 16.3266288
+munmap is successful
+Bits:  14
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 65536.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.0364048, computing_time: 7.6464982, sum_time: 7.6464982
+=====print the profiling result==========
+Instructions-retired 7994799376
+Active-cycles 6698909380
+IPC 1.19345
+L3 cache misses:  25565845
+L2 cache misses:  26501203
+Mispredicted branchs:  200602
+L2 cache hits:  87131310
+BytesReadFromMC: 1937932864
+BytesWrittenToMC: 27240832
+Epoch: 2, loss: 0.0294497, computing_time: 0.2440472, sum_time: 7.8905454
+Epoch: 3, loss: 0.0259098, computing_time: 0.2434777, sum_time: 8.1340232
+Epoch: 4, loss: 0.0235480, computing_time: 0.2403966, sum_time: 8.3744198
+Epoch: 5, loss: 0.0217919, computing_time: 0.2437324, sum_time: 8.6181522
+Epoch: 6, loss: 0.0204024, computing_time: 0.2402868, sum_time: 8.8584390
+Epoch: 7, loss: 0.0192578, computing_time: 0.2367154, sum_time: 9.0951545
+Epoch: 8, loss: 0.0182881, computing_time: 0.2378899, sum_time: 9.3330443
+Epoch: 9, loss: 0.0174496, computing_time: 0.2459864, sum_time: 9.5790307
+Epoch: 10, loss: 0.0167131, computing_time: 0.2364485, sum_time: 9.8154792
+Epoch: 11, loss: 0.0160584, computing_time: 0.2454779, sum_time: 10.0609571
+Epoch: 12, loss: 0.0154706, computing_time: 0.2444487, sum_time: 10.3054058
+Epoch: 13, loss: 0.0149386, computing_time: 0.2386676, sum_time: 10.5440734
+Epoch: 14, loss: 0.0144538, computing_time: 0.2396110, sum_time: 10.7836843
+Epoch: 15, loss: 0.0140095, computing_time: 0.2388764, sum_time: 11.0225607
+Epoch: 16, loss: 0.0136004, computing_time: 0.2389428, sum_time: 11.2615035
+Epoch: 17, loss: 0.0132219, computing_time: 0.2388591, sum_time: 11.5003625
+Epoch: 18, loss: 0.0128704, computing_time: 0.2411913, sum_time: 11.7415539
+Epoch: 19, loss: 0.0125429, computing_time: 0.2440078, sum_time: 11.9855617
+Epoch: 20, loss: 0.0122369, computing_time: 0.2451114, sum_time: 12.2306731
+Epoch: 21, loss: 0.0119500, computing_time: 0.2389876, sum_time: 12.4696607
+Epoch: 22, loss: 0.0116804, computing_time: 0.2447646, sum_time: 12.7144253
+Epoch: 23, loss: 0.0114265, computing_time: 0.2450517, sum_time: 12.9594770
+Epoch: 24, loss: 0.0111869, computing_time: 0.2388997, sum_time: 13.1983767
+Epoch: 25, loss: 0.0109602, computing_time: 0.2393200, sum_time: 13.4376967
+Epoch: 26, loss: 0.0107455, computing_time: 0.2322056, sum_time: 13.6699023
+Epoch: 27, loss: 0.0105416, computing_time: 0.2377855, sum_time: 13.9076878
+Epoch: 28, loss: 0.0103478, computing_time: 0.2382310, sum_time: 14.1459188
+Epoch: 29, loss: 0.0101633, computing_time: 0.2389387, sum_time: 14.3848575
+Epoch: 30, loss: 0.0099874, computing_time: 0.2374179, sum_time: 14.6222754
+Epoch: 31, loss: 0.0098195, computing_time: 0.2390349, sum_time: 14.8613102
+Epoch: 32, loss: 0.0096589, computing_time: 0.2379330, sum_time: 15.0992432
+Epoch: 33, loss: 0.0095053, computing_time: 0.2446513, sum_time: 15.3438945
+Epoch: 34, loss: 0.0093580, computing_time: 0.2367352, sum_time: 15.5806297
+Epoch: 35, loss: 0.0092168, computing_time: 0.2387370, sum_time: 15.8193667
+Epoch: 36, loss: 0.0090812, computing_time: 0.2467608, sum_time: 16.0661275
+Epoch: 37, loss: 0.0089509, computing_time: 0.2367872, sum_time: 16.3029147
+Epoch: 38, loss: 0.0088256, computing_time: 0.2442402, sum_time: 16.5471549
+Epoch: 39, loss: 0.0087049, computing_time: 0.2370507, sum_time: 16.7842056
+Epoch: 40, loss: 0.0085885, computing_time: 0.2438468, sum_time: 17.0280524
+munmap is successful
+Bits:  15
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 65536.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.0364041, computing_time: 7.5992238, sum_time: 7.5992238
+=====print the profiling result==========
+Instructions-retired 8473472551
+Active-cycles 7073658102
+IPC 1.19789
+L3 cache misses:  26227208
+L2 cache misses:  24860386
+Mispredicted branchs:  203142
+L2 cache hits:  92221636
+BytesReadFromMC: 1937478208
+BytesWrittenToMC: 28813312
+Epoch: 2, loss: 0.0294494, computing_time: 0.2508794, sum_time: 7.8501031
+Epoch: 3, loss: 0.0259095, computing_time: 0.2518994, sum_time: 8.1020025
+Epoch: 4, loss: 0.0235478, computing_time: 0.2494299, sum_time: 8.3514324
+Epoch: 5, loss: 0.0217918, computing_time: 0.2550042, sum_time: 8.6064366
+Epoch: 6, loss: 0.0204023, computing_time: 0.2469575, sum_time: 8.8533941
+Epoch: 7, loss: 0.0192578, computing_time: 0.2470395, sum_time: 9.1004337
+Epoch: 8, loss: 0.0182881, computing_time: 0.2470102, sum_time: 9.3474438
+Epoch: 9, loss: 0.0174496, computing_time: 0.2437646, sum_time: 9.5912085
+Epoch: 10, loss: 0.0167132, computing_time: 0.2557733, sum_time: 9.8469818
+Epoch: 11, loss: 0.0160585, computing_time: 0.2527375, sum_time: 10.0997194
+Epoch: 12, loss: 0.0154706, computing_time: 0.2509213, sum_time: 10.3506407
+Epoch: 13, loss: 0.0149386, computing_time: 0.2528076, sum_time: 10.6034483
+Epoch: 14, loss: 0.0144539, computing_time: 0.2530215, sum_time: 10.8564698
+Epoch: 15, loss: 0.0140096, computing_time: 0.2528351, sum_time: 11.1093050
+Epoch: 16, loss: 0.0136005, computing_time: 0.2511456, sum_time: 11.3604506
+Epoch: 17, loss: 0.0132220, computing_time: 0.2546302, sum_time: 11.6150808
+Epoch: 18, loss: 0.0128705, computing_time: 0.2475555, sum_time: 11.8626363
+Epoch: 19, loss: 0.0125431, computing_time: 0.2493181, sum_time: 12.1119544
+Epoch: 20, loss: 0.0122370, computing_time: 0.2495064, sum_time: 12.3614608
+Epoch: 21, loss: 0.0119501, computing_time: 0.2510741, sum_time: 12.6125349
+Epoch: 22, loss: 0.0116805, computing_time: 0.2552951, sum_time: 12.8678300
+Epoch: 23, loss: 0.0114267, computing_time: 0.2562285, sum_time: 13.1240585
+Epoch: 24, loss: 0.0111870, computing_time: 0.2548627, sum_time: 13.3789212
+Epoch: 25, loss: 0.0109604, computing_time: 0.2361821, sum_time: 13.6151033
+Epoch: 26, loss: 0.0107456, computing_time: 0.2481561, sum_time: 13.8632594
+Epoch: 27, loss: 0.0105418, computing_time: 0.2489882, sum_time: 14.1122476
+Epoch: 28, loss: 0.0103480, computing_time: 0.2502370, sum_time: 14.3624846
+Epoch: 29, loss: 0.0101635, computing_time: 0.2503724, sum_time: 14.6128570
+Epoch: 30, loss: 0.0099876, computing_time: 0.2522771, sum_time: 14.8651341
+Epoch: 31, loss: 0.0098197, computing_time: 0.2512105, sum_time: 15.1163446
+Epoch: 32, loss: 0.0096591, computing_time: 0.2491171, sum_time: 15.3654617
+Epoch: 33, loss: 0.0095055, computing_time: 0.2496307, sum_time: 15.6150924
+Epoch: 34, loss: 0.0093582, computing_time: 0.2500424, sum_time: 15.8651349
+Epoch: 35, loss: 0.0092170, computing_time: 0.2497971, sum_time: 16.1149319
+Epoch: 36, loss: 0.0090814, computing_time: 0.2472869, sum_time: 16.3622189
+Epoch: 37, loss: 0.0089511, computing_time: 0.2483569, sum_time: 16.6105758
+Epoch: 38, loss: 0.0088258, computing_time: 0.2498047, sum_time: 16.8603805
+Epoch: 39, loss: 0.0087051, computing_time: 0.2502060, sum_time: 17.1105865
+Epoch: 40, loss: 0.0085888, computing_time: 0.2498019, sum_time: 17.3603884
+munmap is successful
+Bits:  16
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 65536.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.0364039, computing_time: 7.4702368, sum_time: 7.4702368
+=====print the profiling result==========
+Instructions-retired 8862265337
+Active-cycles 7514259858
+IPC 1.17939
+L3 cache misses:  25634750
+L2 cache misses:  29395562
+Mispredicted branchs:  191091
+L2 cache hits:  93329466
+BytesReadFromMC: 1937673920
+BytesWrittenToMC: 29032448
+Epoch: 2, loss: 0.0294492, computing_time: 0.2689144, sum_time: 7.7391512
+Epoch: 3, loss: 0.0259094, computing_time: 0.2660307, sum_time: 8.0051819
+Epoch: 4, loss: 0.0235477, computing_time: 0.2671796, sum_time: 8.2723615
+Epoch: 5, loss: 0.0217917, computing_time: 0.2683631, sum_time: 8.5407246
+Epoch: 6, loss: 0.0204023, computing_time: 0.2571147, sum_time: 8.7978393
+Epoch: 7, loss: 0.0192577, computing_time: 0.2628004, sum_time: 9.0606397
+Epoch: 8, loss: 0.0182881, computing_time: 0.2654879, sum_time: 9.3261276
+Epoch: 9, loss: 0.0174496, computing_time: 0.2687998, sum_time: 9.5949274
+Epoch: 10, loss: 0.0167132, computing_time: 0.2643210, sum_time: 9.8592484
+Epoch: 11, loss: 0.0160585, computing_time: 0.2617510, sum_time: 10.1209994
+Epoch: 12, loss: 0.0154707, computing_time: 0.2621576, sum_time: 10.3831570
+Epoch: 13, loss: 0.0149387, computing_time: 0.2680335, sum_time: 10.6511905
+Epoch: 14, loss: 0.0144539, computing_time: 0.2639652, sum_time: 10.9151557
+Epoch: 15, loss: 0.0140097, computing_time: 0.2641890, sum_time: 11.1793446
+Epoch: 16, loss: 0.0136005, computing_time: 0.2587516, sum_time: 11.4380963
+Epoch: 17, loss: 0.0132220, computing_time: 0.2663227, sum_time: 11.7044190
+Epoch: 18, loss: 0.0128706, computing_time: 0.2658871, sum_time: 11.9703061
+Epoch: 19, loss: 0.0125431, computing_time: 0.2622787, sum_time: 12.2325848
+Epoch: 20, loss: 0.0122370, computing_time: 0.2620705, sum_time: 12.4946553
+Epoch: 21, loss: 0.0119502, computing_time: 0.2636749, sum_time: 12.7583302
+Epoch: 22, loss: 0.0116806, computing_time: 0.2637909, sum_time: 13.0221212
+Epoch: 23, loss: 0.0114267, computing_time: 0.2677297, sum_time: 13.2898509
+Epoch: 24, loss: 0.0111871, computing_time: 0.2685522, sum_time: 13.5584030
+Epoch: 25, loss: 0.0109604, computing_time: 0.2673826, sum_time: 13.8257856
+Epoch: 26, loss: 0.0107457, computing_time: 0.2650820, sum_time: 14.0908676
+Epoch: 27, loss: 0.0105419, computing_time: 0.2611694, sum_time: 14.3520370
+Epoch: 28, loss: 0.0103481, computing_time: 0.2617418, sum_time: 14.6137788
+Epoch: 29, loss: 0.0101636, computing_time: 0.2672732, sum_time: 14.8810519
+Epoch: 30, loss: 0.0099877, computing_time: 0.2691016, sum_time: 15.1501535
+Epoch: 31, loss: 0.0098197, computing_time: 0.2697403, sum_time: 15.4198939
+Epoch: 32, loss: 0.0096592, computing_time: 0.2692148, sum_time: 15.6891087
+Epoch: 33, loss: 0.0095055, computing_time: 0.2641014, sum_time: 15.9532101
+Epoch: 34, loss: 0.0093583, computing_time: 0.2670976, sum_time: 16.2203077
+Epoch: 35, loss: 0.0092171, computing_time: 0.2658233, sum_time: 16.4861310
+Epoch: 36, loss: 0.0090815, computing_time: 0.2691863, sum_time: 16.7553173
+Epoch: 37, loss: 0.0089512, computing_time: 0.2641111, sum_time: 17.0194284
+Epoch: 38, loss: 0.0088258, computing_time: 0.2735241, sum_time: 17.2929525
+Epoch: 39, loss: 0.0087051, computing_time: 0.2641096, sum_time: 17.5570621
+Epoch: 40, loss: 0.0085888, computing_time: 0.2631807, sum_time: 17.8202428
+munmap is successful
+ModelSync_bitweaving with memory regions: 2. Step size: 0.81, threads:  27
+Bits:  1
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.2564249, computing_time: 7.6037874, sum_time: 7.6037874
+=====print the profiling result==========
+Instructions-retired 2052347863
+Active-cycles 2356087834
+IPC 0.871083
+L3 cache misses:  9295177
+L2 cache misses:  72355011
+Mispredicted branchs:  116106
+L2 cache hits:  31196134
+BytesReadFromMC: 619898432
+BytesWrittenToMC: 18304896
+Epoch: 2, loss: 0.2539237, computing_time: 0.0577655, sum_time: 7.6615529
+Epoch: 3, loss: 0.2515969, computing_time: 0.0459101, sum_time: 7.7074630
+Epoch: 4, loss: 0.2494150, computing_time: 0.0439645, sum_time: 7.7514275
+Epoch: 5, loss: 0.2473558, computing_time: 0.0437036, sum_time: 7.7951311
+Epoch: 6, loss: 0.2454020, computing_time: 0.0438931, sum_time: 7.8390243
+Epoch: 7, loss: 0.2435403, computing_time: 0.0436268, sum_time: 7.8826510
+Epoch: 8, loss: 0.2417602, computing_time: 0.0437193, sum_time: 7.9263704
+Epoch: 9, loss: 0.2400534, computing_time: 0.0441869, sum_time: 7.9705573
+Epoch: 10, loss: 0.2384132, computing_time: 0.0440414, sum_time: 8.0145987
+Epoch: 11, loss: 0.2368339, computing_time: 0.0434857, sum_time: 8.0580844
+Epoch: 12, loss: 0.2353111, computing_time: 0.0437307, sum_time: 8.1018151
+Epoch: 13, loss: 0.2338407, computing_time: 0.0432301, sum_time: 8.1450451
+Epoch: 14, loss: 0.2324194, computing_time: 0.0417244, sum_time: 8.1867696
+Epoch: 15, loss: 0.2310444, computing_time: 0.0416794, sum_time: 8.2284489
+Epoch: 16, loss: 0.2297130, computing_time: 0.0415672, sum_time: 8.2700161
+Epoch: 17, loss: 0.2284230, computing_time: 0.0416168, sum_time: 8.3116329
+Epoch: 18, loss: 0.2271723, computing_time: 0.0419628, sum_time: 8.3535957
+Epoch: 19, loss: 0.2259591, computing_time: 0.0417371, sum_time: 8.3953328
+Epoch: 20, loss: 0.2247816, computing_time: 0.0419166, sum_time: 8.4372495
+Epoch: 21, loss: 0.2236383, computing_time: 0.0415823, sum_time: 8.4788317
+Epoch: 22, loss: 0.2225278, computing_time: 0.0418234, sum_time: 8.5206551
+Epoch: 23, loss: 0.2214486, computing_time: 0.0416446, sum_time: 8.5622997
+Epoch: 24, loss: 0.2203995, computing_time: 0.0415229, sum_time: 8.6038226
+Epoch: 25, loss: 0.2193793, computing_time: 0.0417646, sum_time: 8.6455871
+Epoch: 26, loss: 0.2183870, computing_time: 0.0417422, sum_time: 8.6873293
+Epoch: 27, loss: 0.2174214, computing_time: 0.0415423, sum_time: 8.7288716
+Epoch: 28, loss: 0.2164815, computing_time: 0.0413353, sum_time: 8.7702069
+Epoch: 29, loss: 0.2155665, computing_time: 0.0417994, sum_time: 8.8120063
+Epoch: 30, loss: 0.2146754, computing_time: 0.0414922, sum_time: 8.8534986
+Epoch: 31, loss: 0.2138074, computing_time: 0.0416933, sum_time: 8.8951919
+Epoch: 32, loss: 0.2129617, computing_time: 0.0418467, sum_time: 8.9370386
+Epoch: 33, loss: 0.2121376, computing_time: 0.0417778, sum_time: 8.9788164
+Epoch: 34, loss: 0.2113342, computing_time: 0.0415699, sum_time: 9.0203863
+Epoch: 35, loss: 0.2105510, computing_time: 0.0417607, sum_time: 9.0621469
+Epoch: 36, loss: 0.2097872, computing_time: 0.0417195, sum_time: 9.1038664
+Epoch: 37, loss: 0.2090422, computing_time: 0.0417249, sum_time: 9.1455913
+Epoch: 38, loss: 0.2083154, computing_time: 0.0420242, sum_time: 9.1876154
+Epoch: 39, loss: 0.2076062, computing_time: 0.0416045, sum_time: 9.2292199
+Epoch: 40, loss: 0.2069142, computing_time: 0.0418029, sum_time: 9.2710228
+munmap is successful
+Bits:  2
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.2240421, computing_time: 7.7461282, sum_time: 7.7461282
+=====print the profiling result==========
+Instructions-retired 2530861429
+Active-cycles 2876774047
+IPC 0.879757
+L3 cache misses:  15355050
+L2 cache misses:  60135994
+Mispredicted branchs:  514743
+L2 cache hits:  32093119
+BytesReadFromMC: 1006545088
+BytesWrittenToMC: 11031104
+Epoch: 2, loss: 0.2017359, computing_time: 0.0618814, sum_time: 7.8080096
+Epoch: 3, loss: 0.1858755, computing_time: 0.0513912, sum_time: 7.8594008
+Epoch: 4, loss: 0.1736861, computing_time: 0.0513225, sum_time: 7.9107234
+Epoch: 5, loss: 0.1638132, computing_time: 0.0511349, sum_time: 7.9618582
+Epoch: 6, loss: 0.1555245, computing_time: 0.0509509, sum_time: 8.0128092
+Epoch: 7, loss: 0.1483878, computing_time: 0.0507806, sum_time: 8.0635898
+Epoch: 8, loss: 0.1421295, computing_time: 0.0512396, sum_time: 8.1148294
+Epoch: 9, loss: 0.1365654, computing_time: 0.0506984, sum_time: 8.1655278
+Epoch: 10, loss: 0.1315659, computing_time: 0.0495262, sum_time: 8.2150540
+Epoch: 11, loss: 0.1270355, computing_time: 0.0474333, sum_time: 8.2624874
+Epoch: 12, loss: 0.1229020, computing_time: 0.0472343, sum_time: 8.3097217
+Epoch: 13, loss: 0.1191089, computing_time: 0.0472805, sum_time: 8.3570022
+Epoch: 14, loss: 0.1156111, computing_time: 0.0473256, sum_time: 8.4043278
+Epoch: 15, loss: 0.1123719, computing_time: 0.0479085, sum_time: 8.4522363
+Epoch: 16, loss: 0.1093611, computing_time: 0.0473167, sum_time: 8.4995530
+Epoch: 17, loss: 0.1065533, computing_time: 0.0473104, sum_time: 8.5468635
+Epoch: 18, loss: 0.1039268, computing_time: 0.0473254, sum_time: 8.5941889
+Epoch: 19, loss: 0.1014635, computing_time: 0.0474960, sum_time: 8.6416849
+Epoch: 20, loss: 0.0991473, computing_time: 0.0472609, sum_time: 8.6889458
+Epoch: 21, loss: 0.0969646, computing_time: 0.0474345, sum_time: 8.7363804
+Epoch: 22, loss: 0.0949033, computing_time: 0.0475947, sum_time: 8.7839751
+Epoch: 23, loss: 0.0929530, computing_time: 0.0473026, sum_time: 8.8312777
+Epoch: 24, loss: 0.0911042, computing_time: 0.0473177, sum_time: 8.8785954
+Epoch: 25, loss: 0.0893488, computing_time: 0.0475672, sum_time: 8.9261626
+Epoch: 26, loss: 0.0876793, computing_time: 0.0472995, sum_time: 8.9734621
+Epoch: 27, loss: 0.0860893, computing_time: 0.0472097, sum_time: 9.0206717
+Epoch: 28, loss: 0.0845728, computing_time: 0.0471619, sum_time: 9.0678336
+Epoch: 29, loss: 0.0831244, computing_time: 0.0474343, sum_time: 9.1152679
+Epoch: 30, loss: 0.0817396, computing_time: 0.0473591, sum_time: 9.1626270
+Epoch: 31, loss: 0.0804138, computing_time: 0.0473877, sum_time: 9.2100147
+Epoch: 32, loss: 0.0791432, computing_time: 0.0475906, sum_time: 9.2576053
+Epoch: 33, loss: 0.0779242, computing_time: 0.0475047, sum_time: 9.3051100
+Epoch: 34, loss: 0.0767535, computing_time: 0.0474424, sum_time: 9.3525525
+Epoch: 35, loss: 0.0756282, computing_time: 0.0475358, sum_time: 9.4000882
+Epoch: 36, loss: 0.0745455, computing_time: 0.0480507, sum_time: 9.4481389
+Epoch: 37, loss: 0.0735029, computing_time: 0.0471479, sum_time: 9.4952868
+Epoch: 38, loss: 0.0724981, computing_time: 0.0474004, sum_time: 9.5426873
+Epoch: 39, loss: 0.0715290, computing_time: 0.0475206, sum_time: 9.5902078
+Epoch: 40, loss: 0.0705936, computing_time: 0.0473311, sum_time: 9.6375389
+munmap is successful
+Bits:  3
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.1303052, computing_time: 7.5515173, sum_time: 7.5515173
+=====print the profiling result==========
+Instructions-retired 3009450189
+Active-cycles 3442193763
+IPC 0.874283
+L3 cache misses:  18663658
+L2 cache misses:  47647748
+Mispredicted branchs:  453613
+L2 cache hits:  31383646
+BytesReadFromMC: 1240963712
+BytesWrittenToMC: 27075392
+Epoch: 2, loss: 0.0942029, computing_time: 0.0681879, sum_time: 7.6197052
+Epoch: 3, loss: 0.0767529, computing_time: 0.0601437, sum_time: 7.6798490
+Epoch: 4, loss: 0.0662239, computing_time: 0.0596747, sum_time: 7.7395237
+Epoch: 5, loss: 0.0591477, computing_time: 0.0594453, sum_time: 7.7989689
+Epoch: 6, loss: 0.0540382, computing_time: 0.0600233, sum_time: 7.8589922
+Epoch: 7, loss: 0.0501444, computing_time: 0.0599948, sum_time: 7.9189870
+Epoch: 8, loss: 0.0470501, computing_time: 0.0576714, sum_time: 7.9766584
+Epoch: 9, loss: 0.0445086, computing_time: 0.0533540, sum_time: 8.0300123
+Epoch: 10, loss: 0.0423656, computing_time: 0.0538531, sum_time: 8.0838655
+Epoch: 11, loss: 0.0405202, computing_time: 0.0534402, sum_time: 8.1373056
+Epoch: 12, loss: 0.0389039, computing_time: 0.0540374, sum_time: 8.1913431
+Epoch: 13, loss: 0.0374687, computing_time: 0.0539356, sum_time: 8.2452787
+Epoch: 14, loss: 0.0361797, computing_time: 0.0532520, sum_time: 8.2985307
+Epoch: 15, loss: 0.0350112, computing_time: 0.0538215, sum_time: 8.3523522
+Epoch: 16, loss: 0.0339436, computing_time: 0.0540281, sum_time: 8.4063803
+Epoch: 17, loss: 0.0329618, computing_time: 0.0534729, sum_time: 8.4598533
+Epoch: 18, loss: 0.0320537, computing_time: 0.0533587, sum_time: 8.5132120
+Epoch: 19, loss: 0.0312097, computing_time: 0.0538359, sum_time: 8.5670479
+Epoch: 20, loss: 0.0304221, computing_time: 0.0534949, sum_time: 8.6205428
+Epoch: 21, loss: 0.0296843, computing_time: 0.0536772, sum_time: 8.6742199
+Epoch: 22, loss: 0.0289909, computing_time: 0.0538858, sum_time: 8.7281058
+Epoch: 23, loss: 0.0283374, computing_time: 0.0532652, sum_time: 8.7813709
+Epoch: 24, loss: 0.0277199, computing_time: 0.0534365, sum_time: 8.8348075
+Epoch: 25, loss: 0.0271350, computing_time: 0.0536354, sum_time: 8.8884429
+Epoch: 26, loss: 0.0265798, computing_time: 0.0536078, sum_time: 8.9420507
+Epoch: 27, loss: 0.0260517, computing_time: 0.0534860, sum_time: 8.9955367
+Epoch: 28, loss: 0.0255487, computing_time: 0.0533996, sum_time: 9.0489363
+Epoch: 29, loss: 0.0250687, computing_time: 0.0536322, sum_time: 9.1025685
+Epoch: 30, loss: 0.0246099, computing_time: 0.0542534, sum_time: 9.1568219
+Epoch: 31, loss: 0.0241709, computing_time: 0.0536720, sum_time: 9.2104939
+Epoch: 32, loss: 0.0237502, computing_time: 0.0538641, sum_time: 9.2643580
+Epoch: 33, loss: 0.0233465, computing_time: 0.0541129, sum_time: 9.3184708
+Epoch: 34, loss: 0.0229588, computing_time: 0.0536405, sum_time: 9.3721114
+Epoch: 35, loss: 0.0225860, computing_time: 0.0541188, sum_time: 9.4262301
+Epoch: 36, loss: 0.0222273, computing_time: 0.0538853, sum_time: 9.4801154
+Epoch: 37, loss: 0.0218816, computing_time: 0.0532927, sum_time: 9.5334081
+Epoch: 38, loss: 0.0215484, computing_time: 0.0537752, sum_time: 9.5871833
+Epoch: 39, loss: 0.0212268, computing_time: 0.0536249, sum_time: 9.6408082
+Epoch: 40, loss: 0.0209162, computing_time: 0.0532046, sum_time: 9.6940128
+munmap is successful
+Bits:  4
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.0629879, computing_time: 7.4928993, sum_time: 7.4928993
+=====print the profiling result==========
+Instructions-retired 3488279945
+Active-cycles 4023410661
+IPC 0.866996
+L3 cache misses:  21768840
+L2 cache misses:  40062931
+Mispredicted branchs:  482659
+L2 cache hits:  31185279
+BytesReadFromMC: 1454567424
+BytesWrittenToMC: 26459712
+Epoch: 2, loss: 0.0439050, computing_time: 0.0931117, sum_time: 7.5860110
+Epoch: 3, loss: 0.0369130, computing_time: 0.0946381, sum_time: 7.6806491
+Epoch: 4, loss: 0.0332012, computing_time: 0.0720703, sum_time: 7.7527194
+Epoch: 5, loss: 0.0307444, computing_time: 0.0676997, sum_time: 7.8204191
+Epoch: 6, loss: 0.0289024, computing_time: 0.0680926, sum_time: 7.8885117
+Epoch: 7, loss: 0.0274217, computing_time: 0.0672018, sum_time: 7.9557135
+Epoch: 8, loss: 0.0261806, computing_time: 0.0672436, sum_time: 8.0229571
+Epoch: 9, loss: 0.0251120, computing_time: 0.0680991, sum_time: 8.0910562
+Epoch: 10, loss: 0.0241740, computing_time: 0.0658725, sum_time: 8.1569287
+Epoch: 11, loss: 0.0233390, computing_time: 0.0628691, sum_time: 8.2197978
+Epoch: 12, loss: 0.0225872, computing_time: 0.0603675, sum_time: 8.2801653
+Epoch: 13, loss: 0.0219043, computing_time: 0.0596223, sum_time: 8.3397876
+Epoch: 14, loss: 0.0212793, computing_time: 0.0600901, sum_time: 8.3998776
+Epoch: 15, loss: 0.0207036, computing_time: 0.0596715, sum_time: 8.4595492
+Epoch: 16, loss: 0.0201706, computing_time: 0.0604457, sum_time: 8.5199949
+Epoch: 17, loss: 0.0196747, computing_time: 0.0603868, sum_time: 8.5803816
+Epoch: 18, loss: 0.0192116, computing_time: 0.0612906, sum_time: 8.6416722
+Epoch: 19, loss: 0.0187774, computing_time: 0.0598475, sum_time: 8.7015197
+Epoch: 20, loss: 0.0183690, computing_time: 0.0603186, sum_time: 8.7618383
+Epoch: 21, loss: 0.0179840, computing_time: 0.0602355, sum_time: 8.8220737
+Epoch: 22, loss: 0.0176198, computing_time: 0.0594247, sum_time: 8.8814984
+Epoch: 23, loss: 0.0172747, computing_time: 0.0597044, sum_time: 8.9412028
+Epoch: 24, loss: 0.0169470, computing_time: 0.0603981, sum_time: 9.0016009
+Epoch: 25, loss: 0.0166351, computing_time: 0.0597745, sum_time: 9.0613754
+Epoch: 26, loss: 0.0163378, computing_time: 0.0606118, sum_time: 9.1219872
+Epoch: 27, loss: 0.0160539, computing_time: 0.0604648, sum_time: 9.1824520
+Epoch: 28, loss: 0.0157824, computing_time: 0.0602974, sum_time: 9.2427494
+Epoch: 29, loss: 0.0155225, computing_time: 0.0607519, sum_time: 9.3035012
+Epoch: 30, loss: 0.0152732, computing_time: 0.0599234, sum_time: 9.3634246
+Epoch: 31, loss: 0.0150339, computing_time: 0.0599163, sum_time: 9.4233409
+Epoch: 32, loss: 0.0148039, computing_time: 0.0600547, sum_time: 9.4833956
+Epoch: 33, loss: 0.0145826, computing_time: 0.0600945, sum_time: 9.5434901
+Epoch: 34, loss: 0.0143695, computing_time: 0.0599383, sum_time: 9.6034284
+Epoch: 35, loss: 0.0141640, computing_time: 0.0595614, sum_time: 9.6629898
+Epoch: 36, loss: 0.0139658, computing_time: 0.0595428, sum_time: 9.7225327
+Epoch: 37, loss: 0.0137744, computing_time: 0.0599445, sum_time: 9.7824772
+Epoch: 38, loss: 0.0135894, computing_time: 0.0595438, sum_time: 9.8420210
+Epoch: 39, loss: 0.0134105, computing_time: 0.0598228, sum_time: 9.9018439
+Epoch: 40, loss: 0.0132373, computing_time: 0.0593416, sum_time: 9.9611855
+munmap is successful
+Bits:  5
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.0512787, computing_time: 7.5697838, sum_time: 7.5697838
+=====print the profiling result==========
+Instructions-retired 3966370438
+Active-cycles 4636923609
+IPC 0.855388
+L3 cache misses:  24460140
+L2 cache misses:  37903991
+Mispredicted branchs:  285165
+L2 cache hits:  29226070
+BytesReadFromMC: 1651600576
+BytesWrittenToMC: 12371904
+Epoch: 2, loss: 0.0378213, computing_time: 0.0808099, sum_time: 7.6505938
+Epoch: 3, loss: 0.0329129, computing_time: 0.0756368, sum_time: 7.7262306
+Epoch: 4, loss: 0.0300559, computing_time: 0.0751022, sum_time: 7.8013327
+Epoch: 5, loss: 0.0280136, computing_time: 0.0748179, sum_time: 7.8761506
+Epoch: 6, loss: 0.0264137, computing_time: 0.0753515, sum_time: 7.9515021
+Epoch: 7, loss: 0.0250983, computing_time: 0.0655554, sum_time: 8.0170574
+Epoch: 8, loss: 0.0239834, computing_time: 0.0650040, sum_time: 8.0820615
+Epoch: 9, loss: 0.0230177, computing_time: 0.0650905, sum_time: 8.1471520
+Epoch: 10, loss: 0.0221676, computing_time: 0.0651686, sum_time: 8.2123206
+Epoch: 11, loss: 0.0214096, computing_time: 0.0657100, sum_time: 8.2780305
+Epoch: 12, loss: 0.0207266, computing_time: 0.0654537, sum_time: 8.3434842
+Epoch: 13, loss: 0.0201060, computing_time: 0.0650778, sum_time: 8.4085620
+Epoch: 14, loss: 0.0195379, computing_time: 0.0646848, sum_time: 8.4732468
+Epoch: 15, loss: 0.0190147, computing_time: 0.0654859, sum_time: 8.5387327
+Epoch: 16, loss: 0.0185304, computing_time: 0.0652824, sum_time: 8.6040151
+Epoch: 17, loss: 0.0180799, computing_time: 0.0652792, sum_time: 8.6692943
+Epoch: 18, loss: 0.0176592, computing_time: 0.0648122, sum_time: 8.7341065
+Epoch: 19, loss: 0.0172649, computing_time: 0.0650120, sum_time: 8.7991185
+Epoch: 20, loss: 0.0168942, computing_time: 0.0653638, sum_time: 8.8644823
+Epoch: 21, loss: 0.0165446, computing_time: 0.0649407, sum_time: 8.9294230
+Epoch: 22, loss: 0.0162141, computing_time: 0.0644173, sum_time: 8.9938403
+Epoch: 23, loss: 0.0159010, computing_time: 0.0652630, sum_time: 9.0591032
+Epoch: 24, loss: 0.0156037, computing_time: 0.0646660, sum_time: 9.1237692
+Epoch: 25, loss: 0.0153208, computing_time: 0.0652066, sum_time: 9.1889758
+Epoch: 26, loss: 0.0150512, computing_time: 0.0648303, sum_time: 9.2538061
+Epoch: 27, loss: 0.0147938, computing_time: 0.0653556, sum_time: 9.3191617
+Epoch: 28, loss: 0.0145476, computing_time: 0.0647875, sum_time: 9.3839492
+Epoch: 29, loss: 0.0143120, computing_time: 0.0651114, sum_time: 9.4490607
+Epoch: 30, loss: 0.0140861, computing_time: 0.0650330, sum_time: 9.5140936
+Epoch: 31, loss: 0.0138692, computing_time: 0.0650777, sum_time: 9.5791713
+Epoch: 32, loss: 0.0136608, computing_time: 0.0650964, sum_time: 9.6442677
+Epoch: 33, loss: 0.0134603, computing_time: 0.0654530, sum_time: 9.7097207
+Epoch: 34, loss: 0.0132672, computing_time: 0.0651682, sum_time: 9.7748889
+Epoch: 35, loss: 0.0130811, computing_time: 0.0651944, sum_time: 9.8400833
+Epoch: 36, loss: 0.0129016, computing_time: 0.0648447, sum_time: 9.9049280
+Epoch: 37, loss: 0.0127282, computing_time: 0.0653718, sum_time: 9.9702998
+Epoch: 38, loss: 0.0125607, computing_time: 0.0652403, sum_time: 10.0355401
+Epoch: 39, loss: 0.0123987, computing_time: 0.0652944, sum_time: 10.1008345
+Epoch: 40, loss: 0.0122419, computing_time: 0.0652151, sum_time: 10.1660496
+munmap is successful
+Bits:  6
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.0490611, computing_time: 7.6532326, sum_time: 7.6532326
+=====print the profiling result==========
+Instructions-retired 4444777706
+Active-cycles 5267428127
+IPC 0.843823
+L3 cache misses:  26051409
+L2 cache misses:  38378508
+Mispredicted branchs:  328186
+L2 cache hits:  28751700
+BytesReadFromMC: 1774680256
+BytesWrittenToMC: 12160384
+Epoch: 2, loss: 0.0369882, computing_time: 0.0876323, sum_time: 7.7408649
+Epoch: 3, loss: 0.0323669, computing_time: 0.0846265, sum_time: 7.8254913
+Epoch: 4, loss: 0.0295612, computing_time: 0.0842386, sum_time: 7.9097299
+Epoch: 5, loss: 0.0275280, computing_time: 0.0846555, sum_time: 7.9943854
+Epoch: 6, loss: 0.0259328, computing_time: 0.0801501, sum_time: 8.0745355
+Epoch: 7, loss: 0.0246236, computing_time: 0.0722316, sum_time: 8.1467671
+Epoch: 8, loss: 0.0235166, computing_time: 0.0722872, sum_time: 8.2190543
+Epoch: 9, loss: 0.0225602, computing_time: 0.0719718, sum_time: 8.2910262
+Epoch: 10, loss: 0.0217200, computing_time: 0.0721207, sum_time: 8.3631468
+Epoch: 11, loss: 0.0209721, computing_time: 0.0721550, sum_time: 8.4353019
+Epoch: 12, loss: 0.0202993, computing_time: 0.0721363, sum_time: 8.5074382
+Epoch: 13, loss: 0.0196887, computing_time: 0.0722950, sum_time: 8.5797332
+Epoch: 14, loss: 0.0191304, computing_time: 0.0720630, sum_time: 8.6517962
+Epoch: 15, loss: 0.0186167, computing_time: 0.0722192, sum_time: 8.7240154
+Epoch: 16, loss: 0.0181415, computing_time: 0.0722403, sum_time: 8.7962557
+Epoch: 17, loss: 0.0176997, computing_time: 0.0719001, sum_time: 8.8681558
+Epoch: 18, loss: 0.0172874, computing_time: 0.0722899, sum_time: 8.9404457
+Epoch: 19, loss: 0.0169012, computing_time: 0.0725146, sum_time: 9.0129603
+Epoch: 20, loss: 0.0165382, computing_time: 0.0723794, sum_time: 9.0853397
+Epoch: 21, loss: 0.0161961, computing_time: 0.0723509, sum_time: 9.1576906
+Epoch: 22, loss: 0.0158728, computing_time: 0.0722764, sum_time: 9.2299670
+Epoch: 23, loss: 0.0155665, computing_time: 0.0725389, sum_time: 9.3025058
+Epoch: 24, loss: 0.0152758, computing_time: 0.0725485, sum_time: 9.3750544
+Epoch: 25, loss: 0.0149993, computing_time: 0.0723561, sum_time: 9.4474105
+Epoch: 26, loss: 0.0147359, computing_time: 0.0721904, sum_time: 9.5196009
+Epoch: 27, loss: 0.0144844, computing_time: 0.0727398, sum_time: 9.5923407
+Epoch: 28, loss: 0.0142441, computing_time: 0.0721532, sum_time: 9.6644939
+Epoch: 29, loss: 0.0140140, computing_time: 0.0718394, sum_time: 9.7363333
+Epoch: 30, loss: 0.0137935, computing_time: 0.0724690, sum_time: 9.8088023
+Epoch: 31, loss: 0.0135819, computing_time: 0.0724973, sum_time: 9.8812996
+Epoch: 32, loss: 0.0133786, computing_time: 0.0717425, sum_time: 9.9530422
+Epoch: 33, loss: 0.0131831, computing_time: 0.0723663, sum_time: 10.0254085
+Epoch: 34, loss: 0.0129948, computing_time: 0.0721162, sum_time: 10.0975246
+Epoch: 35, loss: 0.0128134, computing_time: 0.0714225, sum_time: 10.1689471
+Epoch: 36, loss: 0.0126385, computing_time: 0.0718595, sum_time: 10.2408065
+Epoch: 37, loss: 0.0124696, computing_time: 0.0721596, sum_time: 10.3129662
+Epoch: 38, loss: 0.0123065, computing_time: 0.0721603, sum_time: 10.3851265
+Epoch: 39, loss: 0.0121488, computing_time: 0.0720327, sum_time: 10.4571592
+Epoch: 40, loss: 0.0119962, computing_time: 0.0724921, sum_time: 10.5296513
+munmap is successful
+Bits:  7
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.0483165, computing_time: 7.7142635, sum_time: 7.7142635
+=====print the profiling result==========
+Instructions-retired 4923489101
+Active-cycles 5778348815
+IPC 0.852058
+L3 cache misses:  25734850
+L2 cache misses:  36650776
+Mispredicted branchs:  309160
+L2 cache hits:  27274374
+BytesReadFromMC: 1812929408
+BytesWrittenToMC: 14739264
+Epoch: 2, loss: 0.0367432, computing_time: 0.0951755, sum_time: 7.8094389
+Epoch: 3, loss: 0.0321918, computing_time: 0.0924760, sum_time: 7.9019149
+Epoch: 4, loss: 0.0293935, computing_time: 0.0925946, sum_time: 7.9945095
+Epoch: 5, loss: 0.0273629, computing_time: 0.0928799, sum_time: 8.0873895
+Epoch: 6, loss: 0.0257720, computing_time: 0.0785573, sum_time: 8.1659468
+Epoch: 7, loss: 0.0244684, computing_time: 0.0782787, sum_time: 8.2442255
+Epoch: 8, loss: 0.0233677, computing_time: 0.0783388, sum_time: 8.3225643
+Epoch: 9, loss: 0.0224176, computing_time: 0.0785454, sum_time: 8.4011097
+Epoch: 10, loss: 0.0215836, computing_time: 0.0785209, sum_time: 8.4796306
+Epoch: 11, loss: 0.0208417, computing_time: 0.0786082, sum_time: 8.5582388
+Epoch: 12, loss: 0.0201746, computing_time: 0.0782880, sum_time: 8.6365268
+Epoch: 13, loss: 0.0195693, computing_time: 0.0818511, sum_time: 8.7183779
+Epoch: 14, loss: 0.0190160, computing_time: 0.0783339, sum_time: 8.7967118
+Epoch: 15, loss: 0.0185070, computing_time: 0.0818389, sum_time: 8.8785507
+Epoch: 16, loss: 0.0180362, computing_time: 0.0787534, sum_time: 8.9573041
+Epoch: 17, loss: 0.0175987, computing_time: 0.0783961, sum_time: 9.0357002
+Epoch: 18, loss: 0.0171903, computing_time: 0.0784171, sum_time: 9.1141172
+Epoch: 19, loss: 0.0168078, computing_time: 0.0815541, sum_time: 9.1956713
+Epoch: 20, loss: 0.0164483, computing_time: 0.0785200, sum_time: 9.2741913
+Epoch: 21, loss: 0.0161095, computing_time: 0.0818623, sum_time: 9.3560536
+Epoch: 22, loss: 0.0157893, computing_time: 0.0784471, sum_time: 9.4345007
+Epoch: 23, loss: 0.0154861, computing_time: 0.0849155, sum_time: 9.5194163
+Epoch: 24, loss: 0.0151983, computing_time: 0.0784021, sum_time: 9.5978184
+Epoch: 25, loss: 0.0149245, computing_time: 0.0785875, sum_time: 9.6764059
+Epoch: 26, loss: 0.0146636, computing_time: 0.0784841, sum_time: 9.7548900
+Epoch: 27, loss: 0.0144147, computing_time: 0.0784018, sum_time: 9.8332917
+Epoch: 28, loss: 0.0141767, computing_time: 0.0815816, sum_time: 9.9148733
+Epoch: 29, loss: 0.0139490, computing_time: 0.0783660, sum_time: 9.9932393
+Epoch: 30, loss: 0.0137307, computing_time: 0.0784994, sum_time: 10.0717387
+Epoch: 31, loss: 0.0135212, computing_time: 0.0783849, sum_time: 10.1501236
+Epoch: 32, loss: 0.0133200, computing_time: 0.0785308, sum_time: 10.2286544
+Epoch: 33, loss: 0.0131265, computing_time: 0.0784492, sum_time: 10.3071036
+Epoch: 34, loss: 0.0129402, computing_time: 0.0783512, sum_time: 10.3854547
+Epoch: 35, loss: 0.0127606, computing_time: 0.0816985, sum_time: 10.4671532
+Epoch: 36, loss: 0.0125875, computing_time: 0.0782840, sum_time: 10.5454372
+Epoch: 37, loss: 0.0124204, computing_time: 0.0784607, sum_time: 10.6238978
+Epoch: 38, loss: 0.0122589, computing_time: 0.0782861, sum_time: 10.7021839
+Epoch: 39, loss: 0.0121028, computing_time: 0.0785343, sum_time: 10.7807182
+Epoch: 40, loss: 0.0119518, computing_time: 0.0785501, sum_time: 10.8592684
+munmap is successful
+Bits:  8
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 256.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.0479957, computing_time: 7.7007512, sum_time: 7.7007512
+=====print the profiling result==========
+Instructions-retired 5312306641
+Active-cycles 6321807624
+IPC 0.840315
+L3 cache misses:  24542096
+L2 cache misses:  36326449
+Mispredicted branchs:  326268
+L2 cache hits:  26056253
+BytesReadFromMC: 1829784704
+BytesWrittenToMC: 12672832
+Epoch: 2, loss: 0.0366443, computing_time: 0.1024883, sum_time: 7.8032395
+Epoch: 3, loss: 0.0321210, computing_time: 0.1012328, sum_time: 7.9044723
+Epoch: 4, loss: 0.0293264, computing_time: 0.1013866, sum_time: 8.0058589
+Epoch: 5, loss: 0.0272982, computing_time: 0.0988394, sum_time: 8.1046983
+Epoch: 6, loss: 0.0257104, computing_time: 0.0851244, sum_time: 8.1898227
+Epoch: 7, loss: 0.0244104, computing_time: 0.0852633, sum_time: 8.2750859
+Epoch: 8, loss: 0.0233132, computing_time: 0.0853180, sum_time: 8.3604040
+Epoch: 9, loss: 0.0223664, computing_time: 0.0854077, sum_time: 8.4458117
+Epoch: 10, loss: 0.0215355, computing_time: 0.0971079, sum_time: 8.5429195
+Epoch: 11, loss: 0.0207965, computing_time: 0.0852769, sum_time: 8.6281964
+Epoch: 12, loss: 0.0201319, computing_time: 0.0851939, sum_time: 8.7133903
+Epoch: 13, loss: 0.0195289, computing_time: 0.0852521, sum_time: 8.7986424
+Epoch: 14, loss: 0.0189776, computing_time: 0.0852774, sum_time: 8.8839198
+Epoch: 15, loss: 0.0184705, computing_time: 0.0852251, sum_time: 8.9691449
+Epoch: 16, loss: 0.0180014, computing_time: 0.0852744, sum_time: 9.0544193
+Epoch: 17, loss: 0.0175653, computing_time: 0.0851038, sum_time: 9.1395231
+Epoch: 18, loss: 0.0171583, computing_time: 0.0851867, sum_time: 9.2247098
+Epoch: 19, loss: 0.0167770, computing_time: 0.0852544, sum_time: 9.3099642
+Epoch: 20, loss: 0.0164187, computing_time: 0.0851750, sum_time: 9.3951392
+Epoch: 21, loss: 0.0160809, computing_time: 0.0853026, sum_time: 9.4804418
+Epoch: 22, loss: 0.0157618, computing_time: 0.0851950, sum_time: 9.5656368
+Epoch: 23, loss: 0.0154594, computing_time: 0.0852635, sum_time: 9.6509004
+Epoch: 24, loss: 0.0151724, computing_time: 0.0851358, sum_time: 9.7360362
+Epoch: 25, loss: 0.0148995, computing_time: 0.0854619, sum_time: 9.8214982
+Epoch: 26, loss: 0.0146394, computing_time: 0.0852380, sum_time: 9.9067361
+Epoch: 27, loss: 0.0143911, computing_time: 0.0853151, sum_time: 9.9920513
+Epoch: 28, loss: 0.0141539, computing_time: 0.0851132, sum_time: 10.0771644
+Epoch: 29, loss: 0.0139268, computing_time: 0.0851007, sum_time: 10.1622651
+Epoch: 30, loss: 0.0137091, computing_time: 0.0851291, sum_time: 10.2473942
+Epoch: 31, loss: 0.0135003, computing_time: 0.0851152, sum_time: 10.3325093
+Epoch: 32, loss: 0.0132996, computing_time: 0.0854790, sum_time: 10.4179883
+Epoch: 33, loss: 0.0131066, computing_time: 0.0852537, sum_time: 10.5032420
+Epoch: 34, loss: 0.0129209, computing_time: 0.0912064, sum_time: 10.5944484
+Epoch: 35, loss: 0.0127419, computing_time: 0.0851779, sum_time: 10.6796262
+Epoch: 36, loss: 0.0125692, computing_time: 0.0851884, sum_time: 10.7648146
+Epoch: 37, loss: 0.0124026, computing_time: 0.0853117, sum_time: 10.8501263
+Epoch: 38, loss: 0.0122416, computing_time: 0.0854305, sum_time: 10.9355568
+Epoch: 39, loss: 0.0120860, computing_time: 0.0852108, sum_time: 11.0207676
+Epoch: 40, loss: 0.0119354, computing_time: 0.0854020, sum_time: 11.1061696
+munmap is successful
+Bits:  9
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 65536.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.0478700, computing_time: 7.6234540, sum_time: 7.6234540
+=====print the profiling result==========
+Instructions-retired 5604359325
+Active-cycles 7203202408
+IPC 0.778037
+L3 cache misses:  26273597
+L2 cache misses:  9596550
+Mispredicted branchs:  195578
+L2 cache hits:  48675336
+BytesReadFromMC: 1935649472
+BytesWrittenToMC: 14394816
+Epoch: 2, loss: 0.0366134, computing_time: 0.1219790, sum_time: 7.7454330
+Epoch: 3, loss: 0.0320984, computing_time: 0.1168873, sum_time: 7.8623203
+Epoch: 4, loss: 0.0293037, computing_time: 0.1164172, sum_time: 7.9787375
+Epoch: 5, loss: 0.0272760, computing_time: 0.1155269, sum_time: 8.0942644
+Epoch: 6, loss: 0.0256895, computing_time: 0.1000755, sum_time: 8.1943399
+Epoch: 7, loss: 0.0243911, computing_time: 0.1000076, sum_time: 8.2943475
+Epoch: 8, loss: 0.0232957, computing_time: 0.0996518, sum_time: 8.3939993
+Epoch: 9, loss: 0.0223506, computing_time: 0.0988913, sum_time: 8.4928906
+Epoch: 10, loss: 0.0215212, computing_time: 0.1001790, sum_time: 8.5930696
+Epoch: 11, loss: 0.0207835, computing_time: 0.0989493, sum_time: 8.6920189
+Epoch: 12, loss: 0.0201201, computing_time: 0.0994975, sum_time: 8.7915165
+Epoch: 13, loss: 0.0195182, computing_time: 0.0980388, sum_time: 8.8895552
+Epoch: 14, loss: 0.0189679, computing_time: 0.0997478, sum_time: 8.9893031
+Epoch: 15, loss: 0.0184617, computing_time: 0.0986180, sum_time: 9.0879211
+Epoch: 16, loss: 0.0179933, computing_time: 0.0997783, sum_time: 9.1876994
+Epoch: 17, loss: 0.0175579, computing_time: 0.0993007, sum_time: 9.2870001
+Epoch: 18, loss: 0.0171515, computing_time: 0.1017025, sum_time: 9.3887026
+Epoch: 19, loss: 0.0167708, computing_time: 0.1002732, sum_time: 9.4889758
+Epoch: 20, loss: 0.0164130, computing_time: 0.0984627, sum_time: 9.5874385
+Epoch: 21, loss: 0.0160758, computing_time: 0.1006292, sum_time: 9.6880677
+Epoch: 22, loss: 0.0157571, computing_time: 0.0985104, sum_time: 9.7865781
+Epoch: 23, loss: 0.0154552, computing_time: 0.0997624, sum_time: 9.8863406
+Epoch: 24, loss: 0.0151686, computing_time: 0.1003493, sum_time: 9.9866898
+Epoch: 25, loss: 0.0148960, computing_time: 0.0999935, sum_time: 10.0866834
+Epoch: 26, loss: 0.0146362, computing_time: 0.1006822, sum_time: 10.1873656
+Epoch: 27, loss: 0.0143883, computing_time: 0.1009212, sum_time: 10.2882868
+Epoch: 28, loss: 0.0141514, computing_time: 0.1006364, sum_time: 10.3889231
+Epoch: 29, loss: 0.0139246, computing_time: 0.1008188, sum_time: 10.4897419
+Epoch: 30, loss: 0.0137072, computing_time: 0.1001174, sum_time: 10.5898593
+Epoch: 31, loss: 0.0134987, computing_time: 0.0984222, sum_time: 10.6882815
+Epoch: 32, loss: 0.0132983, computing_time: 0.1009586, sum_time: 10.7892402
+Epoch: 33, loss: 0.0131056, computing_time: 0.1004675, sum_time: 10.8897077
+Epoch: 34, loss: 0.0129201, computing_time: 0.0990461, sum_time: 10.9887538
+Epoch: 35, loss: 0.0127413, computing_time: 0.1020359, sum_time: 11.0907896
+Epoch: 36, loss: 0.0125690, computing_time: 0.0996200, sum_time: 11.1904096
+Epoch: 37, loss: 0.0124026, computing_time: 0.0996233, sum_time: 11.2900330
+Epoch: 38, loss: 0.0122418, computing_time: 0.0999058, sum_time: 11.3899388
+Epoch: 39, loss: 0.0120864, computing_time: 0.0998609, sum_time: 11.4897997
+Epoch: 40, loss: 0.0119361, computing_time: 0.1007473, sum_time: 11.5905470
+munmap is successful
+Bits:  10
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 65536.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.0478051, computing_time: 7.5231356, sum_time: 7.5231356
+=====print the profiling result==========
+Instructions-retired 6083173630
+Active-cycles 7893094568
+IPC 0.770696
+L3 cache misses:  25438956
+L2 cache misses:  12927887
+Mispredicted branchs:  193771
+L2 cache hits:  48546786
+BytesReadFromMC: 1944979968
+BytesWrittenToMC: 33558016
+Epoch: 2, loss: 0.0365962, computing_time: 0.1557933, sum_time: 7.6789288
+Epoch: 3, loss: 0.0320857, computing_time: 0.1654775, sum_time: 7.8444063
+Epoch: 4, loss: 0.0292913, computing_time: 0.1659048, sum_time: 8.0103111
+Epoch: 5, loss: 0.0272642, computing_time: 0.1651074, sum_time: 8.1754185
+Epoch: 6, loss: 0.0256786, computing_time: 0.1635292, sum_time: 8.3389478
+Epoch: 7, loss: 0.0243811, computing_time: 0.1644007, sum_time: 8.5033485
+Epoch: 8, loss: 0.0232866, computing_time: 0.1685646, sum_time: 8.6719131
+Epoch: 9, loss: 0.0223423, computing_time: 0.1643197, sum_time: 8.8362327
+Epoch: 10, loss: 0.0215137, computing_time: 0.1702145, sum_time: 9.0064473
+Epoch: 11, loss: 0.0207767, computing_time: 0.1642853, sum_time: 9.1707325
+Epoch: 12, loss: 0.0201139, computing_time: 0.1692068, sum_time: 9.3399394
+Epoch: 13, loss: 0.0195125, computing_time: 0.1745578, sum_time: 9.5144972
+Epoch: 14, loss: 0.0189627, computing_time: 0.1647130, sum_time: 9.6792102
+Epoch: 15, loss: 0.0184568, computing_time: 0.1642307, sum_time: 9.8434409
+Epoch: 16, loss: 0.0179888, computing_time: 0.1643539, sum_time: 10.0077948
+Epoch: 17, loss: 0.0175537, computing_time: 0.1651540, sum_time: 10.1729488
+Epoch: 18, loss: 0.0171476, computing_time: 0.1644788, sum_time: 10.3374276
+Epoch: 19, loss: 0.0167672, computing_time: 0.1642935, sum_time: 10.5017211
+Epoch: 20, loss: 0.0164096, computing_time: 0.1645378, sum_time: 10.6662589
+Epoch: 21, loss: 0.0160725, computing_time: 0.1641225, sum_time: 10.8303814
+Epoch: 22, loss: 0.0157540, computing_time: 0.1640685, sum_time: 10.9944499
+Epoch: 23, loss: 0.0154522, computing_time: 0.1691839, sum_time: 11.1636338
+Epoch: 24, loss: 0.0151658, computing_time: 0.1645575, sum_time: 11.3281913
+Epoch: 25, loss: 0.0148933, computing_time: 0.1705441, sum_time: 11.4987354
+Epoch: 26, loss: 0.0146337, computing_time: 0.1656394, sum_time: 11.6643749
+Epoch: 27, loss: 0.0143860, computing_time: 0.1747127, sum_time: 11.8390875
+Epoch: 28, loss: 0.0141491, computing_time: 0.1656439, sum_time: 12.0047314
+Epoch: 29, loss: 0.0139225, computing_time: 0.1656735, sum_time: 12.1704049
+Epoch: 30, loss: 0.0137052, computing_time: 0.1542807, sum_time: 12.3246856
+Epoch: 31, loss: 0.0134967, computing_time: 0.1658938, sum_time: 12.4905794
+Epoch: 32, loss: 0.0132964, computing_time: 0.1710764, sum_time: 12.6616558
+Epoch: 33, loss: 0.0131038, computing_time: 0.1658536, sum_time: 12.8275094
+Epoch: 34, loss: 0.0129184, computing_time: 0.1688140, sum_time: 12.9963235
+Epoch: 35, loss: 0.0127398, computing_time: 0.1710567, sum_time: 13.1673801
+Epoch: 36, loss: 0.0125675, computing_time: 0.1704286, sum_time: 13.3378087
+Epoch: 37, loss: 0.0124011, computing_time: 0.1659401, sum_time: 13.5037488
+Epoch: 38, loss: 0.0122405, computing_time: 0.1715604, sum_time: 13.6753092
+Epoch: 39, loss: 0.0120852, computing_time: 0.1653584, sum_time: 13.8406676
+Epoch: 40, loss: 0.0119349, computing_time: 0.1703685, sum_time: 14.0110361
+munmap is successful
+Bits:  11
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 65536.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.0477747, computing_time: 7.8952714, sum_time: 7.8952714
+=====print the profiling result==========
+Instructions-retired 6561376485
+Active-cycles 8646090816
+IPC 0.758884
+L3 cache misses:  25765278
+L2 cache misses:  20850146
+Mispredicted branchs:  186265
+L2 cache hits:  49440310
+BytesReadFromMC: 1944762880
+BytesWrittenToMC: 31211264
+Epoch: 2, loss: 0.0365904, computing_time: 0.1420382, sum_time: 8.0373097
+Epoch: 3, loss: 0.0320821, computing_time: 0.1380989, sum_time: 8.1754086
+Epoch: 4, loss: 0.0292880, computing_time: 0.1378705, sum_time: 8.3132791
+Epoch: 5, loss: 0.0272613, computing_time: 0.1222028, sum_time: 8.4354819
+Epoch: 6, loss: 0.0256761, computing_time: 0.1163538, sum_time: 8.5518357
+Epoch: 7, loss: 0.0243791, computing_time: 0.1153558, sum_time: 8.6671915
+Epoch: 8, loss: 0.0232850, computing_time: 0.1158377, sum_time: 8.7830292
+Epoch: 9, loss: 0.0223411, computing_time: 0.1164079, sum_time: 8.8994371
+Epoch: 10, loss: 0.0215129, computing_time: 0.1155623, sum_time: 9.0149994
+Epoch: 11, loss: 0.0207761, computing_time: 0.1159724, sum_time: 9.1309719
+Epoch: 12, loss: 0.0201136, computing_time: 0.1158842, sum_time: 9.2468561
+Epoch: 13, loss: 0.0195125, computing_time: 0.1161278, sum_time: 9.3629838
+Epoch: 14, loss: 0.0189628, computing_time: 0.1163427, sum_time: 9.4793266
+Epoch: 15, loss: 0.0184571, computing_time: 0.1158780, sum_time: 9.5952045
+Epoch: 16, loss: 0.0179892, computing_time: 0.1158885, sum_time: 9.7110930
+Epoch: 17, loss: 0.0175543, computing_time: 0.1157449, sum_time: 9.8268380
+Epoch: 18, loss: 0.0171483, computing_time: 0.1164755, sum_time: 9.9433135
+Epoch: 19, loss: 0.0167679, computing_time: 0.1159602, sum_time: 10.0592737
+Epoch: 20, loss: 0.0164104, computing_time: 0.1164024, sum_time: 10.1756760
+Epoch: 21, loss: 0.0160734, computing_time: 0.1164459, sum_time: 10.2921219
+Epoch: 22, loss: 0.0157550, computing_time: 0.1168680, sum_time: 10.4089899
+Epoch: 23, loss: 0.0154533, computing_time: 0.1155421, sum_time: 10.5245320
+Epoch: 24, loss: 0.0151669, computing_time: 0.1152983, sum_time: 10.6398302
+Epoch: 25, loss: 0.0148945, computing_time: 0.1166409, sum_time: 10.7564711
+Epoch: 26, loss: 0.0146349, computing_time: 0.1157741, sum_time: 10.8722452
+Epoch: 27, loss: 0.0143872, computing_time: 0.1156896, sum_time: 10.9879348
+Epoch: 28, loss: 0.0141504, computing_time: 0.1162559, sum_time: 11.1041907
+Epoch: 29, loss: 0.0139238, computing_time: 0.1167879, sum_time: 11.2209786
+Epoch: 30, loss: 0.0137065, computing_time: 0.1160534, sum_time: 11.3370320
+Epoch: 31, loss: 0.0134981, computing_time: 0.1166269, sum_time: 11.4536589
+Epoch: 32, loss: 0.0132978, computing_time: 0.1160432, sum_time: 11.5697021
+Epoch: 33, loss: 0.0131053, computing_time: 0.1155336, sum_time: 11.6852357
+Epoch: 34, loss: 0.0129199, computing_time: 0.1164513, sum_time: 11.8016870
+Epoch: 35, loss: 0.0127413, computing_time: 0.1160719, sum_time: 11.9177589
+Epoch: 36, loss: 0.0125690, computing_time: 0.1157930, sum_time: 12.0335518
+Epoch: 37, loss: 0.0124027, computing_time: 0.1167529, sum_time: 12.1503047
+Epoch: 38, loss: 0.0122421, computing_time: 0.1167829, sum_time: 12.2670876
+Epoch: 39, loss: 0.0120868, computing_time: 0.1160964, sum_time: 12.3831840
+Epoch: 40, loss: 0.0119366, computing_time: 0.1159502, sum_time: 12.4991342
+munmap is successful
+Bits:  12
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 65536.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.0477611, computing_time: 7.5249967, sum_time: 7.5249967
+=====print the profiling result==========
+Instructions-retired 7040119354
+Active-cycles 9241443235
+IPC 0.761799
+L3 cache misses:  25453155
+L2 cache misses:  17181261
+Mispredicted branchs:  177392
+L2 cache hits:  47684303
+BytesReadFromMC: 1946619264
+BytesWrittenToMC: 13944320
+Epoch: 2, loss: 0.0365876, computing_time: 0.1501674, sum_time: 7.6751641
+Epoch: 3, loss: 0.0320802, computing_time: 0.1474845, sum_time: 7.8226486
+Epoch: 4, loss: 0.0292861, computing_time: 0.1465858, sum_time: 7.9692344
+Epoch: 5, loss: 0.0272593, computing_time: 0.1258368, sum_time: 8.0950712
+Epoch: 6, loss: 0.0256742, computing_time: 0.1239255, sum_time: 8.2189966
+Epoch: 7, loss: 0.0243774, computing_time: 0.1285211, sum_time: 8.3475178
+Epoch: 8, loss: 0.0232835, computing_time: 0.1241830, sum_time: 8.4717007
+Epoch: 9, loss: 0.0223398, computing_time: 0.1241617, sum_time: 8.5958624
+Epoch: 10, loss: 0.0215117, computing_time: 0.1240415, sum_time: 8.7199039
+Epoch: 11, loss: 0.0207751, computing_time: 0.1244655, sum_time: 8.8443694
+Epoch: 12, loss: 0.0201128, computing_time: 0.1285317, sum_time: 8.9729011
+Epoch: 13, loss: 0.0195117, computing_time: 0.1283907, sum_time: 9.1012918
+Epoch: 14, loss: 0.0189622, computing_time: 0.1239613, sum_time: 9.2252531
+Epoch: 15, loss: 0.0184565, computing_time: 0.1243374, sum_time: 9.3495905
+Epoch: 16, loss: 0.0179887, computing_time: 0.1285703, sum_time: 9.4781608
+Epoch: 17, loss: 0.0175539, computing_time: 0.1241801, sum_time: 9.6023408
+Epoch: 18, loss: 0.0171479, computing_time: 0.1241223, sum_time: 9.7264631
+Epoch: 19, loss: 0.0167676, computing_time: 0.1240979, sum_time: 9.8505610
+Epoch: 20, loss: 0.0164102, computing_time: 0.1238540, sum_time: 9.9744150
+Epoch: 21, loss: 0.0160732, computing_time: 0.1243518, sum_time: 10.0987668
+Epoch: 22, loss: 0.0157548, computing_time: 0.1244507, sum_time: 10.2232175
+Epoch: 23, loss: 0.0154532, computing_time: 0.1285023, sum_time: 10.3517198
+Epoch: 24, loss: 0.0151668, computing_time: 0.1247245, sum_time: 10.4764443
+Epoch: 25, loss: 0.0148944, computing_time: 0.1242343, sum_time: 10.6006787
+Epoch: 26, loss: 0.0146349, computing_time: 0.1238831, sum_time: 10.7245617
+Epoch: 27, loss: 0.0143872, computing_time: 0.1242335, sum_time: 10.8487952
+Epoch: 28, loss: 0.0141505, computing_time: 0.1242974, sum_time: 10.9730926
+Epoch: 29, loss: 0.0139239, computing_time: 0.1242667, sum_time: 11.0973594
+Epoch: 30, loss: 0.0137067, computing_time: 0.1243574, sum_time: 11.2217167
+Epoch: 31, loss: 0.0134983, computing_time: 0.1241215, sum_time: 11.3458382
+Epoch: 32, loss: 0.0132981, computing_time: 0.1237921, sum_time: 11.4696304
+Epoch: 33, loss: 0.0131055, computing_time: 0.1242847, sum_time: 11.5939150
+Epoch: 34, loss: 0.0129201, computing_time: 0.1242419, sum_time: 11.7181569
+Epoch: 35, loss: 0.0127415, computing_time: 0.1234014, sum_time: 11.8415583
+Epoch: 36, loss: 0.0125693, computing_time: 0.1233825, sum_time: 11.9649409
+Epoch: 37, loss: 0.0124030, computing_time: 0.1241177, sum_time: 12.0890585
+Epoch: 38, loss: 0.0122424, computing_time: 0.1241551, sum_time: 12.2132137
+Epoch: 39, loss: 0.0120872, computing_time: 0.1241565, sum_time: 12.3373701
+Epoch: 40, loss: 0.0119370, computing_time: 0.1242828, sum_time: 12.4616529
+munmap is successful
+Bits:  13
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 65536.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.0477542, computing_time: 7.6627075, sum_time: 7.6627075
+=====print the profiling result==========
+Instructions-retired 7518556045
+Active-cycles 9818327790
+IPC 0.765767
+L3 cache misses:  26378789
+L2 cache misses:  13675809
+Mispredicted branchs:  192156
+L2 cache hits:  45624923
+BytesReadFromMC: 1947259648
+BytesWrittenToMC: 15911936
+Epoch: 2, loss: 0.0365863, computing_time: 0.1572697, sum_time: 7.8199772
+Epoch: 3, loss: 0.0320794, computing_time: 0.1569402, sum_time: 7.9769174
+Epoch: 4, loss: 0.0292852, computing_time: 0.1535662, sum_time: 8.1304836
+Epoch: 5, loss: 0.0272585, computing_time: 0.1301209, sum_time: 8.2606044
+Epoch: 6, loss: 0.0256735, computing_time: 0.1301342, sum_time: 8.3907386
+Epoch: 7, loss: 0.0243768, computing_time: 0.1298703, sum_time: 8.5206089
+Epoch: 8, loss: 0.0232830, computing_time: 0.1300703, sum_time: 8.6506792
+Epoch: 9, loss: 0.0223394, computing_time: 0.1302364, sum_time: 8.7809156
+Epoch: 10, loss: 0.0215114, computing_time: 0.1298200, sum_time: 8.9107356
+Epoch: 11, loss: 0.0207749, computing_time: 0.1299542, sum_time: 9.0406898
+Epoch: 12, loss: 0.0201126, computing_time: 0.1305749, sum_time: 9.1712647
+Epoch: 13, loss: 0.0195116, computing_time: 0.1296612, sum_time: 9.3009260
+Epoch: 14, loss: 0.0189621, computing_time: 0.1304267, sum_time: 9.4313526
+Epoch: 15, loss: 0.0184565, computing_time: 0.1302825, sum_time: 9.5616351
+Epoch: 16, loss: 0.0179887, computing_time: 0.1296899, sum_time: 9.6913250
+Epoch: 17, loss: 0.0175539, computing_time: 0.1301573, sum_time: 9.8214823
+Epoch: 18, loss: 0.0171480, computing_time: 0.1298199, sum_time: 9.9513022
+Epoch: 19, loss: 0.0167677, computing_time: 0.1298787, sum_time: 10.0811809
+Epoch: 20, loss: 0.0164103, computing_time: 0.1301641, sum_time: 10.2113450
+Epoch: 21, loss: 0.0160734, computing_time: 0.1302016, sum_time: 10.3415466
+Epoch: 22, loss: 0.0157550, computing_time: 0.1300507, sum_time: 10.4715972
+Epoch: 23, loss: 0.0154534, computing_time: 0.1297382, sum_time: 10.6013354
+Epoch: 24, loss: 0.0151670, computing_time: 0.1300825, sum_time: 10.7314179
+Epoch: 25, loss: 0.0148947, computing_time: 0.1305887, sum_time: 10.8620067
+Epoch: 26, loss: 0.0146352, computing_time: 0.1313688, sum_time: 10.9933755
+Epoch: 27, loss: 0.0143875, computing_time: 0.1299850, sum_time: 11.1233605
+Epoch: 28, loss: 0.0141507, computing_time: 0.1308006, sum_time: 11.2541611
+Epoch: 29, loss: 0.0139241, computing_time: 0.1304556, sum_time: 11.3846166
+Epoch: 30, loss: 0.0137070, computing_time: 0.1298465, sum_time: 11.5144631
+Epoch: 31, loss: 0.0134986, computing_time: 0.1300979, sum_time: 11.6445611
+Epoch: 32, loss: 0.0132984, computing_time: 0.1305067, sum_time: 11.7750678
+Epoch: 33, loss: 0.0131058, computing_time: 0.1302740, sum_time: 11.9053418
+Epoch: 34, loss: 0.0129205, computing_time: 0.1303953, sum_time: 12.0357371
+Epoch: 35, loss: 0.0127419, computing_time: 0.1301198, sum_time: 12.1658568
+Epoch: 36, loss: 0.0125697, computing_time: 0.1301748, sum_time: 12.2960316
+Epoch: 37, loss: 0.0124034, computing_time: 0.1301263, sum_time: 12.4261579
+Epoch: 38, loss: 0.0122428, computing_time: 0.1297967, sum_time: 12.5559546
+Epoch: 39, loss: 0.0120876, computing_time: 0.1302182, sum_time: 12.6861728
+Epoch: 40, loss: 0.0119374, computing_time: 0.1302132, sum_time: 12.8163860
+munmap is successful
+Bits:  14
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 65536.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.0477504, computing_time: 7.4898370, sum_time: 7.4898370
+=====print the profiling result==========
+Instructions-retired 7997315347
+Active-cycles 10455953633
+IPC 0.764858
+L3 cache misses:  26424668
+L2 cache misses:  13613230
+Mispredicted branchs:  198661
+L2 cache hits:  45745513
+BytesReadFromMC: 1951289216
+BytesWrittenToMC: 31542848
+Epoch: 2, loss: 0.0365855, computing_time: 0.2078381, sum_time: 7.6976752
+Epoch: 3, loss: 0.0320788, computing_time: 0.2078029, sum_time: 7.9054781
+Epoch: 4, loss: 0.0292846, computing_time: 0.2081948, sum_time: 8.1136729
+Epoch: 5, loss: 0.0272580, computing_time: 0.2017348, sum_time: 8.3154077
+Epoch: 6, loss: 0.0256730, computing_time: 0.2076258, sum_time: 8.5230335
+Epoch: 7, loss: 0.0243764, computing_time: 0.2023608, sum_time: 8.7253943
+Epoch: 8, loss: 0.0232826, computing_time: 0.2032279, sum_time: 8.9286222
+Epoch: 9, loss: 0.0223391, computing_time: 0.2069208, sum_time: 9.1355431
+Epoch: 10, loss: 0.0215111, computing_time: 0.2078278, sum_time: 9.3433709
+Epoch: 11, loss: 0.0207746, computing_time: 0.2080419, sum_time: 9.5514128
+Epoch: 12, loss: 0.0201124, computing_time: 0.2023999, sum_time: 9.7538127
+Epoch: 13, loss: 0.0195114, computing_time: 0.2081640, sum_time: 9.9619767
+Epoch: 14, loss: 0.0189620, computing_time: 0.2077539, sum_time: 10.1697306
+Epoch: 15, loss: 0.0184564, computing_time: 0.2060170, sum_time: 10.3757476
+Epoch: 16, loss: 0.0179887, computing_time: 0.2124986, sum_time: 10.5882462
+Epoch: 17, loss: 0.0175538, computing_time: 0.2027693, sum_time: 10.7910155
+Epoch: 18, loss: 0.0171480, computing_time: 0.2034705, sum_time: 10.9944860
+Epoch: 19, loss: 0.0167677, computing_time: 0.2024177, sum_time: 11.1969037
+Epoch: 20, loss: 0.0164103, computing_time: 0.2028031, sum_time: 11.3997068
+Epoch: 21, loss: 0.0160734, computing_time: 0.2067380, sum_time: 11.6064448
+Epoch: 22, loss: 0.0157550, computing_time: 0.2026130, sum_time: 11.8090578
+Epoch: 23, loss: 0.0154534, computing_time: 0.2029051, sum_time: 12.0119629
+Epoch: 24, loss: 0.0151670, computing_time: 0.2027122, sum_time: 12.2146750
+Epoch: 25, loss: 0.0148947, computing_time: 0.2022422, sum_time: 12.4169172
+Epoch: 26, loss: 0.0146352, computing_time: 0.2025728, sum_time: 12.6194900
+Epoch: 27, loss: 0.0143875, computing_time: 0.2077893, sum_time: 12.8272794
+Epoch: 28, loss: 0.0141508, computing_time: 0.2077712, sum_time: 13.0350506
+Epoch: 29, loss: 0.0139242, computing_time: 0.2025301, sum_time: 13.2375807
+Epoch: 30, loss: 0.0137070, computing_time: 0.2072141, sum_time: 13.4447948
+Epoch: 31, loss: 0.0134986, computing_time: 0.2029839, sum_time: 13.6477787
+Epoch: 32, loss: 0.0132984, computing_time: 0.2027484, sum_time: 13.8505271
+Epoch: 33, loss: 0.0131059, computing_time: 0.2030547, sum_time: 14.0535818
+Epoch: 34, loss: 0.0129206, computing_time: 0.2032025, sum_time: 14.2567843
+Epoch: 35, loss: 0.0127420, computing_time: 0.2079675, sum_time: 14.4647517
+Epoch: 36, loss: 0.0125697, computing_time: 0.2125475, sum_time: 14.6772992
+Epoch: 37, loss: 0.0124035, computing_time: 0.2035831, sum_time: 14.8808823
+Epoch: 38, loss: 0.0122429, computing_time: 0.2030686, sum_time: 15.0839509
+Epoch: 39, loss: 0.0120877, computing_time: 0.2042939, sum_time: 15.2882448
+Epoch: 40, loss: 0.0119375, computing_time: 0.2081600, sum_time: 15.4964049
+munmap is successful
+Bits:  15
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 65536.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.0477486, computing_time: 7.4970927, sum_time: 7.4970927
+=====print the profiling result==========
+Instructions-retired 8476161279
+Active-cycles 11049091641
+IPC 0.767136
+L3 cache misses:  27346344
+L2 cache misses:  13201575
+Mispredicted branchs:  196700
+L2 cache hits:  44326405
+BytesReadFromMC: 1951547136
+BytesWrittenToMC: 33051072
+Epoch: 2, loss: 0.0365850, computing_time: 0.2134923, sum_time: 7.7105850
+Epoch: 3, loss: 0.0320785, computing_time: 0.2187673, sum_time: 7.9293523
+Epoch: 4, loss: 0.0292843, computing_time: 0.2197766, sum_time: 8.1491289
+Epoch: 5, loss: 0.0272577, computing_time: 0.2158074, sum_time: 8.3649363
+Epoch: 6, loss: 0.0256728, computing_time: 0.2161564, sum_time: 8.5810927
+Epoch: 7, loss: 0.0243762, computing_time: 0.2155697, sum_time: 8.7966623
+Epoch: 8, loss: 0.0232824, computing_time: 0.2155405, sum_time: 9.0122028
+Epoch: 9, loss: 0.0223389, computing_time: 0.2249961, sum_time: 9.2371989
+Epoch: 10, loss: 0.0215110, computing_time: 0.2206552, sum_time: 9.4578541
+Epoch: 11, loss: 0.0207745, computing_time: 0.2156884, sum_time: 9.6735425
+Epoch: 12, loss: 0.0201123, computing_time: 0.2152978, sum_time: 9.8888403
+Epoch: 13, loss: 0.0195113, computing_time: 0.2130355, sum_time: 10.1018758
+Epoch: 14, loss: 0.0189619, computing_time: 0.2133184, sum_time: 10.3151942
+Epoch: 15, loss: 0.0184564, computing_time: 0.2152639, sum_time: 10.5304581
+Epoch: 16, loss: 0.0179886, computing_time: 0.2150910, sum_time: 10.7455491
+Epoch: 17, loss: 0.0175538, computing_time: 0.2156438, sum_time: 10.9611929
+Epoch: 18, loss: 0.0171480, computing_time: 0.2202565, sum_time: 11.1814494
+Epoch: 19, loss: 0.0167677, computing_time: 0.2152476, sum_time: 11.3966970
+Epoch: 20, loss: 0.0164103, computing_time: 0.2158454, sum_time: 11.6125424
+Epoch: 21, loss: 0.0160734, computing_time: 0.2157307, sum_time: 11.8282731
+Epoch: 22, loss: 0.0157550, computing_time: 0.2278454, sum_time: 12.0561185
+Epoch: 23, loss: 0.0154534, computing_time: 0.2190925, sum_time: 12.2752110
+Epoch: 24, loss: 0.0151671, computing_time: 0.2189414, sum_time: 12.4941524
+Epoch: 25, loss: 0.0148947, computing_time: 0.2154102, sum_time: 12.7095626
+Epoch: 26, loss: 0.0146353, computing_time: 0.2154523, sum_time: 12.9250148
+Epoch: 27, loss: 0.0143876, computing_time: 0.2155239, sum_time: 13.1405388
+Epoch: 28, loss: 0.0141509, computing_time: 0.2160071, sum_time: 13.3565458
+Epoch: 29, loss: 0.0139243, computing_time: 0.2155896, sum_time: 13.5721354
+Epoch: 30, loss: 0.0137071, computing_time: 0.2156216, sum_time: 13.7877570
+Epoch: 31, loss: 0.0134987, computing_time: 0.2159434, sum_time: 14.0037004
+Epoch: 32, loss: 0.0132985, computing_time: 0.2158162, sum_time: 14.2195167
+Epoch: 33, loss: 0.0131060, computing_time: 0.2181639, sum_time: 14.4376805
+Epoch: 34, loss: 0.0129206, computing_time: 0.2137394, sum_time: 14.6514199
+Epoch: 35, loss: 0.0127421, computing_time: 0.2192190, sum_time: 14.8706390
+Epoch: 36, loss: 0.0125698, computing_time: 0.2180894, sum_time: 15.0887284
+Epoch: 37, loss: 0.0124036, computing_time: 0.2182959, sum_time: 15.3070242
+Epoch: 38, loss: 0.0122430, computing_time: 0.2187780, sum_time: 15.5258022
+Epoch: 39, loss: 0.0120878, computing_time: 0.2142297, sum_time: 15.7400319
+Epoch: 40, loss: 0.0119376, computing_time: 0.2138591, sum_time: 15.9538910
+munmap is successful
+Bits:  16
+Using AVX!.......
+Succesfully map the file to the memory location!!!
+step 1: prepare the training dataset. dimension = 47236, num_samples = 20242
+step 2: Normalize the rating.
+base = 65536.000000, class_model = 1, normalize_enable = 1, toMinus1_1=0, num_samps= 20242
+step_size = 0.810000002
+Epoch: 0, loss: 0.0000000, computing_time: 0.0000000, sum_time: 0.0000000
+Epoch: 1, loss: 0.0477478, computing_time: 7.6441556, sum_time: 7.6441556
+=====print the profiling result==========
+Instructions-retired 8865093139
+Active-cycles 11688087567
+IPC 0.758473
+L3 cache misses:  26548923
+L2 cache misses:  13288764
+Mispredicted branchs:  196506
+L2 cache hits:  43558594
+BytesReadFromMC: 1950185856
+BytesWrittenToMC: 15533376
+Epoch: 2, loss: 0.0365849, computing_time: 0.2216414, sum_time: 7.8657970
+Epoch: 3, loss: 0.0320784, computing_time: 0.2295772, sum_time: 8.0953742
+Epoch: 4, loss: 0.0292842, computing_time: 0.2294026, sum_time: 8.3247768
+Epoch: 5, loss: 0.0272576, computing_time: 0.2238420, sum_time: 8.5486188
+Epoch: 6, loss: 0.0256727, computing_time: 0.2245424, sum_time: 8.7731612
+Epoch: 7, loss: 0.0243761, computing_time: 0.2243519, sum_time: 8.9975131
+Epoch: 8, loss: 0.0232824, computing_time: 0.2298150, sum_time: 9.2273282
+Epoch: 9, loss: 0.0223389, computing_time: 0.2246375, sum_time: 9.4519657
+Epoch: 10, loss: 0.0215110, computing_time: 0.2250105, sum_time: 9.6769762
+Epoch: 11, loss: 0.0207745, computing_time: 0.2250162, sum_time: 9.9019924
+Epoch: 12, loss: 0.0201123, computing_time: 0.2248172, sum_time: 10.1268096
+Epoch: 13, loss: 0.0195113, computing_time: 0.2262940, sum_time: 10.3531036
+Epoch: 14, loss: 0.0189619, computing_time: 0.2248158, sum_time: 10.5779194
+Epoch: 15, loss: 0.0184564, computing_time: 0.2297237, sum_time: 10.8076431
+Epoch: 16, loss: 0.0179886, computing_time: 0.2296265, sum_time: 11.0372696
+Epoch: 17, loss: 0.0175538, computing_time: 0.2246350, sum_time: 11.2619046
+Epoch: 18, loss: 0.0171480, computing_time: 0.2247222, sum_time: 11.4866268
+Epoch: 19, loss: 0.0167677, computing_time: 0.2302512, sum_time: 11.7168779
+Epoch: 20, loss: 0.0164103, computing_time: 0.2253570, sum_time: 11.9422350
+Epoch: 21, loss: 0.0160734, computing_time: 0.2246819, sum_time: 12.1669169
+Epoch: 22, loss: 0.0157550, computing_time: 0.2249140, sum_time: 12.3918308
+Epoch: 23, loss: 0.0154534, computing_time: 0.2221599, sum_time: 12.6139907
+Epoch: 24, loss: 0.0151671, computing_time: 0.2270452, sum_time: 12.8410359
+Epoch: 25, loss: 0.0148948, computing_time: 0.2220407, sum_time: 13.0630766
+Epoch: 26, loss: 0.0146353, computing_time: 0.2219802, sum_time: 13.2850568
+Epoch: 27, loss: 0.0143876, computing_time: 0.2221038, sum_time: 13.5071606
+Epoch: 28, loss: 0.0141509, computing_time: 0.2217417, sum_time: 13.7289023
+Epoch: 29, loss: 0.0139243, computing_time: 0.2271719, sum_time: 13.9560742
+Epoch: 30, loss: 0.0137071, computing_time: 0.2219670, sum_time: 14.1780411
+Epoch: 31, loss: 0.0134988, computing_time: 0.2220584, sum_time: 14.4000995
+Epoch: 32, loss: 0.0132986, computing_time: 0.2266719, sum_time: 14.6267715
+Epoch: 33, loss: 0.0131060, computing_time: 0.2221005, sum_time: 14.8488720
+Epoch: 34, loss: 0.0129207, computing_time: 0.2266044, sum_time: 15.0754764
+Epoch: 35, loss: 0.0127421, computing_time: 0.2266617, sum_time: 15.3021381
+Epoch: 36, loss: 0.0125699, computing_time: 0.2219847, sum_time: 15.5241228
+Epoch: 37, loss: 0.0124036, computing_time: 0.2217954, sum_time: 15.7459182
+Epoch: 38, loss: 0.0122430, computing_time: 0.2218573, sum_time: 15.9677755
+Epoch: 39, loss: 0.0120878, computing_time: 0.2218481, sum_time: 16.1896236
+Epoch: 40, loss: 0.0119376, computing_time: 0.2220610, sum_time: 16.4116846
+munmap is successful

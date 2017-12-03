@@ -1,7 +1,7 @@
 CXX = icc #g++
 MPICC = mpic++
 CPP_FLAG = -O3 -std=c++11 -lrt #-Wall -fopenmp -Wno-unknown-pragmas -mavx2 #-march=haswell
-ADDITIONAL_FLAG = -D_DEBUG -DAVX2_EN -DCPU_BINDING_EN  #####debug purpose...-D_HOGWILD_SHORT 
+ADDITIONAL_FLAG = -D_DEBUG   #####debug purpose...-D_HOGWILD_SHORT -DAVX2_EN -DCPU_BINDING_EN
 #ADDITIONAL_FLAG = -D_PRINT_GRADIENT
 #ADDITIONAL_FLAG = -DLOAD_FILE_PER_WORKER -D_DEBUG
 CPP_INCLUDE = -I./BitWeaving -I./hazytl/include/ -I../IntelPCM/ -I./linearmodel/ -I. -I./tool/
@@ -28,6 +28,7 @@ all: LINREG ${TEST_AVX2}
 
 
 #LOGIT SVM #$(SPLIT_DATA_TOOL) ${RANDOM_RESHUFFLE_TOOL} ${GENERATE_SPLIT_FILE_TOOL}
+ALLEXECS = $(LINREGS)
 
 clean: CLEAN-LINREG 
 	rm -f ${TEST_AVX2}

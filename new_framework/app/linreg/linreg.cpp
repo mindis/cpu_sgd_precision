@@ -468,7 +468,7 @@ int main(int argc, char** argv)
     p.ndim              = dimension;
 
 	//Add two parameters here. Number of bits for each region, and huge table enable..
-	BitWeavingBase bw_master(szTrainFile, dimension, bits_per_mr, num_samples, huge_page_en ); //false
+	BitWeavingBase bw_master(szTrainFile, dimension, bits_per_mr, num_samples, huge_page_en, true); //false
 	///////////////Add the other file when necessary...///////////////////
 
 	printf("step 1: prepare the training dataset. dimension = %d, num_samples = %d\n", dimension, num_samples);
