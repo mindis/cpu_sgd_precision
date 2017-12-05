@@ -59,6 +59,10 @@
 #define BITS_OF_ONE_CACHE_LINE 512
 typedef float fp_type;     
 
+#define HUGE_PAGE_SIZE (2 * 1024 * 1024)
+#define ALIGN_TO_PAGE_SIZE(x) \
+(((x) + HUGE_PAGE_SIZE - 1) / HUGE_PAGE_SIZE * HUGE_PAGE_SIZE)
+
 
 ////////////////////////////////////////////////////////////////////
 class BitWeavingBase
@@ -232,19 +236,23 @@ BitWeavingBase::BitWeavingBase(const char *fname, uint32_t dimension, uint32_t n
    		 if (zk_disk_addr == MAP_FAILED) 
 			perror ("mmap the file error");
     	else
-    		printf("Succesfully map the file: %s to the memory location!!!\n", fname);
+    		printf("Succesfully map the file: %s to the memory location!!! (pinned)\n", fname);
 
     	//2, malloc pinned memory area, for the training dataset...
+    	size_t real_size = ALIGN_TO_PAGE_SIZE(zk_total_len+num_samples);
 		if (huge_table_en)
-    		zk_mem_addr =  (uint32_t *)mmap (0, (zk_total_len+num_samples) * sizeof(uint32_t), PROT_READ|PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS | MAP_POPULATE | MAP_HUGETLB, -1, 0); //  
+    		zk_mem_addr =  (uint32_t *)mmap (0, real_size * sizeof(uint32_t), PROT_READ|PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS | MAP_POPULATE | MAP_HUGETLB, -1, 0); //  
 		else 
-    		zk_mem_addr =  (uint32_t *)mmap (0, (zk_total_len+num_samples) * sizeof(uint32_t), PROT_READ|PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS | MAP_POPULATE, -1, 0); // | MAP_HUGETLB 
+    		zk_mem_addr =  (uint32_t *)mmap (0, real_size * sizeof(uint32_t), PROT_READ|PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS | MAP_POPULATE, -1, 0); // | MAP_HUGETLB 
 		//Try to mapp the file to the memory region (zk_mem_addr, zk_total_len).
+		printf("zk_mem_addr = 0x%lx, zk_total_len+num_samples = 0x%x\n", (uint64_t)zk_mem_addr, zk_total_len+num_samples);
     	if (zk_mem_addr == MAP_FAILED) {
 			perror ("mmap MAP_ANONYMOUS error, please set huge pages in cat/meminfo");
 		//return 1;
     	}
-
+		else
+    		printf("Succesfully map the MAP_ANONYMOUS memory location!!!\n");
+			
     	//Copying from disk_addr to mem_addr.zk_pinned_en
 		for (uint64_t i = 0; i < (zk_total_len+num_samples); i++)
 			zk_mem_addr[i] = zk_disk_addr[i];
@@ -256,17 +264,8 @@ BitWeavingBase::BitWeavingBase(const char *fname, uint32_t dimension, uint32_t n
     	if (zk_mem_addr == MAP_FAILED) 
 			perror ("mmap error");
     	else
-    		printf("Succesfully map the file: %s to the memory location!!!\n", fname);
+    		printf("Succesfully map the file: %s to the memory location!!!(un-pinned)\n", fname);
 	}
-
-
-
-
-
-
-	
-
-
 
     zk_rating_addr = (float *)(zk_mem_addr + zk_total_len); 
 }
@@ -303,18 +302,33 @@ BitWeavingBase::BitWeavingBase(uint32_t dimension, uint32_t num_bits, uint32_t n
 
 BitWeavingBase::~BitWeavingBase()
 {
-    if ( munmap(zk_mem_addr, (zk_total_len+zk_num_samples) * sizeof(uint32_t)) != 0)
-        printf("There is error when doing munmap (mem_addr, total_len)\n");
-    else 
-        printf("munmap is successful\n");
+	printf("In munmap, zk_mem_addr = 0x%lx, zk_total_len+num_samples = 0x%x\n", (uint64_t)zk_mem_addr, zk_total_len+zk_num_samples);
+	
+
 
     if (zk_pinned_en)
     {
-    	if ( munmap(zk_disk_addr, (zk_total_len+zk_num_samples) * sizeof(uint32_t)) != 0)
+    
+		size_t real_size = ALIGN_TO_PAGE_SIZE(zk_total_len+zk_num_samples);
+		if ( munmap(zk_mem_addr, real_size * sizeof(uint32_t)) != 0)
+			printf("There is error when doing munmap (mem_addr, total_len)\n");
+		else 
+			printf("munmap pinned memory is successful\n");
+		
+
+		if ( munmap(zk_disk_addr, (zk_total_len+zk_num_samples) * sizeof(uint32_t)) != 0)
         	printf("There is error when doing munmap (disk_addr, total_len)\n");
     	else 
         	printf("munmap disk_addr is successful\n");
     }
+	else
+	{
+		if ( munmap(zk_mem_addr, (zk_total_len+zk_num_samples) * sizeof(uint32_t)) != 0)
+			printf("There is error when doing munmap (mem_addr, total_len)\n");
+		else 
+			printf("munmap is successful\n");
+
+	}
 }
 
 void BitWeavingBase::read_from_bitweaving(int samp_index, LinearModelSampleBitweaving &samp)

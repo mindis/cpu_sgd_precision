@@ -288,6 +288,6 @@ int main(int argc, char** argv)
  	executor.Run(model_, p, p_samp, nepochs);
 
  	delete model_;
-
+	free(p_samp);
 
 }

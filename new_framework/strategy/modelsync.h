@@ -378,6 +378,8 @@ void Run(Model* model_, Params p, Sample* p_samp, int nepochs)
   //printf("%f\nFinished!\n", totalTime / nepochs);
 
 
+  free(args.losses_);
+
 
 }
 /*
