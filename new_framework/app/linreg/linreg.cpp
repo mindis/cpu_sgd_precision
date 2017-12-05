@@ -38,7 +38,7 @@
 #elif defined(_MODELSYNC)
 	#include "strategy/modelsync.h"
 #else
-
+	#error Wrong execution strategy (neither hogwild nor modelsync).
 #endif
 
 
@@ -126,6 +126,8 @@ int main(int argc, char** argv)
 	unsigned model        = 0; //0: RCV1,
   unsigned bits_per_mr  = 4;
   unsigned huge_page_en = 0;
+  unsigned pinned_en    = 0;
+
 
   static struct extended_option long_options[] = {
     {"beta", required_argument, NULL,              'h', "the exponent constant for the stepsizes"},
@@ -148,6 +150,7 @@ int main(int argc, char** argv)
     {"target_label", required_argument,NULL,       't', "Target label to be identified. default:1"},
     {"pcm_epoch", required_argument,NULL,          'p', "Target epoch to be analyzed. Default:0 "},
     {"num_bits",     required_argument,NULL,       'n', "Number of bits used. default:8"},
+    {"pinned_en",     required_argument,NULL,      'w', "Malloc specific memory space for training. default:false"},
 	  
     {NULL,0,NULL,0,0}
   };
@@ -208,6 +211,11 @@ int main(int argc, char** argv)
         case 'z':
           huge_page_en      = atoi(optarg);
           break;
+        case 'w':
+          pinned_en      = atoi(optarg);
+          break;
+
+
 
         case ':':
         case '?':
@@ -261,7 +269,7 @@ int main(int argc, char** argv)
 	p.nthreads			= nthreads;
 	
 	//Add two parameters here. Number of bits for each region, and huge table enable..
-	BitWeavingBase bw_master(szTrainFile, dimension, bits_per_mr, num_samples, huge_page_en, true); //false
+	BitWeavingBase bw_master(szTrainFile, dimension, bits_per_mr, num_samples, huge_page_en, pinned_en); //false
 	///////////////Add the other file when necessary...///////////////////
 
 	printf("step 1: prepare the training dataset. dimension = %d, num_samples = %d\n", dimension, num_samples);

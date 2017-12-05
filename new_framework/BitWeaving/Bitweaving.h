@@ -259,12 +259,33 @@ BitWeavingBase::BitWeavingBase(const char *fname, uint32_t dimension, uint32_t n
 	}
 	else
 	{
+	/*	
 		zk_mem_addr =  (uint32_t *)mmap (0, (zk_total_len+num_samples) * sizeof(uint32_t), PROT_READ|PROT_WRITE, MAP_SHARED, zk_fd, 0); //|MAP_HUGETLB
 		//Try to mapp the file to the memory region (zk_mem_addr, zk_total_len).
     	if (zk_mem_addr == MAP_FAILED) 
 			perror ("mmap error");
     	else
     		printf("Succesfully map the file: %s to the memory location!!!(un-pinned)\n", fname);
+
+		if (madvise(zk_mem_addr, (zk_total_len+num_samples)*sizeof(uint32_t) - ( ( (zk_total_len+num_samples)*sizeof(uint32_t)) % 4096 ), MADV_DONTDUMP | MADV_SEQUENTIAL) == -1)
+			perror("madvise the file to memory. error");
+		else
+    		printf("Succesfully madvise the file to memory...\n");
+	*/
+    	size_t real_size = ALIGN_TO_PAGE_SIZE(zk_total_len+num_samples);
+
+		zk_mem_addr =  (uint32_t *)mmap (0, real_size * sizeof(uint32_t), PROT_READ|PROT_WRITE, MAP_SHARED, zk_fd, 0); //|MAP_HUGETLB
+		//Try to mapp the file to the memory region (zk_mem_addr, zk_total_len).
+    	if (zk_mem_addr == MAP_FAILED) 
+			perror ("mmap error");
+    	else
+    		printf("Succesfully map the file: %s to the memory location!!!(un-pinned), address: 0x%lx\n", fname, (uint64_t)zk_mem_addr );
+
+		if (madvise(zk_mem_addr, real_size * sizeof(uint32_t), MADV_DONTDUMP ) == -1) //| MADV_SEQUENTIAL
+			perror("madvise the file to memory. error");
+		else
+    		printf("Succesfully madvise the file to memory...\n");
+
 	}
 
     zk_rating_addr = (float *)(zk_mem_addr + zk_total_len); 
